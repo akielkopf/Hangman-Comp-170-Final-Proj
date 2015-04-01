@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,7 +31,6 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -48,17 +47,16 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Fakes Include="Fakes\ui.fakes" />
     <None Include="place_data.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sophmores_FinalProj\fio\fio.csproj">
-      <Project>{38702508-4bee-4055-b478-1f9fa30c1630}</Project>
-      <Name>fio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sophmores_FinalProj\ui\ui.csproj">
-      <Project>{2262ce21-c5ad-4ede-b384-ec2bd91585e6}</Project>
+    <ProjectReference Include="..\ui\ui.csproj">
+      <Project>{DC88927E-04FA-4738-A07B-D5188AEAB924}</Project>
       <Name>ui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fio\fio.csproj">
+      <Project>{38702508-4BEE-4055-B478-1F9FA30C1630}</Project>
+      <Name>fio</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
