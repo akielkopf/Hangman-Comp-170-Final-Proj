@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
-  class Character
+  public class Character
   {
     public string name { get; set; }
     public int level { get; set; }
@@ -17,13 +17,23 @@ namespace Sophmores_FinalProj
       health = Health;
       level = Level;
     }
-    public bool isAlive(int health)
+    public Character()
+    {
+      name = "Default Name";
+      health = 100;
+      level = 1;
+    }
+    public bool isAlive()
     {
       if (health > 0) 
       {
         return true;
       }
       return false;
+    }
+    public void Emote(string says)
+    {
+      Console.WriteLine(this.name + " says: {0}", says);
     }
   }
 }

@@ -11,8 +11,18 @@ namespace Sophmores_FinalProj
     static void Main(string[] args)
     {
       Player p1 = new Player("George", 10, 10);
-      p1.name = "george";
       Console.WriteLine(p1.name);
+      p1.Emote("Hello");
+      Character NPC1 = new Character();
+      if (NPC1.isAlive())
+      {
+        Console.WriteLine(NPC1.name + "is alive");
+      }
+      Player p2 = new Player();
+      if (p2.isAlive())
+      {
+        Console.WriteLine("player 2 " + p2.name + " is alive");
+      }
     }
   }
 }
