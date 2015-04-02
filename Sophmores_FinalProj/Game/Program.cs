@@ -23,6 +23,14 @@ namespace Sophmores_FinalProj
       {
         Console.WriteLine("player 2 " + p2.name + " is alive");
       }
-    }
+      Inventory inv = new Inventory();
+      Weapon Axe = new Weapon();
+      if (Axe.PlayerCanEquip)
+      {
+        Console.WriteLine("Player cannot equip");
+      }
+      Console.WriteLine(Axe.name);
+      inv.Add((Axe.name), 1);
+  
   }
 }

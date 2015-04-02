@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
-  interface IWeapon
+  public class Weapon : Item
   {
-    bool PlayerCanEquip();
-    void AddToInventory();
-    void RemoveFromInventory();
-
+    public bool PlayerCanEquip = true;
   }
 }

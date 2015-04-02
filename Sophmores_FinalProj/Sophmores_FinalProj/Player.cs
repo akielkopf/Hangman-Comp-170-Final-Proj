@@ -14,8 +14,6 @@ namespace Sophmores_FinalProj
     }
     public Player()
     {
-      string testing = "default player is a default character";
-      Console.WriteLine(testing);
     }
   }
 }

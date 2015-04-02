@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
-  class Item
+  public class Item
   {
     public string name { get; set; }
     public string type { get; set; }
@@ -16,6 +16,10 @@ namespace Sophmores_FinalProj
       name = Name;
       type = Type;
       description = Description;
+    }
+    public Item()
+    {
+      this.name = "ItemHasNoName";
     }
   }
 }
