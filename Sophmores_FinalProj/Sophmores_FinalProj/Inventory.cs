@@ -13,9 +13,17 @@ namespace Sophmores_FinalProj
     {
       contents = new Dictionary<string, int>();
     }
+    /// <summary>
+    /// Create new inventory from one that already exists
+    /// </summary>
+    /// <param name="OldInventory">Inventory to be copied from</param>
     public Inventory (Inventory OldInventory)
     {
-      contents = new Dictionary<string,int>(OldInventory.contents);
+      if (OldInventory != null)
+      {
+        contents = new Dictionary<string, int>(OldInventory.contents);
+       // OldInventory.contents.
+      }
     }
     /// <summary>
     /// Add Item to inventory
