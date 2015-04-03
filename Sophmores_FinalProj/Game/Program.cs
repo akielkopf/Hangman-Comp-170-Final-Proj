@@ -35,6 +35,7 @@ namespace Sophmores_FinalProj
       string magicArrow = "magical arrows";
       inv.Add(magicbow, 1);
       inv.Add(magicArrow, 5);
+      //maybe add thhis to inventory as a func?
       var dicList = new List<string>(inv.contents.Keys);
       dicList.Sort();
       foreach (string s in dicList)
@@ -42,6 +43,11 @@ namespace Sophmores_FinalProj
         Console.WriteLine(s);
         Console.WriteLine(inv.contents[s]);
       }
+      for (int i = 0; i < inv.contents.Count; i++)
+      {
+        inv.Remove(magicbow, 1);
+      }
+      inv.Remove("magicShield", 1);
     }
   }
 }

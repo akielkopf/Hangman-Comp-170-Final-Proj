@@ -17,6 +17,11 @@ namespace Sophmores_FinalProj
     {
       contents = new Dictionary<string,int>(OldInventory.contents);
     }
+    /// <summary>
+    /// Add Item to inventory
+    /// </summary>
+    /// <param name="ItemName">Name of item as string</param>
+    /// <param name="ItemCount">Number of the SAME item to add</param>
     public void Add(string ItemName, int ItemCount)
     {
       if (contents.ContainsKey(ItemName))
@@ -28,16 +33,26 @@ namespace Sophmores_FinalProj
         contents.Add(ItemName, ItemCount);
       }
     }
-    //public void Remove(string ItemName, int ItemCount)
-    //{
-    //  if (contents.ContainsKey(ItemName))
-    //  {
-    //    contents.Remove(ItemName);
-    //  }
-    //  else
-    //  {
-
-    //  }
-    //}
+    /// <summary>
+    /// Removes specified amount of Items(as a string) 
+    /// </summary>
+    /// <param name="ItemName">Item's name as a string</param>
+    /// <param name="ItemCount">Number of items to Remove</param>
+    public void Remove(string ItemName, int ItemCount)
+    {
+      if (contents.ContainsKey(ItemName))
+      {
+        contents[ItemName] -= ItemCount;
+        if (contents[ItemName] <= 0)
+        {
+          contents.Remove(ItemName);
+          Console.WriteLine("You have discarded your last {0}...", ItemName);
+        }
+      }
+      else
+      {
+        Console.WriteLine("You don't have any of those");
+      }
+    }
   }
 }
