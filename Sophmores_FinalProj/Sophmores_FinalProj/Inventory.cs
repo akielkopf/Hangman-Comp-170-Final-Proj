@@ -8,7 +8,7 @@ namespace Sophmores_FinalProj
 {
   public class Inventory
   {
-    private Dictionary<string, int> contents;
+    public Dictionary<string, int> contents { get; private set; }
     public Inventory()
     {
       contents = new Dictionary<string, int>();
@@ -23,16 +23,21 @@ namespace Sophmores_FinalProj
       {
         contents[ItemName] += ItemCount;
       }
-      else()
-        ///////////// continue here
-    //        void AddToInventory()
-    //{
-
-    //}
-    //void RemoveFromInventory()
-    //{
-
-    //}
+      else
+      {
+        contents.Add(ItemName, ItemCount);
+      }
     }
+    //public void Remove(string ItemName, int ItemCount)
+    //{
+    //  if (contents.ContainsKey(ItemName))
+    //  {
+    //    contents.Remove(ItemName);
+    //  }
+    //  else
+    //  {
+
+    //  }
+    //}
   }
 }

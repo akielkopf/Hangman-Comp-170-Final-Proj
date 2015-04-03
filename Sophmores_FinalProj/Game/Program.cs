@@ -23,14 +23,25 @@ namespace Sophmores_FinalProj
       {
         Console.WriteLine("player 2 " + p2.name + " is alive");
       }
-      Inventory inv = new Inventory();
       Weapon Axe = new Weapon();
       if (Axe.PlayerCanEquip)
       {
         Console.WriteLine("Player cannot equip");
       }
       Console.WriteLine(Axe.name);
-      inv.Add((Axe.name), 1);
-  
+      var testdictionary = new Dictionary<string, int>();
+      Inventory inv = new Inventory();
+      string magicbow = "magical bow";
+      string magicArrow = "magical arrows";
+      inv.Add(magicbow, 1);
+      inv.Add(magicArrow, 5);
+      var dicList = new List<string>(inv.contents.Keys);
+      dicList.Sort();
+      foreach (string s in dicList)
+      {
+        Console.WriteLine(s);
+        Console.WriteLine(inv.contents[s]);
+      }
+    }
   }
 }
