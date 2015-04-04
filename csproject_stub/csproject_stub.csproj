@@ -3,6 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{82615005-190F-4D61-8855-66847E132F98}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>csproject_stub</RootNamespace>
@@ -33,10 +35,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="command_mapper.cs" />
+    <Compile Include="command.cs" />
     <Compile Include="game.cs" />
-    <Compile Include="ui.cs" />
-    <Compile Include="fio.cs" />
-    <Compile Include="mChar.cs" />
+    <Compile Include="goer.cs" />
+    <Compile Include="helper.cs" />
+    <Compile Include="place.cs" />
+    <Compile Include="quitter.cs" />
+    <Compile Include="response.cs" />
+    <Compile Include="text_util.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="place_data.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ui\ui.csproj">
+      <Project>{DC88927E-04FA-4738-A07B-D5188AEAB924}</Project>
+      <Name>ui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fio\fio.csproj">
+      <Project>{38702508-4BEE-4055-B478-1F9FA30C1630}</Project>
+      <Name>fio</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
