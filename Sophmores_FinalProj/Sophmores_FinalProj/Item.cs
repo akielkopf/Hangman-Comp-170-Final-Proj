@@ -21,5 +21,13 @@ namespace Sophmores_FinalProj
     {
       this.name = "ItemHasNoName";
     }
+    /// <summary>
+    /// For Players to read Item Descriptions
+    /// </summary>
+    /// <param name="item">Item to Describe</param>
+    public void Inspect(Item item)
+    {
+      Console.WriteLine(item.description);
+    }
   }
 }
