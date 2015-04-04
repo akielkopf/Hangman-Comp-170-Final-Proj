@@ -8,6 +8,11 @@ namespace Sophmores_FinalProj
 {
   public class Weapon : Item
   {
-    public bool PlayerCanEquip = true;
+    public bool PlayerCanEquip { get; private set; }
+    public Weapon(string Name, string Type, string Description)
+      : base (Name, Type, Description)
+    {
+      PlayerCanEquip = true;
+    }
   }
 }
