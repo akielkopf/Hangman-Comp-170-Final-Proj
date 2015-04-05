@@ -11,17 +11,20 @@ namespace Sophmores_FinalProj
     public string name { get; set; }
     public int level { get; set; }
     public int health { get; set; }
-    public Character(string Name, int Health, int Level)
+    public string affinity { get; set; } 
+    public Character(string Name, int Health, int Level, string Affinity)
     {
       name = Name;
       health = Health;
       level = Level;
+      affinity = Affinity;
     }
     public Character()
     {
-      name = "Default Name";
+      name = "Douglas";
       health = 100;
       level = 1;
+      affinity = "n";
     }
     public bool isAlive()
     {
@@ -34,6 +37,10 @@ namespace Sophmores_FinalProj
     public void Emote(string says)
     {
       Console.WriteLine(this.name + " says: {0}", says);
+    }
+    public void deltaHP(int delta) 
+    {
+        health += delta;
     }
   }
 }

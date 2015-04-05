@@ -10,13 +10,13 @@ namespace Sophmores_FinalProj
   {
     private Weapon DefaultWeapon;
     public Weapon EquippedWeapon { get; private set; }
-    public int PhysicalDamage { get; private set; }
-    public int MagicDamage { get; private set; }
-    public Player(string Name, int Health, int Level) 
-      : base (Name, Health, Level)
+    public int DamageAbility { get; private set; }
+   
+    public Player(string Name, int Health, int Level, string Affinity) 
+      : base (Name, Health, Level, Affinity)
     {
-      PhysicalDamage = 1;
-      MagicDamage = 1;
+      DamageAbility = 1;      
+      affinity = "n";  
       DefaultWeapon = new Weapon();
       Equip(DefaultWeapon);
     }
@@ -32,8 +32,7 @@ namespace Sophmores_FinalProj
       if (WeapontoEquip.PlayerCanEquip)
       {
       EquippedWeapon = WeapontoEquip;
-      PhysicalDamage += WeapontoEquip.PhysicalDamage;
-      MagicDamage += WeapontoEquip.MagicalDamage;
+      DamageAbility = WeapontoEquip.PhysicalDamage;      
       }
       else
       {
@@ -46,14 +45,11 @@ namespace Sophmores_FinalProj
     /// </summary>
     public void UnEquip()
     {
-      PhysicalDamage -= EquippedWeapon.PhysicalDamage;
-      MagicDamage -= EquippedWeapon.MagicalDamage;
-      EquippedWeapon = DefaultWeapon;
+        Equip(DefaultWeapon);
     }
     private void InspectWeapon(Weapon weapon)
     {
-      Console.WriteLine("Physical Damage: {0}", weapon.PhysicalDamage);
-      Console.WriteLine("Magical Damage: {0}", weapon.MagicalDamage);
+      Console.WriteLine("Damage Ability: {0}", weapon.PhysicalDamage);     
     }
     public void Inspect(Item item)
     {
