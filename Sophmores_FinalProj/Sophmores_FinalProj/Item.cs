@@ -11,23 +11,24 @@ namespace Sophmores_FinalProj
     public string name { get; set; }
     public string type { get; set; }
     public string description { get; set; }
+    public bool PlayerCanEquip { get; protected set; }
     public Item(string Name, string Type, string Description)
     {
       name = Name;
       type = Type;
       description = Description;
     }
+    /// <summary>
+    /// If you create an Item using this on purpose, you're wrong
+    /// </summary>
     public Item()
     {
       this.name = "ItemHasNoName";
+      Console.WriteLine("ITEM NOT PROPERLY IMPLEMENTED");
     }
     /// <summary>
     /// For Players to read Item Descriptions
     /// </summary>
     /// <param name="item">Item to Describe</param>
-    public void Inspect(Item item)
-    {
-      Console.WriteLine(item.description);
-    }
   }
 }

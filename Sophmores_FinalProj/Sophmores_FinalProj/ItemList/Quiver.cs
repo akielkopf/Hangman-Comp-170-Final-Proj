@@ -11,7 +11,6 @@ namespace Sophmores_FinalProj
   {
     public int capacity { get; set; }
     public bool[] arrowSlots { get; private set; }
-    public bool PlayerCanEquip { get; private set; }
     public Quiver(string QuiverName, string QuiverType, 
                   string QuiverDescription, int QuiverCapacity)
       : base(QuiverName, QuiverType, QuiverDescription)

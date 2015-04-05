@@ -33,7 +33,7 @@ namespace Sophmores_FinalProj
       }
 
       // Test create Axe with strings (placeholders) for constructors
-      Weapon Axe = new Weapon("axe of smashing", "two-handed axe", "this axe smashes things");
+      Weapon Axe = new Weapon("axe of smashing", "two-handed axe", "this axe smashes things", 10, 0);
       if (Axe.PlayerCanEquip)
       {
         Console.WriteLine("Player can equip {0}", Axe.name);
@@ -66,11 +66,20 @@ namespace Sophmores_FinalProj
       // Create new bag, add items to it, test that cannot add more items 
       // Than capacity of bag
       Quiver testbag = new Quiver();
-      Weapon SteelArrow = new Weapon("Steel Arrow", "Arrow", "A Good Arrow");
+      Weapon SteelArrow = new Weapon("Steel Arrow", "Arrow", "A Good Arrow", 5, 0);
       testbag.Add(SteelArrow, 7);
       testbag.ArrowsInQuiver();
       testbag.Remove(SteelArrow, 12);
       testbag.ArrowsInQuiver();
+      // Test Equip and Unequip player functions
+      p1.Equip(SteelArrow);
+      Console.WriteLine("player one is wielding " + p1.EquippedWeapon.name);
+      p1.UnEquip();
+      Console.WriteLine("player one is wielding " + p1.EquippedWeapon.name);
+
+      // Test Inspect Functions
+      p1.Inspect(Axe);
+      p1.Inspect(p1.EquippedWeapon);
     }
   }
 }

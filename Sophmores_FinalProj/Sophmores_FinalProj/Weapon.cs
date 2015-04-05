@@ -8,10 +8,28 @@ namespace Sophmores_FinalProj
 {
   public class Weapon : Item
   {
-    public bool PlayerCanEquip { get; private set; }
-    public Weapon(string Name, string Type, string Description)
+
+    public int PhysicalDamage { get; private set; }
+    public int MagicalDamage { get; private set; }
+    public Weapon(string Name, string Type, string Description, 
+                 int physicalDamage, int magicalDamage)
       : base (Name, Type, Description)
     {
+      PhysicalDamage = physicalDamage;
+      MagicalDamage = magicalDamage;
+      PlayerCanEquip = true;
+    }
+    public Weapon(Weapon OldWeapon)
+    {
+      PlayerCanEquip = true;
+    }
+    public Weapon()
+    {
+      name = "Rusty Sword";
+      description = "An old Rusty Sword...";
+      type = "sword";
+      PhysicalDamage = 4;
+      MagicalDamage = 0;
       PlayerCanEquip = true;
     }
   }
