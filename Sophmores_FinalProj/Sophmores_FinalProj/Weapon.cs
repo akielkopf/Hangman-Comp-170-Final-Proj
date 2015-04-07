@@ -11,9 +11,9 @@ namespace Sophmores_FinalProj
 
     public int PhysicalDamage { get; private set; }
     public int MagicalDamage { get; private set; }
-    public Weapon(string Name, string Type, string Description, 
+    public Weapon(string Name, string Type, string Description, bool Consumable,
                  int physicalDamage, int magicalDamage)
-      : base (Name, Type, Description)
+      : base (Name, Type, Description, Consumable)
     {
       PhysicalDamage = physicalDamage;
       MagicalDamage = magicalDamage;
@@ -31,6 +31,7 @@ namespace Sophmores_FinalProj
       PhysicalDamage = 4;
       MagicalDamage = 0;
       PlayerCanEquip = true;
+      consumable = false;
     }
   }
 }

@@ -80,6 +80,7 @@ namespace Sophmores_FinalProj
       // Test Inspect Functions
       p1.Inspect(Axe);
       p1.Inspect(p1.EquippedWeapon);
+      string abc = Console.ReadLine();
     }
   }
 }
