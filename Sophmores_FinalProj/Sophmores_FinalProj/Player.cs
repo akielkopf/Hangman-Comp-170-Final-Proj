@@ -55,6 +55,10 @@ namespace Sophmores_FinalProj
       Console.WriteLine("Physical Damage: {0}", weapon.PhysicalDamage);
       Console.WriteLine("Magical Damage: {0}", weapon.MagicalDamage);
     }
+    /// <summary>
+    /// For Players to read Item Descriptions
+    /// </summary>
+    /// <param name="item">Item to Describe</param>
     public void Inspect(Item item)
     {
       Console.WriteLine("Name: {0}", item.name);

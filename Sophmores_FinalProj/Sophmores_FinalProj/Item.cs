@@ -26,9 +26,5 @@ namespace Sophmores_FinalProj
       this.name = "ItemHasNoName";
       Console.WriteLine("ITEM NOT PROPERLY IMPLEMENTED");
     }
-    /// <summary>
-    /// For Players to read Item Descriptions
-    /// </summary>
-    /// <param name="item">Item to Describe</param>
   }
 }
