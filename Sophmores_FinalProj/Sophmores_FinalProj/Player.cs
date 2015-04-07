@@ -22,18 +22,20 @@ namespace Sophmores_FinalProj
     }
     public Player()
     {
+      name = "Douglas";
     }
     /// <summary>
-    /// Equips specified weapon by REFERENCE
+    /// Equips specified weapon by creating new instance of said 
+    /// Weapon and changing player EquippedWeapon Reference
     /// </summary>
     /// <param name="WeapontoEquip">Weapon the player will equip</param>
     public void Equip(Weapon WeapontoEquip)
     {
-      if (WeapontoEquip.PlayerCanEquip)
+      if (WeapontoEquip.playerCanEquip)
       {
       EquippedWeapon = new Weapon(WeapontoEquip);
-      PhysicalDamage += WeapontoEquip.PhysicalDamage;
-      MagicDamage += WeapontoEquip.MagicalDamage;
+      PhysicalDamage += WeapontoEquip.physicalDamage;
+      MagicDamage += WeapontoEquip.magicalDamage;
       }
       else
       {
@@ -42,18 +44,18 @@ namespace Sophmores_FinalProj
     }
     /// <summary>
     /// Unequips currently Equipped Weapon and Equips the Default Weapon
-    /// Player will never have no Weapon Equipped
+    /// Player will never not have Weapon Equipped
     /// </summary>
     public void UnEquip()
     {
-      PhysicalDamage -= EquippedWeapon.PhysicalDamage;
-      MagicDamage -= EquippedWeapon.MagicalDamage;
+      PhysicalDamage -= EquippedWeapon.physicalDamage;
+      MagicDamage -= EquippedWeapon.magicalDamage;
       EquippedWeapon = DefaultWeapon;
     }
     private void InspectWeapon(Weapon weapon)
     {
-      Console.WriteLine("Physical Damage: {0}", weapon.PhysicalDamage);
-      Console.WriteLine("Magical Damage: {0}", weapon.MagicalDamage);
+      Console.WriteLine("Physical Damage: {0}", weapon.physicalDamage);
+      Console.WriteLine("Magical Damage: {0}", weapon.magicalDamage);
     }
     /// <summary>
     /// For Players to read Item Descriptions

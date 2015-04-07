@@ -17,7 +17,7 @@ namespace Sophmores_FinalProj
     {
       capacity = QuiverCapacity;
       arrowSlots = new bool[capacity];
-      PlayerCanEquip = true;
+      playerCanEquip = true;
     }
     public Quiver()
     {
@@ -25,7 +25,7 @@ namespace Sophmores_FinalProj
       type = "Quiver";
       capacity = 8;
       arrowSlots = new bool[capacity];
-      PlayerCanEquip = true;
+      playerCanEquip = true;
     }
     /// <summary>
     /// Add the specified amount arrows to the specified quiver
