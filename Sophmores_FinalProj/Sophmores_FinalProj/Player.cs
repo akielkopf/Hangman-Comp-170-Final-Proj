@@ -31,7 +31,7 @@ namespace Sophmores_FinalProj
     {
       if (WeapontoEquip.PlayerCanEquip)
       {
-      EquippedWeapon = WeapontoEquip;
+      EquippedWeapon = new Weapon(WeapontoEquip);
       PhysicalDamage += WeapontoEquip.PhysicalDamage;
       MagicDamage += WeapontoEquip.MagicalDamage;
       }
