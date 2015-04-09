@@ -11,7 +11,28 @@ namespace Sophmores_FinalProj
     public string name { get; set; }
     public string type { get; set; }
     public string description { get; set; }
-    public bool PlayerCanEquip { get; protected set; }
+    public bool playerCanEquip { get; protected set; }
+    public bool consumable { get; protected set; }
+    /// <summary>
+    /// Creates a new Item, can be Consumable
+    /// </summary>
+    /// <param name="Name">Item Name</param>
+    /// <param name="Type">Type of Item as a string</param>
+    /// <param name="Description">Item Flavor Text</param>
+    /// <param name="Consumable">Is this item destroyed when used?</param>
+    public Item(string Name, string Type, string Description, bool Consumable)
+    {
+      name = Name;
+      type = Type;
+      description = Description;
+      consumable = Consumable;
+    }
+    /// <summary>
+    /// Creates a new Non-Consumable Item
+    /// </summary>
+    /// <param name="Name">Item Name</param>
+    /// <param name="Type">Item Type as a string</param>
+    /// <param name="Description">Item Description</param>
     public Item(string Name, string Type, string Description)
     {
       name = Name;
@@ -23,12 +44,7 @@ namespace Sophmores_FinalProj
     /// </summary>
     public Item()
     {
-      this.name = "ItemHasNoName";
-      Console.WriteLine("ITEM NOT PROPERLY IMPLEMENTED");
+      name = "ITEM NOT PROPERLY IMPLEMENTED";
     }
-    /// <summary>
-    /// For Players to read Item Descriptions
-    /// </summary>
-    /// <param name="item">Item to Describe</param>
   }
 }

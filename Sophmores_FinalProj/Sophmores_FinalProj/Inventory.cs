@@ -8,10 +8,10 @@ namespace Sophmores_FinalProj
 {
   public class Inventory
   {
-    public Dictionary<string, int> contents { get; private set; }
+    public Dictionary<Item, int> contents { get; private set; }
     public Inventory()
     {
-      contents = new Dictionary<string, int>();
+      contents = new Dictionary<Item, int>();
     }
     /// <summary>
     /// Create new inventory from one that already exists
@@ -21,40 +21,39 @@ namespace Sophmores_FinalProj
     {
       if (OldInventory != null)
       {
-        contents = new Dictionary<string, int>(OldInventory.contents);
-       // OldInventory.contents.
+          contents = new Dictionary<Item, int>(OldInventory.contents);
       }
     }
     /// <summary>
     /// Add Item to inventory
     /// </summary>
-    /// <param name="ItemName">Name of item as string</param>
-    /// <param name="ItemCount">Number of the SAME item to add</param>
-    public void Add(string ItemName, int ItemCount)
+    /// <param name="item">item</param>
+    /// <param name="itemCount">Number of the SAME item to add</param>
+    public void Add(Item item, int itemCount)
     {
-      if (contents.ContainsKey(ItemName))
+      if (contents.ContainsKey(item))
       {
-        contents[ItemName] += ItemCount;
+        contents[item] += itemCount;
       }
       else
       {
-        contents.Add(ItemName, ItemCount);
+        contents.Add(item, itemCount);
       }
     }
     /// <summary>
-    /// Removes specified amount of Items(as a string) 
+    /// Removes specified amount of Items
     /// </summary>
-    /// <param name="ItemName">Item's name as a string</param>
+    /// <param name="item">Item</param>
     /// <param name="ItemCount">Number of items to Remove</param>
-    public void Remove(string ItemName, int ItemCount)
+    public void Remove(Item item, int itemCount)
     {
-      if (contents.ContainsKey(ItemName))
+      if (contents.ContainsKey(item))
       {
-        contents[ItemName] -= ItemCount;
-        if (contents[ItemName] <= 0)
+        contents[item] -= itemCount;
+        if (contents[item] <= 0)
         {
-          contents.Remove(ItemName);
-          Console.WriteLine("You have discarded your last {0}...", ItemName);
+          contents.Remove(item);
+          Console.WriteLine("You have used your last {0}...", item.name);
         }
       }
       else

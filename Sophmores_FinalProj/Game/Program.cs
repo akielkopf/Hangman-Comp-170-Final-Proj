@@ -21,7 +21,7 @@ namespace Sophmores_FinalProj
       Character NPC1 = new Character();
       if (NPC1.isAlive())
       {
-        Console.WriteLine(NPC1.name + "is alive");
+        Console.WriteLine(NPC1.name + " is alive");
       }
 
       // Test create generic player
@@ -29,31 +29,34 @@ namespace Sophmores_FinalProj
       if (p2.isAlive())
       {
         Console.WriteLine("player 2 " + p2.name + " is alive");
-        Console.WriteLine("player 2 {0} has {1} health", p2.name, p2.health);
+        Console.WriteLine("player 2 {0} has {1} health", p2.name, p2.totalHP);
       }
 
-      // Test create Axe with strings (placeholders) for constructors
+      // Test create Axe with placeholders for constructors
       Weapon Axe = new Weapon("axe of smashing", "two-handed axe", "this axe smashes things", 10, 0);
-      if (Axe.PlayerCanEquip)
-      {
-        Console.WriteLine("Player can equip {0}", Axe.name);
-      }
       Console.WriteLine(Axe.name);
+      if (Axe.playerCanEquip)
+      {
+        Console.WriteLine("{0} can be equiped.",Axe.name);
+      }
       // Test create inventory with placeholder items added
       Inventory inv = new Inventory();
-      string magicbow = "magical bow";
-      string magicArrow = "magical arrows";
+      Weapon magicbow = new Weapon("MagicBow", "Bow", "A magical bow", 5, 1);
+
+      //string magicArrow = "magical arrows";
+
       inv.Add(magicbow, 1);
-      inv.Add(magicArrow, 5);
+
+      //inv.Add(magicArrow, 5);
 
       // Maybe add this to inventory as a func?
       // Display inventory as Aplhabetical list
       // Still need to add numbered list to select item to equip/use
-      var dicList = new List<string>(inv.contents.Keys);
+      var dicList = new List<dynamic>(inv.contents.Keys);
       dicList.Sort();
-      foreach (string s in dicList)
+      foreach (Weapon s in dicList)
       {
-        Console.WriteLine(s);
+        Console.WriteLine(s.name);
         Console.WriteLine(inv.contents[s]);
       }
       // Test Remove items until no more of said item remain
@@ -61,8 +64,10 @@ namespace Sophmores_FinalProj
       {
         inv.Remove(magicbow, 1);
       }
+
       // Test Remove item not in inventory
-      inv.Remove("magicShield", 1);
+      //inv.Remove("magicShield", 1);
+
       // Create new bag, add items to it, test that cannot add more items 
       // Than capacity of bag
       Quiver testbag = new Quiver();
@@ -71,6 +76,7 @@ namespace Sophmores_FinalProj
       testbag.ArrowsInQuiver();
       testbag.Remove(SteelArrow, 12);
       testbag.ArrowsInQuiver();
+
       // Test Equip and Unequip player functions
       p1.Equip(SteelArrow);
       Console.WriteLine("player one is wielding " + p1.EquippedWeapon.name);
@@ -80,6 +86,9 @@ namespace Sophmores_FinalProj
       // Test Inspect Functions
       p1.Inspect(Axe);
       p1.Inspect(p1.EquippedWeapon);
+
+      // So console doesn't auto close
+      string abc = Console.ReadLine();
     }
   }
 }
