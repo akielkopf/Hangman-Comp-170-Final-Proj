@@ -71,5 +71,64 @@ namespace Sophmores_FinalProj
         InspectWeapon((Weapon)item);
       }
     }
+    /// <summary>
+    /// Displays Inventory or specific Item types to Player
+    /// </summary>
+    /// <param name="itemType">Types of items to show</param>
+    public void DisplayInventoryContents(string itemType)
+    {
+      itemType.ToLower();
+      var inventoryList = new List<Item>(inventory.contents.Keys);
+      inventoryList.Sort();
+      if (itemType == "weapon")
+      {
+        DisplayWeapons(inventoryList);
+      }
+      //else if (itemType == "key")
+      //{
+      //  DisplayKeys(inventoryList);
+      //}
+      else if (itemType == "item")
+      {
+        DisplayItems(inventoryList);
+      }
+      else if (itemType == "item")
+      {
+        DisplayItems(inventoryList);
+      }
+    }
+    /// <summary>
+    /// Displays All Inventory Contents to Player
+    /// </summary>
+    public void DisplayInventoryContents()
+    {
+      var inventoryList = new List<Item>(inventory.contents.Keys);
+      inventoryList.Sort();
+      DisplayItems(inventoryList);
+    }
+    private void DisplayItems(List<Item> itemList)
+    {
+      foreach (Item s in itemList)
+      {
+        Console.WriteLine("All Items:\n");
+        Console.WriteLine(s.name + " " + inventory.contents[s]);
+      }
+    }
+    private void DisplayWeapons(List<Item> weaponList)
+    {
+      foreach (Weapon s in weaponList)
+      {
+        Console.WriteLine("Weapons:\n");
+        Console.WriteLine(s.name + " " + inventory.contents[s]);
+      }
+    }
+    //private void DisplayKeys(List<Item> keyList)
+    //{
+    //  foreach (Key s in keyList)
+    //  {
+    //    Console.WriteLine("Keys:\n");
+    //    Console.WriteLine(s.name + " " + inventory.contents[s]);
+    //  }
+    //}
   }
 }

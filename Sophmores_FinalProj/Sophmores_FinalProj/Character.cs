@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sophmores_FinalProj.Utilities;
 
 namespace Sophmores_FinalProj
 {
@@ -12,6 +13,8 @@ namespace Sophmores_FinalProj
     public int level { get; set; }
     public int totalHP { get; set; }
     public int currentHP { get; set; }
+    public Inventory inventory { get; set; }
+
     /// <summary>
     /// Creates an Non-Player, Non-Combat Character
     /// </summary>
@@ -24,6 +27,7 @@ namespace Sophmores_FinalProj
       totalHP = Health;
       currentHP = Health;
       level = Level;
+      inventory = new Inventory();
     }
     /// <summary>
     /// Default Characters are peasants!
@@ -34,6 +38,7 @@ namespace Sophmores_FinalProj
       totalHP = 10;
       currentHP = totalHP;
       level = 1;
+      inventory = new Inventory();
     }
     /// <summary>
     /// Check to see if a Character is Alive
@@ -46,6 +51,24 @@ namespace Sophmores_FinalProj
         return true;
       }
       return false;
+    }
+    /// <summary>
+    /// Add Item to inventory
+    /// </summary>
+    /// <param name="item">item</param>
+    /// <param name="itemCount">Number of the SAME item to add</param>
+    public void AddToInventory(Item item, int itemCount)
+    {
+      inventory.Add(item, itemCount);
+    }
+    /// <summary>
+    /// Removie an Item from the character's Inventory
+    /// </summary>
+    /// <param name="item">Item to Remove</param>
+    /// <param name="itemCount">Number of Items to Remove</param>
+    public void RemoveFromInventory(Item item, int itemCount)
+    {
+      inventory.Remove(item, itemCount);
     }
     /// <summary>
     /// For use when a character says something
