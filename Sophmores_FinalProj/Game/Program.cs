@@ -16,7 +16,7 @@ namespace Sophmores_FinalProj
 
       // Test player "conversation" command
       p1.Emote("Hello");
-
+//helo 
       // Test create generic non-combat character
       Character NPC1 = new Character();
       if (NPC1.isAlive())
