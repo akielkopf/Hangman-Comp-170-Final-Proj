@@ -12,8 +12,8 @@ namespace Sophmores_FinalProj
     public int PhysicalDamage { get; private set; }
     public int MagicalDamage { get; private set; }
     public Weapon(string Name, string Type, string Description, bool Consumable,
-                 int Val, int magicalDamage)
-      : base (Name, Type, Description, Consumable, Val)
+                int magicalDamage)
+      : base (Name, Type, Description, Consumable)
     {
       PhysicalDamage = Val;
       MagicalDamage = magicalDamage;

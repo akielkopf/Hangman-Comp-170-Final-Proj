@@ -11,7 +11,7 @@ namespace Sophmores_FinalProj
     private Weapon DefaultWeapon;
     public Weapon EquippedWeapon { get; private set; }
     public int DamageAbility { get; private set; }
-    public double totalDamage { get; set; }
+    public int totalDamage { get; set; }
     public double buff { get; set; }
     public Player(string Name, int Health, int Level, string Affinity) 
       : base (Name, Health, Level, Affinity)
