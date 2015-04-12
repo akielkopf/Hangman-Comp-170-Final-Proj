@@ -96,16 +96,28 @@ namespace Sophmores_FinalProj
     public void DisplayInventoryContents(string itemType)
     {
       itemType.ToLower();
+      if (itemType == "sword" || itemType == "axe"   ||
+          itemType == "bow"   || itemType == "arrow" ||
+          itemType == "shield" )
+      {
+        itemType = "weapon";
+      }
+      else
+      {
+        string message = "That item type is not a supported item type!";
+        Console.WriteLine(message);
+        throw new NotSupportedException(message);
+      }
       var inventoryList = new List<Item>(inventory.contents.Keys);
       inventoryList.Sort();
       if (itemType == "weapon")
       {
         DisplayWeapons(inventoryList);
       }
-      //else if (itemType == "key")
-      //{
-      //  DisplayKeys(inventoryList);
-      //}
+      else if (itemType == "key")
+      {
+        DisplayKeys(inventoryList);
+      }
       else if (itemType == "item")
       {
         DisplayItems(inventoryList);
@@ -116,7 +128,7 @@ namespace Sophmores_FinalProj
       }
     }
     /// <summary>
-    /// Displays All Inventory Contents to Player
+    /// Displays ALL Inventory Contents to Player
     /// </summary>
     public void DisplayInventoryContents()
     {
@@ -128,7 +140,7 @@ namespace Sophmores_FinalProj
     {
       foreach (Item s in itemList)
       {
-        Console.WriteLine("All Items:\n");
+        Console.WriteLine("All Items:");
         Console.WriteLine(s.name + " " + inventory.contents[s]);
       }
     }
@@ -136,17 +148,17 @@ namespace Sophmores_FinalProj
     {
       foreach (Weapon s in weaponList)
       {
-        Console.WriteLine("Weapons:\n");
+        Console.WriteLine("Weapons:");
         Console.WriteLine(s.name + " " + inventory.contents[s]);
       }
     }
-    //private void DisplayKeys(List<Item> keyList)
-    //{
-    //  foreach (Key s in keyList)
-    //  {
-    //    Console.WriteLine("Keys:\n");
-    //    Console.WriteLine(s.name + " " + inventory.contents[s]);
-    //  }
-    //}
+    private void DisplayKeys(List<Item> keyList)
+    {
+      foreach (Key s in keyList)
+      {
+        Console.WriteLine("Keys:");
+        Console.WriteLine(s.name + " " + inventory.contents[s]);
+      }
+    }
   }
 }
