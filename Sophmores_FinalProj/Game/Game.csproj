@@ -48,9 +48,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sophmores_FinalProj\Sophmores_FinalProj.csproj">
+    <ProjectReference Include="..\Sophmores_FinalProj\Sophmores_FinalProj2.csproj">
       <Project>{e3015ab2-507a-4a55-90b6-4760cf30996f}</Project>
-      <Name>Sophmores_FinalProj</Name>
+      <Name>Sophmores_FinalProj2</Name>
     </ProjectReference>
     <ProjectReference Include="..\ui\ui.csproj">
       <Project>{2262ce21-c5ad-4ede-b384-ec2bd91585e6}</Project>
