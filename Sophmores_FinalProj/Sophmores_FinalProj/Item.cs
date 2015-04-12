@@ -12,7 +12,7 @@ namespace Sophmores_FinalProj
     public string type { get; set; }
     public string description { get; set; }
     public bool PlayerCanEquip { get; protected set; }
-    public bool consumable { get; protected set; }
+    public bool consumable { get; protected set; } 
     public Item(string Name, string Type, string Description, bool Consumable)
     {
       name = Name;

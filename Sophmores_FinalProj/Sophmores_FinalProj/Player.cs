@@ -11,7 +11,8 @@ namespace Sophmores_FinalProj
     private Weapon DefaultWeapon;
     public Weapon EquippedWeapon { get; private set; }
     public int DamageAbility { get; private set; }
-   
+    public double totalDamage { get; set; }
+    public double buff { get; set; }
     public Player(string Name, int Health, int Level, string Affinity) 
       : base (Name, Health, Level, Affinity)
     {
@@ -19,6 +20,7 @@ namespace Sophmores_FinalProj
       affinity = "n";  
       DefaultWeapon = new Weapon();
       Equip(DefaultWeapon);
+      buff = 0;
     }
     public Player()
     {
@@ -31,8 +33,7 @@ namespace Sophmores_FinalProj
     {
       if (WeapontoEquip.PlayerCanEquip)
       {
-      EquippedWeapon = WeapontoEquip;
-      DamageAbility = WeapontoEquip.PhysicalDamage;      
+      EquippedWeapon = WeapontoEquip;              
       }
       else
       {
@@ -61,5 +62,11 @@ namespace Sophmores_FinalProj
         InspectWeapon((Weapon)item);
       }
     }
+    public void applyBuff(double Buff) 
+    {
+        buff = Buff;
+        totalDamage = buff * DamageAbility + DamageAbility;
+    }
+   
   }
 }
