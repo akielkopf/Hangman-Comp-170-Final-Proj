@@ -8,6 +8,10 @@ namespace Sophmores_FinalProj
 {
   public class Item
   {
+    /// <summary>
+    /// Items are as flexible as you want them to be
+    /// By default not consumable
+    /// </summary>
     public string name { get; set; }
     public string type { get; set; }
     public string description { get; set; }
@@ -38,13 +42,13 @@ namespace Sophmores_FinalProj
       name = Name;
       type = Type;
       description = Description;
+      consumable = false;
     }
     /// <summary>
     /// If you create an Item using this on purpose, you're wrong
     /// </summary>
-    public Item()
+    protected Item()
     {
-      name = "ITEM NOT PROPERLY IMPLEMENTED";
     }
   }
 }
