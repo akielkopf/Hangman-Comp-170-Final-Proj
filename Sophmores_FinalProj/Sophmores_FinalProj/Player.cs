@@ -8,6 +8,11 @@ namespace Sophmores_FinalProj
 {
   public class Player : Character
   {
+    /// <summary>
+    /// Contains Methods to Create Players that can
+    /// Equip Weapons, and Inspect Items, and more.
+    /// Inherits from Character
+    /// </summary>
     private Weapon DefaultWeapon;
     public Weapon EquippedWeapon { get; private set; }
     public int PhysicalDamage { get; private set; }
@@ -24,11 +29,16 @@ namespace Sophmores_FinalProj
       buffMultiplier = 1;
       totalDamage = (PhysicalDamage + MagicDamage) * buffMultiplier;
     }
+    /// <summary>
+    /// Creates Default Player named Douglas with basic attributes
+    /// </summary>
     public Player()
     {
       name = "Douglas";
       PhysicalDamage = 1;
       MagicDamage = 1;
+      DefaultWeapon = new Weapon();
+      Equip(DefaultWeapon);
       buffMultiplier = 1;
       totalDamage = (PhysicalDamage + MagicDamage) * buffMultiplier;
     }

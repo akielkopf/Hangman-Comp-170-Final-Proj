@@ -9,6 +9,11 @@ namespace Sophmores_FinalProj
 {
   public class Character
   {
+    /// <summary>
+    /// Base Character Class for all types of Characters
+    /// Come with Inventories and supporting methods 
+    /// Can die, and even Emote!
+    /// </summary>
     public string name { get; set; }
     public int level { get; set; }
     public int totalHP { get; set; }
