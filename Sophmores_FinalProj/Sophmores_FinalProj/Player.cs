@@ -70,11 +70,6 @@ namespace Sophmores_FinalProj
       MagicDamage -= EquippedWeapon.magicalDamage;
       EquippedWeapon = DefaultWeapon;
     }
-    private void InspectWeapon(Weapon weapon)
-    {
-      Console.WriteLine("Physical Damage: {0}", weapon.physicalDamage);
-      Console.WriteLine("Magical Damage: {0}", weapon.magicalDamage);
-    }
     /// <summary>
     /// For Players to read Item Descriptions
     /// </summary>
@@ -86,8 +81,38 @@ namespace Sophmores_FinalProj
       Console.WriteLine("Description: {0}", item.description);
       if (item is Weapon)
       {
-        InspectWeapon((Weapon)item);
+        InspectWeapon(item as Weapon);
       }
+      else if (item is HealthPotion)
+      {
+        InspectPotion(item as HealthPotion);
+      }
+      else if (item is Key)
+      {
+        InspectKey(item as Key);
+      }
+      else if (item is Quiver)
+      {
+        InspectQuiver(item as Quiver);
+      }
+    }
+    private void InspectPotion(HealthPotion potion)
+    {
+      Console.WriteLine("Potency: {0}", potion.Potency);
+    }
+    private void InspectKey(Key key)
+    {
+      Console.WriteLine("What does this key open...?");
+    }
+    private void InspectQuiver(Quiver quiver)
+    {
+      Console.WriteLine("Capacity: {0}", quiver.capacity);
+      quiver.ArrowsInQuiver();
+    }
+    private void InspectWeapon(Weapon weapon)
+    {
+      Console.WriteLine("Physical Damage: {0}", weapon.physicalDamage);
+      Console.WriteLine("Magical Damage: {0}", weapon.magicalDamage);
     }
     /// <summary>
     /// Displays Inventory or specific Item types to Player
@@ -118,9 +143,9 @@ namespace Sophmores_FinalProj
       {
         DisplayKeys(inventoryList);
       }
-      else if (itemType == "item")
+      else if (itemType == "potion")
       {
-        DisplayItems(inventoryList);
+        DisplayPotions(inventoryList);
       }
       else if (itemType == "item")
       {
@@ -158,6 +183,14 @@ namespace Sophmores_FinalProj
       {
         Console.WriteLine("Keys:");
         Console.WriteLine(s.name + " " + inventory.contents[s]);
+      }
+    }
+    private void DisplayPotions(List<Item> potionList)
+    {
+      foreach(HealthPotion s in potionList)
+      {
+      Console.WriteLine("Potions:");
+      Console.WriteLine(s.name + " " + inventory.contents[s]);
       }
     }
   }

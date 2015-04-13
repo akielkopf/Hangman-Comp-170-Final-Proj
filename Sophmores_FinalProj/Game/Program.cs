@@ -84,6 +84,9 @@ namespace Sophmores_FinalProj
       Console.WriteLine("{0}'s current health: {1}", p1.name, p1.currentHP);
       p1.currentHP = p1.currentHP / 2;
       Console.WriteLine("{0}'s current health: {1}", p1.name, p1.currentHP);
+      // Create and Inspect Potion to display properties to player
+      HealthPotion potion = new HealthPotion();
+      p1.Inspect(potion);
       // Add a basic health potion to player 1's inventory here
           // Stronger ones can be made by manually declaring one
       p1.AddToInventory(new HealthPotion(), 1);
