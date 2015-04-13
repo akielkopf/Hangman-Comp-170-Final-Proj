@@ -46,6 +46,8 @@ namespace Sophmores_FinalProj
     }
     /// <summary>
     /// If you create an Item using this on purpose, you're wrong
+    /// Please DO NOT Create Items using this
+    /// Enables functionality of child classes
     /// </summary>
     protected Item()
     {

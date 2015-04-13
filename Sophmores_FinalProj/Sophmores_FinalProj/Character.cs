@@ -98,5 +98,33 @@ namespace Sophmores_FinalProj
         currentHP -= delta;
       }
     }
+    /// <summary>
+    /// Uses the first healthpotion in the Inventory
+    /// </summary>
+    public void UseHealthPotion()
+    {
+      foreach(KeyValuePair<Item, int> a in inventory.contents)
+      {
+        if (a.Key is HealthPotion &&
+            a.Value > 0           &&
+            a.Key.consumable == true)
+        {
+          currentHP += ((HealthPotion)a.Key).Potency;
+          if(currentHP > totalHP)
+          {
+            currentHP = totalHP;
+          }
+          inventory.Remove(a.Key, 1);
+          return;
+        }
+        else if (a.Value <= 0)
+        {
+          Console.WriteLine("{0} doesn't have any Potions!", name);
+          inventory.contents.Remove(a.Key);
+          return;
+        }
+      }
+      Console.WriteLine("{0} doesn't have any Potions!", name);
+    }
   }
 }
