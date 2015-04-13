@@ -32,8 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,18 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
-<<<<<<< HEAD
     <Compile Include="Enemy.cs" />
-=======
-    <Compile Include="Combat.cs" />
-    <Compile Include="CustomControl1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl1.Designer.cs">
-      <DependentUpon>CustomControl1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory.cs" />
->>>>>>> e399a9816fa508843c8f783dd731bf9616837f9f
     <Compile Include="Item.cs" />
     <Compile Include="ItemList\HealthPotion.cs" />
     <Compile Include="ItemList\Key.cs" />
@@ -63,11 +50,7 @@
     <Compile Include="Utilities\Inventory.cs" />
     <Compile Include="Weapon.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CustomControl1.resx">
-      <DependentUpon>CustomControl1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

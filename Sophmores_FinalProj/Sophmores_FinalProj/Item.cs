@@ -15,10 +15,6 @@ namespace Sophmores_FinalProj
     public string name { get; set; }
     public string type { get; set; }
     public string description { get; set; }
-<<<<<<< HEAD
-    public bool PlayerCanEquip { get; protected set; }
-    public bool consumable { get; protected set; } 
-=======
     public bool playerCanEquip { get; protected set; }
     public bool consumable { get; protected set; }
     /// <summary>
@@ -28,7 +24,6 @@ namespace Sophmores_FinalProj
     /// <param name="Type">Type of Item as a string</param>
     /// <param name="Description">Item Flavor Text</param>
     /// <param name="Consumable">Is this item destroyed when used?</param>
->>>>>>> Rhernandez513/develop(branch-from-this-one)
     public Item(string Name, string Type, string Description, bool Consumable)
     {
       name = Name;

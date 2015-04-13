@@ -15,38 +15,25 @@ namespace Sophmores_FinalProj
     /// </summary>
     private Weapon DefaultWeapon;
     public Weapon EquippedWeapon { get; private set; }
-<<<<<<< HEAD
     public int PhysicalDamage { get; private set; }
     public int MagicDamage { get; private set; }
     public int totalDamage { get; private set; }
     public int buffMultiplier { get; set; }
     public Player(string Name, int Health, int Level) 
       : base (Name, Health, Level)
-=======
-    public int DamageAbility { get; private set; }
-    public int totalDamage { get; set; }
-    public double buff { get; set; }
-    public Player(string Name, int Health, int Level, string Affinity) 
-      : base (Name, Health, Level, Affinity)
->>>>>>> e399a9816fa508843c8f783dd731bf9616837f9f
     {
-      DamageAbility = 1;      
-      affinity = "n";  
+      PhysicalDamage = 1;
+      MagicDamage = 1;
       DefaultWeapon = new Weapon();
       Equip(DefaultWeapon);
-<<<<<<< HEAD
       buffMultiplier = 1;
       totalDamage = (PhysicalDamage + MagicDamage) * buffMultiplier;
-=======
-      buff = 0;
->>>>>>> e399a9816fa508843c8f783dd731bf9616837f9f
     }
     /// <summary>
     /// Creates Default Player named Douglas with basic attributes
     /// </summary>
     public Player()
     {
-<<<<<<< HEAD
       name = "Douglas";
       PhysicalDamage = 1;
       MagicDamage = 1;
@@ -54,18 +41,19 @@ namespace Sophmores_FinalProj
       Equip(DefaultWeapon);
       buffMultiplier = 1;
       totalDamage = (PhysicalDamage + MagicDamage) * buffMultiplier;
-=======
->>>>>>> e399a9816fa508843c8f783dd731bf9616837f9f
     }
     /// <summary>
-    /// Equips specified weapon by REFERENCE
+    /// Equips specified weapon by creating new instance of said 
+    /// Weapon and changing player EquippedWeapon Reference
     /// </summary>
     /// <param name="WeapontoEquip">Weapon the player will equip</param>
     public void Equip(Weapon WeapontoEquip)
     {
-      if (WeapontoEquip.PlayerCanEquip)
+      if (WeapontoEquip.playerCanEquip)
       {
-      EquippedWeapon = WeapontoEquip;              
+      EquippedWeapon = new Weapon(WeapontoEquip);
+      PhysicalDamage += WeapontoEquip.physicalDamage;
+      MagicDamage += WeapontoEquip.magicalDamage;
       }
       else
       {
@@ -74,23 +62,18 @@ namespace Sophmores_FinalProj
     }
     /// <summary>
     /// Unequips currently Equipped Weapon and Equips the Default Weapon
-    /// Player will never have no Weapon Equipped
+    /// Player will never not have Weapon Equipped
     /// </summary>
     public void UnEquip()
     {
-        Equip(DefaultWeapon);
+      PhysicalDamage -= EquippedWeapon.physicalDamage;
+      MagicDamage -= EquippedWeapon.magicalDamage;
+      EquippedWeapon = DefaultWeapon;
     }
-<<<<<<< HEAD
     /// <summary>
     /// For Players to read Item Descriptions
     /// </summary>
     /// <param name="item">Item to Describe</param>
-=======
-    private void InspectWeapon(Weapon weapon)
-    {
-      Console.WriteLine("Damage Ability: {0}", weapon.PhysicalDamage);     
-    }
->>>>>>> e399a9816fa508843c8f783dd731bf9616837f9f
     public void Inspect(Item item)
     {
       Console.WriteLine("Name: {0}", item.name);
@@ -210,11 +193,5 @@ namespace Sophmores_FinalProj
       Console.WriteLine(s.name + " " + inventory.contents[s]);
       }
     }
-    public void applyBuff(double Buff) 
-    {
-        buff = Buff;
-        totalDamage = buff * DamageAbility + DamageAbility;
-    }
-   
   }
 }
