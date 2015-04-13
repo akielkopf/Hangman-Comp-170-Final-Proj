@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
-  class Key : Item
+  public class Key : Item
   {
     /// <summary>
     /// Keys, type Key, are consumable
