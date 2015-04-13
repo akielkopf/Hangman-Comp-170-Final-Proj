@@ -8,6 +8,7 @@ namespace Sophmores_FinalProj
 {
   public class Weapon : Item
   {
+<<<<<<< HEAD
     /// <summary>
     /// Weapons Inherit from Item class
     /// All weapons are Equippable
@@ -26,37 +27,31 @@ namespace Sophmores_FinalProj
     public Weapon(string Name, string Type, string Description, 
                   int PhysicalDamage, int MagicalDamage)
       : base (Name, Type, Description)
+=======
+
+    public int PhysicalDamage { get; private set; }
+    public int MagicalDamage { get; private set; }
+    public Weapon(string Name, string Type, string Description, bool Consumable,
+                int magicalDamage)
+      : base (Name, Type, Description, Consumable)
+>>>>>>> e399a9816fa508843c8f783dd731bf9616837f9f
     {
-      physicalDamage = PhysicalDamage;
-      magicalDamage = MagicalDamage;
-      playerCanEquip = true;
-      consumable = false;
+      PhysicalDamage = Val;
+      MagicalDamage = magicalDamage;
+      PlayerCanEquip = true;
     }
-    /// <summary>
-    /// Create new weapon from old weapon
-    /// </summary>
-    /// <param name="OldWeapon">Weapon to Copy</param>
     public Weapon(Weapon OldWeapon)
     {
-      name = OldWeapon.name;
-      type = OldWeapon.type;
-      description = OldWeapon.description;
-      physicalDamage = OldWeapon.physicalDamage;
-      magicalDamage = OldWeapon.magicalDamage;
-      playerCanEquip = true;
-      consumable = false;
+      PlayerCanEquip = true;
     }
-    /// <summary>
-    /// Create An Old Rusty Sword, starter weapon
-    /// </summary>
     public Weapon()
     {
       name = "Rusty Sword";
       description = "An old Rusty Sword...";
-      type = "Sword";
-      physicalDamage = 4;
-      magicalDamage = 0;
-      playerCanEquip = true;
+      type = "sword";
+      PhysicalDamage = 4;
+      MagicalDamage = 0;
+      PlayerCanEquip = true;
       consumable = false;
     }
   }

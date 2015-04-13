@@ -42,31 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
-<<<<<<< HEAD
-    <Compile Include="Enemy.cs" />
-=======
     <Compile Include="Combat.cs" />
-    <Compile Include="CustomControl1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl1.Designer.cs">
-      <DependentUpon>CustomControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inventory.cs" />
->>>>>>> e399a9816fa508843c8f783dd731bf9616837f9f
     <Compile Include="Item.cs" />
-    <Compile Include="ItemList\HealthPotion.cs" />
-    <Compile Include="ItemList\Key.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ItemList\Quiver.cs" />
-    <Compile Include="Utilities\Inventory.cs" />
     <Compile Include="Weapon.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CustomControl1.resx">
-      <DependentUpon>CustomControl1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
