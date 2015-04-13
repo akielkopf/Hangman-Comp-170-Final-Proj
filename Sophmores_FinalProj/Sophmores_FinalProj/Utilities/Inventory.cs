@@ -29,7 +29,7 @@ namespace Sophmores_FinalProj.Utilities
     /// </summary>
     /// <param name="item">item</param>
     /// <param name="itemCount">Number of the SAME item to add</param>
-    public void Add(Item item, int itemCount)
+     public void Add(Item item, int itemCount)
     {
       if (contents.ContainsKey(item))
       {
