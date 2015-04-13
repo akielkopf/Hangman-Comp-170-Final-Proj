@@ -30,6 +30,7 @@ namespace Sophmores_FinalProj
       {
         Console.WriteLine("player 2 " + p2.name + " is alive");
         Console.WriteLine("player 2 {0} has {1} health", p2.name, p2.totalHP);
+        Console.WriteLine("player 2 level is {0}", p2.level);
       }
 
       // Test create Axe with placeholders for constructors
@@ -40,33 +41,25 @@ namespace Sophmores_FinalProj
         Console.WriteLine("{0} can be equiped.",Axe.name);
       }
       // Test create inventory with placeholder items added
-      Inventory inv = new Inventory();
       Weapon magicbow = new Weapon("MagicBow", "Bow", "A magical bow", 5, 1);
 
       //string magicArrow = "magical arrows";
+      p1.AddToInventory(magicbow, 1);
+      p1.DisplayInventoryContents();
 
-      inv.Add(magicbow, 1);
 
-      //inv.Add(magicArrow, 5);
 
-      // Maybe add this to inventory as a func?
-      // Display inventory as Aplhabetical list
-      // Still need to add numbered list to select item to equip/use
-      var dicList = new List<dynamic>(inv.contents.Keys);
-      dicList.Sort();
-      foreach (Weapon s in dicList)
-      {
-        Console.WriteLine(s.name);
-        Console.WriteLine(inv.contents[s]);
-      }
       // Test Remove items until no more of said item remain
-      for (int i = 0; i < inv.contents.Count; i++)
+      for (int i = 0; i < p1.inventory.contents.Count; i++)
       {
-        inv.Remove(magicbow, 1);
+        p1.RemoveFromInventory(magicbow, 1);
       }
 
-      // Test Remove item not in inventory
-      //inv.Remove("magicShield", 1);
+      //Test Remove item not in inventory
+      Item MagicShield = new Item("MagicShield", "Shield", "A Magical Shield");
+      p1.RemoveFromInventory(MagicShield, 1);
+
+      //p1.AddToInventory(magicArrow, 5);
 
       // Create new bag, add items to it, test that cannot add more items 
       // Than capacity of bag
@@ -86,6 +79,23 @@ namespace Sophmores_FinalProj
       // Test Inspect Functions
       p1.Inspect(Axe);
       p1.Inspect(p1.EquippedWeapon);
+
+      //Test Health Potions!
+      Console.WriteLine("{0}'s current health: {1}", p1.name, p1.currentHP);
+      p1.currentHP = p1.currentHP / 2;
+      Console.WriteLine("{0}'s current health: {1}", p1.name, p1.currentHP);
+      // Create and Inspect Potion to display properties to player
+      HealthPotion potion = new HealthPotion();
+      p1.Inspect(potion);
+      // Add a basic health potion to player 1's inventory here
+          // Stronger ones can be made by manually declaring one
+      p1.AddToInventory(new HealthPotion(), 1);
+      // Test use Healthpotion with 1 HealthPotion in Inventory
+      p1.UseHealthPotion();
+      Console.WriteLine("{0}'s current health: {1}", p1.name, p1.currentHP);
+      // Test UseHealthPotion with NO potions in Inventory
+      p1.UseHealthPotion();
+
 
       // So console doesn't auto close
       string abc = Console.ReadLine();

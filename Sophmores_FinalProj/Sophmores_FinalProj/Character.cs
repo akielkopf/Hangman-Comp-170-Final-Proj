@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sophmores_FinalProj.Utilities;
 
 namespace Sophmores_FinalProj
 {
   public class Character
   {
+    /// <summary>
+    /// Base Character Class for all types of Characters
+    /// Come with Inventories and supporting methods 
+    /// Can die, and even Emote!
+    /// </summary>
     public string name { get; set; }
     public int level { get; set; }
     public int totalHP { get; set; }
     public int currentHP { get; set; }
+    public Inventory inventory { get; set; }
+
     /// <summary>
     /// Creates an Non-Player, Non-Combat Character
     /// </summary>
@@ -24,6 +32,7 @@ namespace Sophmores_FinalProj
       totalHP = Health;
       currentHP = Health;
       level = Level;
+      inventory = new Inventory();
     }
     /// <summary>
     /// Default Characters are peasants!
@@ -34,6 +43,7 @@ namespace Sophmores_FinalProj
       totalHP = 10;
       currentHP = totalHP;
       level = 1;
+      inventory = new Inventory();
     }
     /// <summary>
     /// Check to see if a Character is Alive
@@ -48,6 +58,24 @@ namespace Sophmores_FinalProj
       return false;
     }
     /// <summary>
+    /// Add Item to inventory
+    /// </summary>
+    /// <param name="item">item</param>
+    /// <param name="itemCount">Number of the SAME item to add</param>
+    public void AddToInventory(Item item, int itemCount)
+    {
+      inventory.Add(item, itemCount);
+    }
+    /// <summary>
+    /// Removie an Item from the character's Inventory
+    /// </summary>
+    /// <param name="item">Item to Remove</param>
+    /// <param name="itemCount">Number of Items to Remove</param>
+    public void RemoveFromInventory(Item item, int itemCount)
+    {
+      inventory.Remove(item, itemCount);
+    }
+    /// <summary>
     /// For use when a character says something
     /// </summary>
     /// <param name="says">Thing the character says</param>
@@ -56,10 +84,10 @@ namespace Sophmores_FinalProj
       Console.WriteLine(this.name + " says: {0}", says);
     }
     /// <summary>
-    /// Use this Function to modify Character Health in-combat or with Potions
+    /// Use this Function to modify Character Health in-combat
     /// </summary>
     /// <param name="delta">Amount to increase or decrease CurrentHP</param>
-    public void ModifyDeltaHealth(int delta)
+    public void ModifyCurrentHP(int delta)
     {
       if (delta > 0)
       {
@@ -69,6 +97,34 @@ namespace Sophmores_FinalProj
       {
         currentHP -= delta;
       }
+    }
+    /// <summary>
+    /// Uses the first healthpotion in the Inventory
+    /// </summary>
+    public void UseHealthPotion()
+    {
+      foreach(KeyValuePair<Item, int> a in inventory.contents)
+      {
+        if (a.Key is HealthPotion &&
+            a.Value > 0           &&
+            a.Key.consumable == true)
+        {
+          ModifyCurrentHP(((HealthPotion)a.Key).Potency);
+          if(currentHP > totalHP)
+          {
+            currentHP = totalHP;
+          }
+          inventory.Remove(a.Key, 1);
+          return;
+        }
+        else if (a.Value <= 0)
+        {
+          Console.WriteLine("{0} doesn't have any Potions!", name);
+          inventory.contents.Remove(a.Key);
+          return;
+        }
+      }
+      Console.WriteLine("{0} doesn't have any Potions!", name);
     }
   }
 }
