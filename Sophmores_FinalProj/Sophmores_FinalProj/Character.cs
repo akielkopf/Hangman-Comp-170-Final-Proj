@@ -84,10 +84,10 @@ namespace Sophmores_FinalProj
       Console.WriteLine(this.name + " says: {0}", says);
     }
     /// <summary>
-    /// Use this Function to modify Character Health in-combat or with Potions
+    /// Use this Function to modify Character Health in-combat
     /// </summary>
     /// <param name="delta">Amount to increase or decrease CurrentHP</param>
-    public void ModifyDeltaHealth(int delta)
+    public void ModifyCurrentHP(int delta)
     {
       if (delta > 0)
       {
@@ -109,7 +109,7 @@ namespace Sophmores_FinalProj
             a.Value > 0           &&
             a.Key.consumable == true)
         {
-          currentHP += ((HealthPotion)a.Key).Potency;
+          ModifyCurrentHP(((HealthPotion)a.Key).Potency);
           if(currentHP > totalHP)
           {
             currentHP = totalHP;
