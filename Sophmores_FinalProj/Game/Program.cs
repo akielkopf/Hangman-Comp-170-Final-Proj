@@ -96,7 +96,9 @@ namespace Sophmores_FinalProj
       // Test UseHealthPotion with NO potions in Inventory
       p1.UseHealthPotion();
 
-
+      Enemy enemy = new Enemy();
+      Combat combat = new Combat();
+      combat.StartCombat(p1, enemy);
       // So console doesn't auto close
       string abc = Console.ReadLine();
     }

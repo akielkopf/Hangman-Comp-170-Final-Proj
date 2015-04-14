@@ -40,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="Combat.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Enemy.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemList\HealthPotion.cs" />
@@ -50,7 +53,12 @@
     <Compile Include="Utilities\Inventory.cs" />
     <Compile Include="Weapon.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ui\ui.csproj">
+      <Project>{2262ce21-c5ad-4ede-b384-ec2bd91585e6}</Project>
+      <Name>ui</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
