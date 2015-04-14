@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
-  class Enemy : Character
+  public class Enemy : Character
   {
     /// <summary>
     /// Basic enemy Class, have Max and Min Damage values

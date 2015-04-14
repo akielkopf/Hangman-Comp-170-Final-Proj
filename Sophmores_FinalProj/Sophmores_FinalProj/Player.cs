@@ -193,5 +193,18 @@ namespace Sophmores_FinalProj
       Console.WriteLine(s.name + " " + inventory.contents[s]);
       }
     }
+    public void DisplayConsumables()
+    {
+      string x = "Consumables: ";
+      StringBuilder builder = new StringBuilder(x);
+      foreach(KeyValuePair<Item, int> a in inventory.contents)
+      {
+        if (a.Key.consumable)
+        {
+         builder.AppendLine(a.Key.name + ", " + a.Value);
+        }
+      }
+      Console.WriteLine(""+builder);
+    }
   }
 }
