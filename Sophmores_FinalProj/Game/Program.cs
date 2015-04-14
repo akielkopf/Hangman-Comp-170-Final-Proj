@@ -97,8 +97,9 @@ namespace Sophmores_FinalProj
       p1.UseHealthPotion();
 
       Enemy enemy = new Enemy();
-      Combat combat = new Combat();
-      combat.StartCombat(p1, enemy);
+      p1.AddToInventory(Axe, 1);
+      p1.Equip(Axe);
+      Combat.StartCombat(p1, enemy);
       // So console doesn't auto close
       string abc = Console.ReadLine();
     }

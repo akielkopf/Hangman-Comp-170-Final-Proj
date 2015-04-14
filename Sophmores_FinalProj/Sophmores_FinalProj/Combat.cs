@@ -7,32 +7,49 @@ using IntroCS;
 
 namespace Sophmores_FinalProj
 {
-  public class Combat
+  public static class Combat
   {
-    public bool playerTurn { get; private set; }
-    public int turn { get; private set; }
-    Random random = new Random();
-    public void StartCombat(Player player, Enemy enemy)
+    static bool playerTurn = false;
+    static Random random = new Random();
+    public static void StartCombat(Player player, Enemy enemy)
     {
+      int turn = 0;
       Console.WriteLine("A Wild {0} has appeared!!", enemy.name);
-      turn = 0;
       while (player.isAlive() && enemy.isAlive())
       {
         playerAction(player, enemy);
+        if (!(enemy.isAlive()))
+        {
+          Console.WriteLine(enemy.name + " has fallen!");
+          player.currentHP = player.totalHP;
+          return;
+        }
         enemyAttack(player, enemy);
+        if (!(player.isAlive()))
+        {
+          Console.WriteLine(player.name + "has blacked out...");
+          return;
+        }
         turn++;
       }
+      return;
     }
 
-    private void enemyAttack(Player player, Enemy enemy)
+    private static void enemyAttack(Player player, Enemy enemy)
     {
-      player.ModifyCurrentHP(-1 * random.Next(enemy.MinDamage,enemy.MaxDamage));
+      int attack = random.Next(enemy.MinDamage,enemy.MaxDamage);
+      Console.WriteLine("Enemy attacks for {0} damage!", attack);
+      player.ModifyCurrentHP(-1 * attack);
+      Console.WriteLine("{0} Health: {1}", player.name, player.currentHP);
     }
-    private void playerAttack(Player player, Enemy enemy)
+    private static void playerAttack(Player player, Enemy enemy)
     {
+      Console.WriteLine("Enemy Health: {0}", enemy.currentHP);
+      Console.WriteLine("Player attacks for {0} damage!", player.totalDamage);
       enemy.ModifyCurrentHP(-1 * player.totalDamage);
+      Console.WriteLine("Enemy Health: {0}", enemy.currentHP);
     }
-    private void playerAction(Player player, Enemy enemy)
+    private static void playerAction(Player player, Enemy enemy)
     {
       playerTurn = true;
       do
@@ -81,10 +98,14 @@ namespace Sophmores_FinalProj
 
           }
         }
+        if (curInput == 0)
+        {
+          Console.WriteLine("returned 0");
+        }
       } while (playerTurn == true);
     }
 
-    public int playerInput(string inp)
+    public static int playerInput(string inp)
     {
       if      (inp == "attack" || inp == "1") { return 1; }
       else if (inp == "swap"   || inp == "2") { return 2; }
@@ -96,11 +117,12 @@ namespace Sophmores_FinalProj
 
     //inp() and playerInput are temporary, I made them just to build combat system. We will mess with these once we start building the 
     // main game/method.
-    public string inp() 
+    public static string inp() 
     {
-      string prompt = ("Make your choice...\n1) Attack  2)Swap  3) Use  4)Run");
-      string playerInput = UI.PromptLine(prompt).Trim().ToLower();
-      return playerInput;
+      Console.WriteLine("Make your choice...");
+      string prompt = ("1) Attack  2)Swap  3) Use  4)Run");
+      string playerInput = UI.PromptLine(prompt + "\n");
+      return playerInput.Trim().ToLower();
     }
   }
 }

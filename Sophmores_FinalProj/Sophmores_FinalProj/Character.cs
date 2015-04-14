@@ -89,13 +89,10 @@ namespace Sophmores_FinalProj
     /// <param name="delta">Amount to increase or decrease CurrentHP</param>
     public void ModifyCurrentHP(int delta)
     {
-      if (delta > 0)
+      currentHP += delta;
+      if (currentHP < 0)
       {
-        currentHP += delta;
-      }
-      else
-      {
-        currentHP -= delta;
+        isAlive();
       }
     }
     /// <summary>
