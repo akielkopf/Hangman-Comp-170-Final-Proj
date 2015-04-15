@@ -14,7 +14,7 @@ namespace Sophmores_FinalProj
     public static void StartCombat(Player player, Enemy enemy)
     {
       int turn = 0;
-      Console.WriteLine("A Wild {0} has appeared!!", enemy.name);
+			Console.WriteLine("A Wild {0} has appeared!! It appears to have {1}HP", enemy.name, enemy.totalHP);
       while (player.isAlive() && enemy.isAlive())
       {
         playerAction(player, enemy);
