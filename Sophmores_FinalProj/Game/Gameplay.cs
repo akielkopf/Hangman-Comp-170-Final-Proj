@@ -13,6 +13,7 @@ namespace Sophmores_FinalProj
 		static void Main(string[] args)
 		{
 			// Test create player with custom constructor values
+			//test
 
 			var reader = FIO.OpenReader(FIO.GetLocation("gamelogo.txt"), "gamelogo.txt");
 			while (!(reader.EndOfStream)) {
