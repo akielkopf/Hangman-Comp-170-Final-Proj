@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ui\ui.csproj">
-      <Project>{2262ce21-c5ad-4ede-b384-ec2bd91585e6}</Project>
+      <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
       <Name>ui</Name>
     </ProjectReference>
   </ItemGroup>

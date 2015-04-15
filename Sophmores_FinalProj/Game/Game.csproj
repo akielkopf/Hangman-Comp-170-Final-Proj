@@ -47,6 +47,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Program.cs" />
+    <None Include="gamelogo.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sophmores_FinalProj\Sophmores_FinalProj.csproj">
@@ -56,6 +57,10 @@
     <ProjectReference Include="..\ui\ui.csproj">
       <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
       <Name>ui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fio\fio.csproj">
+      <Project>{38702508-4BEE-4055-B478-1F9FA30C1630}</Project>
+      <Name>fio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
