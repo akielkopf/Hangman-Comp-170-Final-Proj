@@ -73,7 +73,9 @@ namespace Sophmores_FinalProj
               if (item.Key.playerCanEquip)
               {
                 player.Equip(item.Key as Weapon);
+                playerTurn = false;
                 break;
+                
               }
               else
               {
@@ -93,14 +95,15 @@ namespace Sophmores_FinalProj
             {
               if (item.Key is HealthPotion)
                 player.UseHealthPotion();
-              break;
+                playerTurn = false;
+                break;
             }
 
           }
         }
         if (curInput == 0)
         {
-          Console.WriteLine("returned 0");
+          Console.WriteLine("Invalid Response, please enter either a number or the command name.");
         }
       } while (playerTurn == true);
     }
