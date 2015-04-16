@@ -72,6 +72,14 @@ namespace Sophmores_FinalProj
 
       PressAnyKeyBufferClear();
 
+			Console.WriteLine ("Lets start out by showing you how to fight an enemy. Look at that Spider over there. \nWhen you walk up to it it will attempt to attack you. " +
+			"You will be given four options: attack, use swap, and run. \n Lets give it a shot!");
+
+			Console.WriteLine ();
+			Console.WriteLine ("Press any key to continue...");
+			Console.ReadKey ();
+			Console.Clear ();
+
 			return mainCharacter;
 
 			//
