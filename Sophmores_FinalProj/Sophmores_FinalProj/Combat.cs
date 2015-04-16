@@ -76,6 +76,10 @@ namespace Sophmores_FinalProj
                 Console.WriteLine("You can't run, this is your first fight!");
                 curInput = playerInput(inp());
             }
+            if (curInput == 4 && player.tutorialComplete == true) {
+                validInp = true;
+                break;
+            }
             if (curInput == 0) {
                 Console.WriteLine("You've entered an invalid command");
                 curInput = playerInput(inp());
@@ -128,6 +132,20 @@ namespace Sophmores_FinalProj
 
           }
         }
+        if (curInput == 4) { 
+            int chance = random.Next(100);
+            if (chance <= 70)
+            {
+                Console.WriteLine("You have escaped from the enemy!");
+                //add code to end fight
+            }
+            else {
+                Console.WriteLine("The enemy saw it coming this time, you were not able to escape!");
+                playerTurn = false;
+                break;
+            }
+        }
+
         
       } while (playerTurn == true);
     }
