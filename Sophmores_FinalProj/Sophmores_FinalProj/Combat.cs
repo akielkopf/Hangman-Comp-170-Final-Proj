@@ -40,14 +40,14 @@ namespace Sophmores_FinalProj
       int attack = random.Next(enemy.MinDamage,enemy.MaxDamage);
       Console.WriteLine("Enemy attacks for {0} damage!", attack);
       player.ModifyCurrentHP(-1 * attack);
-      Console.WriteLine("{0} Health: {1}", player.name, player.currentHP);
+      Console.WriteLine("{0} Health: {1} \n", player.name, player.currentHP);
     }
     private static void playerAttack(Player player, Enemy enemy) 
     {
       Console.WriteLine("Enemy Health: {0}", enemy.currentHP);
       Console.WriteLine("Player attacks for {0} damage!", player.totalDamage);
       enemy.ModifyCurrentHP(-1 * player.totalDamage);
-      Console.WriteLine("Enemy Health: {0}", enemy.currentHP);
+      Console.WriteLine("Enemy Health: {0} \n", enemy.currentHP);
     }
     private static void playerAction(Player player, Enemy enemy)
     {
