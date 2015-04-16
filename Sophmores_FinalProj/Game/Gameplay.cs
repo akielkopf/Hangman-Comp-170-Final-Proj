@@ -31,31 +31,28 @@ namespace Sophmores_FinalProj
 
 			var reader2 = FIO.OpenReader(FIO.GetLocation("gamelogo2.txt"), "gamelogo2.txt");
 			while (!(reader2.EndOfStream)) {
-
-				Console.WriteLine(reader2.ReadLine());
 			}
 			reader2.Close();
 
       // Player mainChar = //GameIntro ();
-      Player p1 = GameIntro.Start(new Player());
-      Console.Write(p1.name + ", ");
-      Enemy Spider = new Enemy();
-      Spider.name = "Spider";
-      Combat.StartCombat(p1, Spider);
-      Console.WriteLine("Congrats on Defeating your first Enemy, {0}!", p1.name);
-      HealthPotion poison = new HealthPotion("Spider Venom", "athough it has a very attractive smell, " +
-        "\nthis Potion is poisonous and dangerous to your health", -10);
-      Console.WriteLine("The {0} has dropped {1}, {2}. \n You can now add it to your inventory if you desire."
-        , Spider.name, poison.name, poison.description);
-      string answer = UI.PromptLine("Would you like to add to inventory? (yes or no)");
-      if (answer == "yes")
-      {
-        p1.AddToInventory(poison, 1);
-        Console.WriteLine("{0} has been added to you inventory.", poison.name);
-      }
-      else
-      {
-        Console.WriteLine("you have dropped {0}", poison.name);
+			Player p1 = GameIntro.Start(new Player());
+            p1.tutorialComplete = false;
+			Console.Write (p1.name + ", ");
+			Enemy Spider = new Enemy ();
+			Spider.name = "Spider";
+			Combat.StartCombat (p1, Spider);
+            p1.tutorialComplete = true;
+			Console.WriteLine ("Congrats on Defeating your first Enemy, {0}!", p1.name);
+			HealthPotion poison = new HealthPotion("Spider Venom", "athough it has a very attractive smell, " +
+				"\nthis Potion is poisonous and dangerous to your health", -10);
+			Console.WriteLine ("The {0} has dropped {1}, {2}. \n You can now add it to your inventory if you desire."
+				, Spider.name, poison.name, poison.description);
+			string answer = UI.PromptLine ("Would you like to add to inventory? (yes or no)");
+			if (answer == "yes") {
+				p1.AddToInventory (poison, 1);
+				Console.WriteLine ("{0} has been added to you inventory.", poison.name);
+			} else {
+				Console.WriteLine ("you have dropped {0}", poison.name);
       }
 
       Console.WriteLine ("{0}, good job on your combat training, \n we are now ready to venture" +
