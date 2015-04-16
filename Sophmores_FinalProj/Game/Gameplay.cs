@@ -64,12 +64,12 @@ namespace Sophmores_FinalProj
 			if (forward == "yes") {
 				Console.WriteLine ("Good to hear, we are now entering the cave.");
 			} else {
-				Console.WriteLine ("Pussy, youre coming anyways... were walking into the tunnel.");
+				Console.WriteLine ("You're coming anyways... were walking into the tunnel.");
 			}
-			string noteDescription = Note ();
-			Item note = new Item ("Note", "Paper", noteDescription);
 			Console.WriteLine ("Its seems we have come to a fork. There are 4 doors ahead of us." +
 			"\n Look! there's a note on the wall.");
+			string noteDescription = Note ();
+			Item note = new Item ("Note", "Paper", noteDescription);
 			int response = UI.PromptInt (" Would you like to: \n 1) Take a Look \n 2) Add to Inventory \n Enter 1 or 2.");
 			if (response == 1) {
 				Console.WriteLine (note.description);
@@ -81,17 +81,20 @@ namespace Sophmores_FinalProj
 			response = UI.PromptInt("Which door would you like to enter? \n Door 1 \n Door 2 \n Door 3 \n Enter 1,2, or 3");
 			//while (!response == "1" || "2" || "3" ){
 				//response = UI.PromptInt ("Please select a Door number.");
-			//}
+      //}
+			}
 
-		public static Note(string note)
+		public static string Note()
 		{
+      string note = string.Empty;
 			var reader = FIO.OpenReader(FIO.GetLocation("note.txt"), "note.txt");
 			while (!(reader.EndOfStream)) {
 
-				Console.WriteLine(reader.ReadLine());
+        note = reader.ReadLine();
+				Console.WriteLine(note);
 			}
 			reader.Close();
-			return note
+      return note;
 		}
     /// <summary>
     /// Sets Buffer Size (within the console that is in the output)
