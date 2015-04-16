@@ -28,10 +28,12 @@ namespace Sophmores_FinalProj
 
 			// Player mainChar = //GameIntro ();
 			Player p1 = GameIntro.Start(new Player());
+            p1.tutorialComplete = false;
 			Console.Write (p1.name + ", ");
 			Enemy Spider = new Enemy ();
 			Spider.name = "Spider";
 			Combat.StartCombat (p1, Spider);
+            p1.tutorialComplete = true;
 			Console.WriteLine ("Congrats on Defeating your first Enemy, {0}!", p1.name);
 			HealthPotion poison = new HealthPotion("Spider Venom", "athough it has a very attractive smell, " +
 				"\nthis Potion is poisonous and dangerous to your health", -10);
