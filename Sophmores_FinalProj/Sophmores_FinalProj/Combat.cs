@@ -42,7 +42,7 @@ namespace Sophmores_FinalProj
       player.ModifyCurrentHP(-1 * attack);
       Console.WriteLine("{0} Health: {1}", player.name, player.currentHP);
     }
-    private static void playerAttack(Player player, Enemy enemy)
+    private static void playerAttack(Player player, Enemy enemy) 
     {
       Console.WriteLine("Enemy Health: {0}", enemy.currentHP);
       Console.WriteLine("Player attacks for {0} damage!", player.totalDamage);
@@ -55,6 +55,28 @@ namespace Sophmores_FinalProj
       do
       {
         int curInput = playerInput(inp());
+        bool validInp = false;
+        while (validInp == false) {
+            if (curInput == 1 || curInput == 4) {
+                validInp = true;
+                break;
+            }
+            if (curInput == 2 || curInput == 3) {
+                if (player.inventory.contents.Count > 0)
+                {
+                    validInp = true;
+                    break;
+                }
+                else {
+                    Console.WriteLine("You fool! You have no Items in your inventory!");
+                    curInput = playerInput(inp());
+                }
+            }
+            if (curInput == 0) {
+                Console.WriteLine("You've entered an invalid command");
+                curInput = playerInput(inp());
+            }
+        }
         if (curInput == 1)
         {
           playerAttack(player, enemy);
@@ -113,7 +135,7 @@ namespace Sophmores_FinalProj
       if      (inp == "attack" || inp == "1") { return 1; }
       else if (inp == "swap"   || inp == "2") { return 2; }
       else if (inp == "use"    || inp == "3") { return 3; }
-      else if (inp == "run"    || inp == "4") { return 0; }
+      else if (inp == "run"    || inp == "4") { return 4; }
       else
         return 0;
     }
@@ -124,7 +146,7 @@ namespace Sophmores_FinalProj
     {
       Console.WriteLine("Make your choice...");
       string prompt = ("1) Attack  2)Swap  3) Use  4)Run");
-      string playerInput = UI.PromptLine(prompt + "\n");
+      string playerInput = UI.PromptLine(prompt + "\n");      
       return playerInput.Trim().ToLower();
     }
   }
