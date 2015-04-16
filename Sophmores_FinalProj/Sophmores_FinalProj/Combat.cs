@@ -57,7 +57,7 @@ namespace Sophmores_FinalProj
         int curInput = playerInput(inp());
         bool validInp = false;
         while (validInp == false) {
-            if (curInput == 1 || curInput == 4) {
+            if (curInput == 1) {
                 validInp = true;
                 break;
             }
@@ -72,10 +72,15 @@ namespace Sophmores_FinalProj
                     curInput = playerInput(inp());
                 }
             }
+            if (curInput == 4 && player.tutorialComplete == false) {
+                Console.WriteLine("You can't run, this is your first fight!");
+                curInput = playerInput(inp());
+            }
             if (curInput == 0) {
                 Console.WriteLine("You've entered an invalid command");
                 curInput = playerInput(inp());
             }
+            
         }
         if (curInput == 1)
         {
