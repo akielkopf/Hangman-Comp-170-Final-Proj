@@ -21,6 +21,9 @@ namespace Sophmores_FinalProj
         if (!(enemy.isAlive()))
         {
           Console.WriteLine(enemy.name + " has fallen!");
+          Console.WriteLine();
+          for (int i = 0; i < 65; i++) { Console.Write("*"); }
+          Console.WriteLine("*");
           player.currentHP = player.totalHP;
           return;
         }
@@ -28,6 +31,9 @@ namespace Sophmores_FinalProj
         if (!(player.isAlive()))
         {
           Console.WriteLine(player.name + "has blacked out...");
+          Console.WriteLine();
+          for (int i = 0; i < 65; i++) { Console.Write("*"); }
+          Console.WriteLine("*");
           return;
         }
         turn++;
@@ -164,6 +170,9 @@ namespace Sophmores_FinalProj
     // main game/method.
     public static string inp() 
     {
+      Console.WriteLine();
+      for (int i = 0; i < 65; i++) { Console.Write("*"); }
+      Console.WriteLine("*");
       Console.WriteLine("Make your choice...");
       string prompt = ("1) Attack  2)Swap  3) Use  4)Run");
       string playerInput = UI.PromptLine(prompt + "\n");      
