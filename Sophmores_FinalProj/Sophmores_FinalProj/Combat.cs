@@ -90,7 +90,7 @@ namespace Sophmores_FinalProj
           string choice = UI.PromptLine("Make your choice...");
           foreach (KeyValuePair<Item, int> item in player.inventory.contents)
           {
-            if (item.Key.name == choice)
+            if (item.Key.name.ToLower() == choice.Trim().ToLower())
             {
               if (item.Key.playerCanEquip)
               {
@@ -113,7 +113,7 @@ namespace Sophmores_FinalProj
           string choice = UI.PromptLine("Make your choice...");
           foreach (KeyValuePair<Item, int> item in player.inventory.contents)
           {
-            if (item.Key.name == choice)
+            if (item.Key.name.ToLower() == choice.Trim().ToLower())
             {
               if (item.Key is HealthPotion)
                 player.UseHealthPotion();
