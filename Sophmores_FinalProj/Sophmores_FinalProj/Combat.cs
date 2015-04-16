@@ -123,10 +123,7 @@ namespace Sophmores_FinalProj
 
           }
         }
-        if (curInput == 0)
-        {
-          Console.WriteLine("Invalid Response, please enter either a number or the command name.");
-        }
+        
       } while (playerTurn == true);
     }
 
