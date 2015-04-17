@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IntroCS;
+using Sophmores_FinalProj.Utilities;
 
 namespace Sophmores_FinalProj
 {
@@ -12,41 +13,21 @@ namespace Sophmores_FinalProj
   {
     static void Main(string[] args)
     {
-      SetBufferSize();
-
-      // Test create player with custom constructor values
-      //test
-      var reader = FIO.OpenReader(FIO.GetLocation("gamelogo.txt"), "gamelogo.txt");
-      while (!(reader.EndOfStream))
-      {
-
-        Console.WriteLine(reader.ReadLine());
-      }
-
-      reader.Close();
-      Console.WriteLine ();
-			Console.WriteLine ("Press any key to continue...");
-			Console.ReadKey ();
-			Console.Clear ();
-
-			var reader2 = FIO.OpenReader(FIO.GetLocation("gamelogo2.txt"), "gamelogo2.txt");
-			while (!(reader2.EndOfStream)) {
-			}
-			reader2.Close();
-
-      // Player mainChar = //GameIntro ();
+      TextUtil.SetBufferSize();
+      TextUtil.PrintTextFile("gamelogo.txt");
+      TextUtil.PressAnyKeyBufferClear();
+      TextUtil.PrintTextFile("gamelogo2.txt");
 			Player p1 = GameIntro.Start(new Player());
-            p1.tutorialComplete = false;
-			Console.Write (p1.name + ", ");
+			Console.Write (p1.Name + ", ");
 			Enemy Spider = new Enemy ();
-			Spider.name = "Spider";
+			Spider.Name = "Spider";
 			Combat.StartCombat (p1, Spider);
-            p1.tutorialComplete = true;
-			Console.WriteLine ("Congrats on Defeating your first Enemy, {0}!", p1.name);
+      p1.TutorialComplete = true;
+			Console.WriteLine ("Congrats on Defeating your first Enemy, {0}!", p1.Name);
 			HealthPotion poison = new HealthPotion("Spider Venom", "athough it has a very attractive smell, " +
 				"\nthis Potion is poisonous and dangerous to your health", -10);
 			Console.WriteLine ("The {0} has dropped {1}, {2}. \n You can now add it to your inventory if you desire."
-				, Spider.name, poison.name, poison.description);
+				, Spider.Name, poison.name, poison.description);
 			string answer = UI.PromptLine ("Would you like to add to inventory? (yes or no)");
 			if (answer == "yes") {
 				p1.AddToInventory (poison, 1);
@@ -56,7 +37,7 @@ namespace Sophmores_FinalProj
       }
 
       Console.WriteLine ("{0}, good job on your combat training, \n we are now ready to venture" +
-				" into the tunnel. \nIt will be challening, but after seeing your skills, \nI trust you will bring peace to the woods.", p1.name);
+				" into the tunnel. \nIt will be challening, but after seeing your skills, \nI trust you will bring peace to the woods.", p1.Name);
 			string forward = UI.PromptLine ("Are you ready to journey into the tunnel? (yes or no)");
 			if (forward == "yes") {
 				Console.WriteLine ("Good to hear, we are now entering the cave.");
@@ -65,7 +46,7 @@ namespace Sophmores_FinalProj
 			}
 			Console.WriteLine ("Its seems we have come to a fork. There are 4 doors ahead of us." +
 			"\n Look! there's a note on the wall.");
-			string noteDescription = Note ();
+			string noteDescription = TextUtil.PrintAndReturnTextFile("note.txt");
 			Item note = new Item ("Note", "Paper", noteDescription);
 			int response = UI.PromptInt (" Would you like to: \n 1) Take a Look \n 2) Add to Inventory \n Enter 1 or 2.");
 			if (response == 1) {
@@ -80,26 +61,5 @@ namespace Sophmores_FinalProj
 				//response = UI.PromptInt ("Please select a Door number.");
       //}
 			}
-
-		public static string Note()
-		{
-      string note = string.Empty;
-			var reader = FIO.OpenReader(FIO.GetLocation("note.txt"), "note.txt");
-			while (!(reader.EndOfStream)) {
-
-        note = reader.ReadLine();
-				Console.WriteLine(note);
-			}
-			reader.Close();
-      return note;
-		}
-    /// <summary>
-    /// Sets Buffer Size (within the console that is in the output)
-    /// </summary>
-    private static void SetBufferSize()
-    {
-      Console.BufferHeight = (Int16.MaxValue - 1);
-      Console.BufferWidth = (80);
-    }
   }
 }
