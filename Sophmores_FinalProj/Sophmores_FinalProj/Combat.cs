@@ -156,7 +156,7 @@ namespace Sophmores_FinalProj
       } while (playerTurn == true);
     }
 
-    public static int playerInput(string inp)
+    private static int playerInput(string inp)
     {
       if      (inp == "attack" || inp == "1") { return 1; }
       else if (inp == "swap"   || inp == "2") { return 2; }
@@ -168,7 +168,7 @@ namespace Sophmores_FinalProj
 
     //inp() and playerInput are temporary, I made them just to build combat system. We will mess with these once we start building the 
     // main game/method.
-    public static string inp() 
+    private static string inp() 
     {
       Console.WriteLine();
       for (int i = 0; i < 65; i++) { Console.Write("*"); }

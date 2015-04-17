@@ -133,7 +133,8 @@ namespace Sophmores_FinalProj
       }
       else
       {
-        string message = "That item type is not a supported item type!";
+        string message = string.Format("That item type {0} is not a " + 
+                                       "supported item type!", itemType);
         Console.WriteLine(message);
         throw new NotSupportedException(message);
       }

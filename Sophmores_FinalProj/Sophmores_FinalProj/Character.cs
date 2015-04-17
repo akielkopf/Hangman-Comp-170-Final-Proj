@@ -141,7 +141,7 @@ namespace Sophmores_FinalProj
       Console.WriteLine("{0} doesn't have any Potions!", Name);
     }
     /// <summary>
-    /// Applies Specified value to Enemy BuffMultiplier
+    /// Applies Specified value to Character BuffMultiplier
     /// </summary>
     /// <param name="buff">Value of new BuffMultiplier</param>
     public void ApplyBuffOrDebuff(double buff)
