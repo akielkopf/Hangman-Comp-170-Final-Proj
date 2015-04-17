@@ -67,6 +67,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Program.cs" />
+    <None Include="gamelogo.txt" />
+    <None Include="gamelogo2.txt" />
+    <None Include="note.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sophmores_FinalProj\Sophmores_FinalProj.csproj">
