@@ -72,7 +72,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <None Include="Combat.cs" />
-  </ItemGroup>
 </Project>

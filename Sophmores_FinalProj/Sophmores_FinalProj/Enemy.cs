@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,6 @@ namespace Sophmores_FinalProj
     /// </summary>
     public int MinDamage { get; set; }
     public int MaxDamage { get; set; }
-    public double BuffMultiplier { get; set; }
     public string Affinity { get; set; }
     /// <summary>
     /// Default Enemy with 'n' Affinity, Damage 5-10
