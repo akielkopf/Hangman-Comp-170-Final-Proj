@@ -11,14 +11,22 @@ namespace Sophmores_FinalProj
   {
     public int capacity { get; set; }
     public bool[] arrowSlots { get; private set; }
-    public Quiver(string QuiverName, string QuiverType, 
-                  string QuiverDescription, int QuiverCapacity)
-      : base(QuiverName, QuiverType, QuiverDescription)
+    /// <summary>
+    /// Creates a customizable Quiver
+    /// </summary>
+    /// <param name="QuiverName">Name of Quiver</param>
+    /// <param name="QuiverDescription">Description of Quiver</param>
+    /// <param name="QuiverCapacity">Amount of Arrows Quiver can Hold</param>
+    public Quiver(string QuiverName, string QuiverDescription, int QuiverCapacity)
+      : base(QuiverName, "Quiver", QuiverDescription)
     {
       capacity = QuiverCapacity;
       arrowSlots = new bool[capacity];
       playerCanEquip = true;
     }
+   /// <summary>
+   /// Creates a Basic Quiver that can hold 8 arrows
+   ///</summary>
     public Quiver()
     {
       name = "Simple Quiver";
