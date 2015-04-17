@@ -75,4 +75,14 @@
   <ItemGroup>
     <None Include="Combat.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TextFiles\note.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TextFiles\gamelogo2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TextFiles\gamelogo.txt" />
+  </ItemGroup>
+  <ItemGroup />
 </Project>
