@@ -14,10 +14,14 @@ namespace Sophmores_FinalProj
     /// Come with Inventories and supporting methods 
     /// Can die, and even Emote!
     /// </summary>
-    public string name { get; set; }
-    public int level { get; set; }
-    public int totalHP { get; set; }
-    public int currentHP { get; set; }
+    public string Name { get; set; }
+    /// <summary>
+    /// Doesn't do anything...yet
+    /// </summary>
+    public int Level { get; set; }
+    public int TotalHP { get; set; }
+    public int CurrentHP { get; set; }
+    public double BuffMultiplier { get; set; }
     public Inventory inventory { get; set; }
 
     /// <summary>
@@ -28,10 +32,23 @@ namespace Sophmores_FinalProj
     /// <param name="Level">Character Level</param>
     public Character(string Name, int Health, int Level)
     {
-      name = Name;
-      totalHP = Health;
-      currentHP = Health;
-      level = Level;
+      this.Name = Name;
+      TotalHP = Health;
+      CurrentHP = Health;
+      this.Level = Level;
+      inventory = new Inventory();
+    }
+    /// <summary>
+    /// Creates an Nameable Default Character
+    /// Similar to Peasants!
+    /// </summary>
+    /// <param name="Name">Character Name</param>
+    public Character(string Name)
+    {
+      this.Name = Name;
+      TotalHP = 10;
+      CurrentHP = TotalHP;
+      Level = 1;
       inventory = new Inventory();
     }
     /// <summary>
@@ -39,10 +56,10 @@ namespace Sophmores_FinalProj
     /// </summary>
     public Character()
     {
-      name = "Peasant";
-      totalHP = 10;
-      currentHP = totalHP;
-      level = 1;
+      Name = "Peasant";
+      TotalHP = 10;
+      CurrentHP = TotalHP;
+      Level = 1;
       inventory = new Inventory();
     }
     /// <summary>
@@ -51,7 +68,7 @@ namespace Sophmores_FinalProj
     /// <returns>True is character is alive, false otherwise</returns>
     public bool isAlive()
     {
-      if (currentHP > 0) 
+      if (CurrentHP > 0) 
       {
         return true;
       }
@@ -81,7 +98,7 @@ namespace Sophmores_FinalProj
     /// <param name="says">Thing the character says</param>
     public void Emote(string says)
     {
-      Console.WriteLine(this.name + " says: {0}", says);
+      Console.WriteLine(this.Name + " says: {0}", says);
     }
     /// <summary>
     /// Use this Function to modify Character Health in-combat
@@ -89,8 +106,8 @@ namespace Sophmores_FinalProj
     /// <param name="delta">Amount to increase or decrease CurrentHP</param>
     public void ModifyCurrentHP(int delta)
     {
-      currentHP += delta;
-      if (currentHP < 0)
+      CurrentHP += delta;
+      if (CurrentHP < 0)
       {
         isAlive();
       }
@@ -107,21 +124,36 @@ namespace Sophmores_FinalProj
             a.Key.consumable == true)
         {
           ModifyCurrentHP(((HealthPotion)a.Key).Potency);
-          if(currentHP > totalHP)
+          if(CurrentHP > TotalHP)
           {
-            currentHP = totalHP;
+            CurrentHP = TotalHP;
           }
           inventory.Remove(a.Key, 1);
           return;
         }
         else if (a.Value <= 0)
         {
-          Console.WriteLine("{0} doesn't have any Potions!", name);
+          Console.WriteLine("{0} doesn't have any Potions!", Name);
           inventory.contents.Remove(a.Key);
           return;
         }
       }
-      Console.WriteLine("{0} doesn't have any Potions!", name);
+      Console.WriteLine("{0} doesn't have any Potions!", Name);
+    }
+    /// <summary>
+    /// Applies Specified value to Enemy BuffMultiplier
+    /// </summary>
+    /// <param name="buff">Value of new BuffMultiplier</param>
+    public void ApplyBuffOrDebuff(double buff)
+    {
+      BuffMultiplier = buff;
+    }
+    /// <summary>
+    /// Resets BuffMultiplier to 1
+    /// </summary>
+    public void RemoveBuff()
+    {
+      BuffMultiplier = 1;
     }
   }
 }

@@ -17,9 +17,8 @@ namespace Sophmores_FinalProj
     public Weapon EquippedWeapon { get; private set; }
     public int PhysicalDamage { get; private set; }
     public int MagicDamage { get; private set; }
-    public int totalDamage { get; private set; }
-    public int buffMultiplier { get; set; }
-    public bool tutorialComplete { get; set;}
+    public int TotalDamage { get; private set; }
+    public bool TutorialComplete { get; set;}
     public Player(string Name, int Health, int Level) 
       : base (Name, Health, Level)
     {
@@ -27,21 +26,25 @@ namespace Sophmores_FinalProj
       MagicDamage = 1;
       DefaultWeapon = new Weapon();
       Equip(DefaultWeapon);
-      buffMultiplier = 1;
-      totalDamage = (PhysicalDamage + MagicDamage) * buffMultiplier;
+      BuffMultiplier = 1;
+      int damage = PhysicalDamage + MagicDamage;
+      TotalDamage=(int)Math.Round( damage * BuffMultiplier);
+      TutorialComplete = false;
     }
     /// <summary>
     /// Creates Default Player named Douglas with basic attributes
     /// </summary>
     public Player()
     {
-      name = "Douglas";
+      Name = "Douglas";
       PhysicalDamage = 1;
       MagicDamage = 1;
       DefaultWeapon = new Weapon();
       Equip(DefaultWeapon);
-      buffMultiplier = 1;
-      totalDamage = (PhysicalDamage + MagicDamage) * buffMultiplier;
+      BuffMultiplier = 1;
+      int damage = PhysicalDamage + MagicDamage;
+      TotalDamage = (int)Math.Round(damage * BuffMultiplier);
+      TutorialComplete = false;
     }
     /// <summary>
     /// Equips specified weapon by creating new instance of said 

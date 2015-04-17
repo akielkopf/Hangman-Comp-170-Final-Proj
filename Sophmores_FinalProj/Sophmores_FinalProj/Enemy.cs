@@ -12,74 +12,87 @@ namespace Sophmores_FinalProj
     /// Basic enemy Class, have Max and Min Damage values
     /// For random hit damage
     /// </summary>
-    public string Affinity { get; set; }
     public int MinDamage { get; set; }
     public int MaxDamage { get; set; }
     public double BuffMultiplier { get; set; }
+    public string Affinity { get; set; }
     /// <summary>
     /// Default Enemy with 'n' Affinity, Damage 5-10
     /// </summary>
     public Enemy()
     {
+      Name = "Plauged Rat";
       Affinity = "n";
       MinDamage = 5;
       MaxDamage = 10;
       BuffMultiplier = 1;
     }
     /// <summary>
-    /// Enemy with user-set damage range
+    /// Default Enemy with 'n' Affinity, Damage 5-10
     /// </summary>
-    /// <param name="minDamage">The lowest damage an enemy can do</param>
-    /// <param name="maxDamage">The highest damage and enemy can do</param>
-    public Enemy(int minDamage, int maxDamage)
+    public Enemy(string Name) : base(Name)
     {
+      this.Name = Name;
       Affinity = "n";
-      MinDamage = minDamage;
-      MaxDamage = maxDamage;
+      MinDamage = 5;
+      MaxDamage = 10;
       BuffMultiplier = 1;
     }
     /// <summary>
-    /// Enemy with user-set damage range, and affinity
+    /// Creates an enemy the player can do battle with
+    /// Affinity set to "n"
     /// </summary>
-    /// <param name="affinity">Enemy's Affinity</param>
+    /// <param name="Name">Enemy's Name</param>
+    /// <param name="Health">Enemy's Health Value</param>
+    /// <param name="Level">Enemy's Level</param>
     /// <param name="minDamage">The lowest damage an enemy can do</param>
     /// <param name="maxDamage">The highest damage and enemy can do</param>
-    public Enemy(string affinity, int minDamage, int maxDamage)
+    public Enemy(string Name, int Health, int Level, int minDamage, 
+                 int maxDamage) 
+      : base (Name, Health, Level)
     {
-      Affinity = affinity;
       MinDamage = minDamage;
       MaxDamage = maxDamage;
       BuffMultiplier = 1;
+      Affinity = "n";
+    }
+    /// <summary>
+    /// Creates an enemy the player can do battle with
+    /// </summary>
+    /// <param name="Name">Enemy's Name</param>
+    /// <param name="Health">Enemy's Health Value</param>
+    /// <param name="Level">Enemy's Level</param>
+    /// <param name="minDamage">The lowest damage an enemy can do</param>
+    /// <param name="maxDamage">The highest damage and enemy can do</param>
+    /// <param name="affinity">Enemy's Affinity</param>
+    public Enemy(string Name, int Health, int Level, int minDamage, 
+                 int maxDamage, string affinity)
+      : base (Name, Health, Level)
+
+    {
+      MinDamage = minDamage;
+      MaxDamage = maxDamage;
+      BuffMultiplier = 1;
+      Affinity = affinity;
     }    
     /// <summary>
-    /// Enemy with user-set damage range, and affinity
+    /// Creates an enemy the player can do battle with
     /// </summary>
-    /// <param name="affinity">Enemy's Affinity</param>
+    /// <param name="Name">Enemy's Name</param>
+    /// <param name="Health">Enemy's Health Value</param>
+    /// <param name="Level">Enemy's Level</param>
     /// <param name="minDamage">The lowest damage an enemy can do</param>
     /// <param name="maxDamage">The highest damage and enemy can do</param>
-    /// <param name="buffMultiplier">amount to multiply damage by</param>
-    public Enemy(string affinity, int minDamage, int maxDamage, 
-                 int buffMultiplier)
+    /// <param name="affinity">Enemy's Affinity</param>
+    /// <param name="buffMultiplier">Amount to multiply damage By</param>
+    public Enemy(string Name, int Health, int Level, int minDamage,
+                 int maxDamage, string affinity, int buffMultiplier)
+      : base(Name, Health, Level)
     {
-      Affinity = affinity;
       MinDamage = minDamage;
       MaxDamage = maxDamage;
+      Affinity = affinity;
       BuffMultiplier = buffMultiplier;
-    }
-    /// <summary>
-    /// Applies Specified value to Enemy BuffMultiplier
-    /// </summary>
-    /// <param name="buff">Value of new BuffMultiplier</param>
-    public void ApplyBuffOrDebuff(double buff) 
-    {
-      BuffMultiplier = buff;
-    }
-    /// <summary>
-    /// Resets BuffMultiplier to 1
-    /// </summary>
-    public void RemoveBuff()
-    {
-      BuffMultiplier = 1;
     }
   }
 }

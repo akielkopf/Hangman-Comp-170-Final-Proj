@@ -14,23 +14,23 @@ namespace Sophmores_FinalProj
     public static void StartCombat(Player player, Enemy enemy)
     {
       int turn = 0;
-			Console.WriteLine("A Wild {0} has appeared!! It appears to have {1}HP", enemy.name, enemy.totalHP);
+			Console.WriteLine("A Wild {0} has appeared!! It appears to have {1}HP", enemy.Name, enemy.TotalHP);
       while (player.isAlive() && enemy.isAlive())
       {
         playerAction(player, enemy);
         if (!(enemy.isAlive()))
         {
-          Console.WriteLine(enemy.name + " has fallen!");
+          Console.WriteLine(enemy.Name + " has fallen!");
           Console.WriteLine();
           for (int i = 0; i < 65; i++) { Console.Write("*"); }
           Console.WriteLine("*");
-          player.currentHP = player.totalHP;
+          player.CurrentHP = player.TotalHP;
           return;
         }
         enemyAttack(player, enemy);
         if (!(player.isAlive()))
         {
-          Console.WriteLine(player.name + "has blacked out...");
+          Console.WriteLine(player.Name + "has blacked out...");
           Console.WriteLine();
           for (int i = 0; i < 65; i++) { Console.Write("*"); }
           Console.WriteLine("*");
@@ -46,14 +46,14 @@ namespace Sophmores_FinalProj
       int attack = random.Next(enemy.MinDamage,enemy.MaxDamage);
       Console.WriteLine("Enemy attacks for {0} damage!", attack);
       player.ModifyCurrentHP(-1 * attack);
-      Console.WriteLine("{0} Health: {1} \n", player.name, player.currentHP);
+      Console.WriteLine("{0} Health: {1} \n", player.Name, player.CurrentHP);
     }
     private static void playerAttack(Player player, Enemy enemy) 
     {
-      Console.WriteLine("Enemy Health: {0}", enemy.currentHP);
-      Console.WriteLine("Player attacks for {0} damage!", player.totalDamage);
-      enemy.ModifyCurrentHP(-1 * player.totalDamage);
-      Console.WriteLine("Enemy Health: {0} \n", enemy.currentHP);
+      Console.WriteLine("Enemy Health: {0}", enemy.CurrentHP);
+      Console.WriteLine("Player attacks for {0} damage!", player.TotalDamage);
+      enemy.ModifyCurrentHP(-1 * player.TotalDamage);
+      Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
     }
     private static void playerAction(Player player, Enemy enemy)
     {
@@ -78,11 +78,11 @@ namespace Sophmores_FinalProj
                     curInput = playerInput(inp());
                 }
             }
-            if (curInput == 4 && player.tutorialComplete == false) {
+            if (curInput == 4 && player.TutorialComplete == false) {
                 Console.WriteLine("You can't run, this is your first fight!");
                 curInput = playerInput(inp());
             }
-            if (curInput == 4 && player.tutorialComplete == true) {
+            if (curInput == 4 && player.TutorialComplete == true) {
                 validInp = true;
                 break;
             }
