@@ -39,8 +39,25 @@ namespace Sophmores_FinalProj.Utilities
     /// </summary>
     public static void SetBufferSize()
     {
+      if (CheckOS())
+      {
       Console.BufferHeight = (Int16.MaxValue - 1);
       Console.BufferWidth = (80);
+      }
+    }
+    /// <summary>
+    /// Checks user OS platform
+    /// </summary>
+    /// <returns>True if Windows, false otherwise</returns>
+    private static bool CheckOS()
+    {
+      OperatingSystem os = Environment.OSVersion;
+      string platform = os.Platform.ToString();
+      if (platform.ToLower().StartsWith("w"))
+      {
+        return true;
+      }
+      return false;
     }
     /// <summary>
     /// Prints to Console contents of the supplied text file
