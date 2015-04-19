@@ -8,10 +8,18 @@ namespace Sophmores_FinalProj
 {
   public class Player : Character
   {
+    /// <summary>
+    /// Contains Methods to Create Players that can
+    /// Equip Weapons, and Inspect Items, and more.
+    /// Inherits from Character
+    /// </summary>
     private Weapon DefaultWeapon;
     public Weapon EquippedWeapon { get; private set; }
     public int PhysicalDamage { get; private set; }
     public int MagicDamage { get; private set; }
+    public int totalDamage { get; private set; }
+    public int buffMultiplier { get; set; }
+    public bool tutorialComplete { get; set;}
     public Player(string Name, int Health, int Level) 
       : base (Name, Health, Level)
     {
@@ -19,10 +27,21 @@ namespace Sophmores_FinalProj
       MagicDamage = 1;
       DefaultWeapon = new Weapon();
       Equip(DefaultWeapon);
+      buffMultiplier = 1;
+      totalDamage = (PhysicalDamage + MagicDamage) * buffMultiplier;
     }
+    /// <summary>
+    /// Creates Default Player named Douglas with basic attributes
+    /// </summary>
     public Player()
     {
       name = "Douglas";
+      PhysicalDamage = 1;
+      MagicDamage = 1;
+      DefaultWeapon = new Weapon();
+      Equip(DefaultWeapon);
+      buffMultiplier = 1;
+      totalDamage = (PhysicalDamage + MagicDamage) * buffMultiplier;
     }
     /// <summary>
     /// Equips specified weapon by creating new instance of said 
@@ -52,11 +71,6 @@ namespace Sophmores_FinalProj
       MagicDamage -= EquippedWeapon.magicalDamage;
       EquippedWeapon = DefaultWeapon;
     }
-    private void InspectWeapon(Weapon weapon)
-    {
-      Console.WriteLine("Physical Damage: {0}", weapon.physicalDamage);
-      Console.WriteLine("Magical Damage: {0}", weapon.magicalDamage);
-    }
     /// <summary>
     /// For Players to read Item Descriptions
     /// </summary>
@@ -68,8 +82,38 @@ namespace Sophmores_FinalProj
       Console.WriteLine("Description: {0}", item.description);
       if (item is Weapon)
       {
-        InspectWeapon((Weapon)item);
+        InspectWeapon(item as Weapon);
       }
+      else if (item is HealthPotion)
+      {
+        InspectPotion(item as HealthPotion);
+      }
+      else if (item is Key)
+      {
+        InspectKey(item as Key);
+      }
+      else if (item is Quiver)
+      {
+        InspectQuiver(item as Quiver);
+      }
+    }
+    private void InspectPotion(HealthPotion potion)
+    {
+      Console.WriteLine("Potency: {0}", potion.Potency);
+    }
+    private void InspectKey(Key key)
+    {
+      Console.WriteLine("What does this key open...?");
+    }
+    private void InspectQuiver(Quiver quiver)
+    {
+      Console.WriteLine("Capacity: {0}", quiver.capacity);
+      quiver.ArrowsInQuiver();
+    }
+    private void InspectWeapon(Weapon weapon)
+    {
+      Console.WriteLine("Physical Damage: {0}", weapon.physicalDamage);
+      Console.WriteLine("Magical Damage: {0}", weapon.magicalDamage);
     }
     /// <summary>
     /// Displays Inventory or specific Item types to Player
@@ -78,19 +122,31 @@ namespace Sophmores_FinalProj
     public void DisplayInventoryContents(string itemType)
     {
       itemType.ToLower();
+      if (itemType == "sword" || itemType == "axe"   ||
+          itemType == "bow"   || itemType == "arrow" ||
+          itemType == "shield" )
+      {
+        itemType = "weapon";
+      }
+      else
+      {
+        string message = "That item type is not a supported item type!";
+        Console.WriteLine(message);
+        throw new NotSupportedException(message);
+      }
       var inventoryList = new List<Item>(inventory.contents.Keys);
       inventoryList.Sort();
       if (itemType == "weapon")
       {
         DisplayWeapons(inventoryList);
       }
-      //else if (itemType == "key")
-      //{
-      //  DisplayKeys(inventoryList);
-      //}
-      else if (itemType == "item")
+      else if (itemType == "key")
       {
-        DisplayItems(inventoryList);
+        DisplayKeys(inventoryList);
+      }
+      else if (itemType == "potion")
+      {
+        DisplayPotions(inventoryList);
       }
       else if (itemType == "item")
       {
@@ -98,7 +154,7 @@ namespace Sophmores_FinalProj
       }
     }
     /// <summary>
-    /// Displays All Inventory Contents to Player
+    /// Displays ALL Inventory Contents to Player
     /// </summary>
     public void DisplayInventoryContents()
     {
@@ -110,7 +166,7 @@ namespace Sophmores_FinalProj
     {
       foreach (Item s in itemList)
       {
-        Console.WriteLine("All Items:\n");
+        Console.WriteLine("All Items:");
         Console.WriteLine(s.name + " " + inventory.contents[s]);
       }
     }
@@ -118,17 +174,38 @@ namespace Sophmores_FinalProj
     {
       foreach (Weapon s in weaponList)
       {
-        Console.WriteLine("Weapons:\n");
+        Console.WriteLine("Weapons:");
         Console.WriteLine(s.name + " " + inventory.contents[s]);
       }
     }
-    //private void DisplayKeys(List<Item> keyList)
-    //{
-    //  foreach (Key s in keyList)
-    //  {
-    //    Console.WriteLine("Keys:\n");
-    //    Console.WriteLine(s.name + " " + inventory.contents[s]);
-    //  }
-    //}
+    private void DisplayKeys(List<Item> keyList)
+    {
+      foreach (Key s in keyList)
+      {
+        Console.WriteLine("Keys:");
+        Console.WriteLine(s.name + " " + inventory.contents[s]);
+      }
+    }
+    private void DisplayPotions(List<Item> potionList)
+    {
+      foreach(HealthPotion s in potionList)
+      {
+      Console.WriteLine("Potions:");
+      Console.WriteLine(s.name + " " + inventory.contents[s]);
+      }
+    }
+    public void DisplayConsumables()
+    {
+      string x = "Consumables: ";
+      StringBuilder builder = new StringBuilder(x);
+      foreach(KeyValuePair<Item, int> a in inventory.contents)
+      {
+        if (a.Key.consumable)
+        {
+         builder.AppendLine(a.Key.name + ", " + a.Value);
+        }
+      }
+      Console.WriteLine(""+builder);
+    }
   }
 }

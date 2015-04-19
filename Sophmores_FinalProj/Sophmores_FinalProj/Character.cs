@@ -9,6 +9,11 @@ namespace Sophmores_FinalProj
 {
   public class Character
   {
+    /// <summary>
+    /// Base Character Class for all types of Characters
+    /// Come with Inventories and supporting methods 
+    /// Can die, and even Emote!
+    /// </summary>
     public string name { get; set; }
     public int level { get; set; }
     public int totalHP { get; set; }
@@ -79,19 +84,44 @@ namespace Sophmores_FinalProj
       Console.WriteLine(this.name + " says: {0}", says);
     }
     /// <summary>
-    /// Use this Function to modify Character Health in-combat or with Potions
+    /// Use this Function to modify Character Health in-combat
     /// </summary>
     /// <param name="delta">Amount to increase or decrease CurrentHP</param>
-    public void ModifyDeltaHealth(int delta)
+    public void ModifyCurrentHP(int delta)
     {
-      if (delta > 0)
+      currentHP += delta;
+      if (currentHP < 0)
       {
-        currentHP += delta;
+        isAlive();
       }
-      else
+    }
+    /// <summary>
+    /// Uses the first healthpotion in the Inventory
+    /// </summary>
+    public void UseHealthPotion()
+    {
+      foreach(KeyValuePair<Item, int> a in inventory.contents)
       {
-        currentHP -= delta;
+        if (a.Key is HealthPotion &&
+            a.Value > 0           &&
+            a.Key.consumable == true)
+        {
+          ModifyCurrentHP(((HealthPotion)a.Key).Potency);
+          if(currentHP > totalHP)
+          {
+            currentHP = totalHP;
+          }
+          inventory.Remove(a.Key, 1);
+          return;
+        }
+        else if (a.Value <= 0)
+        {
+          Console.WriteLine("{0} doesn't have any Potions!", name);
+          inventory.contents.Remove(a.Key);
+          return;
+        }
       }
+      Console.WriteLine("{0} doesn't have any Potions!", name);
     }
   }
 }

@@ -80,7 +80,26 @@ namespace Sophmores_FinalProj
       p1.Inspect(Axe);
       p1.Inspect(p1.EquippedWeapon);
 
+      //Test Health Potions!
+      Console.WriteLine("{0}'s current health: {1}", p1.name, p1.currentHP);
+      p1.currentHP = p1.currentHP / 2;
+      Console.WriteLine("{0}'s current health: {1}", p1.name, p1.currentHP);
+      // Create and Inspect Potion to display properties to player
+      HealthPotion potion = new HealthPotion();
+      p1.Inspect(potion);
+      // Add a basic health potion to player 1's inventory here
+          // Stronger ones can be made by manually declaring one
+      p1.AddToInventory(new HealthPotion(), 1);
+      // Test use Healthpotion with 1 HealthPotion in Inventory
+      p1.UseHealthPotion();
+      Console.WriteLine("{0}'s current health: {1}", p1.name, p1.currentHP);
+      // Test UseHealthPotion with NO potions in Inventory
+      p1.UseHealthPotion();
 
+      Enemy enemy = new Enemy();
+      p1.AddToInventory(Axe, 1);
+      p1.Equip(Axe);
+      Combat.StartCombat(p1, enemy);
       // So console doesn't auto close
       string abc = Console.ReadLine();
     }

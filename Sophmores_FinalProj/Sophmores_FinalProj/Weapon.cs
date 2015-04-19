@@ -23,7 +23,8 @@ namespace Sophmores_FinalProj
     /// <param name="Description">Weapon Description</param>
     /// <param name="PhysicalDamage">Physical Damage Value</param>
     /// <param name="MagicalDamage">Magical Damage Value</param>
-    public Weapon(string Name, string Type, string Description, int PhysicalDamage, int MagicalDamage)
+    public Weapon(string Name, string Type, string Description, 
+                  int PhysicalDamage, int MagicalDamage)
       : base (Name, Type, Description)
     {
       physicalDamage = PhysicalDamage;
