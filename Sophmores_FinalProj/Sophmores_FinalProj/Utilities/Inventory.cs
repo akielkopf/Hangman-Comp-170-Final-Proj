@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sophmores_FinalProj
+namespace Sophmores_FinalProj.Utilities
 {
   public class Inventory
   {
@@ -29,7 +29,7 @@ namespace Sophmores_FinalProj
     /// </summary>
     /// <param name="item">item</param>
     /// <param name="itemCount">Number of the SAME item to add</param>
-    public void Add(Item item, int itemCount)
+     public void Add(Item item, int itemCount)
     {
       if (contents.ContainsKey(item))
       {
@@ -58,7 +58,7 @@ namespace Sophmores_FinalProj
       }
       else
       {
-        Console.WriteLine("You don't have any of those");
+        Console.WriteLine("You're not carrying a {0}", item.name);
       }
     }
   }
