@@ -155,5 +155,13 @@ namespace Sophmores_FinalProj
     {
       BuffMultiplier = 1;
     }
+    /// <summary>
+    /// Returns Character Name as String
+    /// </summary>
+    /// <returns>Character Name</returns>
+    public override string ToString()
+    {
+      return this.Name;
+    }
   }
 }

@@ -52,5 +52,13 @@ namespace Sophmores_FinalProj
     protected Item()
     {
     }
+    /// <summary>
+    /// Returns Item name as a string
+    /// </summary>
+    /// <returns>Returns Item name as a string</returns>
+    public override string ToString()
+    {
+      return this.name;
+    }
   }
 }
