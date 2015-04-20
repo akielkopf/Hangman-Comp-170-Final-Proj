@@ -24,6 +24,7 @@ namespace Sophmores_FinalProj
     {
       Potency = potency;
       playerCanEquip = false;
+	  consumable = true;
     }
     public HealthPotion(HealthPotion potion)
     {

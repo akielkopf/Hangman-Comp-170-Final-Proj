@@ -19,6 +19,9 @@ namespace Sophmores_FinalProj
     public int MagicDamage { get; private set; }
     public int TotalDamage { get; private set; }
     public bool TutorialComplete { get; set;}
+		public bool Stage1Complete { get; set;}
+		public bool Stage2Complete { get; set;}
+		public bool Stage3Complete { get; set;}
     public Player(string Name, int Health, int Level) 
       : base (Name, Health, Level)
     {

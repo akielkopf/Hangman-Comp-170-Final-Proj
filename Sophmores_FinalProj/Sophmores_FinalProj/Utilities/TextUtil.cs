@@ -68,27 +68,24 @@ namespace Sophmores_FinalProj.Utilities
     /// </param>
     public static void PrintTextFile(string textFileToRead)
     {
-      string txt = ".txt";
-      if (textFileToRead.EndsWith(txt))
-      {
-        string text = string.Empty;
-        var reader = FIO.OpenReader(FIO.GetLocation(textFileToRead),
-                                                    textFileToRead);
-        while (!(reader.EndOfStream))
-        {
+			string txt = ".txt";
+			if (textFileToRead.EndsWith (txt)) {
+				StringBuilder builder = new StringBuilder ();
+				var reader = FIO.OpenReader (FIO.GetLocation (textFileToRead),
+					textFileToRead);
+				while (!(reader.EndOfStream)) {
 
-          text = reader.ReadLine();
-          Console.WriteLine(text);
-        }
-        reader.Close();
-      }
-      else
-      {
-        string msg = "That is not a text file!";
-        Console.WriteLine(msg);
-        throw new NotSupportedException(msg);
-      }
-    }
+					builder.Append("\n"+reader.ReadLine ());
+				}
+				string text = ("" + builder);
+				Console.WriteLine (text);
+				reader.Close ();
+			} else {
+				string msg = "That is not a text file!";
+				Console.WriteLine (msg);
+				throw new NotSupportedException (msg);
+			}    
+		}
     /// <summary>
     /// Prints to Console the contents of the supplied text
     /// File AND Returns file contents as String
@@ -100,27 +97,49 @@ namespace Sophmores_FinalProj.Utilities
     /// <returns>Contents of the text file as String</returns>
     public static string PrintAndReturnTextFile(string textFileToRead)
     {
-      string txt = ".txt";
-      if (textFileToRead.EndsWith(txt))
-      {
-        string text = string.Empty;
-        var reader = FIO.OpenReader(FIO.GetLocation(textFileToRead),
-                                                    textFileToRead);
-        while (!(reader.EndOfStream))
-        {
+			string txt = ".txt";
+			if (textFileToRead.EndsWith (txt)) {
+				StringBuilder builder = new StringBuilder ();
+				var reader = FIO.OpenReader (FIO.GetLocation (textFileToRead),
+					textFileToRead);
+				while (!(reader.EndOfStream)) {
 
-          text = reader.ReadLine();
-          Console.WriteLine(text);
-        }
-        reader.Close();
-        return text;
-      }
-      else
-      {
-        string msg = "That is not a text file!";
-        Console.WriteLine(msg);
-        throw new NotSupportedException(msg);
-      }
+					builder.Append("\n"+reader.ReadLine ());
+				}
+				string text = ("" + builder);
+				Console.WriteLine (text);
+				reader.Close ();
+				return text;
+			} else {
+				string msg = "That is not a text file!";
+				Console.WriteLine (msg);
+				throw new NotSupportedException (msg);
+			}
     }
-  }
+	/// <summary>
+	/// Returns the text file.
+	/// </summary>
+	/// <returns>The text file.</returns>
+	/// <param name="textFileToRead">Text file to read.</param>
+	public static string ReturnTextFile(string textFileToRead)
+		{
+			string txt = ".txt";
+			if (textFileToRead.EndsWith (txt)) {
+				StringBuilder builder = new StringBuilder ();
+				var reader = FIO.OpenReader (FIO.GetLocation (textFileToRead),
+					            textFileToRead);
+				while (!(reader.EndOfStream)) {
+				
+					builder.Append("\n"+reader.ReadLine ());
+				}
+				string text = ("" + builder);
+				reader.Close ();
+				return text;
+			} else {
+				string msg = "That is not a text file!";
+				Console.WriteLine (msg);
+				throw new NotSupportedException (msg);
+			}
+		}
+  	}
 }
