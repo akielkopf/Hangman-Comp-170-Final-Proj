@@ -10,7 +10,7 @@
       |      will find what you are looking    |  
       |      for. However, in order to get     |  
       |      access to that door, you will     |  
-      |      need to get all three keys.       |  
+      |      need to get all three keys.       | 
       |      Each of which are being guarded   |  
       |      By a monster. You will need to    |  
       |      enter each one of the other 3     |  
