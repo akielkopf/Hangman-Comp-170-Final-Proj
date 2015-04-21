@@ -17,7 +17,7 @@ namespace Sophmores_FinalProj
 			TextUtil.PrintTextFile ("gamelogo.txt");
 			TextUtil.PressAnyKeyBufferClear ();
 			TextUtil.PrintTextFile ("gamelogo2.txt");
-			Player p1 = GameIntro.Start (new Player ());
+			Player p1 = GameIntro.Start (new Player ("", 100, 10));
 			Console.Write (p1.Name + ", ");
 			Enemy Spider = new Enemy ();
 			Spider.Name = "Small Spider";
@@ -28,8 +28,8 @@ namespace Sophmores_FinalProj
 			                      "\nthis Potion is poisonous and dangerous to your health", -10);
 			Console.WriteLine ("The {0} has dropped {1}, {2}. \n You can now add it to your inventory if you desire."
 				, Spider.Name, poison.name, poison.description);
-			string answer = UI.PromptLine ("Would you like to add to inventory? (yes or no)");
-			if (answer == "yes") {
+			int answer = UI.PromptInt ("Would you like to add to inventory? \n 1) Yes \n 2) No)\n");
+			if (answer == 1) {
 				p1.AddToInventory (poison, 1);
 				Console.WriteLine ("{0} has been added to you inventory.", poison.name);
 			} else {
@@ -38,8 +38,8 @@ namespace Sophmores_FinalProj
 
 			Console.WriteLine ("{0}, good job on your combat training, \n we are now ready to venture" +
 			" into the tunnel. \nIt will be challening, but after seeing your skills, \nI trust you will bring peace to the woods.", p1.Name);
-			string forward = UI.PromptLine ("Are you ready to journey into the tunnel? (yes or no)");
-			if (forward == "yes") {
+			int forward = UI.PromptInt ("Are you ready to journey into the tunnel? \n 1) Yes \n 2) No)\n");
+			if (forward == 1) {
 				Console.WriteLine ("Good to hear, we are now entering the cave.");
 			} else {
 				Console.WriteLine ("You're coming anyways... were walking into the tunnel.");
@@ -48,19 +48,19 @@ namespace Sophmores_FinalProj
 			"\n Look! there's a note on the wall.");
 			string noteDescription = TextUtil.ReturnTextFile ("note.txt");
 			Item note = new Item ("Note", "Paper", noteDescription);
-			int response = UI.PromptInt (" Would you like to: \n 1) Take a Look \n 2) Add to Inventory \n Enter 1 or 2.");
+			int response = UI.PromptInt (" Would you like to: \n 1) Take a Look \n 2) Add to Inventory \n Enter 1 or 2.\n");
 			if (response == 1) {
 				Console.WriteLine(note.description);
-				Console.WriteLine ("**Hmmmm, kind of odd that the name at the bottom is ripped off**");
+				Console.WriteLine ("\n\n**Hmmmm, kind of odd that the name at the bottom is ripped off**\n\n");
 			} else {
 				p1.AddToInventory (note, 1);
 			}
 			p1.AddToInventory (note, 1);
-			Console.WriteLine ("Well lets not take too long, lets start finding keys!");
+			Console.WriteLine ("Well lets not take too long, lets start finding keys!\n");
 			bool responseIsGood = false;
 			while (!(responseIsGood)) {
 				response = UI.PromptInt ("Which door would you like to enter? \n Door 1 \n Door 2 \n Door 3 \n 4) Open Inventory \n" +
-				"Enter 1, 2, 3 or 4");
+				"Enter 1, 2, 3 or 4\n");
 				if (p1.Stage1Complete == false &&
 					p1.Stage2Complete == false &&
 					p1.Stage3Complete == false &&
@@ -86,12 +86,14 @@ namespace Sophmores_FinalProj
 						Weapon BasicBow = new Weapon ("BasicBow", "Weapon", "basic wooden bow", 20, 0);
 						HealthPotion GiantMagic = new HealthPotion ("Giant Magic", "magic potion used by the Giant to cure his injuries",
 							55);
+						Item key1 = new Item ("Key I", "key", "this is the key colloected from first stage");
+						giant.AddToInventory (key1, 1);
 						giant.AddToInventory (BasicBow, 1);
 						giant.AddToInventory(GiantMagic, 1);
 
 						DoorStage (p1, skeleton, goblin, giant);
 						p1.Stage1Complete = true;
-
+						continue;
 					} else if (p1.Stage1Complete) {
 						response = UI.PromptInt ("You have already completed this Door, choose another.");
 						continue;
@@ -110,8 +112,11 @@ namespace Sophmores_FinalProj
 						Enemy GiantSpider = new Enemy ("Giant Spider", 20, 10, 5, 7);
 						Enemy alligator = new Enemy ("Alligator", 20, 10, 5, 7);
 						Enemy kraken = new Enemy ("Kraken", 20, 10, 5, 7);
+						Item key2 = new Item ("Key II", "key", "this is the key collected from second stage");
+						kraken.AddToInventory (key2, 1);
 						DoorStage (p1, GiantSpider, alligator, kraken);
 						p1.Stage2Complete = true;
+						continue;
 					} else if (p1.Stage2Complete) {
 						response = UI.PromptInt ("You have already completed this Door, choose another.");
 						continue;
@@ -129,6 +134,8 @@ namespace Sophmores_FinalProj
 						Enemy wolf = new Enemy ("Wolf", 20, 10, 5, 7);
 						Enemy zombie = new Enemy ("Zombie", 20, 10, 5, 7);
 						Enemy orc = new Enemy ("Orc", 20, 10, 5, 7);
+						Item key3 = new Item ("Key III", "key", "this is the key collected from third stage");
+						orc.AddToInventory (key3, 1);
 						DoorStage (p1, wolf, zombie, orc);
 						p1.Stage3Complete = true;
 					} else if (p1.Stage3Complete) {
@@ -146,7 +153,15 @@ namespace Sophmores_FinalProj
 						}
 					}
 
+				} else if (p1.Stage1Complete == true &&
+					p1.Stage2Complete == true &&
+					p1.Stage3Complete == true &&
+					response != 4)
+				{
+					responseIsGood = true;
+					continue;
 				}
+
 			}
 		}
 		static void DoorStage (Player player, Enemy enemy1, Enemy enemy2, Enemy boss)
@@ -162,6 +177,7 @@ namespace Sophmores_FinalProj
 			GainEnemyItems (player, boss);
 
 
+
 		}
 		static void GainEnemyItems(Player player, Enemy enemy)
 		{
@@ -169,25 +185,21 @@ namespace Sophmores_FinalProj
 				foreach (KeyValuePair<Item, int> a in enemy.inventory.contents) {
 					player.AddToInventory (a.Key, 1);
 					Console.WriteLine ("{0} has been added to your inventory!", a.Key.name);
-					if (a.Key.type == "Weapon")
+					if (a.Key is Weapon)
 					{
-						string question = ("Would you like to equip " + a.Key.name + "? \n 1)Yes \n 2)No");
+						string question = ("Would you like to equip " + a.Key.name + "? \n 1)Yes \n 2)No\n");
 						int answer = UI.PromptInt(question);
 						if (answer == 1)
 						{
 							player.Equip (a.Key as Weapon);
-							Console.WriteLine("your new weapon has been equipped!");
+							Console.WriteLine("your new weapon has been equipped!\n");
 						}
 						else if (answer == 2)
 						{
-							Console.WriteLine("you have not equipped your newest weapon.");
-						}
-						else 
-						{
-							answer = UI.PromptInt("You have chosen an invalid answer. Please answer with 1 or 2.");
+							Console.WriteLine("you have not equipped your newest weapon.\n");
 						}
 					}
-					else if (a.Key.type == "Potion")
+					else if (a.Key is HealthPotion)
 					{
 						string question = "Would you like to consume "+ a.Key.name +"?, Its desciption is : " + a.Key.description +" \n 1)Yes \n 2)No"; 
 						;
@@ -199,11 +211,7 @@ namespace Sophmores_FinalProj
 						}
 						else if (answer == 2)
 						{
-							Console.WriteLine("you have decided not to consume the potion.");
-						}
-						else 
-						{
-							answer = UI.PromptInt("You have chosen an invalid answer. Please answer with 1 or 2.");
+							Console.WriteLine("you have decided not to consume the potion.\n");
 						}
 					}
 				}
