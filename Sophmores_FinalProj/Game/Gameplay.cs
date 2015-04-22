@@ -61,18 +61,16 @@ namespace Sophmores_FinalProj
 			while (!(responseIsGood)) {
 				response = UI.PromptInt ("Which door would you like to enter? \n Door 1 \n Door 2 \n Door 3 \n 4) Open Inventory \n" +
 				"Enter 1, 2, 3 or 4\n");
-				if (p1.Stage1Complete == false &&
-					p1.Stage2Complete == false &&
-					p1.Stage3Complete == false &&
+				if (p1.currentStage == 0 &&     //Stage 1 starts here
 					response != 4) {
-					if (response == 1 ||
-						response == 2 ||
-						response == 3   ) {
+					if (OpenedDoors(response, p1) == true) {
+						p1.Stage = true;
+						p1.currentDoor = response;
+						//p1.DoorsOpened.Add (response);
 						Console.WriteLine ("Okay, we are going into door {0}", response);
-						responseIsGood = true;
 						Enemy skeleton = new Enemy ("Skeleton", 10, 1, 5, 6);
 						Weapon IronSword = new Weapon ("Iron Sword", "Weapon", "sword made of iron", 10, 0);
-						HealthPotion MagicPotion = new HealthPotion ("Skeleton Fluid", "fluid from the bone maro of magical skeletons", 25);
+						HealthPotion MagicPotion = new HealthPotion ("Skeleton Fluid", "fluid adds 25 points to HP", 25);
 						skeleton.AddToInventory (IronSword, 1);
 						skeleton.AddToInventory (MagicPotion, 2);
 
@@ -92,23 +90,21 @@ namespace Sophmores_FinalProj
 						giant.AddToInventory(GiantMagic, 1);
 
 						DoorStage (p1, skeleton, goblin, giant);
-						p1.Stage1Complete = true;
+						p1.Stage1Complete = true;    ////Stage 1 ends here
+						p1.currentStage = 1;
+						p1.Stage = false;
 						continue;
+
 					} else if (p1.Stage1Complete) {
 						response = UI.PromptInt ("You have already completed this Door, choose another.");
 						continue;
 					}
 				}
-				else if (p1.Stage1Complete == true &&
-					p1.Stage2Complete == false &&
-					p1.Stage3Complete == false &&
+				else if (p1.currentStage == 1 &&
 					response != 4) {
-					if (response == 1 ||
-						response == 2 ||
-						response == 3   ) 
+					if (OpenedDoors(response, p1) == true) 
 					{
 						Console.WriteLine ("Okay, we are going into door {0}", response);
-						responseIsGood = true;
 						Enemy GiantSpider = new Enemy ("Giant Spider", 20, 10, 5, 7);
 						Enemy alligator = new Enemy ("Alligator", 20, 10, 5, 7);
 						Enemy kraken = new Enemy ("Kraken", 20, 10, 5, 7);
@@ -116,21 +112,17 @@ namespace Sophmores_FinalProj
 						kraken.AddToInventory (key2, 1);
 						DoorStage (p1, GiantSpider, alligator, kraken);
 						p1.Stage2Complete = true;
+						p1.currentStage = 2;
 						continue;
 					} else if (p1.Stage2Complete) {
 						response = UI.PromptInt ("You have already completed this Door, choose another.");
 						continue;
 					}
 				} 
-				else if (p1.Stage1Complete == true &&
-					p1.Stage2Complete == true &&
-					p1.Stage3Complete == false &&
+				else if (p1.currentStage == 2 &&
 					response != 4) {
-					if (response == 1 ||
-						response == 2 ||
-						response == 3   )  {
+					if (OpenedDoors(response, p1) == true)  {
 						Console.WriteLine ("Okay, we are going into door {0}", response);
-						responseIsGood = true;
 						Enemy wolf = new Enemy ("Wolf", 20, 10, 5, 7);
 						Enemy zombie = new Enemy ("Zombie", 20, 10, 5, 7);
 						Enemy orc = new Enemy ("Orc", 20, 10, 5, 7);
@@ -138,6 +130,7 @@ namespace Sophmores_FinalProj
 						orc.AddToInventory (key3, 1);
 						DoorStage (p1, wolf, zombie, orc);
 						p1.Stage3Complete = true;
+						p1.currentStage = 3;
 					} else if (p1.Stage3Complete) {
 						response = UI.PromptInt ("You have already completed this Door, choose another.");
 						continue;
@@ -153,9 +146,7 @@ namespace Sophmores_FinalProj
 						}
 					}
 
-				} else if (p1.Stage1Complete == true &&
-					p1.Stage2Complete == true &&
-					p1.Stage3Complete == true &&
+				} else if (p1.currentStage == 3 &&
 					response != 4)
 				{
 					responseIsGood = true;
@@ -178,6 +169,17 @@ namespace Sophmores_FinalProj
 
 
 
+		}
+		static bool OpenedDoors(int response, Player player)
+		{
+			foreach (int r in player.DoorsOpened) {
+				if (response == r) {
+					return false;
+				}
+			}
+			player.DoorsOpened.Add (response);
+			player.currentDoor = response;
+			return true;
 		}
 		static void GainEnemyItems(Player player, Enemy enemy)
 		{

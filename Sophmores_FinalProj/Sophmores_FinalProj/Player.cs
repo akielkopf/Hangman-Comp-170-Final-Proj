@@ -22,6 +22,11 @@ namespace Sophmores_FinalProj
 		public bool Stage1Complete { get; set;}
 		public bool Stage2Complete { get; set;}
 		public bool Stage3Complete { get; set;}
+		public bool Stage { get; set;}
+		public int currentDoor { get; set; }
+		public int currentStage { get; set; }
+		public List<int> DoorsOpened  { get; set; }
+
     public Player(string Name, int Health, int Level) 
       : base (Name, Health, Level)
     {
@@ -33,6 +38,9 @@ namespace Sophmores_FinalProj
       int damage = PhysicalDamage + MagicDamage;
       TotalDamage=(int)Math.Round( damage * BuffMultiplier);
       TutorialComplete = false;
+			currentDoor = 0;
+			currentStage = 0;
+			DoorsOpened = new List<int> { };
     }
     /// <summary>
     /// Creates Default Player named Douglas with basic attributes
