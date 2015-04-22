@@ -105,7 +105,6 @@ namespace Sophmores_FinalProj
 					if (OpenedDoors(response, p1) == true) 
 					{
 						Console.WriteLine ("Okay, we are going into door {0}", response);
-						responseIsGood = true;
 						Enemy GiantSpider = new Enemy ("Giant Spider", 20, 10, 5, 7);
 						Enemy alligator = new Enemy ("Alligator", 20, 10, 5, 7);
 						Enemy kraken = new Enemy ("Kraken", 20, 10, 5, 7);
@@ -124,7 +123,6 @@ namespace Sophmores_FinalProj
 					response != 4) {
 					if (OpenedDoors(response, p1) == true)  {
 						Console.WriteLine ("Okay, we are going into door {0}", response);
-						responseIsGood = true;
 						Enemy wolf = new Enemy ("Wolf", 20, 10, 5, 7);
 						Enemy zombie = new Enemy ("Zombie", 20, 10, 5, 7);
 						Enemy orc = new Enemy ("Orc", 20, 10, 5, 7);
