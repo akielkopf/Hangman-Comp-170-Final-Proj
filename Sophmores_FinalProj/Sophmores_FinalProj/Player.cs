@@ -38,9 +38,9 @@ namespace Sophmores_FinalProj
       int damage = PhysicalDamage + MagicDamage;
       TotalDamage=(int)Math.Round( damage * BuffMultiplier);
       TutorialComplete = false;
-			currentDoor = 0;
-			currentStage = 0;
-			DoorsOpened = new List<int> { };
+	  currentDoor = 0;
+      currentStage = 0;
+	  DoorsOpened = new List<int> { };
     }
     /// <summary>
     /// Creates Default Player named Douglas with basic attributes
@@ -56,6 +56,17 @@ namespace Sophmores_FinalProj
       int damage = PhysicalDamage + MagicDamage;
       TotalDamage = (int)Math.Round(damage * BuffMultiplier);
       TutorialComplete = false;
+      currentDoor = 0;
+      currentStage = 0;
+      DoorsOpened = new List<int> { };
+    }
+    /// <summary>
+    /// update's stats of player to reflect changes to buff.
+    /// </summary>
+    public void Update()
+    {
+        int damage = PhysicalDamage + MagicDamage;
+        TotalDamage = (int)Math.Round(damage * BuffMultiplier);
     }
     /// <summary>
     /// Equips specified weapon by creating new instance of said 
@@ -69,6 +80,7 @@ namespace Sophmores_FinalProj
       EquippedWeapon = new Weapon(WeapontoEquip);
       PhysicalDamage += WeapontoEquip.physicalDamage;
       MagicDamage += WeapontoEquip.magicalDamage;
+      Update();
       }
       else
       {
@@ -84,6 +96,13 @@ namespace Sophmores_FinalProj
       PhysicalDamage -= EquippedWeapon.physicalDamage;
       MagicDamage -= EquippedWeapon.magicalDamage;
       EquippedWeapon = DefaultWeapon;
+      Update();
+    }
+    public void consumeItem(Item theItem)
+    {
+        if (theItem is HealthPotion) { UseHealthPotion(theItem as HealthPotion); }
+        if (theItem is Poison) { UsePoison(theItem as Poison); }
+        Update();
     }
     /// <summary>
     /// For Players to read Item Descriptions
@@ -209,18 +228,45 @@ namespace Sophmores_FinalProj
       Console.WriteLine(s.name + " " + inventory.contents[s]);
       }
     }
-    public void DisplayConsumables()
+    public List<Item> DisplayConsumablesReturnList()
     {
-      string x = "Consumables: ";
-      StringBuilder builder = new StringBuilder(x);
-      foreach(KeyValuePair<Item, int> a in inventory.contents)
-      {
-        if (a.Key.consumable)
+        int count = 1;
+        List<Item> conList = new List<Item> { };
+        string x = "Consumables: \n";
+        StringBuilder builder = new StringBuilder(x);
+        foreach (KeyValuePair<Item, int> a in inventory.contents)
         {
-         builder.AppendLine(a.Key.name + ", " + a.Value);
+            if (a.Key.consumable)
+            {
+                builder.AppendLine(count + ") " + a.Key.name + ", " + a.Value);
+                count++;
+                conList.Add(a.Key);
+            }
+
         }
-      }
-      Console.WriteLine(""+builder);
+        builder.AppendLine(count + ") Don't use an item.");
+        Console.WriteLine("" + builder);
+        return conList;
+    }
+    public List<Item> DisplayAllWeaponsReturnList()
+    {
+        int count = 1;
+        List<Item> conList = new List<Item> { };
+        string x = "Weapons: \n";
+        StringBuilder builder = new StringBuilder(x);
+        foreach (KeyValuePair<Item, int> a in inventory.contents)
+        {
+            if (a.Key is Weapon)
+            {
+                builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type);
+                count++;
+                conList.Add(a.Key);
+            }
+
+        }
+        builder.AppendLine(count + ") Keep current weapon Equipped.");
+        Console.WriteLine("" + builder);
+        return conList;
     }
   }
 }
