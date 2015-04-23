@@ -24,21 +24,21 @@ namespace Sophmores_FinalProj
 			Combat.StartCombat (p1, Spider);
 			p1.TutorialComplete = true;
 			Console.WriteLine ("Congrats on Defeating your first Enemy, {0}!", p1.Name);
-			HealthPotion poison = new HealthPotion ("Spider Venom", "athough it has a very attractive smell, " +
-			                      "\nthis Potion is poisonous and dangerous to your health", -10);
+			Poison venom = new Poison ("Spider Venom", "athough it has a very attractive smell, " +
+			                      "\n this venom will weaken anyone who touches it.", false);
 			Console.WriteLine ("The {0} has dropped {1}, {2}. \n You can now add it to your inventory if you desire."
-				, Spider.Name, poison.name, poison.description);
-			int answer = UI.PromptInt ("Would you like to add to inventory? \n 1) Yes \n 2) No)\n");
+				, Spider.Name, venom.name, venom.description);
+            int answer = getChoice(2, "Would you like to add to inventory? \n 1) Yes \n 2) No)\n");
 			if (answer == 1) {
-				p1.AddToInventory (poison, 1);
-				Console.WriteLine ("{0} has been added to you inventory.", poison.name);
+				p1.AddToInventory (venom, 1);
+				Console.WriteLine ("{0} has been added to you inventory.", venom.name);
 			} else {
-				Console.WriteLine ("you have dropped {0}", poison.name);
+				Console.WriteLine ("you have dropped {0}", venom.name);
 			}
 
 			Console.WriteLine ("{0}, good job on your combat training, \n we are now ready to venture" +
 			" into the tunnel. \nIt will be challening, but after seeing your skills, \nI trust you will bring peace to the woods.", p1.Name);
-			int forward = UI.PromptInt ("Are you ready to journey into the tunnel? \n 1) Yes \n 2) No)\n");
+            int forward = getChoice(2, "Are you ready to journey into the tunnel? \n 1) Yes \n 2) No)\n");
 			if (forward == 1) {
 				Console.WriteLine ("Good to hear, we are now entering the cave.");
 			} else {
@@ -48,7 +48,7 @@ namespace Sophmores_FinalProj
 			"\n Look! there's a note on the wall.");
 			string noteDescription = TextUtil.ReturnTextFile ("note.txt");
 			Item note = new Item ("Note", "Paper", noteDescription);
-			int response = UI.PromptInt (" Would you like to: \n 1) Take a Look \n 2) Add to Inventory \n Enter 1 or 2.\n");
+			int response = getChoice (2," Would you like to: \n 1) Take a Look \n 2) Add to Inventory");
 			if (response == 1) {
 				Console.WriteLine(note.description);
 				Console.WriteLine ("\n\n**Hmmmm, kind of odd that the name at the bottom is ripped off**\n\n");
@@ -59,31 +59,27 @@ namespace Sophmores_FinalProj
 			Console.WriteLine ("Well lets not take too long, lets start finding keys!\n");
 			bool responseIsGood = false;
 			while (!(responseIsGood)) {
-				response = UI.PromptInt ("Which door would you like to enter? \n Door 1 \n Door 2 \n Door 3 \n 4) Open Inventory \n" +
-				"Enter 1, 2, 3 or 4\n");
+				response = getChoice (4,"Which door would you like to enter? \n Door 1 \n Door 2 \n Door 3 \n 4) Open Inventory \n");
 				if (p1.currentStage == 0 &&     //Stage 1 starts here
 					response != 4) {
 					if (OpenedDoors(response, p1) == true) {
 						p1.Stage = true;
-						p1.currentDoor = response;
-						//p1.DoorsOpened.Add (response);
 						Console.WriteLine ("Okay, we are going into door {0}", response);
 						Enemy skeleton = new Enemy ("Skeleton", 10, 1, 5, 6);
-						Weapon IronSword = new Weapon ("Iron Sword", "Weapon", "sword made of iron", 10, 0);
-						HealthPotion MagicPotion = new HealthPotion ("Skeleton Fluid", "fluid adds 25 points to HP", 25);
+						Weapon IronSword = new Weapon ("Iron Sword", "sword", "sword made of iron", 10, 0);
+						HealthPotion skeleFluid = new HealthPotion ("Skeleton Fluid", "Fluid from a skeleton... it looks nutritious", false);
 						skeleton.AddToInventory (IronSword, 1);
-						skeleton.AddToInventory (MagicPotion, 2);
+						skeleton.AddToInventory (skeleFluid, 2);
 
 						Enemy goblin = new Enemy ("Goblin", 20, 2, 7, 9);
-						Weapon SteelSword = new Weapon ("Steel Sword", "Weapon", "sword made of steel, with slight magic damage", 15, 10);
-						HealthPotion GoblinBlood = new HealthPotion ("Goblin Blood", "blood from the heart of the Goblin", 35);
+						Weapon SteelSword = new Weapon ("#blessed Steel Sword", "sword", "sword made of steel, with slight magic damage", 15, 10);
+						HealthPotion GoblinBlood = new HealthPotion ("Goblin Blood", "blood from the heart of the Goblin", false);
 						goblin.AddToInventory (SteelSword, 1);
 						goblin.AddToInventory(GoblinBlood, 2);
 
 						Enemy giant = new Enemy ("Giant", 35, 3, 10, 13);
-						Weapon BasicBow = new Weapon ("BasicBow", "Weapon", "basic wooden bow", 20, 0);
-						HealthPotion GiantMagic = new HealthPotion ("Giant Magic", "magic potion used by the Giant to cure his injuries",
-							55);
+						Weapon BasicBow = new Weapon ("BasicBow", "bow", "basic wooden bow", 20, 0);
+						HealthPotion GiantMagic = new HealthPotion ("Giant Magic", "magic potion used by the Giant to cure his injuries", true);
 						Item key1 = new Item ("Key I", "key", "this is the key colloected from first stage");
 						giant.AddToInventory (key1, 1);
 						giant.AddToInventory (BasicBow, 1);
@@ -157,7 +153,6 @@ namespace Sophmores_FinalProj
 		}
 		static void DoorStage (Player player, Enemy enemy1, Enemy enemy2, Enemy boss)
 		{
-
 			Combat.StartCombat (player, enemy1);
 			GainEnemyItems (player, enemy1);
 
@@ -166,10 +161,7 @@ namespace Sophmores_FinalProj
 
 			Combat.StartCombat (player, boss);
 			GainEnemyItems (player, boss);
-
-
-
-		}
+        }
 		static bool OpenedDoors(int response, Player player)
 		{
 			foreach (int r in player.DoorsOpened) {
@@ -190,7 +182,7 @@ namespace Sophmores_FinalProj
 					if (a.Key is Weapon)
 					{
 						string question = ("Would you like to equip " + a.Key.name + "? \n 1)Yes \n 2)No\n");
-						int answer = UI.PromptInt(question);
+						int answer = getChoice(2,question);
 						if (answer == 1)
 						{
 							player.Equip (a.Key as Weapon);
@@ -204,11 +196,10 @@ namespace Sophmores_FinalProj
 					else if (a.Key is HealthPotion)
 					{
 						string question = "Would you like to consume "+ a.Key.name +"?, Its desciption is : " + a.Key.description +" \n 1)Yes \n 2)No"; 
-						;
-						int answer = UI.PromptInt(question);
+                        int answer = getChoice(2, question);
 						if (answer == 1)
 						{
-							player.UseHealthPotion ();
+                            player.consumeItem(a.Key as HealthPotion);
 							Console.WriteLine("you have consumed the potion, your current HP is {0}.", player.CurrentHP);
 						}
 						else if (answer == 2)
@@ -219,6 +210,18 @@ namespace Sophmores_FinalProj
 				}
 			}
 		}
+        static int getChoice(int numChoices, string choices)
+        {
+            Console.WriteLine(choices);
+            int choice = UI.PromptInt("Please enter a choice number: ");
+            while (choice < 1 || choice > numChoices)
+            {
+                Console.WriteLine("{0} is not a valid choice!", choice);
+                Console.WriteLine(choices);
+                choice = UI.PromptInt("Please enter a valid choice number: ");
+            }
+            return choice;
+        }
 	}
 }
 

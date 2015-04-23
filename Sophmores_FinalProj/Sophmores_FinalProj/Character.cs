@@ -106,39 +106,30 @@ namespace Sophmores_FinalProj
     /// <param name="delta">Amount to increase or decrease CurrentHP</param>
     public void ModifyCurrentHP(int delta)
     {
-      CurrentHP += delta;
-      if (CurrentHP < 0)
-      {
-        isAlive();
-      }
+        CurrentHP += delta;
+        if (CurrentHP < 0)
+        {
+            CurrentHP = 0;
+            //isAlive(); 
+        }
+        if (CurrentHP > 100)
+        {
+            CurrentHP = 100;
+        }
+    }
+    public void UseHealthPotion(HealthPotion pot)
+    {
+        ModifyCurrentHP(pot.Potency);
+        RemoveFromInventory(pot, 1);
     }
     /// <summary>
     /// Uses the first healthpotion in the Inventory
     /// </summary>
-    public void UseHealthPotion()
+
+    public void UsePoison(Poison poi)
     {
-      foreach(KeyValuePair<Item, int> a in inventory.contents)
-      {
-        if (a.Key is HealthPotion &&
-            a.Value > 0           &&
-            a.Key.consumable == true)
-        {
-          ModifyCurrentHP(((HealthPotion)a.Key).Potency);
-          if(CurrentHP > TotalHP)
-          {
-            CurrentHP = TotalHP;
-          }
-          inventory.Remove(a.Key, 1);
-          return;
-        }
-        else if (a.Value <= 0)
-        {
-          Console.WriteLine("{0} doesn't have any Potions!", Name);
-          inventory.contents.Remove(a.Key);
-          return;
-        }
-      }
-      Console.WriteLine("{0} doesn't have any Potions!", Name);
+        ApplyBuffOrDebuff(poi.Potency);
+        RemoveFromInventory(poi, 1);
     }
     /// <summary>
     /// Applies Specified value to Character BuffMultiplier
