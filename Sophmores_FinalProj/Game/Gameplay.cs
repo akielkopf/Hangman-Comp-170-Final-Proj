@@ -139,7 +139,7 @@ namespace Sophmores_FinalProj
 						if (input.Trim().ToLower() == a.Key.name.Trim().ToLower()) {
 							p1.Inspect (a.Key);
 						} else {
-							input = UI.PromptLine ("There is no item in your inventory that matches input. Try again.");
+							input = UI.PromptLine ("There is no item in your inventory that matches that input. Try again.");
 						}
 					}
 
