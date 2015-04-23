@@ -59,7 +59,7 @@ namespace Sophmores_FinalProj
 			Console.WriteLine ("Well lets not take too long, lets start finding keys!\n");
 			bool responseIsGood = false;
 			while (!(responseIsGood)) {
-				response = getChoice (4,"Which door would you like to enter? \n Door 1 \n Door 2 \n Door 3 \n 4) Open Inventory \n");
+				response = getChoice (4,"Which door would you like to enter? \n 1) Door 1 \n 2) Door 2 \n 3) Door 3 \n 4) Open Inventory \n");
 				if (p1.currentStage == 0 &&     //Stage 1 starts here
 					response != 4) {
 					if (OpenedDoors(response, p1) == true) {
@@ -86,13 +86,14 @@ namespace Sophmores_FinalProj
 						giant.AddToInventory(GiantMagic, 1);
 
 						DoorStage (p1, skeleton, goblin, giant);
+                        Console.WriteLine("After defeating the giant, you leave the room. You hear \n the door lock behind you as you step into the lobby.");
 						p1.Stage1Complete = true;    ////Stage 1 ends here
 						p1.currentStage = 1;
 						p1.Stage = false;
 						continue;
 
 					} else if (p1.Stage1Complete) {
-						response = UI.PromptInt ("You have already completed this Door, choose another.");
+                        Console.WriteLine("The door is sealed shut");
 						continue;
 					}
 				}
@@ -133,12 +134,12 @@ namespace Sophmores_FinalProj
 					}
 				}else if (response == 4) {
 					p1.DisplayInventoryContents ();
-					string input = UI.PromptLine("spell out the name of Item you wish to see description.(exactly as is)");
+					string input = UI.PromptLine("Spell out the name of Item you wish to see description of. (case doesn't matter)");
 					foreach (KeyValuePair <Item, int> a in p1.inventory.contents) {
-						if (input == a.Key.name) {
+						if (input.Trim().ToLower() == a.Key.name.Trim().ToLower()) {
 							p1.Inspect (a.Key);
 						} else {
-							input = UI.PromptLine ("There is no item in your inventory that mtaches input. Try again.");
+							input = UI.PromptLine ("There is no item in your inventory that matches that input. Try again.");
 						}
 					}
 

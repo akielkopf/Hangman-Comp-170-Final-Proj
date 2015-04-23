@@ -193,15 +193,15 @@ namespace Sophmores_FinalProj
     public void DisplayInventoryContents()
     {
       var inventoryList = new List<Item>(inventory.contents.Keys);
-      inventoryList.Sort();
+      inventoryList.OrderBy(x => x.type);
       DisplayItems(inventoryList);
     }
     private void DisplayItems(List<Item> itemList)
     {
+      Console.WriteLine("All Items:");
       foreach (Item s in itemList)
-      {
-        Console.WriteLine("All Items:");
-        Console.WriteLine(s.name + " " + inventory.contents[s]);
+      {        
+        Console.WriteLine(s.name + ": " + s.type + ", " + inventory.contents[s]);
       }
     }
     private void DisplayWeapons(List<Item> weaponList)
