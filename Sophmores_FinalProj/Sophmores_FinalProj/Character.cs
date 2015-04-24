@@ -1,35 +1,45 @@
-﻿using System;
+﻿using Sophmores_FinalProj.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sophmores_FinalProj.Utilities;
 
 namespace Sophmores_FinalProj
 {
   public class Character
   {
-    /// <summary>
-    /// Base Character Class for all types of Characters
-    /// Come with Inventories and supporting methods 
-    /// Can die, and even Emote!
-    /// </summary>
-    public string Name { get; set; }
-    /// <summary>
-    /// Doesn't do anything...yet
-    /// </summary>
-    public int Level { get; set; }
-    public int TotalHP { get; set; }
-    public int CurrentHP { get; set; }
+    #region Public Properties
+
     public double BuffMultiplier { get; set; }
+
+    public int CurrentHP { get; set; }
+
     public Inventory inventory { get; set; }
 
     /// <summary>
-    /// Creates an Non-Player, Non-Combat Character
+    /// Doesn't do anything...yet 
     /// </summary>
-    /// <param name="Name">Character Name</param>
-    /// <param name="Health">Character Health</param>
-    /// <param name="Level">Character Level</param>
+    public int Level { get; set; }
+
+    /// <summary>
+    /// Base Character Class for all types of Characters Come with Inventories
+    /// and supporting methods Can die, and even Emote!
+    /// </summary>
+    public string Name { get; set; }
+
+    public int TotalHP { get; set; }
+
+    #endregion Public Properties
+
+    #region Public Constructors
+
+    /// <summary>
+    /// Creates an Non-Player, Non-Combat Character 
+    /// </summary>
+    /// <param name="Name"> Character Name </param>
+    /// <param name="Health"> Character Health </param>
+    /// <param name="Level"> Character Level </param>
     public Character(string Name, int Health, int Level)
     {
       this.Name = Name;
@@ -38,11 +48,11 @@ namespace Sophmores_FinalProj
       this.Level = Level;
       inventory = new Inventory();
     }
+
     /// <summary>
-    /// Creates an Nameable Default Character
-    /// Similar to Peasants!
+    /// Creates an Nameable Default Character Similar to Peasants! 
     /// </summary>
-    /// <param name="Name">Character Name</param>
+    /// <param name="Name"> Character Name </param>
     public Character(string Name)
     {
       this.Name = Name;
@@ -51,8 +61,9 @@ namespace Sophmores_FinalProj
       Level = 1;
       inventory = new Inventory();
     }
+
     /// <summary>
-    /// Default Characters are peasants!
+    /// Default Characters are peasants! 
     /// </summary>
     public Character()
     {
@@ -62,97 +73,113 @@ namespace Sophmores_FinalProj
       Level = 1;
       inventory = new Inventory();
     }
+
+    #endregion Public Constructors
+
+    #region Public Methods
+
     /// <summary>
-    /// Check to see if a Character is Alive
+    /// Add Item to inventory 
     /// </summary>
-    /// <returns>True is character is alive, false otherwise</returns>
+    /// <param name="item"> item </param>
+    /// <param name="itemCount"> Number of the SAME item to add </param>
+    public void AddToInventory(Item item, int itemCount)
+    {
+      inventory.Add(item, itemCount);
+    }
+
+    /// <summary>
+    /// Applies Specified value to Character BuffMultiplier 
+    /// </summary>
+    /// <param name="buff"> Value of new BuffMultiplier </param>
+    public void ApplyBuffOrDebuff(double buff)
+    {
+      BuffMultiplier = buff;
+    }
+
+    /// <summary>
+    /// For use when a character says something 
+    /// </summary>
+    /// <param name="says"> Thing the character says </param>
+    public void Emote(string says)
+    {
+      Console.WriteLine(this.Name + " says: {0}", says);
+    }
+
+    /// <summary>
+    /// Check to see if a Character is Alive 
+    /// </summary>
+    /// <returns> True is character is alive, false otherwise </returns>
     public bool isAlive()
     {
-      if (CurrentHP > 0) 
+      if (CurrentHP > 0)
       {
         return true;
       }
       return false;
     }
+
     /// <summary>
-    /// Add Item to inventory
+    /// Use this Function to modify Character Health in-combat 
     /// </summary>
-    /// <param name="item">item</param>
-    /// <param name="itemCount">Number of the SAME item to add</param>
-    public void AddToInventory(Item item, int itemCount)
-    {
-      inventory.Add(item, itemCount);
-    }
-    /// <summary>
-    /// Removie an Item from the character's Inventory
-    /// </summary>
-    /// <param name="item">Item to Remove</param>
-    /// <param name="itemCount">Number of Items to Remove</param>
-    public void RemoveFromInventory(Item item, int itemCount)
-    {
-      inventory.Remove(item, itemCount);
-    }
-    /// <summary>
-    /// For use when a character says something
-    /// </summary>
-    /// <param name="says">Thing the character says</param>
-    public void Emote(string says)
-    {
-      Console.WriteLine(this.Name + " says: {0}", says);
-    }
-    /// <summary>
-    /// Use this Function to modify Character Health in-combat
-    /// </summary>
-    /// <param name="delta">Amount to increase or decrease CurrentHP</param>
+    /// <param name="delta"> Amount to increase or decrease CurrentHP </param>
     public void ModifyCurrentHP(int delta)
     {
-        CurrentHP += delta;
-        if (CurrentHP < 0)
-        {
-            CurrentHP = 0;
-            //isAlive(); 
-        }
-        if (CurrentHP > 100)
-        {
-            CurrentHP = 100;
-        }
+      CurrentHP += delta;
+      if (CurrentHP < 0)
+      {
+        CurrentHP = 0;
+        //isAlive();
+      }
+      if (CurrentHP > 100)
+      {
+        CurrentHP = 100;
+      }
     }
-    public void UseHealthPotion(HealthPotion pot)
-    {
-        ModifyCurrentHP(pot.Potency);
-        RemoveFromInventory(pot, 1);
-    }
-    /// <summary>
-    /// Uses the first healthpotion in the Inventory
-    /// </summary>
 
-    public void UsePoison(Poison poi)
-    {
-        ApplyBuffOrDebuff(poi.Potency);
-        RemoveFromInventory(poi, 1);
-    }
     /// <summary>
-    /// Applies Specified value to Character BuffMultiplier
-    /// </summary>
-    /// <param name="buff">Value of new BuffMultiplier</param>
-    public void ApplyBuffOrDebuff(double buff)
-    {
-      BuffMultiplier = buff;
-    }
-    /// <summary>
-    /// Resets BuffMultiplier to 1
+    /// Resets BuffMultiplier to 1 
     /// </summary>
     public void RemoveBuff()
     {
       BuffMultiplier = 1;
     }
+
     /// <summary>
-    /// Returns Character Name as String
+    /// Removie an Item from the character's Inventory 
     /// </summary>
-    /// <returns>Character Name</returns>
+    /// <param name="item"> Item to Remove </param>
+    /// <param name="itemCount"> Number of Items to Remove </param>
+    public void RemoveFromInventory(Item item, int itemCount)
+    {
+      inventory.Remove(item, itemCount);
+    }
+
+    /// <summary>
+    /// Returns Character Name as String 
+    /// </summary>
+    /// <returns> Character Name </returns>
     public override string ToString()
     {
       return this.Name;
     }
+
+    public void UseHealthPotion(HealthPotion pot)
+    {
+      ModifyCurrentHP(pot.Potency);
+      RemoveFromInventory(pot, 1);
+    }
+
+    /// <summary>
+    /// Uses the first healthpotion in the Inventory 
+    /// </summary>
+
+    public void UsePoison(Poison poi)
+    {
+      ApplyBuffOrDebuff(poi.Potency);
+      RemoveFromInventory(poi, 1);
+    }
+
+    #endregion Public Methods
   }
 }
