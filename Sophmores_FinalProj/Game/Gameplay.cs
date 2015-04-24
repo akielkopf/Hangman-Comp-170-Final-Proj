@@ -13,6 +13,8 @@ namespace Sophmores_FinalProj
   {
     static void Main(string[] args)
 		{
+      TextUtil.PrintTextFile("TextFile1.txt");
+      Console.ReadLine();
 			TextUtil.SetBufferSize ();
 			TextUtil.PrintTextFile ("gamelogo.txt");
 			TextUtil.PressAnyKeyBufferClear ();
