@@ -55,16 +55,6 @@
     <Compile Include="Utilities\TextUtil.cs" />
     <Compile Include="Weapon.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\fio\fio.csproj">
-      <Project>{38702508-4bee-4055-b478-1f9fa30c1630}</Project>
-      <Name>fio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ui\ui.csproj">
-      <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
-      <Name>ui</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

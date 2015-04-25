@@ -59,9 +59,10 @@ namespace Sophmores_FinalProj
 			Console.WriteLine ("Well lets not take too long, lets start finding keys!\n");
 			bool responseIsGood = false;
 			while (!(responseIsGood)) {
-				response = getChoice (4,"Which door would you like to enter? \n 1) Door 1 \n 2) Door 2 \n 3) Door 3 \n 4) Open Inventory \n");
-				if (p1.currentStage == 0 &&     //Stage 1 starts here
-					response != 4) {
+				
+response = getChoice (4,"Which door would you like to enter? \n 1) Door 1 \n 2) Door 2 \n 3) Door 3 \n 4) Open Inventory \n");
+				if (1 <= response && response <= 3)    //Stage 1 starts here
+					 {
 					if (OpenedDoors(response, p1) == true) {
 						p1.Stage = true;
 						Console.WriteLine ("Okay, we are going into door {0}", response);
@@ -96,7 +97,7 @@ namespace Sophmores_FinalProj
                         Console.WriteLine("The door is sealed shut");
 						continue;
 					}
-				}
+				
 				else if (p1.currentStage == 1 &&
 					response != 4) {
 					if (OpenedDoors(response, p1) == true) 
@@ -132,7 +133,8 @@ namespace Sophmores_FinalProj
 						response = UI.PromptInt ("You have already completed this Door, choose another.");
 						continue;
 					}
-				}else if (response == 4) {
+				}
+                    }else if (response == 4) {
 					p1.DisplayInventoryContents ();
 					string input = UI.PromptLine("Spell out the name of Item you wish to see description of. (case doesn't matter)");
 					foreach (KeyValuePair <Item, int> a in p1.inventory.contents) {
