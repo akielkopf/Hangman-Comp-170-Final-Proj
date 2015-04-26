@@ -6,10 +6,8 @@ namespace Sophmores_FinalProj
 {
   public class Player : Character
   {
-    #region Private Fields
 
     /// <summary>
-<<<<<<< Updated upstream
     /// Contains Methods to Create Players that can Equip Weapons, and Inspect
     /// Items, and more. Inherits from Character
     /// </summary>
@@ -17,12 +15,6 @@ namespace Sophmores_FinalProj
     #region Private Fields
 
     private Weapon DefaultWeapon = new Weapon();
-=======
-    /// Contains Methods to Create Players that can Equip Weapons, and
-    /// Inspect Items, and more. Inherits from Character
-    /// </summary>
-    private Weapon DefaultWeapon;
->>>>>>> Stashed changes
 
     #endregion Private Fields
 
@@ -72,7 +64,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Creates Default Player named Douglas with basic attributes 
+    /// Creates Default Player named Douglas with basic attributes
     /// </summary>
     public Player()
     {
@@ -93,11 +85,16 @@ namespace Sophmores_FinalProj
 
     #region Public Methods
 
-<<<<<<< Updated upstream
-    public void consumeItem(Item theItem)
+    public void ConsumeItem(Item theItem)
     {
-      if (theItem is HealthPotion) { UseHealthPotion(theItem as HealthPotion); }
-      if (theItem is Poison) { UsePoison(theItem as Poison); }
+      if (theItem is HealthPotion)
+      {
+        UseHealthPotion(theItem as HealthPotion);
+      }
+      else if (theItem is Poison)
+      {
+        UsePoison(theItem as Poison);
+      }
       Update();
     }
 
@@ -141,7 +138,6 @@ namespace Sophmores_FinalProj
       return conList;
     }
 
-=======
     public void DisplayConsumables()
     {
       int i = 0;
@@ -158,21 +154,16 @@ namespace Sophmores_FinalProj
       Console.WriteLine("" + builder);
     }
 
->>>>>>> Stashed changes
     /// <summary>
-    /// Displays Inventory or specific Item types to Player 
+    /// Displays Inventory or specific Item types to Player
     /// </summary>
     /// <param name="itemType"> Types of items to show </param>
     public void DisplayInventoryContents(string itemType)
     {
       itemType.ToLower();
-      if (itemType == "sword" || itemType == "axe" ||
-          itemType == "bow" || itemType == "arrow" ||
-<<<<<<< Updated upstream
-          itemType == "shield")
-=======
+      if (itemType == "sword"  || itemType == "axe"   ||
+          itemType == "bow"    || itemType == "arrow" ||
           itemType == "shield" || itemType == "weapons")
->>>>>>> Stashed changes
       {
         itemType = "weapon";
       }
@@ -204,7 +195,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Displays ALL Inventory Contents to Player 
+    /// Displays ALL Inventory Contents to Player
     /// </summary>
     public void DisplayInventoryContents()
     {
@@ -214,13 +205,8 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-<<<<<<< Updated upstream
-    /// Equips specified weapon by creating new instance of said Weapon and
-    /// changing player EquippedWeapon Reference
-=======
     /// Equips specified weapon by creating new instance of said
     /// Weapon and changing player EquippedWeapon Reference
->>>>>>> Stashed changes
     /// </summary>
     /// <param name="WeapontoEquip"> Weapon the player will equip </param>
     public void Equip(Weapon WeapontoEquip)
@@ -230,10 +216,7 @@ namespace Sophmores_FinalProj
         EquippedWeapon = new Weapon(WeapontoEquip);
         PhysicalDamage += WeapontoEquip.physicalDamage;
         MagicDamage += WeapontoEquip.magicalDamage;
-<<<<<<< Updated upstream
         Update();
-=======
->>>>>>> Stashed changes
       }
       else
       {
@@ -242,11 +225,10 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// For Players to read Item Descriptions 
+    /// For Players to read Item Descriptions
     /// </summary>
     /// <param name="item"> Item to Describe </param>
     public void Inspect(Item item)
-<<<<<<< Updated upstream
     {
       Console.WriteLine("Name: {0}", item.name);
       Console.WriteLine("Type: {0}", item.type);
@@ -282,59 +264,12 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// update's stats of player to reflect changes to buff. 
+    /// update's stats of player to reflect changes to buff.
     /// </summary>
     public void Update()
     {
       int damage = PhysicalDamage + MagicDamage;
       TotalDamage = (int)Math.Round(damage * BuffMultiplier);
-    }
-
-    #endregion Public Methods
-
-    #region Private Methods
-
-    private void DisplayItems(List<Item> itemList)
-    {
-      Console.WriteLine("All Items:");
-      foreach (Item s in itemList)
-      {
-        Console.WriteLine(s.name + ": " + s.type + ", " + inventory.contents[s]);
-      }
-    }
-
-=======
-    {
-      Console.WriteLine("Name: {0}", item.name);
-      Console.WriteLine("Type: {0}", item.type);
-      Console.WriteLine("Description: {0}", item.description);
-      if (item is Weapon)
-      {
-        InspectWeapon(item as Weapon);
-      }
-      else if (item is HealthPotion)
-      {
-        InspectPotion(item as HealthPotion);
-      }
-      else if (item is Key)
-      {
-        InspectKey(item as Key);
-      }
-      else if (item is Quiver)
-      {
-        InspectQuiver(item as Quiver);
-      }
-    }
-
-    /// <summary>
-    /// Unequips currently Equipped Weapon and Equips the Default
-    /// Weapon Player will never not have Weapon Equipped
-    /// </summary>
-    public void UnEquip()
-    {
-      PhysicalDamage -= EquippedWeapon.physicalDamage;
-      MagicDamage -= EquippedWeapon.magicalDamage;
-      EquippedWeapon = DefaultWeapon;
     }
 
     #endregion Public Methods
@@ -352,7 +287,6 @@ namespace Sophmores_FinalProj
       }
     }
 
->>>>>>> Stashed changes
     private void DisplayKeys(List<Item> keyList)
     {
       int i = 0;
@@ -370,12 +304,6 @@ namespace Sophmores_FinalProj
 
     private void DisplayPotions(List<Item> potionList)
     {
-<<<<<<< Updated upstream
-      foreach (HealthPotion s in potionList)
-      {
-        Console.WriteLine("Potions:");
-        Console.WriteLine(s.name + " " + inventory.contents[s]);
-=======
       int i = 0;
       Console.WriteLine("Potions:");
       foreach (HealthPotion s in potionList)
@@ -386,18 +314,11 @@ namespace Sophmores_FinalProj
           Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
           i++;
         }
->>>>>>> Stashed changes
       }
     }
 
     private void DisplayWeapons(List<Item> weaponList)
     {
-<<<<<<< Updated upstream
-      foreach (Weapon s in weaponList)
-      {
-        Console.WriteLine("Weapons:");
-        Console.WriteLine(s.name + " " + inventory.contents[s]);
-=======
       int i = 0;
       Console.WriteLine("Weapons:");
       foreach (Item s in weaponList)
@@ -408,7 +329,6 @@ namespace Sophmores_FinalProj
           Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
           i++;
         }
->>>>>>> Stashed changes
       }
     }
 
