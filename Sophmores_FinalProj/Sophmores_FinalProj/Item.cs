@@ -11,7 +11,7 @@ namespace Sophmores_FinalProj
     public string description { get; set; }
 
     /// <summary>
-    /// Items are as flexible as you want them to be By default not consumable 
+    /// Items are as flexible as you want them to be By default not consumable
     /// </summary>
     public string name { get; set; }
 
@@ -24,18 +24,12 @@ namespace Sophmores_FinalProj
     #region Public Constructors
 
     /// <summary>
-    /// Creates a new Item, can be Consumable 
+    /// Creates a new Item, can be Consumable
     /// </summary>
     /// <param name="Name"> Item Name </param>
     /// <param name="Type"> Type of Item as a string </param>
     /// <param name="Description"> Item Flavor Text </param>
-<<<<<<< Updated upstream
     /// <param name="Consumable"> Is this item destroyed when used? </param>
-=======
-    /// <param name="Consumable">
-    /// Is this item destroyed when used?
-    /// </param>
->>>>>>> Stashed changes
     public Item(string Name, string Type, string Description, bool Consumable)
     {
       name = Name;
@@ -45,7 +39,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Creates a new Non-Consumable Item 
+    /// Creates a new Non-Consumable Item
     /// </summary>
     /// <param name="Name"> Item Name </param>
     /// <param name="Type"> Item Type as a string </param>
@@ -63,14 +57,9 @@ namespace Sophmores_FinalProj
     #region Protected Constructors
 
     /// <summary>
-<<<<<<< Updated upstream
-    /// If you create an Item using this on purpose, you're wrong Please DO NOT
-    /// Create Items using this Enables functionality of child classes
-=======
     /// If you create an Item using this on purpose, you're wrong
     /// Please DO NOT Create Items using this Enables functionality of
-    /// child classes
->>>>>>> Stashed changes
+    /// Child classes
     /// </summary>
     protected Item()
     {
@@ -81,11 +70,7 @@ namespace Sophmores_FinalProj
     #region Public Methods
 
     /// <summary>
-<<<<<<< Updated upstream
-    /// Returns Item name as a string 
-    /// </summary>
-=======
-    /// Compares Item Names 
+    /// Compares Item Names
     /// </summary>
     /// <param name="obj"> Item to Compare </param>
     /// <returns></returns>
@@ -105,9 +90,8 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Returns Item name as a string 
+    /// Returns Item name as a string
     /// </summary>
->>>>>>> Stashed changes
     /// <returns> Returns Item name as a string </returns>
     public override string ToString()
     {
