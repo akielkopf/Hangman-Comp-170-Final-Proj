@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
-  public class Item
+  public class Item : IComparable
   {
     #region Public Properties
 
@@ -33,7 +29,13 @@ namespace Sophmores_FinalProj
     /// <param name="Name"> Item Name </param>
     /// <param name="Type"> Type of Item as a string </param>
     /// <param name="Description"> Item Flavor Text </param>
+<<<<<<< Updated upstream
     /// <param name="Consumable"> Is this item destroyed when used? </param>
+=======
+    /// <param name="Consumable">
+    /// Is this item destroyed when used?
+    /// </param>
+>>>>>>> Stashed changes
     public Item(string Name, string Type, string Description, bool Consumable)
     {
       name = Name;
@@ -61,8 +63,14 @@ namespace Sophmores_FinalProj
     #region Protected Constructors
 
     /// <summary>
+<<<<<<< Updated upstream
     /// If you create an Item using this on purpose, you're wrong Please DO NOT
     /// Create Items using this Enables functionality of child classes
+=======
+    /// If you create an Item using this on purpose, you're wrong
+    /// Please DO NOT Create Items using this Enables functionality of
+    /// child classes
+>>>>>>> Stashed changes
     /// </summary>
     protected Item()
     {
@@ -73,8 +81,33 @@ namespace Sophmores_FinalProj
     #region Public Methods
 
     /// <summary>
+<<<<<<< Updated upstream
     /// Returns Item name as a string 
     /// </summary>
+=======
+    /// Compares Item Names 
+    /// </summary>
+    /// <param name="obj"> Item to Compare </param>
+    /// <returns></returns>
+    public int CompareTo(object obj)
+    {
+      if (obj == null)
+      {
+        return 1;
+      }
+      Item otherItem = obj as Item;
+      if (otherItem != null)
+      {
+        return this.name.CompareTo(otherItem.name);
+      }
+      else
+        throw new ArgumentException("Object is not an Item");
+    }
+
+    /// <summary>
+    /// Returns Item name as a string 
+    /// </summary>
+>>>>>>> Stashed changes
     /// <returns> Returns Item name as a string </returns>
     public override string ToString()
     {
