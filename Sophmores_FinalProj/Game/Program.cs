@@ -47,8 +47,6 @@ namespace Sophmores_FinalProj
       p1.AddToInventory(magicbow, 1);
       p1.DisplayInventoryContents();
 
-
-
       // Test Remove items until no more of said item remain
       for (int i = 0; i < p1.inventory.contents.Count; i++)
       {
