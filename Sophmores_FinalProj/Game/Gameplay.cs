@@ -220,7 +220,7 @@ namespace Sophmores_FinalProj
             continue;
           }
         }
-        else if (response == 4)
+      }else if (response == 4)
         {
           p1.DisplayInventoryContents();
           string input = UI.PromptLine("Spell out the name of Item you wish to see description of. (case doesn't matter)");
