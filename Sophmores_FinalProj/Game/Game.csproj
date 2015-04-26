@@ -67,8 +67,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Program.cs" />
-    <None Include="gamelogo.txt" />
-    <None Include="gamelogo2.txt" />
+    <None Include="GameLogos\gamelogo.txt" />
+    <None Include="GameLogos\gamelogo2.txt" />
     <None Include="note.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +101,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EnemyArt\TextFile1.txt" />
+    <Content Include="EnemyArt\TextFile2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
