@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj.Utilities
 {
@@ -22,7 +19,7 @@ namespace Sophmores_FinalProj.Utilities
     }
 
     /// <summary>
-    /// Create new inventory from one that already exists 
+    /// Create new inventory from one that already exists
     /// </summary>
     /// <param name="OldInventory"> Inventory to be copied from </param>
     public Inventory(Inventory OldInventory)
@@ -31,6 +28,10 @@ namespace Sophmores_FinalProj.Utilities
       {
         contents = new Dictionary<Item, int>(OldInventory.contents);
       }
+      else
+      {
+        contents = new Dictionary<Item, int>();
+      }
     }
 
     #endregion Public Constructors
@@ -38,7 +39,7 @@ namespace Sophmores_FinalProj.Utilities
     #region Public Methods
 
     /// <summary>
-    /// Add Item to inventory 
+    /// Add Item to inventory
     /// </summary>
     /// <param name="item"> item </param>
     /// <param name="itemCount"> Number of the SAME item to add </param>
@@ -55,7 +56,7 @@ namespace Sophmores_FinalProj.Utilities
     }
 
     /// <summary>
-    /// Removes specified amount of Items 
+    /// Removes specified amount of Items
     /// </summary>
     /// <param name="item"> Item </param>
     /// <param name="ItemCount"> Number of items to Remove </param>
