@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
   public class Player : Character
   {
+    #region Private Fields
+
     /// <summary>
+<<<<<<< Updated upstream
     /// Contains Methods to Create Players that can Equip Weapons, and Inspect
     /// Items, and more. Inherits from Character
     /// </summary>
@@ -16,6 +17,12 @@ namespace Sophmores_FinalProj
     #region Private Fields
 
     private Weapon DefaultWeapon = new Weapon();
+=======
+    /// Contains Methods to Create Players that can Equip Weapons, and
+    /// Inspect Items, and more. Inherits from Character
+    /// </summary>
+    private Weapon DefaultWeapon;
+>>>>>>> Stashed changes
 
     #endregion Private Fields
 
@@ -86,6 +93,7 @@ namespace Sophmores_FinalProj
 
     #region Public Methods
 
+<<<<<<< Updated upstream
     public void consumeItem(Item theItem)
     {
       if (theItem is HealthPotion) { UseHealthPotion(theItem as HealthPotion); }
@@ -133,6 +141,24 @@ namespace Sophmores_FinalProj
       return conList;
     }
 
+=======
+    public void DisplayConsumables()
+    {
+      int i = 0;
+      string x = "Consumables: ";
+      StringBuilder builder = new StringBuilder(x);
+      foreach (KeyValuePair<Item, int> a in inventory.contents)
+      {
+        if (a.Key.consumable)
+        {
+          builder.AppendLine(i + ") " + a.Key.name + ", " + a.Value);
+          i++;
+        }
+      }
+      Console.WriteLine("" + builder);
+    }
+
+>>>>>>> Stashed changes
     /// <summary>
     /// Displays Inventory or specific Item types to Player 
     /// </summary>
@@ -142,7 +168,11 @@ namespace Sophmores_FinalProj
       itemType.ToLower();
       if (itemType == "sword" || itemType == "axe" ||
           itemType == "bow" || itemType == "arrow" ||
+<<<<<<< Updated upstream
           itemType == "shield")
+=======
+          itemType == "shield" || itemType == "weapons")
+>>>>>>> Stashed changes
       {
         itemType = "weapon";
       }
@@ -184,8 +214,13 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
+<<<<<<< Updated upstream
     /// Equips specified weapon by creating new instance of said Weapon and
     /// changing player EquippedWeapon Reference
+=======
+    /// Equips specified weapon by creating new instance of said
+    /// Weapon and changing player EquippedWeapon Reference
+>>>>>>> Stashed changes
     /// </summary>
     /// <param name="WeapontoEquip"> Weapon the player will equip </param>
     public void Equip(Weapon WeapontoEquip)
@@ -195,7 +230,10 @@ namespace Sophmores_FinalProj
         EquippedWeapon = new Weapon(WeapontoEquip);
         PhysicalDamage += WeapontoEquip.physicalDamage;
         MagicDamage += WeapontoEquip.magicalDamage;
+<<<<<<< Updated upstream
         Update();
+=======
+>>>>>>> Stashed changes
       }
       else
       {
@@ -208,6 +246,7 @@ namespace Sophmores_FinalProj
     /// </summary>
     /// <param name="item"> Item to Describe </param>
     public void Inspect(Item item)
+<<<<<<< Updated upstream
     {
       Console.WriteLine("Name: {0}", item.name);
       Console.WriteLine("Type: {0}", item.type);
@@ -264,30 +303,112 @@ namespace Sophmores_FinalProj
       }
     }
 
+=======
+    {
+      Console.WriteLine("Name: {0}", item.name);
+      Console.WriteLine("Type: {0}", item.type);
+      Console.WriteLine("Description: {0}", item.description);
+      if (item is Weapon)
+      {
+        InspectWeapon(item as Weapon);
+      }
+      else if (item is HealthPotion)
+      {
+        InspectPotion(item as HealthPotion);
+      }
+      else if (item is Key)
+      {
+        InspectKey(item as Key);
+      }
+      else if (item is Quiver)
+      {
+        InspectQuiver(item as Quiver);
+      }
+    }
+
+    /// <summary>
+    /// Unequips currently Equipped Weapon and Equips the Default
+    /// Weapon Player will never not have Weapon Equipped
+    /// </summary>
+    public void UnEquip()
+    {
+      PhysicalDamage -= EquippedWeapon.physicalDamage;
+      MagicDamage -= EquippedWeapon.magicalDamage;
+      EquippedWeapon = DefaultWeapon;
+    }
+
+    #endregion Public Methods
+
+    #region Private Methods
+
+    private void DisplayItems(List<Item> itemList)
+    {
+      int i = 0;
+      Console.WriteLine("All Items:");
+      foreach (Item s in itemList)
+      {
+        Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
+        i++;
+      }
+    }
+
+>>>>>>> Stashed changes
     private void DisplayKeys(List<Item> keyList)
     {
+      int i = 0;
+      Console.WriteLine("Keys:");
       foreach (Key s in keyList)
       {
-        Console.WriteLine("Keys:");
-        Console.WriteLine(s.name + " " + inventory.contents[s]);
+        Key key = s as Key;
+        if (key != null)
+        {
+          Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
+          i++;
+        }
       }
     }
 
     private void DisplayPotions(List<Item> potionList)
     {
+<<<<<<< Updated upstream
       foreach (HealthPotion s in potionList)
       {
         Console.WriteLine("Potions:");
         Console.WriteLine(s.name + " " + inventory.contents[s]);
+=======
+      int i = 0;
+      Console.WriteLine("Potions:");
+      foreach (HealthPotion s in potionList)
+      {
+        HealthPotion potion = s as HealthPotion;
+        if (potion != null)
+        {
+          Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
+          i++;
+        }
+>>>>>>> Stashed changes
       }
     }
 
     private void DisplayWeapons(List<Item> weaponList)
     {
+<<<<<<< Updated upstream
       foreach (Weapon s in weaponList)
       {
         Console.WriteLine("Weapons:");
         Console.WriteLine(s.name + " " + inventory.contents[s]);
+=======
+      int i = 0;
+      Console.WriteLine("Weapons:");
+      foreach (Item s in weaponList)
+      {
+        Weapon weapon = s as Weapon;
+        if (weapon != null)
+        {
+          Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
+          i++;
+        }
+>>>>>>> Stashed changes
       }
     }
 
