@@ -76,14 +76,13 @@ namespace Sophmores_FinalProj
         "appear to be a ghost.\n\"Sorry for my manners, but I never asked " +
         "for your name.\nWhat is your name my friend?\", " +
         "asks the ghost.");
-      Console.Write("(Please enter in your name) ");
-      mainCharacter.Name = Console.ReadLine();
-      string playerName = mainCharacter.Name;
+
+      mainCharacter.Name = UI.PromptLine("(Please enter in your name) ");
 
       TextUtil.PressAnyKeyBufferClear();
 
-      Console.WriteLine("\"My name is " + playerName + ".\", you respond " +
-        "slowly.\n\"How is it exactly that you are a ghost?\", you ask " +
+      Console.WriteLine("\"My name is " + mainCharacter.Name + ".\", you " +
+      "respond slowly.\n\"How is it exactly that you are a ghost?\", you ask " +
         "Odalf.\n\"Funny that you would ask that question.\", Odalf says " +
         "chuckling to himself.\n\"I appear to have gotten myself into some " +
         "trouble.\nI was on an adventure and I mistakengly met my fate." +
@@ -96,11 +95,11 @@ namespace Sophmores_FinalProj
       Console.WriteLine("\"What kind of adventure were you on?\", you ask " +
         "Odalf.\nThere's a cavern in the woods not too far from here.\nIn " +
         "it lies a treasure bigger than either you or I can imagine.\", " +
-        "Odalf explains.\n\"And you " + playerName + ", are going to help " +
-        "me get the treasure!\",\nOdalf explains with excitement.\n\"Me?! " +
-        "There is no way I'm going to this dangerous cavern.\nI don't even " +
-        "know what's there. You died and that's all I need to know!\"," +
-        "\nyou shout at Odalf.");
+        "Odalf explains.\n\"And you " + mainCharacter.Name + ", are going to " +
+        "help me get the treasure!\",\nOdalf explains with excitement. " +
+        "\n\"Me?! There is no way I'm going to this dangerous cavern.\nI " +
+        "don't even know what's there. You died and that's all I need to " +
+        "know!\",\nyou shout at Odalf.");
 
       TextUtil.PressAnyKeyBufferClear();
 
