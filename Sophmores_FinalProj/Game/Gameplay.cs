@@ -212,8 +212,7 @@ namespace Sophmores_FinalProj
         p1.AddToInventory(note, 1);
       }
       p1.AddToInventory(note, 1);
-      Console.WriteLine("Well lets not take too long, lets start finding keys!\n");
-      Enemies();
+      Console.WriteLine("Well lets not take too long, lets start finding keys!\n");      
       bool responseIsGood = false;
       while (!(responseIsGood))
       {
