@@ -19,11 +19,15 @@ namespace Sophmores_FinalProj
     #endregion Private Fields
 
     #region Public Properties
-
+      /// <summary>
+      /// number of the current door the player is on. 
+      /// </summary>
     public int currentDoor { get; set; }
 
     public int currentStage { get; set; }
-
+      /// <summary>
+      /// list of door numbers that have been opened
+      /// </summary>
     public List<int> DoorsOpened { get; set; }
 
     public Weapon EquippedWeapon { get; private set; }
@@ -31,7 +35,9 @@ namespace Sophmores_FinalProj
     public int MagicDamage { get; private set; }
 
     public int PhysicalDamage { get; private set; }
-
+      /// <summary>
+      /// true when player is in a stage, false when player is out of one/completes one.
+      /// </summary>
     public bool Stage { get; set; }
 
     public bool Stage1Complete { get; set; }
@@ -39,9 +45,13 @@ namespace Sophmores_FinalProj
     public bool Stage2Complete { get; set; }
 
     public bool Stage3Complete { get; set; }
-
+      /// <summary>
+      /// total actual damage value player is capable of after buff and weapon and damage
+      /// </summary>
     public int TotalDamage { get; private set; }
-
+      /// <summary>
+      /// true after player completes tutorial
+      /// </summary>
     public bool TutorialComplete { get; set; }
 
     #endregion Public Properties
@@ -58,6 +68,7 @@ namespace Sophmores_FinalProj
       int damage = PhysicalDamage + MagicDamage;
       TotalDamage = (int)Math.Round(damage * BuffMultiplier);
       TutorialComplete = false;
+      Stage = false;
       currentDoor = 0;
       currentStage = 0;
       DoorsOpened = new List<int> { };
@@ -76,6 +87,7 @@ namespace Sophmores_FinalProj
       int damage = PhysicalDamage + MagicDamage;
       TotalDamage = (int)Math.Round(damage * BuffMultiplier);
       TutorialComplete = false;
+      Stage = false;
       currentDoor = 0;
       currentStage = 0;
       DoorsOpened = new List<int> { };

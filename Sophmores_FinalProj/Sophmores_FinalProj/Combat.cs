@@ -15,9 +15,9 @@ namespace Sophmores_FinalProj
     private static int poisonStart;
     private static Random random = new Random();
     private static int turn;
-
     #endregion Private Fields
 
+    public static bool run;
     #region Public Methods
 
     public static string message(Item cur)
@@ -40,31 +40,77 @@ namespace Sophmores_FinalProj
 
     public static void StartCombat(Player player, Enemy enemy)
     {
-      turn = 0;
-      poisonStart = -4;
-      Console.WriteLine("A Wild {0} has appeared!! It appears to have {1}HP.", enemy.Name, enemy.TotalHP);
-      while (player.isAlive() && enemy.isAlive())
-      {
-        playerAction(player, enemy, turn);
-        if (!(enemy.isAlive()))
+        player.RemoveBuff();
+        run = false;
+        if (!enemy.isAlive()) 
         {
-          Console.WriteLine(enemy.Name + " has fallen!");
-          starLine();
-          player.CurrentHP = player.TotalHP;
-          break;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\nYou walk past the fallen {0}...", enemy.Name);
+            Console.ResetColor();
+            return;
         }
-        enemyAttack(player, enemy);
-        if (!(player.isAlive()))
+        else if (enemy.isAlive())
         {
-          Console.WriteLine(player.Name + "has blacked out...");
-          starLine();
-          break;
+            turn = 0;
+            poisonStart = -4;
+            Console.WriteLine("\nA Wild {0} has appeared!! It appears to have {1}HP.", enemy.Name, enemy.TotalHP);
+            while ((player.isAlive() && enemy.isAlive()) || !run)
+            {
+                playerAction(player, enemy, turn);
+                if (!(enemy.isAlive()))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\n" + enemy.Name + " has fallen!");
+                    Console.ResetColor();
+                    starLine();
+                    player.CurrentHP = player.TotalHP;
+                    endFight(player);
+                    break;
+                }
+                enemyAttack(player, enemy);
+                if (!(player.isAlive()))
+                {
+                    if (!player.TutorialComplete)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\nLooks like you could use some help, here's some more health");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\n{0} has replenished 20 HP!", player.Name);
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\nBe more careful, I won't be able to save you later!");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.WriteLine("\n..." + player.Name + " has blacked out and is in critical condition...");
+                        Console.WriteLine("...\n...\n...\n...\nPress any key to continue");
+                        Console.ReadKey(true);
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n" + player.Name + " has woken back up in the door lobby somehow feeling a little better...");
+                        Console.ResetColor();
+                        endFight(player);
+                        starLine();
+                        break;
+                    }
+                }
+                if(run)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\n" + player.Name + " has succesfully run from the " + enemy.Name + "!");
+                    Console.WriteLine(player.Name + " has returned to the door lobby.");
+                    Console.ResetColor();
+                    endFight(player);
+                    starLine();
+                    break;
+                }
+                turn++;
+                depoison(player);
+            }
+            endFight(player);
         }
-        turn++;
-        depoison(player);
-      }
-      endFight(player);
-      return;
+        return;
+        
     }
 
     #endregion Public Methods
@@ -92,7 +138,7 @@ namespace Sophmores_FinalProj
     {
       turn = 0;
       poisonStart = -4;
-      player.RemoveBuff();
+      player.RemoveBuff();      
     }
 
     private static void enemyAttack(Player player, Enemy enemy)
@@ -110,7 +156,7 @@ namespace Sophmores_FinalProj
     /// <returns></returns>
     private static int getChoice(int numChoices)
     {
-      int choice = UI.PromptInt("Please enter a choice number: ");
+      int choice = UI.PromptInt("\nPlease enter a choice number: ");
       while (choice < 1 || choice > numChoices)
       {
         Console.WriteLine("{0} is not a valid choice!", choice);
@@ -127,8 +173,16 @@ namespace Sophmores_FinalProj
     {
       starLine();
       Console.WriteLine("Make your choice...");
-      string prompt = ("1) Attack  2)Swap  3) Use  4)Run");
-      string playerInput = UI.PromptLine(prompt + "\n");
+      Console.ForegroundColor = ConsoleColor.Red;
+      Console.Write("1) Attack  ");
+      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.Write("2) Swap  ");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.Write("3) Use  ");
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.WriteLine("4) Run");
+      Console.ResetColor();
+      string playerInput = UI.PromptLine("\nchoice: ");
       return playerInput.Trim().ToLower();
     }
 
@@ -199,10 +253,11 @@ namespace Sophmores_FinalProj
             break;
           }
           int chance = random.Next(100);
-          if (chance <= 70)
+          if (chance <= 40)
           {
-            Console.WriteLine("You have escaped from the enemy!");
-            //add code to end fight
+              run = true;
+              playerTurn = false;
+              break;
           }
           else
           {
