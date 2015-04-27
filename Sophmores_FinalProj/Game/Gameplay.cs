@@ -49,34 +49,39 @@ namespace Sophmores_FinalProj
         foreach (KeyValuePair<Item, int> a in enemy.inventory.contents)
         {
           player.AddToInventory(a.Key, 1);
-          Console.WriteLine("{0} has been added to your inventory!", a.Key.name);
+          Console.ForegroundColor = ConsoleColor.Yellow;
+          Console.WriteLine("{0} has been added to your inventory!", a.Key.name);          
           if (a.Key is Weapon)
           {
             string question = ("Would you like to equip " + a.Key.name + "? \n 1)Yes \n 2)No\n");
             int answer = getChoice(2, question);
+            Console.ForegroundColor = ConsoleColor.Blue;
             if (answer == 1)
             {
-              player.Equip(a.Key as Weapon);
-              Console.WriteLine("your new weapon has been equipped!\n");
+              player.Equip(a.Key as Weapon);              
+              Console.WriteLine("\nYour new weapon has been equipped!\n");
             }
             else if (answer == 2)
             {
-              Console.WriteLine("you have not equipped your newest weapon.\n");
+              Console.WriteLine("\nYou have not equipped your newest weapon.\n");
             }
+            Console.ResetColor();
           }
           else if (a.Key is HealthPotion)
           {
             string question = "Would you like to consume " + a.Key.name + "?, Its desciption is : " + a.Key.description + " \n 1)Yes \n 2)No";
             int answer = getChoice(2, question);
+            Console.ForegroundColor = ConsoleColor.Green;
             if (answer == 1)
             {
               player.ConsumeItem(a.Key as HealthPotion);
-              Console.WriteLine("you have consumed the potion, your current HP is {0}.", player.CurrentHP);
+              Console.WriteLine("\nYou have consumed the potion, your current HP is {0}.", player.CurrentHP);
             }
             else if (answer == 2)
             {
-              Console.WriteLine("you have decided not to consume the potion.\n");
+              Console.WriteLine("\nYou have decided not to consume the potion.\n");
             }
+            Console.ResetColor();
           }
         }
       }
@@ -93,9 +98,11 @@ namespace Sophmores_FinalProj
     {
       Console.ForegroundColor = ConsoleColor.Blue;
       if (door == false) { Console.WriteLine("\n \n" + choices); }
-      else if(door == true) { Console.Write("\n \nWhich door would you like to enter? \n 1) Door 1 \n 2) Door 2 \n 3) Door 3");
-      Console.ForegroundColor = ConsoleColor.Yellow;
-      Console.WriteLine("\n 4) Open Inventory \n");
+      else if(door == true) 
+      {
+        Console.Write("\n \nWhich door would you like to enter? \n 1) Door 1 \n 2) Door 2 \n 3) Door 3");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n 4) Open Inventory \n");
       }
       Console.ResetColor();
       int choice = UI.PromptInt("\nPlease enter a choice number: ");
@@ -123,7 +130,7 @@ namespace Sophmores_FinalProj
       TextUtil.PrintTextFile("gamelogo.txt");
       TextUtil.PressAnyKeyBufferClear();
       TextUtil.PrintTextFile("gamelogo2.txt");
-      Player p1 = GameIntro.Start(new Player("", 100, 10));
+      Player p1 = GameIntro.Start(new Player("", 20, 10));
       Console.Write(p1.Name + ", ");
       Enemy Spider = new Enemy();
       Spider.Name = "Small Spider";
@@ -249,16 +256,16 @@ namespace Sophmores_FinalProj
                         continue;
                     }
                 }
-                else if (p1.DoorsOpened.Count == 2)
+                else if (p1.DoorsOpened.Count == 2) // checks to see if stage 2 has been completed (so that stage 3 can start)
                 {
-                    if (OpenedDoors(response, p1))
+                    if (OpenedDoors(response, p1)) // checks to see if the desired door has been opened before
                     {
                         Console.WriteLine("\nOkay, we are going into door {0}", response);
                         
                         DoorStage(p1, wolf, zombie, orc);                        
                         continue;
                     }
-                    else
+                    else               // response if door has been opened before
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou have already completed this Door and it is now sealed, choose another.");
@@ -267,8 +274,8 @@ namespace Sophmores_FinalProj
                     }
                 }
             }
-            else if(p1.Stage) 
-            {
+            else if(p1.Stage)            // if player dies/runs, they are returned to the lobby. In this case stage will be true. 
+            {                            // this code makes it so player is only allowed to return to the door where they died/ran from.
                 if(response == p1.currentDoor)
                 {
                     int stagesCompleted = p1.DoorsOpened.Count;
@@ -291,7 +298,7 @@ namespace Sophmores_FinalProj
                     Console.WriteLine("This door is sealed shut and will not open.");
                     continue;
                 }
-                ///filler                
+                                
             }
       }else if (response == 4)
         {

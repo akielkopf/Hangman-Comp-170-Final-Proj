@@ -70,15 +70,29 @@ namespace Sophmores_FinalProj
                 enemyAttack(player, enemy);
                 if (!(player.isAlive()))
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.WriteLine("\n" + player.Name + " has blacked out and is in critical condition...");
-                    Console.WriteLine("...\n...\n...\n...\nPress any key to continue");
-                    Console.ReadKey(true);
-                    Console.WriteLine(player.Name + " has woken back up in the door lobby somehow feeling a little better...");
-                    Console.ResetColor();
-                    endFight(player);
-                    starLine();
-                    break;
+                    if (!player.TutorialComplete)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\nLooks like you could use some help, here's some more health");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\n{0} has replenished 20 HP!", player.Name);
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\nBe more careful, I won't be able to save you later!");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.WriteLine("\n..." + player.Name + " has blacked out and is in critical condition...");
+                        Console.WriteLine("...\n...\n...\n...\nPress any key to continue");
+                        Console.ReadKey(true);
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n" + player.Name + " has woken back up in the door lobby somehow feeling a little better...");
+                        Console.ResetColor();
+                        endFight(player);
+                        starLine();
+                        break;
+                    }
                 }
                 if(run)
                 {
@@ -159,8 +173,16 @@ namespace Sophmores_FinalProj
     {
       starLine();
       Console.WriteLine("Make your choice...");
-      string prompt = ("1) Attack  2)Swap  3) Use  4)Run");
-      string playerInput = UI.PromptLine(prompt + "\n");
+      Console.ForegroundColor = ConsoleColor.Red;
+      Console.Write("1) Attack  ");
+      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.Write("2) Swap  ");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.Write("3) Use  ");
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.WriteLine("4) Run");
+      Console.ResetColor();
+      string playerInput = UI.PromptLine("\nchoice: ");
       return playerInput.Trim().ToLower();
     }
 
