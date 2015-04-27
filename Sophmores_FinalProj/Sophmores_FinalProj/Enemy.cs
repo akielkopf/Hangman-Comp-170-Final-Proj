@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +9,22 @@ namespace Sophmores_FinalProj
   public class Enemy : Character
   {
     /// <summary>
-    /// Basic enemy Class, have Max and Min Damage values
-    /// For random hit damage
+    /// Basic enemy Class, have Max and Min Damage values For random
+    /// Hit damage
     /// </summary>
-    public int MinDamage { get; set; }
-    public int MaxDamage { get; set; }
+
+    #region Public Properties
+
     public string Affinity { get; set; }
+
+    public int MaxDamage { get; set; }
+
+    public int MinDamage { get; set; }
+
+    #endregion Public Properties
+
+    #region Public Constructors
+
     /// <summary>
     /// Default Enemy with 'n' Affinity, Damage 5-10
     /// </summary>
@@ -27,10 +36,12 @@ namespace Sophmores_FinalProj
       MaxDamage = 10;
       BuffMultiplier = 1;
     }
+
     /// <summary>
     /// Default Enemy with 'n' Affinity, Damage 5-10
     /// </summary>
-    public Enemy(string Name) : base(Name)
+    public Enemy(string Name)
+      : base(Name)
     {
       this.Name = Name;
       Affinity = "n";
@@ -38,53 +49,54 @@ namespace Sophmores_FinalProj
       MaxDamage = 10;
       BuffMultiplier = 1;
     }
+
     /// <summary>
-    /// Creates an enemy the player can do battle with
-    /// Affinity set to "n"
+    /// Creates an enemy the player can do battle with Affinity set to "n"
     /// </summary>
-    /// <param name="Name">Enemy's Name</param>
-    /// <param name="Health">Enemy's Health Value</param>
-    /// <param name="Level">Enemy's Level</param>
-    /// <param name="minDamage">The lowest damage an enemy can do</param>
-    /// <param name="maxDamage">The highest damage and enemy can do</param>
-    public Enemy(string Name, int Health, int Level, int minDamage, 
-                 int maxDamage) 
-      : base (Name, Health, Level)
+    /// <param name="Name"> Enemy's Name </param>
+    /// <param name="Health"> Enemy's Health Value </param>
+    /// <param name="Level"> Enemy's Level </param>
+    /// <param name="minDamage"> The lowest damage an enemy can do </param>
+    /// <param name="maxDamage"> The highest damage and enemy can do </param>
+    public Enemy(string Name, int Health, int Level, int minDamage,
+                 int maxDamage)
+      : base(Name, Health, Level)
     {
       MinDamage = minDamage;
       MaxDamage = maxDamage;
       BuffMultiplier = 1;
       Affinity = "n";
     }
+
     /// <summary>
     /// Creates an enemy the player can do battle with
     /// </summary>
-    /// <param name="Name">Enemy's Name</param>
-    /// <param name="Health">Enemy's Health Value</param>
-    /// <param name="Level">Enemy's Level</param>
-    /// <param name="minDamage">The lowest damage an enemy can do</param>
-    /// <param name="maxDamage">The highest damage and enemy can do</param>
-    /// <param name="affinity">Enemy's Affinity</param>
-    public Enemy(string Name, int Health, int Level, int minDamage, 
+    /// <param name="Name"> Enemy's Name </param>
+    /// <param name="Health"> Enemy's Health Value </param>
+    /// <param name="Level"> Enemy's Level </param>
+    /// <param name="minDamage"> The lowest damage an enemy can do </param>
+    /// <param name="maxDamage"> The highest damage and enemy can do </param>
+    /// <param name="affinity"> Enemy's Affinity </param>
+    public Enemy(string Name, int Health, int Level, int minDamage,
                  int maxDamage, string affinity)
-      : base (Name, Health, Level)
-
+      : base(Name, Health, Level)
     {
       MinDamage = minDamage;
       MaxDamage = maxDamage;
       BuffMultiplier = 1;
       Affinity = affinity;
-    }    
+    }
+
     /// <summary>
     /// Creates an enemy the player can do battle with
     /// </summary>
-    /// <param name="Name">Enemy's Name</param>
-    /// <param name="Health">Enemy's Health Value</param>
-    /// <param name="Level">Enemy's Level</param>
-    /// <param name="minDamage">The lowest damage an enemy can do</param>
-    /// <param name="maxDamage">The highest damage and enemy can do</param>
-    /// <param name="affinity">Enemy's Affinity</param>
-    /// <param name="buffMultiplier">Amount to multiply damage By</param>
+    /// <param name="Name"> Enemy's Name </param>
+    /// <param name="Health"> Enemy's Health Value </param>
+    /// <param name="Level"> Enemy's Level </param>
+    /// <param name="minDamage"> The lowest damage an enemy can do </param>
+    /// <param name="maxDamage"> The highest damage and enemy can do </param>
+    /// <param name="affinity"> Enemy's Affinity </param>
+    /// <param name="buffMultiplier"> Amount to multiply damage By </param>
     public Enemy(string Name, int Health, int Level, int minDamage,
                  int maxDamage, string affinity, int buffMultiplier)
       : base(Name, Health, Level)
@@ -94,5 +106,7 @@ namespace Sophmores_FinalProj
       Affinity = affinity;
       BuffMultiplier = buffMultiplier;
     }
+
+    #endregion Public Constructors
   }
 }
