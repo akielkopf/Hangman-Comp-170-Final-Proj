@@ -19,21 +19,21 @@ namespace Sophmores_FinalProj
       GainEnemyItems(player, enemy1);
       if (!player.isAlive() || Combat.run) 
       {
-          if (!player.isAlive()) { player.CurrentHP = 50; }
+          if (!player.isAlive()) { player.CurrentHP = 10; }
           return;
       }
       Combat.StartCombat(player, enemy2);
       GainEnemyItems(player, enemy2);
       if (!player.isAlive() || Combat.run)
       {
-          if (!player.isAlive()) { player.CurrentHP = 50; }
+          if (!player.isAlive()) { player.CurrentHP = 10; }
           return;
       }
       Combat.StartCombat(player, boss);
       GainEnemyItems(player, boss);
       if (!player.isAlive() || Combat.run)
       {
-          if (!player.isAlive()) { player.CurrentHP = 50; }
+          if (!player.isAlive()) { player.CurrentHP = 10; }
           return;
       }
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -134,7 +134,8 @@ namespace Sophmores_FinalProj
       Console.ForegroundColor = ConsoleColor.DarkRed;
       TextUtil.PrintTextFile("gamelogo2.txt");
       Console.ResetColor();
-      Player p1 = GameIntro.Start(new Player("", 20, 10));
+      Player p1 = GameIntro.Start(new Player("", 100, 10));
+      p1.CurrentHP = 20;
       Console.Write(p1.Name + ", ");
       Enemy Spider = new Enemy();
       Spider.Name = "Small Spider";
