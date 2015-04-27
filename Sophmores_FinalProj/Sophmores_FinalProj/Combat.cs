@@ -15,9 +15,9 @@ namespace Sophmores_FinalProj
     private static int poisonStart;
     private static Random random = new Random();
     private static int turn;
-
     #endregion Private Fields
 
+    public static bool run;
     #region Public Methods
 
     public static string message(Item cur)
@@ -40,31 +40,63 @@ namespace Sophmores_FinalProj
 
     public static void StartCombat(Player player, Enemy enemy)
     {
-      turn = 0;
-      poisonStart = -4;
-      Console.WriteLine("A Wild {0} has appeared!! It appears to have {1}HP.", enemy.Name, enemy.TotalHP);
-      while (player.isAlive() && enemy.isAlive())
-      {
-        playerAction(player, enemy, turn);
-        if (!(enemy.isAlive()))
+        player.RemoveBuff();
+        run = false;
+        if (!enemy.isAlive()) 
         {
-          Console.WriteLine(enemy.Name + " has fallen!");
-          starLine();
-          player.CurrentHP = player.TotalHP;
-          break;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\nYou walk past the fallen {0}...", enemy.Name);
+            Console.ResetColor();
+            return;
         }
-        enemyAttack(player, enemy);
-        if (!(player.isAlive()))
+        else if (enemy.isAlive())
         {
-          Console.WriteLine(player.Name + "has blacked out...");
-          starLine();
-          break;
+            turn = 0;
+            poisonStart = -4;
+            Console.WriteLine("\nA Wild {0} has appeared!! It appears to have {1}HP.", enemy.Name, enemy.TotalHP);
+            while ((player.isAlive() && enemy.isAlive()) || !run)
+            {
+                playerAction(player, enemy, turn);
+                if (!(enemy.isAlive()))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\n" + enemy.Name + " has fallen!");
+                    Console.ResetColor();
+                    starLine();
+                    player.CurrentHP = player.TotalHP;
+                    endFight(player);
+                    break;
+                }
+                enemyAttack(player, enemy);
+                if (!(player.isAlive()))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine("\n" + player.Name + " has blacked out and is in critical condition...");
+                    Console.WriteLine("...\n...\n...\n...\nPress any key to continue");
+                    Console.ReadKey(true);
+                    Console.WriteLine(player.Name + " has woken back up in the door lobby somehow feeling a little better...");
+                    Console.ResetColor();
+                    endFight(player);
+                    starLine();
+                    break;
+                }
+                if(run)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\n" + player.Name + " has succesfully run from the " + enemy.Name + "!");
+                    Console.WriteLine(player.Name + " has returned to the door lobby.");
+                    Console.ResetColor();
+                    endFight(player);
+                    starLine();
+                    break;
+                }
+                turn++;
+                depoison(player);
+            }
+            endFight(player);
         }
-        turn++;
-        depoison(player);
-      }
-      endFight(player);
-      return;
+        return;
+        
     }
 
     #endregion Public Methods
@@ -92,7 +124,7 @@ namespace Sophmores_FinalProj
     {
       turn = 0;
       poisonStart = -4;
-      player.RemoveBuff();
+      player.RemoveBuff();      
     }
 
     private static void enemyAttack(Player player, Enemy enemy)
@@ -110,7 +142,7 @@ namespace Sophmores_FinalProj
     /// <returns></returns>
     private static int getChoice(int numChoices)
     {
-      int choice = UI.PromptInt("Please enter a choice number: ");
+      int choice = UI.PromptInt("\nPlease enter a choice number: ");
       while (choice < 1 || choice > numChoices)
       {
         Console.WriteLine("{0} is not a valid choice!", choice);
@@ -183,10 +215,11 @@ namespace Sophmores_FinalProj
         if (curInput == 4)
         {
           int chance = random.Next(100);
-          if (chance <= 70)
+          if (chance <= 40)
           {
-            Console.WriteLine("You have escaped from the enemy!");
-            //add code to end fight
+              run = true;
+              playerTurn = false;
+              break;
           }
           else
           {

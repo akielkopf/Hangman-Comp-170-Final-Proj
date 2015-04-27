@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Into The Woods Game")]
 [assembly: AssemblyCopyright("Copyright Sophmores LTD.©  2015")]
 [assembly: AssemblyTrademark("Into The Woods")]
-[assembly: AssemblyCulture("Awesome")]
+[assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible to
 // COM components. If you need to access a type in this assembly from COM, set
