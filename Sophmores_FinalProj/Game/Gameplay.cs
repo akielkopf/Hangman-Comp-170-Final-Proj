@@ -127,9 +127,13 @@ namespace Sophmores_FinalProj
     private static void Main(string[] args)
     {
       TextUtil.SetBufferSize();
+      Console.ForegroundColor = ConsoleColor.DarkGreen;
       TextUtil.PrintTextFile("gamelogo.txt");
+      Console.ResetColor();
       TextUtil.PressAnyKeyBufferClear();
+      Console.ForegroundColor = ConsoleColor.DarkRed;
       TextUtil.PrintTextFile("gamelogo2.txt");
+      Console.ResetColor();
       Player p1 = GameIntro.Start(new Player("", 20, 10));
       Console.Write(p1.Name + ", ");
       Enemy Spider = new Enemy();
