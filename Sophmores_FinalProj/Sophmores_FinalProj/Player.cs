@@ -200,7 +200,7 @@ namespace Sophmores_FinalProj
     public void DisplayInventoryContents()
     {
       var inventoryList = new List<Item>(inventory.contents.Keys);
-      inventoryList.OrderBy(x => x.type);
+      inventoryList.Sort();
       DisplayItems(inventoryList);
     }
 

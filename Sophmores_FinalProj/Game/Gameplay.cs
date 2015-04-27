@@ -53,7 +53,7 @@ namespace Sophmores_FinalProj
             int answer = getChoice(2, question);
             if (answer == 1)
             {
-              player.consumeItem(a.Key as HealthPotion);
+              player.ConsumeItem(a.Key as HealthPotion);
               Console.WriteLine("you have consumed the potion, your current HP is {0}.", player.CurrentHP);
             }
             else if (answer == 2)

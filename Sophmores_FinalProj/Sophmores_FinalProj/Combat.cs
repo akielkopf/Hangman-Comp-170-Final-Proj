@@ -169,6 +169,7 @@ namespace Sophmores_FinalProj
             {
               Console.WriteLine("You can't Equip that!");
             }
+          }
           else
           {
             Console.WriteLine("You have chosen to keep your current weapon equipped.");
@@ -182,7 +183,7 @@ namespace Sophmores_FinalProj
           if (choice - 1 < curCItems.Count)
           {
             if (curCItems[choice - 1] is Poison) { poisonStart = turn; }
-            player.consumeItem(curCItems[choice - 1]);
+            player.ConsumeItem(curCItems[choice - 1]);
             Console.WriteLine(player.Name + message(curCItems[choice - 1]));
             playerTurn = false;
             break;
