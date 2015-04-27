@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sophmores_FinalProj
+﻿namespace Sophmores_FinalProj
 {
   public class HealthPotion : Item
   {
     #region Public Properties
 
     /// <summary>
-    /// Health Potions restore health and are consumable 
+    /// Health Potions restore health and are consumable
     /// </summary>
     public int Potency { get; set; }
 
@@ -20,7 +14,8 @@ namespace Sophmores_FinalProj
     #region Public Constructors
 
     /// <summary>
-    /// Creates a custom Health Potion which restores currentHP and are consumable 
+    /// Creates a custom Health Potion which restores currentHP
+    /// And are consumable by default
     /// </summary>
     /// <param name="name"> Name </param>
     /// <param name="description"> Potion Description </param>
@@ -43,8 +38,28 @@ namespace Sophmores_FinalProj
       playerCanEquip = false;
     }
 
+    /// Creates a custom Health Potion which restores currentHP and
+    /// are consumable
+    /// </summary>
+    /// <param name="name"> Name </param>
+    /// <param name="description"> Potion Description </param>
+    /// <param name="potency"> Amount of HP to restore </param>
+    public HealthPotion(string name, string description, int potency)
+    : base(name, "Potion", description, true)
+    {
+      Potency = potency;
+      playerCanEquip = false;
+    }
+
+    public HealthPotion(HealthPotion potion)
+    : base(potion.name, potion.type, potion.description, true)
+    {
+      Potency = potion.Potency;
+      playerCanEquip = false;
+    }
+
     /// <summary>
-    /// creates basic health potion that restores 20 HP 
+    /// Creates a Basic Health Potion that restores 20HP
     /// </summary>
     public HealthPotion()
     {
@@ -57,19 +72,5 @@ namespace Sophmores_FinalProj
     }
 
     #endregion Public Constructors
-
-    #region Public Methods
-
-    /// <summary>
-    /// returns potency of potion 
-    /// </summary>
-    /// <param name="potion"> potion who's potency will be checked </param>
-    /// <returns></returns>
-    public int getPotency(HealthPotion potion)
-    {
-      return potion.Potency;
-    }
-
-    #endregion Public Methods
   }
 }

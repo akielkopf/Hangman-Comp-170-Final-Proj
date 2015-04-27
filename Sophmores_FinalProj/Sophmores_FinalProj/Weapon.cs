@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sophmores_FinalProj
+﻿namespace Sophmores_FinalProj
 {
   public class Weapon : Item
   {
@@ -13,8 +7,8 @@ namespace Sophmores_FinalProj
     public int magicalDamage { get; private set; }
 
     /// <summary>
-    /// Weapons Inherit from Item class All weapons are Equippable By default
-    /// weapons are not consumable
+    /// Weapons Inherit from Item class All weapons are Equippable By
+    /// Default weapons are not consumable
     /// </summary>
     public int physicalDamage { get; private set; }
 
@@ -23,7 +17,7 @@ namespace Sophmores_FinalProj
     #region Public Constructors
 
     /// <summary>
-    /// Create a Custom Weapon, inherhits Item 
+    /// Create a Custom Weapon, inherhits Item
     /// </summary>
     /// <param name="Name"> Weapon Name </param>
     /// <param name="Type"> Weapon Type </param>
@@ -41,7 +35,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Create new weapon from old weapon 
+    /// Create new weapon from old weapon
     /// </summary>
     /// <param name="OldWeapon"> Weapon to Copy </param>
     public Weapon(Weapon OldWeapon)
@@ -56,7 +50,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Create An Old Rusty Sword, starter weapon 
+    /// Create An Old Rusty Sword, starter weapon
     /// </summary>
     public Weapon()
     {

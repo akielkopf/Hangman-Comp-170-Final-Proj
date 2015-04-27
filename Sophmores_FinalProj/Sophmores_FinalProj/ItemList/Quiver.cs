@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +18,7 @@ namespace Sophmores_FinalProj
     #region Public Constructors
 
     /// <summary>
-    /// Creates a customizable Quiver 
+    /// Creates a customizable Quiver
     /// </summary>
     /// <param name="QuiverName"> Name of Quiver </param>
     /// <param name="QuiverDescription"> Description of Quiver </param>
@@ -47,7 +46,7 @@ namespace Sophmores_FinalProj
     #endregion Public Constructors
 
     /// <summary>
-    /// Add the specified amount arrows to the specified quiver 
+    /// Add the specified amount arrows to the specified quiver
     /// </summary>
     /// <param name="item"> Quiver to Add to </param>
     /// <param name="AmountOfArrowsToAdd"> Number of arrows to Add </param>
@@ -82,7 +81,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Get Amount of Arrows in the Quiver 
+    /// Get Amount of Arrows in the Quiver
     /// </summary>
     /// <returns> Number of arrows as int </returns>
     public int ArrowsInQuiver()
@@ -100,7 +99,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Remove the amount of specified arrows from the specified quiver 
+    /// Remove the amount of specified arrows from the specified quiver
     /// </summary>
     /// <param name="item"> Quiver to Remove from </param>
     /// <param name="AmountOfArrowsToRemove"> Number of arrows to Remove </param>

@@ -104,7 +104,7 @@ namespace Sophmores_FinalProj
     #region Private Methods
 
     /// <summary>
-    /// Checks if it has been 4 turns since the player used poison, if so it disables 
+    /// Checks if it has been 4 turns since the player used poison, if so it disables
     /// </summary>
     /// <param name="player"></param>
     private static void depoison(Player player)
@@ -117,7 +117,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// returns values back to default after fight ends 
+    /// returns values back to default after fight ends
     /// </summary>
     /// <param name="player"></param>
     private static void endFight(Player player)
@@ -136,7 +136,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// cleaner way to get choices. 
+    /// cleaner way to get choices.
     /// </summary>
     /// <param name="numChoices"> number of choices the user should have. </param>
     /// <returns></returns>
@@ -152,7 +152,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Displays user-side combat options and retrieves string input answer 
+    /// Displays user-side combat options and retrieves string input answer
     /// </summary>
     /// <returns></returns>
     private static string inp()
@@ -165,7 +165,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Player side turn logic. 
+    /// Player side turn logic.
     /// </summary>
     /// <param name="player"></param>
     /// <param name="enemy"></param>
@@ -189,13 +189,23 @@ namespace Sophmores_FinalProj
           int choice = getChoice(curWeapons.Count + 1);
           if (choice - 1 < curWeapons.Count)
           {
-            player.UnEquip();
-            player.Equip(curWeapons[choice - 1] as Weapon);
-            Console.WriteLine("Player has equipped " + curWeapons[choice - 1].name + ".");
-            playerTurn = false;
-            break;
+            if ((curWeapons[choice - 1]).playerCanEquip)
+            {
+              player.UnEquip();
+              player.Equip(curWeapons[choice - 1] as Weapon);
+              Console.WriteLine("Player has equipped " + curWeapons[choice - 1].name + ".");
+              playerTurn = false;
+              break;
+            }
+            else
+            {
+              Console.WriteLine("You can't Equip that!");
+            }
           }
-          else { Console.WriteLine("You have chosen to keep your current weapon equipped."); }
+          else
+          {
+            Console.WriteLine("You have chosen to keep your current weapon equipped.");
+          }
         }
         if (curInput == 3)
         {
@@ -205,7 +215,7 @@ namespace Sophmores_FinalProj
           if (choice - 1 < curCItems.Count)
           {
             if (curCItems[choice - 1] is Poison) { poisonStart = turn; }
-            player.consumeItem(curCItems[choice - 1]);
+            player.ConsumeItem(curCItems[choice - 1]);
             Console.WriteLine(player.Name + message(curCItems[choice - 1]));
             playerTurn = false;
             break;
@@ -214,6 +224,12 @@ namespace Sophmores_FinalProj
         }
         if (curInput == 4)
         {
+          if (player.TutorialComplete == false)
+          {
+            Console.WriteLine("You can't run, this is your first fight!");
+            playerTurn = false;
+            break;
+          }
           int chance = random.Next(100);
           if (chance <= 40)
           {
@@ -230,34 +246,35 @@ namespace Sophmores_FinalProj
         }
       }
     }
-
+    /// <summary>
+    /// Player attacks enemy for player.TotalDamage
+    /// IF Enemy Affinity does cause Enemy to be immune
+    /// </summary>
     private static void playerAttack(Player player, Enemy enemy)
     {
-      if (enemy.Affinity.ToLower().Trim() == "n" || player.EquippedWeapon.type.ToLower().Trim() == enemy.Affinity.ToLower().Trim())
-      {
-        Console.WriteLine("Enemy Health: {0}", enemy.CurrentHP);
-        Console.WriteLine("{0} attacks for {1} damage!", player.Name, player.TotalDamage);
-        enemy.ModifyCurrentHP(-1 * player.TotalDamage);
-        Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
-      }
-      else if (player.EquippedWeapon.type.ToLower().Trim() != enemy.Affinity.ToLower().Trim())
+      string enemyAffinity = enemy.Affinity.ToLower().Trim();
+      string playerWeaponType = (enemyAffinity == "n") ? "n" : player.EquippedWeapon.type.ToLower().Trim();
+      if (playerWeaponType != enemyAffinity)
       {
         Console.WriteLine("The enemy seems to be unaffected by this weapon type!");
         Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
+        return;
       }
+      Console.WriteLine("Enemy Health: {0}", enemy.CurrentHP);
+      Console.WriteLine("{0} attacks for {1} damage!", player.Name, player.TotalDamage);
+      enemy.ModifyCurrentHP(-1 * player.TotalDamage);
+      Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
     }
 
     /// <summary>
-    /// turns string input into number input 
+    /// Turns string input into number input
     /// </summary>
-    /// <param name="inp"></param>
-    /// <returns></returns>
     private static int playerInput(string inp)
     {
-      if (inp == "attack" || inp == "1") { return 1; }
-      else if (inp == "swap" || inp == "2") { return 2; }
-      else if (inp == "use" || inp == "3") { return 3; }
-      else if (inp == "run" || inp == "4") { return 4; }
+      if      (inp == "attack" || inp == "1") { return 1; }
+      else if (inp == "swap"   || inp == "2") { return 2; }
+      else if (inp == "use"    || inp == "3") { return 3; }
+      else if (inp == "run"    || inp == "4") { return 4; }
       else
         return 0;
     }
@@ -266,8 +283,6 @@ namespace Sophmores_FinalProj
     /// Checks various parameters and locks options that player should not have
     /// access to.
     /// </summary>
-    /// <param name="player"></param>
-    /// <returns></returns>
     private static int preCombatCheck(Player player)
     {
       int curInput = playerInput(inp());
@@ -312,7 +327,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// prints a line of stars 
+    /// Prints a line of stars
     /// </summary>
     private static void starLine()
     {

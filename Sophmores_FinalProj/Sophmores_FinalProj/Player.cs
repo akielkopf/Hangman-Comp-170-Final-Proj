@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
   public class Player : Character
   {
+
     /// <summary>
     /// Contains Methods to Create Players that can Equip Weapons, and Inspect
     /// Items, and more. Inherits from Character
@@ -76,7 +75,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Creates Default Player named Douglas with basic attributes 
+    /// Creates Default Player named Douglas with basic attributes
     /// </summary>
     public Player()
     {
@@ -98,10 +97,16 @@ namespace Sophmores_FinalProj
 
     #region Public Methods
 
-    public void consumeItem(Item theItem)
+    public void ConsumeItem(Item theItem)
     {
-      if (theItem is HealthPotion) { UseHealthPotion(theItem as HealthPotion); }
-      if (theItem is Poison) { UsePoison(theItem as Poison); }
+      if (theItem is HealthPotion)
+      {
+        UseHealthPotion(theItem as HealthPotion);
+      }
+      else if (theItem is Poison)
+      {
+        UsePoison(theItem as Poison);
+      }
       Update();
     }
 
@@ -145,16 +150,32 @@ namespace Sophmores_FinalProj
       return conList;
     }
 
+    public void DisplayConsumables()
+    {
+      int i = 0;
+      string x = "Consumables: ";
+      StringBuilder builder = new StringBuilder(x);
+      foreach (KeyValuePair<Item, int> a in inventory.contents)
+      {
+        if (a.Key.consumable)
+        {
+          builder.AppendLine(i + ") " + a.Key.name + ", " + a.Value);
+          i++;
+        }
+      }
+      Console.WriteLine("" + builder);
+    }
+
     /// <summary>
-    /// Displays Inventory or specific Item types to Player 
+    /// Displays Inventory or specific Item types to Player
     /// </summary>
     /// <param name="itemType"> Types of items to show </param>
     public void DisplayInventoryContents(string itemType)
     {
       itemType.ToLower();
-      if (itemType == "sword" || itemType == "axe" ||
-          itemType == "bow" || itemType == "arrow" ||
-          itemType == "shield")
+      if (itemType == "sword"  || itemType == "axe"   ||
+          itemType == "bow"    || itemType == "arrow" ||
+          itemType == "shield" || itemType == "weapons")
       {
         itemType = "weapon";
       }
@@ -186,18 +207,18 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Displays ALL Inventory Contents to Player 
+    /// Displays ALL Inventory Contents to Player
     /// </summary>
     public void DisplayInventoryContents()
     {
       var inventoryList = new List<Item>(inventory.contents.Keys);
-      inventoryList.OrderBy(x => x.type);
+      inventoryList.Sort();
       DisplayItems(inventoryList);
     }
 
     /// <summary>
-    /// Equips specified weapon by creating new instance of said Weapon and
-    /// changing player EquippedWeapon Reference
+    /// Equips specified weapon by creating new instance of said
+    /// Weapon and changing player EquippedWeapon Reference
     /// </summary>
     /// <param name="WeapontoEquip"> Weapon the player will equip </param>
     public void Equip(Weapon WeapontoEquip)
@@ -216,7 +237,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// For Players to read Item Descriptions 
+    /// For Players to read Item Descriptions
     /// </summary>
     /// <param name="item"> Item to Describe </param>
     public void Inspect(Item item)
@@ -255,7 +276,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// update's stats of player to reflect changes to buff. 
+    /// update's stats of player to reflect changes to buff.
     /// </summary>
     public void Update()
     {
@@ -269,37 +290,57 @@ namespace Sophmores_FinalProj
 
     private void DisplayItems(List<Item> itemList)
     {
+      int i = 0;
       Console.WriteLine("All Items:");
       foreach (Item s in itemList)
       {
-        Console.WriteLine(s.name + ": " + s.type + ", " + inventory.contents[s]);
+        Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
+        i++;
       }
     }
 
     private void DisplayKeys(List<Item> keyList)
     {
+      int i = 0;
+      Console.WriteLine("Keys:");
       foreach (Key s in keyList)
       {
-        Console.WriteLine("Keys:");
-        Console.WriteLine(s.name + " " + inventory.contents[s]);
+        Key key = s as Key;
+        if (key != null)
+        {
+          Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
+          i++;
+        }
       }
     }
 
     private void DisplayPotions(List<Item> potionList)
     {
+      int i = 0;
+      Console.WriteLine("Potions:");
       foreach (HealthPotion s in potionList)
       {
-        Console.WriteLine("Potions:");
-        Console.WriteLine(s.name + " " + inventory.contents[s]);
+        HealthPotion potion = s as HealthPotion;
+        if (potion != null)
+        {
+          Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
+          i++;
+        }
       }
     }
 
     private void DisplayWeapons(List<Item> weaponList)
     {
-      foreach (Weapon s in weaponList)
+      int i = 0;
+      Console.WriteLine("Weapons:");
+      foreach (Item s in weaponList)
       {
-        Console.WriteLine("Weapons:");
-        Console.WriteLine(s.name + " " + inventory.contents[s]);
+        Weapon weapon = s as Weapon;
+        if (weapon != null)
+        {
+          Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
+          i++;
+        }
       }
     }
 
