@@ -77,9 +77,9 @@
       <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
       <Name>ui</Name>
     </ProjectReference>
-    <ProjectReference Include="..\fio\fio.csproj">
+    <ProjectReference Include="..\fio\fio%28depreciated%29.csproj">
       <Project>{38702508-4BEE-4055-B478-1F9FA30C1630}</Project>
-      <Name>fio</Name>
+      <Name>fio%28depreciated%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
