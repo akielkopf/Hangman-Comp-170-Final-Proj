@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
   public class Enemy : Character
   {
     /// <summary>
-    /// Basic enemy Class, have Max and Min Damage values For random
-    /// Hit damage
+    /// Basic enemy Class, have Max and Min Damage values For random Hit damage 
     /// </summary>
 
     #region Public Properties
@@ -26,7 +21,7 @@ namespace Sophmores_FinalProj
     #region Public Constructors
 
     /// <summary>
-    /// Default Enemy with 'n' Affinity, Damage 5-10
+    /// Default Enemy with 'n' Affinity, Damage 5-10 
     /// </summary>
     public Enemy()
     {
@@ -38,7 +33,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Default Enemy with 'n' Affinity, Damage 5-10
+    /// Default Enemy with 'n' Affinity, Damage 5-10 
     /// </summary>
     public Enemy(string Name)
       : base(Name)
@@ -51,7 +46,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Creates an enemy the player can do battle with Affinity set to "n"
+    /// Creates an enemy the player can do battle with Affinity set to "n" 
     /// </summary>
     /// <param name="Name"> Enemy's Name </param>
     /// <param name="Health"> Enemy's Health Value </param>
@@ -69,7 +64,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Creates an enemy the player can do battle with
+    /// Creates an enemy the player can do battle with 
     /// </summary>
     /// <param name="Name"> Enemy's Name </param>
     /// <param name="Health"> Enemy's Health Value </param>
@@ -88,7 +83,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Creates an enemy the player can do battle with
+    /// Creates an enemy the player can do battle with 
     /// </summary>
     /// <param name="Name"> Enemy's Name </param>
     /// <param name="Health"> Enemy's Health Value </param>

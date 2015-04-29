@@ -19,7 +19,7 @@ namespace Sophmores_FinalProj.Utilities
     }
 
     /// <summary>
-    /// Create new inventory from one that already exists
+    /// Create new inventory from one that already exists 
     /// </summary>
     /// <param name="OldInventory"> Inventory to be copied from </param>
     public Inventory(Inventory OldInventory)
@@ -39,7 +39,7 @@ namespace Sophmores_FinalProj.Utilities
     #region Public Methods
 
     /// <summary>
-    /// Add Item to inventory
+    /// Add Item to inventory 
     /// </summary>
     /// <param name="item"> item </param>
     /// <param name="itemCount"> Number of the SAME item to add </param>
@@ -56,7 +56,7 @@ namespace Sophmores_FinalProj.Utilities
     }
 
     /// <summary>
-    /// Removes specified amount of Items
+    /// Removes specified amount of Items 
     /// </summary>
     /// <param name="item"> Item </param>
     /// <param name="ItemCount"> Number of items to Remove </param>
