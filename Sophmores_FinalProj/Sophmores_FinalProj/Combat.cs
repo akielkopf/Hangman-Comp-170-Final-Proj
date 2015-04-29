@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IntroCS;
+using Sophmores_FinalProj.Utilities;
 
 namespace Sophmores_FinalProj
 {
@@ -42,7 +44,7 @@ namespace Sophmores_FinalProj
     {
         player.RemoveBuff();
         run = false;
-        if (!enemy.isAlive()) 
+        if (!enemy.isAlive())
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\nYou walk past the fallen {0}...", enemy.Name);
@@ -83,6 +85,7 @@ namespace Sophmores_FinalProj
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        TextUtil.PrintTextFile ("Death.txt");
                         Console.WriteLine("\n..." + player.Name + " has blacked out and is in critical condition...");
                         Console.WriteLine("...\n...\n...\n...\nPress any key to continue");
                         Console.ReadKey(true);
@@ -110,7 +113,7 @@ namespace Sophmores_FinalProj
             endFight(player);
         }
         return;
-        
+
     }
 
     #endregion Public Methods
@@ -138,7 +141,7 @@ namespace Sophmores_FinalProj
     {
       turn = 0;
       poisonStart = -4;
-      player.RemoveBuff();      
+      player.RemoveBuff();
     }
 
     private static void enemyAttack(Player player, Enemy enemy)

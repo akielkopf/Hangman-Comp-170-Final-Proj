@@ -86,12 +86,6 @@ namespace Sophmores_FinalProj
           pass2 = true;
         }
       }
-
-      Combat.StartCombat(player, enemy2);
-      GainEnemyItems(player, enemy2);
-
-      Combat.StartCombat(player, boss);
-      GainEnemyItems(player, boss);
     }
 
     private static void GainEnemyItems(Player player, Enemy enemy)

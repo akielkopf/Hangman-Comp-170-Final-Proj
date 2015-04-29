@@ -67,6 +67,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Program.cs" />
+    <None Include="Death.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sophmores_FinalProj\Sophmores_FinalProj.csproj">
