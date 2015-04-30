@@ -43,12 +43,6 @@ namespace Sophmores_FinalProj
     /// </summary>
     public bool Stage { get; set; }
 
-    public bool Stage1Complete { get; set; }
-
-    public bool Stage2Complete { get; set; }
-
-    public bool Stage3Complete { get; set; }
-
     /// <summary>
     /// total actual damage value player is capable of after buff and weapon
     /// and damage
