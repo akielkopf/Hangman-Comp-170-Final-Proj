@@ -17,7 +17,7 @@
     #region Public Constructors
 
     /// <summary>
-    /// Create a Custom Weapon, inherhits Item
+    /// Create a Custom Weapon, inherhits Item 
     /// </summary>
     /// <param name="Name"> Weapon Name </param>
     /// <param name="Type"> Weapon Type </param>
@@ -35,7 +35,7 @@
     }
 
     /// <summary>
-    /// Create new weapon from old weapon
+    /// Create new weapon from old weapon 
     /// </summary>
     /// <param name="OldWeapon"> Weapon to Copy </param>
     public Weapon(Weapon OldWeapon)
@@ -50,7 +50,7 @@
     }
 
     /// <summary>
-    /// Create An Old Rusty Sword, starter weapon
+    /// Create An Old Rusty Sword, starter weapon 
     /// </summary>
     public Weapon()
     {

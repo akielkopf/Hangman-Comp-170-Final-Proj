@@ -6,10 +6,9 @@ namespace Sophmores_FinalProj
 {
   public class Player : Character
   {
-
     /// <summary>
-    /// Contains Methods to Create Players that can Equip Weapons, and Inspect
-    /// Items, and more. Inherits from Character
+    /// Contains Methods to Create Players that can Equip Weapons, and
+    /// Inspect Items, and more. Inherits from Character
     /// </summary>
 
     #region Private Fields
@@ -20,10 +19,16 @@ namespace Sophmores_FinalProj
 
     #region Public Properties
 
+    /// <summary>
+    /// number of the current door the player is on. 
+    /// </summary>
     public int currentDoor { get; set; }
 
     public int currentStage { get; set; }
 
+    /// <summary>
+    /// list of door numbers that have been opened 
+    /// </summary>
     public List<int> DoorsOpened { get; set; }
 
     public Weapon EquippedWeapon { get; private set; }
@@ -32,16 +37,21 @@ namespace Sophmores_FinalProj
 
     public int PhysicalDamage { get; private set; }
 
+    /// <summary>
+    /// true when player is in a stage, false when player is out of
+    /// one/completes one.
+    /// </summary>
     public bool Stage { get; set; }
 
-    public bool Stage1Complete { get; set; }
-
-    public bool Stage2Complete { get; set; }
-
-    public bool Stage3Complete { get; set; }
-
+    /// <summary>
+    /// total actual damage value player is capable of after buff and weapon
+    /// and damage
+    /// </summary>
     public int TotalDamage { get; private set; }
 
+    /// <summary>
+    /// true after player completes tutorial 
+    /// </summary>
     public bool TutorialComplete { get; set; }
 
     #endregion Public Properties
@@ -58,13 +68,14 @@ namespace Sophmores_FinalProj
       int damage = PhysicalDamage + MagicDamage;
       TotalDamage = (int)Math.Round(damage * BuffMultiplier);
       TutorialComplete = false;
+      Stage = false;
       currentDoor = 0;
       currentStage = 0;
       DoorsOpened = new List<int> { };
     }
 
     /// <summary>
-    /// Creates Default Player named Douglas with basic attributes
+    /// Creates Default Player named Douglas with basic attributes 
     /// </summary>
     public Player()
     {
@@ -76,6 +87,7 @@ namespace Sophmores_FinalProj
       int damage = PhysicalDamage + MagicDamage;
       TotalDamage = (int)Math.Round(damage * BuffMultiplier);
       TutorialComplete = false;
+      Stage = false;
       currentDoor = 0;
       currentStage = 0;
       DoorsOpened = new List<int> { };
@@ -118,6 +130,22 @@ namespace Sophmores_FinalProj
       return conList;
     }
 
+    public void DisplayConsumables()
+    {
+      int i = 0;
+      string x = "Consumables: ";
+      StringBuilder builder = new StringBuilder(x);
+      foreach (KeyValuePair<Item, int> a in inventory.contents)
+      {
+        if (a.Key.consumable)
+        {
+          builder.AppendLine(i + ") " + a.Key.name + ", " + a.Value);
+          i++;
+        }
+      }
+      Console.WriteLine("" + builder);
+    }
+
     public List<Item> DisplayConsumablesReturnList()
     {
       int count = 1;
@@ -138,31 +166,15 @@ namespace Sophmores_FinalProj
       return conList;
     }
 
-    public void DisplayConsumables()
-    {
-      int i = 0;
-      string x = "Consumables: ";
-      StringBuilder builder = new StringBuilder(x);
-      foreach (KeyValuePair<Item, int> a in inventory.contents)
-      {
-        if (a.Key.consumable)
-        {
-          builder.AppendLine(i + ") " + a.Key.name + ", " + a.Value);
-          i++;
-        }
-      }
-      Console.WriteLine("" + builder);
-    }
-
     /// <summary>
-    /// Displays Inventory or specific Item types to Player
+    /// Displays Inventory or specific Item types to Player 
     /// </summary>
     /// <param name="itemType"> Types of items to show </param>
     public void DisplayInventoryContents(string itemType)
     {
       itemType.ToLower();
-      if (itemType == "sword"  || itemType == "axe"   ||
-          itemType == "bow"    || itemType == "arrow" ||
+      if (itemType == "sword" || itemType == "axe" ||
+          itemType == "bow" || itemType == "arrow" ||
           itemType == "shield" || itemType == "weapons")
       {
         itemType = "weapon";
@@ -195,18 +207,18 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Displays ALL Inventory Contents to Player
+    /// Displays ALL Inventory Contents to Player 
     /// </summary>
     public void DisplayInventoryContents()
     {
       var inventoryList = new List<Item>(inventory.contents.Keys);
-      inventoryList.OrderBy(x => x.type);
+      inventoryList.Sort();
       DisplayItems(inventoryList);
     }
 
     /// <summary>
-    /// Equips specified weapon by creating new instance of said
-    /// Weapon and changing player EquippedWeapon Reference
+    /// Equips specified weapon by creating new instance of said Weapon and
+    /// changing player EquippedWeapon Reference
     /// </summary>
     /// <param name="WeapontoEquip"> Weapon the player will equip </param>
     public void Equip(Weapon WeapontoEquip)
@@ -225,7 +237,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// For Players to read Item Descriptions
+    /// For Players to read Item Descriptions 
     /// </summary>
     /// <param name="item"> Item to Describe </param>
     public void Inspect(Item item)
@@ -252,8 +264,8 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Unequips currently Equipped Weapon and Equips the Default Weapon Player
-    /// will never not have Weapon Equipped
+    /// Unequips currently Equipped Weapon and Equips the Default Weapon
+    /// Player will never not have Weapon Equipped
     /// </summary>
     public void UnEquip()
     {
@@ -264,7 +276,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// update's stats of player to reflect changes to buff.
+    /// update's stats of player to reflect changes to buff. 
     /// </summary>
     public void Update()
     {

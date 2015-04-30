@@ -2,13 +2,13 @@ using System;
 
 namespace IntroCS
 {
-  /// Console input functions with prompts and safe parsing
+  /// Console input functions with prompts and safe parsing 
   public class UI
   {
     #region Public Methods
 
-    /// Prompt the user with a question. Force an understandable
-    /// Keyboard response; Return true of false based on the final response.
+    /// Prompt the user with a question. Force an understandable Keyboard
+    /// response; Return true of false based on the final response.
     public static Boolean Agree(string question)
     {
       string meanYes = "ytYT", meanNo = "nfNF",
@@ -23,18 +23,16 @@ namespace IntroCS
       return meanYes.Contains("" + answer[0]);
     }
 
-    /// Compare integer strings: any lengths, but both positive or
-    /// Both negative true if magnitude of s <= magnitude of lim.
-    /// Helper string testing functions for same length,
-    /// Lexicographical comparison works
+    /// Compare integer strings: any lengths, but both positive or Both
+    /// negative true if magnitude of s <= magnitude of lim. Helper string
+    /// testing functions for same length, Lexicographical comparison works
     public static bool IntStrMagLessEq(string s, string lim)
     {
       return s.Length < lim.Length || //automatically magnitude less
          s.Length == lim.Length && s.CompareTo(lim) <= 0;
     }
 
-
-    /// Return true if s represents a decimal string.
+    /// Return true if s represents a decimal string. 
     public static bool IsDecimalString(string s)
     {
       if (s.StartsWith("-"))
@@ -49,7 +47,7 @@ namespace IntroCS
       return IsDigits(s);
     }
 
-    /// True when s consists of only 1 or more digits.
+    /// True when s consists of only 1 or more digits. 
     public static bool IsDigits(string s)
     {
       foreach (char ch in s)
@@ -62,7 +60,7 @@ namespace IntroCS
       return (s.Length > 0);
     }
 
-    /// True if s is the string form of an int.
+    /// True if s is the string form of an int. 
     public static bool IsIntString(string s)
     {
       if (s.StartsWith("-"))
@@ -86,8 +84,8 @@ namespace IntroCS
       return decimal.Parse(nStr);
     }
 
-    /// Prompt the user to enter a decimal value until the response is legal.
-    /// Return the result as a double.
+    /// Prompt the user to enter a decimal value until the response is
+    /// legal. Return the result as a double.
     public static double PromptDouble(string prompt)
     {
       string nStr = PromptLine(prompt).Trim();
@@ -99,9 +97,9 @@ namespace IntroCS
       return double.Parse(nStr);
     }
 
-    /// Prompt the user until a keyboard entry is a decimal in the
-    /// Range [lowLim, highLim]. Then return the double value in Range
-    /// Append the range to the prompt.
+    /// Prompt the user until a keyboard entry is a decimal in the Range
+    /// [lowLim, highLim]. Then return the double value in Range Append the
+    /// range to the prompt.
     public static double PromptDoubleInRange(string prompt,
        double lowLim, double highLim)
     {
@@ -116,8 +114,8 @@ namespace IntroCS
       return number;
     }
 
-    /// Prompt the user to enter an integer until the response is
-    /// Legal. Return the result as in int.
+    /// Prompt the user to enter an integer until the response is Legal.
+    /// Return the result as in int.
     public static int PromptInt(string prompt)
     {
       string nStr = PromptLine(prompt).Trim();
@@ -130,8 +128,8 @@ namespace IntroCS
     }
 
     /// Prompt the user until a keyboard entry is an int in the range
-    /// [lowLim, highLim]. Then return the int value in range.
-    /// Append the range to the prompt.
+    /// [lowLim, highLim]. Then return the int value in range. Append the
+    /// range to the prompt.
     public static int PromptIntInRange(string prompt,
        int lowLim, int highLim)
     {
@@ -146,7 +144,7 @@ namespace IntroCS
       return number;
     }
 
-    /// After displaying the prompt, return a line from the keyboard.
+    /// After displaying the prompt, return a line from the keyboard. 
     public static string PromptLine(string prompt)
     {
       Console.WriteLine(prompt);
@@ -154,6 +152,5 @@ namespace IntroCS
     }
 
     #endregion Public Methods
-
   }
 }

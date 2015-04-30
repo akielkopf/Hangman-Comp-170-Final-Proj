@@ -1,9 +1,5 @@
 ﻿using Sophmores_FinalProj.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sophmores_FinalProj
 {
@@ -18,7 +14,7 @@ namespace Sophmores_FinalProj
     public Inventory inventory { get; set; }
 
     /// <summary>
-    /// Doesn't do anything...yet
+    /// Doesn't do anything...yet 
     /// </summary>
     public int Level { get; set; }
 
@@ -35,7 +31,7 @@ namespace Sophmores_FinalProj
     #region Public Constructors
 
     /// <summary>
-    /// Creates an Non-Player, Non-Combat Character
+    /// Creates an Non-Player, Non-Combat Character 
     /// </summary>
     /// <param name="Name"> Character Name </param>
     /// <param name="Health"> Character Health </param>
@@ -50,7 +46,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Creates an Nameable Default Character Similar to Peasants!
+    /// Creates an Nameable Default Character Similar to Peasants! 
     /// </summary>
     /// <param name="Name"> Character Name </param>
     public Character(string Name)
@@ -63,7 +59,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Default Characters are peasants!
+    /// Default Characters are peasants! 
     /// </summary>
     public Character()
     {
@@ -79,7 +75,7 @@ namespace Sophmores_FinalProj
     #region Public Methods
 
     /// <summary>
-    /// Add Item to inventory
+    /// Add Item to inventory 
     /// </summary>
     /// <param name="item"> item </param>
     /// <param name="itemCount"> Number of the SAME item to add </param>
@@ -89,7 +85,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Applies Specified value to Character BuffMultiplier
+    /// Applies Specified value to Character BuffMultiplier 
     /// </summary>
     /// <param name="buff"> Value of new BuffMultiplier </param>
     public void ApplyBuffOrDebuff(double buff)
@@ -98,7 +94,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// For use when a character says something
+    /// For use when a character says something 
     /// </summary>
     /// <param name="says"> Thing the character says </param>
     public void Emote(string says)
@@ -107,7 +103,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Check to see if a Character is Alive
+    /// Check to see if a Character is Alive 
     /// </summary>
     /// <returns> True is character is alive, false otherwise </returns>
     public bool isAlive()
@@ -120,7 +116,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Use this Function to modify Character Health in-combat
+    /// Use this Function to modify Character Health in-combat 
     /// </summary>
     /// <param name="delta"> Amount to increase or decrease CurrentHP </param>
     public void ModifyCurrentHP(int delta)
@@ -129,7 +125,7 @@ namespace Sophmores_FinalProj
       if (CurrentHP < 0)
       {
         CurrentHP = 0;
-        // Call Death Method? (Not yet implemented)
+        // Call Death Method? (Not yet implemented) 
       }
       else if (CurrentHP > 100)
       {
@@ -138,7 +134,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Resets BuffMultiplier to 1
+    /// Resets BuffMultiplier to 1 
     /// </summary>
     public void RemoveBuff()
     {
@@ -146,7 +142,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Remove an Item from the character's Inventory
+    /// Remove an Item from the character's Inventory 
     /// </summary>
     /// <param name="item"> Item to Remove </param>
     /// <param name="itemCount"> Number of Items to Remove </param>
@@ -156,7 +152,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Returns Character Name as String
+    /// Returns Character Name as String 
     /// </summary>
     /// <returns> Character Name </returns>
     public override string ToString()
@@ -171,7 +167,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Uses the Specified Poison
+    /// Uses the Specified Poison 
     /// </summary>
 
     public void UsePoison(Poison poi)
