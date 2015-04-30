@@ -156,8 +156,11 @@ namespace Sophmores_FinalProj
       {
         Console.Write("\n \nWhich door would you like to enter? " +
                       "\n 1) Door 1 \n 2) Door 2 \n 3) Door 3");
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("\n 4) Open Inventory \n");
+		Console.ForegroundColor = ConsoleColor.Magenta;
+		Console.WriteLine("\n 4) Large Door");
+		Console.ForegroundColor = ConsoleColor.Yellow;
+		Console.WriteLine("\n 5) Open Inventory");
+	  
       }
       Console.ResetColor();
       int choice = UI.PromptInt("\nPlease enter a choice number: ");
@@ -170,8 +173,11 @@ namespace Sophmores_FinalProj
         else if (door == true)
         {
           Console.Write("Which door would you like to enter? \n 1) Door 1 \n 2) Door 2 \n 3) Door 3");
+		  Console.ForegroundColor = ConsoleColor.Magenta;
+		  Console.WriteLine("\n 4) Large Door");
           Console.ForegroundColor = ConsoleColor.Yellow;
-          Console.WriteLine("\n 4) Open Inventory \n");
+          Console.WriteLine("\n 5) Open Inventory");
+		  
         }
         Console.ResetColor();
         choice = UI.PromptInt("Please enter a valid choice number: ");
@@ -192,10 +198,9 @@ namespace Sophmores_FinalProj
       Player p1 = GameIntro.Start(new Player("", 100, 10));
       p1.CurrentHP = 20;
       Console.Write(p1.Name + ", ");
-      Enemy Spider = new Enemy();
-      Spider.Name = "Small Spider";
+      Enemy Spider = new Enemy("Small Spider");
       Combat.StartCombat(p1, Spider);
-      p1.TutorialComplete = true;
+        p1.TutorialComplete = true;
       Console.WriteLine("Congrats on Defeating your first Enemy, {0}!", p1.Name);
       Poison venom = new Poison("Spider Venom", "athough it has a very attractive smell, " +
                             "\n this venom will weaken anyone who touches it.", false);
@@ -297,7 +302,7 @@ namespace Sophmores_FinalProj
       bool responseIsGood = false;
       while (!(responseIsGood))
       {
-        response = getChoice(4, "", true);  // gets player input here
+        response = getChoice(5, "", true);  // gets player input here
         if (1 <= response && response <= 3)     //checks if response is a door number
         {
           if (!p1.Stage)              // makes sure player is not currently in the middle of a stage.
@@ -376,7 +381,7 @@ namespace Sophmores_FinalProj
             }
           }
         }
-        else if (response == 4)
+        else if (response == 5)
         {
           p1.DisplayInventoryContents();
           string input = UI.PromptLine("Spell out the name of Item you wish to see description of. (case doesn't matter)");
@@ -392,11 +397,24 @@ namespace Sophmores_FinalProj
             }
           }
         }
-        else if (p1.currentStage == 3 &&
-        response != 4)
+		else if (response == 4)
         {
-          responseIsGood = true;
-          continue;
+			if (p1.currentStage != 3) 
+			{
+				Console.ForegroundColor = ConsoleColor.Magenta;
+				Console.ResetColor ();
+				Console.WriteLine ("\nThis door is locked, it smells like plants... \nThis door also seems to have 3 keyholes... very strange..."); 
+				continue;
+			} 
+			else if (p1.currentStage == 3) 
+			{
+				Console.ForegroundColor = ConsoleColor.Magenta;
+				Console.WriteLine ("\n I love bad bitches thats my fuckin problem. \nfinal stage still needs to be coded.");
+				Console.ResetColor();
+				responseIsGood = true;
+				break;
+
+			}
         }
       }
     }
