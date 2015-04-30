@@ -49,6 +49,29 @@ namespace Sophmores_FinalProj.Utilities
     }
 
     /// <summary>
+    /// Prints standard Press Any Key to Continue Message then writes a newline 
+    /// </summary>
+    public static void PressAnyKeyNOBufferClear()
+    {
+      string message = ("\nPress any key to continue...");
+      Console.WriteLine(message);
+      Console.ReadKey();
+      Console.WriteLine();
+    }
+
+    /// <summary>
+    /// Prints custom Press Any Key to Continue message then writes a newline 
+    /// </summary>
+    /// <param name="message"> Message to display to player </param>
+    public static void PressAnyKeyNOBufferClear(string message)
+    {
+      Console.WriteLine("\n" + message);
+      Console.ReadKey();
+      Console.WriteLine();
+    }
+
+
+    /// <summary>
     /// Prints to Console the contents of the supplied text File AND Returns
     /// file contents as String
     /// * Throws NotSupportedException* if param is not a '.txt'

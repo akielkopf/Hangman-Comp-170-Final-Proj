@@ -225,7 +225,10 @@ namespace Sophmores_FinalProj
     {
       if (WeapontoEquip.playerCanEquip)
       {
-        UnEquip();
+        if (EquippedWeapon != null)
+        {
+          UnEquip();
+        }
         EquippedWeapon = new Weapon(WeapontoEquip);
         PhysicalDamage += WeapontoEquip.physicalDamage;
         MagicDamage += WeapontoEquip.magicalDamage;

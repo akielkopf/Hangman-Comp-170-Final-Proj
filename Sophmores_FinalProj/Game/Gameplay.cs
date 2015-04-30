@@ -192,10 +192,9 @@ namespace Sophmores_FinalProj
       Player p1 = GameIntro.Start(new Player("", 100, 10));
       p1.CurrentHP = 20;
       Console.Write(p1.Name + ", ");
-      Enemy Spider = new Enemy();
-      Spider.Name = "Small Spider";
+      Enemy Spider = new Enemy("Small Spider");
       Combat.StartCombat(p1, Spider);
-      p1.TutorialComplete = true;
+        p1.TutorialComplete = true;
       Console.WriteLine("Congrats on Defeating your first Enemy, {0}!", p1.Name);
       Poison venom = new Poison("Spider Venom", "athough it has a very attractive smell, " +
                             "\n this venom will weaken anyone who touches it.", false);
