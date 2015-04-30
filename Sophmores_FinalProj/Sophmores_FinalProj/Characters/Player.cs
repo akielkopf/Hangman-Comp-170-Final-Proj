@@ -225,6 +225,10 @@ namespace Sophmores_FinalProj
     {
       if (WeapontoEquip.playerCanEquip)
       {
+        if (EquippedWeapon != null)
+        {
+          UnEquip();
+        }
         EquippedWeapon = new Weapon(WeapontoEquip);
         PhysicalDamage += WeapontoEquip.physicalDamage;
         MagicDamage += WeapontoEquip.magicalDamage;
@@ -267,7 +271,7 @@ namespace Sophmores_FinalProj
     /// Unequips currently Equipped Weapon and Equips the Default Weapon
     /// Player will never not have Weapon Equipped
     /// </summary>
-    public void UnEquip()
+    private void UnEquip()
     {
       PhysicalDamage -= EquippedWeapon.physicalDamage;
       MagicDamage -= EquippedWeapon.magicalDamage;
