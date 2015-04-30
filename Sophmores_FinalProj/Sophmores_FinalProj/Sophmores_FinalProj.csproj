@@ -66,8 +66,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EnemyArt\TextFile1.txt" />
-    <Content Include="EnemyArt\TextFile2.txt" />
+    <Content Include="EnemyArt\GiantRat\Giant Rat1.txt" />
+    <Content Include="EnemyArt\GiantRat\Giant Rat2.txt" />
+    <Content Include="EnemyArt\Plagued Rat\Plagued Rat0.txt" />
+    <Content Include="EnemyArt\Plagued Rat\Plagued Rat1.txt" />
+    <Content Include="EnemyArt\Plagued Rat\Plagued Rat2.txt" />
+    <Content Include="EnemyArt\Skelton\Skeleton2.txt" />
+    <Content Include="EnemyArt\Skelton\Skeleton1.txt" />
+    <Content Include="EnemyArt\Skelton\Skeleton0.txt" />
+    <Content Include="EnemyArt\Small Spider\Small Spider0.txt" />
+    <Content Include="EnemyArt\GiantRat\Giant Rat0.txt" />
+    <Content Include="EnemyArt\Small Spider\Small Spider1.txt" />
+    <Content Include="EnemyArt\Small Spider\Small Spider2.txt" />
     <Content Include="GameLogos\gamelogo.txt" />
     <Content Include="GameLogos\gamelogo2.txt" />
     <None Include="PlayerNoteTxtFiles\note.txt" />

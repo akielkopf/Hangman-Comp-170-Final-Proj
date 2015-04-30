@@ -24,17 +24,19 @@ namespace Sophmores_FinalProj
 
     #region Public Methods
 
-    public static string message(Item cur)
+    public static string message(Item currentItem)
     {
-      if (cur is Poison)
+      string message;
+      if (currentItem is Poison)
       {
-        string mess = " has poisoned the enemy with " + cur.name + " for three turns.";
-        return mess;
+        message = (" has poisoned the enemy with " + currentItem.name + 
+                   " for three turns.");
+        return message;
       }
-      else if (cur is HealthPotion)
+      else if (currentItem is HealthPotion)
       {
-        string mess = " has used " + cur.name + " to recover HP.";
-        return mess;
+        message = (" has used " + currentItem.name + " to recover HP.");
+        return message;
       }
       else
       {
@@ -44,6 +46,7 @@ namespace Sophmores_FinalProj
 
     public static void StartCombat(Player player, Enemy enemy)
     {
+      DisplayEnemyArt(enemy);
       player.RemoveBuff();
       run = false;
       if (!enemy.isAlive())
@@ -57,10 +60,9 @@ namespace Sophmores_FinalProj
       {
         turn = 0;
         poisonStart = -4;
-        Console.WriteLine("\nA Wild {0} has appeared!! It appears to have {1}HP.", enemy.Name, enemy.TotalHP);
         while ((player.isAlive() && enemy.isAlive()) || !run)
         {
-          playerAction(player, enemy, turn);
+          PlayerAction(player, enemy, turn);
           if (!(enemy.isAlive()))
           {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -68,10 +70,10 @@ namespace Sophmores_FinalProj
             Console.ResetColor();
             starLine();
             player.CurrentHP = player.TotalHP;
-            endFight(player);
+            EndFight(player);
             break;
           }
-          enemyAttack(player, enemy);
+          EnemyAttack(player, enemy);
           if (!(player.isAlive()))
           {
             if (!player.TutorialComplete)
@@ -94,7 +96,7 @@ namespace Sophmores_FinalProj
               Console.ForegroundColor = ConsoleColor.DarkYellow;
               Console.WriteLine("\n" + player.Name + " has woken back up in the door lobby somehow feeling a little better...");
               Console.ResetColor();
-              endFight(player);
+              EndFight(player);
               starLine();
               break;
             }
@@ -105,14 +107,14 @@ namespace Sophmores_FinalProj
             Console.WriteLine("\n" + player.Name + " has succesfully run from the " + enemy.Name + "!");
             Console.WriteLine(player.Name + " has returned to the door lobby.");
             Console.ResetColor();
-            endFight(player);
+            EndFight(player);
             starLine();
             break;
           }
           turn++;
-          depoison(player);
+          Depoison(player);
         }
-        endFight(player);
+        EndFight(player);
       }
       return;
     }
@@ -120,12 +122,11 @@ namespace Sophmores_FinalProj
     #endregion Public Methods
 
     #region Private Methods
-
     /// <summary>
     /// Checks if it has been 4 turns since the player used poison, if so it disables
     /// </summary>
     /// <param name="player"></param>
-    private static void depoison(Player player)
+    private static void Depoison(Player player)
     {
       if (turn == poisonStart + 4)
       {
@@ -135,17 +136,44 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
+    /// Displays Enemy ASCII art files if they exist
+    /// </summary>
+    /// <param name="enemy">Current Enemy</param>
+    private static void DisplayEnemyArt(Enemy enemy)
+    {
+      string[] artFiles = enemy.ArtFiles;
+      if (artFiles != null)
+      {
+      //Console.BackgroundColor = ConsoleColor.DarkBlue;
+      TextUtil.SetBufferSize();
+        for (int i = 0; i < 50; i++)
+        {
+          foreach (string file in artFiles)
+          {
+            Console.Clear();
+            TextUtil.PrintTextFile(file);
+          }
+          Console.WriteLine();
+        }
+      }
+      string message = string.Format("\nA Wild {0} has appeared!! It appears " + 
+                                    "to have {1}HP.",enemy.Name, enemy.TotalHP);
+      TextUtil.PressAnyKeyNOBufferClear(message);
+      //Console.ResetColor();
+    }
+
+    /// <summary>
     /// returns values back to default after fight ends 
     /// </summary>
     /// <param name="player"></param>
-    private static void endFight(Player player)
+    private static void EndFight(Player player)
     {
       turn = 0;
       poisonStart = -4;
       player.RemoveBuff();
     }
 
-    private static void enemyAttack(Player player, Enemy enemy)
+    private static void EnemyAttack(Player player, Enemy enemy)
     {
       int attack = random.Next(enemy.MinDamage, enemy.MaxDamage);
       Console.WriteLine("Enemy attacks for {0} damage!", attack);
@@ -160,7 +188,7 @@ namespace Sophmores_FinalProj
     /// number of choices the user should have.
     /// </param>
     /// <returns></returns>
-    private static int getChoice(int numChoices)
+    private static int GetChoice(int numChoices)
     {
       int choice = UI.PromptInt("\nPlease enter a choice number: ");
       while (choice < 1 || choice > numChoices)
@@ -175,7 +203,7 @@ namespace Sophmores_FinalProj
     /// Displays user-side combat options and retrieves string input answer 
     /// </summary>
     /// <returns></returns>
-    private static string inp()
+    private static string PlayerInputOptions()
     {
       starLine();
       Console.WriteLine("Make your choice...");
@@ -198,7 +226,7 @@ namespace Sophmores_FinalProj
     /// <param name="player"></param>
     /// <param name="enemy"></param>
     /// <param name="current turn"></param>
-    private static void playerAction(Player player, Enemy enemy, int turn)
+    private static void PlayerAction(Player player, Enemy enemy, int turn)
     {
       playerTurn = true;
       while (playerTurn == true)
@@ -206,7 +234,7 @@ namespace Sophmores_FinalProj
         int curInput = preCombatCheck(player);
         if (curInput == 1)
         {
-          playerAttack(player, enemy);
+          PlayerAttack(player, enemy);
           playerTurn = false;
           break;
         }
@@ -214,7 +242,7 @@ namespace Sophmores_FinalProj
         {
           List<Item> curWeapons = player.DisplayAllWeaponsReturnList();
 
-          int choice = getChoice(curWeapons.Count + 1);
+          int choice = GetChoice(curWeapons.Count + 1);
           if (choice - 1 < curWeapons.Count)
           {
             if ((curWeapons[choice - 1]).playerCanEquip)
@@ -238,7 +266,7 @@ namespace Sophmores_FinalProj
         {
           List<Item> curCItems = player.DisplayConsumablesReturnList();
 
-          int choice = getChoice(curCItems.Count + 1);
+          int choice = GetChoice(curCItems.Count + 1);
           if (choice - 1 < curCItems.Count)
           {
             if (curCItems[choice - 1] is Poison) { poisonStart = turn; }
@@ -278,7 +306,7 @@ namespace Sophmores_FinalProj
     /// Player attacks enemy for player.TotalDamage IF Enemy Affinity does
     /// cause Enemy to be immune
     /// </summary>
-    private static void playerAttack(Player player, Enemy enemy)
+    private static void PlayerAttack(Player player, Enemy enemy)
     {
       string enemyAffinity = enemy.Affinity.ToLower().Trim();
       string playerWeaponType = (enemyAffinity == "n") ? "n" : player.EquippedWeapon.type.ToLower().Trim();
@@ -297,12 +325,12 @@ namespace Sophmores_FinalProj
     /// <summary>
     /// Turns string input into number input 
     /// </summary>
-    private static int playerInput(string inp)
+    private static int ProcessPlayerInput(string input)
     {
-      if (inp == "attack" || inp == "1") { return 1; }
-      else if (inp == "swap" || inp == "2") { return 2; }
-      else if (inp == "use" || inp == "3") { return 3; }
-      else if (inp == "run" || inp == "4") { return 4; }
+      if (input == "attack" || input == "1") { return 1; }
+      else if (input == "swap" || input == "2") { return 2; }
+      else if (input == "use" || input == "3") { return 3; }
+      else if (input == "run" || input == "4") { return 4; }
       else
         return 0;
     }
@@ -313,7 +341,7 @@ namespace Sophmores_FinalProj
     /// </summary>
     private static int preCombatCheck(Player player)
     {
-      int curInput = playerInput(inp());
+      int curInput = ProcessPlayerInput(PlayerInputOptions());
       bool validInp = false;
       while (validInp == false)
       {
@@ -332,13 +360,13 @@ namespace Sophmores_FinalProj
           else
           {
             Console.WriteLine("You fool! You have no Items in your inventory!");
-            curInput = playerInput(inp());
+            curInput = ProcessPlayerInput(PlayerInputOptions());
           }
         }
         if (curInput == 4 && player.TutorialComplete == false)
         {
           Console.WriteLine("You can't run, this is your first fight!");
-          curInput = playerInput(inp());
+          curInput = ProcessPlayerInput(PlayerInputOptions());
         }
         if (curInput == 4 && player.TutorialComplete == true)
         {
@@ -348,7 +376,7 @@ namespace Sophmores_FinalProj
         if (curInput == 0)
         {
           Console.WriteLine("You've entered an invalid command");
-          curInput = playerInput(inp());
+          curInput = ProcessPlayerInput(PlayerInputOptions());
         }
       }
       return curInput;
