@@ -219,7 +219,6 @@ namespace Sophmores_FinalProj
           {
             if ((curWeapons[choice - 1]).playerCanEquip)
             {
-              player.UnEquip();
               player.Equip(curWeapons[choice - 1] as Weapon);
               Console.WriteLine("Player has equipped " + curWeapons[choice - 1].name + ".");
               playerTurn = false;
