@@ -19,6 +19,12 @@ namespace Sophmores_FinalProj
         if (!player.isAlive()) { player.CurrentHP = 10; }
         return;
       }
+
+	  Console.ForegroundColor = ConsoleColor.DarkYellow;
+      TextUtil.PrintTextFile("foreshadownote.txt");
+      Console.ResetColor();
+      TextUtil.PressAnyKeyBufferClear();
+
       Combat.StartCombat(player, enemy2);
       GainEnemyItems(player, enemy2);
       if (!player.isAlive() || Combat.run)
