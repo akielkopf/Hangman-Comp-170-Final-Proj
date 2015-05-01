@@ -46,7 +46,7 @@ namespace Sophmores_FinalProj
 
     public static void StartCombat(Player player, Enemy enemy)
     {
-     // DisplayEnemyArt(enemy); // Comment this line out to turn off Enemy Art
+      DisplayEnemyArt(enemy); // Comment this line out to turn off Enemy Art
       player.RemoveBuff();
       run = false;
       if (!enemy.isAlive())
