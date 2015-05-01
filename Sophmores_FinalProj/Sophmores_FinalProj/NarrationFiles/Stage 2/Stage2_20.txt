@@ -11,6 +11,3 @@ surface.
 face. In front of you is the most horrifying creatures you have ever seen...
 
 --------------------------------------------------------------------------------
-A squid like creature is staring back at you. It's a Kraken!
-
-<combat>

@@ -48,11 +48,15 @@ namespace Sophmores_FinalProj
     /// and damage
     /// </summary>
     public int TotalDamage { get; private set; }
-
+    /// <summary>
+    /// list containing all current Item's in inventory. 
+    /// </summary>
+    public List<Item> allItems { get; private set; }
     /// <summary>
     /// true after player completes tutorial 
     /// </summary>
     public bool TutorialComplete { get; set; }
+    public int Shield { get; set; }    
 
     #endregion Public Properties
 
@@ -77,6 +81,7 @@ namespace Sophmores_FinalProj
       currentDoor = 0;
       currentStage = 0;
       DoorsOpened = new List<int> { };
+      Shield = 0;
     }
 
     /// <summary>
@@ -98,6 +103,7 @@ namespace Sophmores_FinalProj
       currentDoor = 0;
       currentStage = 0;
       DoorsOpened = new List<int> { };
+      Shield = 0;
     }
 
     /// <summary>
@@ -140,15 +146,18 @@ namespace Sophmores_FinalProj
     {
       int count = 1;
       List<Item> conList = new List<Item> { };
-      string x = "Weapons: \n";
+      string x = "\nWeapons: \n";
       StringBuilder builder = new StringBuilder(x);
       foreach (KeyValuePair<Item, int> a in inventory.contents)
       {
-        if (a.Key is Weapon)
+          if (a.Key is Weapon && a.Key.type.ToLower().Trim() != "shield")
         {
-          builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type);
-          count++;
-          conList.Add(a.Key);
+            if (a.Key.name != EquippedWeapon.name)
+            {
+                builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type);
+                count++;
+                conList.Add(a.Key);
+            }
         }
       }
       builder.AppendLine(count + ") Keep current weapon Equipped.");
@@ -176,13 +185,13 @@ namespace Sophmores_FinalProj
     {
       int count = 1;
       List<Item> conList = new List<Item> { };
-      string x = "Consumables: \n";
+      string x = "\nConsumables: \n";
       StringBuilder builder = new StringBuilder(x);
       foreach (KeyValuePair<Item, int> a in inventory.contents)
       {
         if (a.Key.consumable)
         {
-          builder.AppendLine(count + ") " + a.Key.name + ", " + a.Value);
+          builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type + ", Quantity: " + a.Value);
           count++;
           conList.Add(a.Key);
         }
@@ -239,6 +248,7 @@ namespace Sophmores_FinalProj
     {
       var inventoryList = new List<Item>(inventory.contents.Keys);
       inventoryList.Sort();
+      allItems = inventoryList;
       DisplayItems(inventoryList);
     }
 
@@ -272,7 +282,7 @@ namespace Sophmores_FinalProj
     /// <param name="item"> Item to Describe </param>
     public void Inspect(Item item)
     {
-      Console.WriteLine("Name: {0}", item.name);
+      Console.WriteLine("\nName: {0}", item.name);
       Console.WriteLine("Type: {0}", item.type);
       Console.WriteLine("Description: {0}", item.description);
       if (item is Weapon)
@@ -320,12 +330,12 @@ namespace Sophmores_FinalProj
 
     private void DisplayItems(List<Item> itemList)
     {
-      int i = 0;
-      Console.WriteLine("All Items:");
-      foreach (Item s in itemList)
-      {
-        Console.WriteLine(i + ") " + s.name + " " + inventory.contents[s]);
-        i++;
+        int i = 1;
+        Console.WriteLine("\nAll Items:");
+        foreach (Item s in itemList)
+        {
+            Console.WriteLine(i + ") " + s.name + ", Quantity: " + inventory.contents[s]);
+            i++;
       }
     }
 

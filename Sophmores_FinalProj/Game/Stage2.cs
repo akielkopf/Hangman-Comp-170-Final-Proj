@@ -9,11 +9,196 @@ namespace Sophmores_FinalProj
 {
   public static class Stage2
   {
-    public static void PrintMsgs()
+    static string[] stageTexts;
+    /// <summary>
+    /// Provides plot text for intro section of stage 2
+    /// </summary>
+    public static void PreNoteMsgs()
     {
-      string[] stageTexts = GetNarrationFiles();
+      string msg = string.Empty;
+      stageTexts = GetNarrationFiles();
+      for (int i = 1; i < 4; i++)
+      {
+        Console.Clear();
+        TextUtil.PrintTextFile(stageTexts[i]);
+        switch (i)
+        {
+          case 1:
+            msg = "Touching the cavern wall and you feel the wetness on " +
+                  "your hand...";
+            break;
+          case 2:
+            msg = "You spot something on the ground up ahead but you can't " +
+              "quite make it out...";
+            break;
+          case 3:
+            msg = "You reach towards the satchel...";
+            break;
+          default:
+            msg = null;
+            break;
+        }
+        TextUtil.PressAnyKeyBufferClear(msg);
+      }
     }
-
+    public static void JumpOrClimbScene()
+    {
+      string msg = string.Empty;
+      stageTexts = GetNarrationFiles();
+      for (int i = 13; i < 15; i++)
+      {
+        Console.Clear();
+        TextUtil.PrintTextFile(stageTexts[i]);
+        switch (i)
+        {
+          case 13:
+            msg = "Something in the water moves and it catches your " +
+                  "attention. An Alligator!";
+            break;
+          case 14:
+            msg = "What should you do?";
+            break;
+          default:
+            msg = null;
+            break;
+        }
+        TextUtil.PressAnyKeyBufferClear(msg);
+      }
+      string question = "Go down the latter and run to the other side?\n " +
+                        "Try and make the jump?\n \n 1)Climb Down\n 2)Jump";
+      int answer = Program.getChoice(2, question);
+      if (answer == 1)
+      {
+        TextUtil.PrintTextFile(stageTexts[15]);
+        Console.WriteLine();
+      }
+      else if (answer == 2)
+      {
+        TextUtil.PrintTextFile(stageTexts[16]);
+        msg = "He blocks access to either ladder...";
+        TextUtil.PressAnyKeyBufferClear(msg);
+      }
+    }
+    /// <summary>
+    /// Plot for Boss encounter
+    /// </summary>
+    public static void BossScene()
+    {
+      string msg = string.Empty;
+      stageTexts = GetNarrationFiles();
+      for (int i = 17; i < 21; i++)
+      {
+        Console.Clear();
+        TextUtil.PrintTextFile(stageTexts[i]);
+        switch (i)
+        {
+          case 18:
+            msg = "You look down at the altar and place the rocks into " + 
+                   "the slots.";
+            break;
+          case 19:
+            msg = "It went by so fast that you couldn't tell what it was...";
+            break;
+          case 20:
+            msg = "A squid like creature is staring back at you. the Kraken!";
+            break;
+          default:
+            msg = null;
+            break;
+        }
+        TextUtil.PressAnyKeyBufferClear(msg);
+      }
+    }
+    public static void Stage2Beat()
+    {
+      TextUtil.PrintTextFile(stageTexts[21]);
+      string msg = "The iron gates begin to lift up and you stumble out of " + 
+                   "the chamber, hoping never to return.";
+      TextUtil.PressAnyKeyBufferClear(msg);
+    }
+    /// <summary>
+    /// Provides plot and player interaction for 3rd scene in stage 2
+    /// </summary>
+    public static void BreakWebsScene()
+    {
+      string msg = string.Empty;
+      stageTexts = GetNarrationFiles();
+      for (int i = 5; i < 11; i++)
+      {
+        Console.Clear();
+        TextUtil.PrintTextFile(stageTexts[i]);
+        switch (i)
+        {
+          case 5:
+            msg = "\"I think I'll need this as well.\", you think to yourself.";
+            break;
+          case 7:
+            msg = "That's when you notice you are surrounded by insects....";
+            break;
+          case 8:
+            msg = "As you begin to take it all in, you can help but see the " +
+                  "spider webs...";
+            break;
+          case 11:
+            msg = "What should you do?";
+            break;
+          default:
+            msg = null;
+            break;
+        }
+        TextUtil.PressAnyKeyBufferClear(msg);
+      }
+      string question = "Try your Sword? Or your Wand? \n 1)Sword \n 2)Wand";
+      int answer = Program.getChoice(2, question);
+      bool pass = false;
+      while (pass != true)
+      {
+        if (answer == 1)
+        {
+          Console.WriteLine("The Sword gets tangled up in the webs! " +
+                             "It's no use!");
+          Console.WriteLine();
+          answer = Program.getChoice(2, "maybe try a different weapon. " +
+                                "\n 1)Sword \n 2)Wand");
+        }
+        else if (answer == 2)
+        {
+          Console.WriteLine("The spider's web lose's it's eerie glow and " +
+                            "crumbles");
+          Console.WriteLine();
+          pass = true;
+        }
+      }
+      msg = "A Giant Spider!!";
+      TextUtil.PrintTextFile(stageTexts[12]);
+      TextUtil.PressAnyKeyBufferClear(msg);
+    }
+    /// <summary>
+    /// Prints note plot and creates note item displayed
+    /// </summary>
+    /// <returns>Note Item</returns>
+    public static Item PlayerViewsNote()
+    {
+      string noteDescription = TextUtil.ReturnTextFile("stage2note.txt");
+      Item note = new Item("StarNote", "Paper", noteDescription);
+      Console.WriteLine(note.description);
+      TextUtil.PrintTextFile("Stage2_4.txt");
+      return note;
+    }
+    /// <summary>
+    /// Provides Plot text for End of stage1/begining of stage 2
+    /// </summary>
+    public static void PrintPreDoorMsg()
+    {
+      stageTexts = GetNarrationFiles();
+      Console.Clear();
+      TextUtil.PrintTextFile(stageTexts[0]);
+      TextUtil.PressAnyKeyBufferClear();
+    }
+    /// <summary>
+    /// Gets the individual narrated files from directory
+    /// </summary>
+    /// <returns>Files as strings in array</returns>
     private static string[] GetNarrationFiles()
     {
       List<string> stageTexts = new List<string>();

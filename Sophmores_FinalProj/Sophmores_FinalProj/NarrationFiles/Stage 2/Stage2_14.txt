@@ -14,8 +14,3 @@ You look behind you and notice a ladder leading down into the water.
 "I guess that's another option..."
 
 --------------------------------------------------------------------------------
-What should you do?
-
-<Go down the latter and run across to the other side?>
-
-<Try and make the jump?>

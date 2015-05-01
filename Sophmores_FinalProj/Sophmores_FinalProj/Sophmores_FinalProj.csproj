@@ -66,10 +66,32 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Art\EnemyArt\alligator\Alligator0.txt" />
+    <Content Include="Art\EnemyArt\alligator\Alligator1.txt" />
+    <Content Include="Art\EnemyArt\alligator\Alligator2.txt" />
+    <Content Include="Art\EnemyArt\dragon\Dragon0.txt" />
+    <Content Include="Art\EnemyArt\dragon\Dragon1.txt" />
+    <Content Include="Art\EnemyArt\dragon\Dragon2.txt" />
+    <Content Include="Art\EnemyArt\Ghost\Odalf0.txt" />
+    <Content Include="Art\EnemyArt\Ghost\Odalf1.txt" />
+    <Content Include="Art\EnemyArt\Ghost\Odalf2.txt" />
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat1.txt" />
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat2.txt" />
+    <Content Include="NarrationFiles\Stage 3\Stage3.txt" />
+    <Content Include="NarrationFiles\Stage 4\Stage4.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin1.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin2.txt" />
+    <None Include="Art\EnemyArt\Giant\Giant2.txt" />
+    <None Include="Art\EnemyArt\Giant\Giant1.txt" />
+    <Content Include="Art\EnemyArt\GiantSpider\Giant Spider1.txt" />
+    <Content Include="Art\EnemyArt\GiantSpider\Giant Spider0.txt" />
+    <Content Include="Art\EnemyArt\GiantSpider\Giant Spider2.txt" />
+    <Content Include="Art\EnemyArt\Kraken\Kraken0.txt" />
+    <Content Include="Art\EnemyArt\Kraken\Kraken1.txt" />
+    <Content Include="Art\EnemyArt\Kraken\Kraken2.txt" />
+    <Content Include="Art\EnemyArt\Orc\Orc0.txt" />
+    <Content Include="Art\EnemyArt\Orc\Orc1.txt" />
+    <Content Include="Art\EnemyArt\Orc\Orc2.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat0.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat1.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat2.txt" />
@@ -80,16 +102,22 @@
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat0.txt" />
     <Content Include="Art\EnemyArt\Small Spider\Small Spider1.txt" />
     <Content Include="Art\EnemyArt\Small Spider\Small Spider2.txt" />
+    <Content Include="Art\EnemyArt\wolf\Wolf0.txt" />
+    <Content Include="Art\EnemyArt\wolf\Wolf1.txt" />
+    <Content Include="Art\EnemyArt\wolf\Wolf2.txt" />
+    <Content Include="Art\EnemyArt\zombie\Zombie0.txt" />
+    <Content Include="Art\EnemyArt\zombie\Zombie1.txt" />
+    <Content Include="Art\EnemyArt\zombie\Zombie2.txt" />
     <Content Include="Art\Mountains.txt" />
     <Content Include="Art\PossibleLargeDoor.txt" />
     <Content Include="GameLogos\gamelogo.txt" />
     <Content Include="GameLogos\gamelogo2.txt" />
     <Content Include="NarrationFiles\Stage 2\ClimbDown_Option_Stage2_16.txt" />
     <Content Include="NarrationFiles\Stage 2\Jump_Option_Stage2_15.txt" />
-    <Content Include="NarrationFiles\Stage 2\Stage 2_1.txt" />
-    <Content Include="NarrationFiles\Stage 2\Stage 2_0.txt" />
-    <Content Include="NarrationFiles\Stage 2\Stage 2_2.txt" />
-    <Content Include="NarrationFiles\Stage 2\Stage 2_3.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_1.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_0.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_2.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_3.txt" />
     <Content Include="NarrationFiles\Stage 2\Stage2_10.txt" />
     <Content Include="NarrationFiles\Stage 2\Stage2_11.txt" />
     <Content Include="NarrationFiles\Stage 2\Stage2_13.txt" />
@@ -109,15 +137,8 @@
     <None Include="PlayerNoteTxtFiles\note.txt" />
     <None Include="PlayerNoteTxtFiles\stage2note.txt" />
     <None Include="PlayerNoteTxtFiles\note 3.txt" />
-    <None Include="Art\EnemyArt\dragon\dragon.txt" />
-    <None Include="Art\EnemyArt\wolf\wolf.txt" />
-    <None Include="Art\EnemyArt\Kraken\kraken.txt" />
-    <None Include="Art\EnemyArt\Orc\orc.txt" />
-    <None Include="Art\EnemyArt\zombie\zombie.txt" />
-    <Content Include="Art\EnemyArt\alligator\alligator.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin0.txt" />
-    <None Include="Art\EnemyArt\Ghost\ghost.txt" />
-    <None Include="Art\EnemyArt\Giant\giant.txt" />
+    <None Include="Art\EnemyArt\Giant\Giant0.txt" />
     <None Include="GameLogos\GameOver.txt" />
     <None Include="PlayerNoteTxtFiles\foreshadownote.txt" />
   </ItemGroup>

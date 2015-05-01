@@ -11,4 +11,3 @@ Next to the remains is the hilt of a sword.
 You also notice a satchel not to far from the bottom.
 
 --------------------------------------------------------------------------------
-<Would you like to inspect the satchel?>
