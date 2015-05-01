@@ -13,7 +13,7 @@ namespace Sophmores_FinalProj
                                   Enemy enemy2, Enemy boss)
     {
       Combat.StartCombat(player, enemy1);
-  //    GainEnemyItems(player, enemy1);
+  //   
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -26,14 +26,14 @@ namespace Sophmores_FinalProj
       TextUtil.PressAnyKeyBufferClear();
 
       Combat.StartCombat(player, enemy2);
- //     GainEnemyItems(player, enemy2);
+ //     
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
         return;
       }
       Combat.StartCombat(player, boss);
-  //    GainEnemyItems(player, boss);
+  //    
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -77,7 +77,7 @@ namespace Sophmores_FinalProj
       }
 
       Combat.StartCombat(player, enemy1);
-   //   GainEnemyItems(player, enemy1);
+   //   
 
       string question2 = "Jump or Climb? \n 1)Jump \n 2)Climb";
       int answer2 = getChoice(2, question2);
@@ -109,7 +109,7 @@ namespace Sophmores_FinalProj
       player.AddToInventory(note3, 1);
 
       Combat.StartCombat(player, enemy1);
-    //  GainEnemyItems(player, enemy1);
+    //  
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -121,14 +121,14 @@ namespace Sophmores_FinalProj
 	  Console.WriteLine("Silver Key has been addred to your inventory!");
 
       Combat.StartCombat(player, enemy2);
-    //  GainEnemyItems(player, enemy2);
+    //  
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
         return;
       }
       Combat.StartCombat(player, boss);
-   //   GainEnemyItems(player, boss);
+   //   
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -143,7 +143,7 @@ namespace Sophmores_FinalProj
                                   Enemy boss2)
     {
       Combat.StartCombat(player, boss1);
-  //    GainEnemyItems(player, boss1);
+  //    
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -151,7 +151,7 @@ namespace Sophmores_FinalProj
       }
       player.Shield = 2;
       Combat.StartCombat(player, boss2);
-  //    GainEnemyItems(player, boss2);
+  //    
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -543,7 +543,7 @@ namespace Sophmores_FinalProj
     private static void Tutorial(Player p1, Enemy[] Enemies)
     {
       Combat.StartCombat(p1, Enemies[0]);
-  //    GainEnemyItems(p1, Enemies[0]);
+  // 
       p1.TutorialComplete = true;
       Console.WriteLine("Congrats on Defeating your first Enemy, {0}!", p1.Name);
 
