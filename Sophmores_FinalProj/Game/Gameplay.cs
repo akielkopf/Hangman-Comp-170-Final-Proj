@@ -343,6 +343,7 @@ namespace Sophmores_FinalProj
     }
     private static void Main(string[] args)
     {
+      TextUtil.SetStartingDirectory();
       ShowGameTitleScreen();
       Enemy[] Enemies = CreateAllEnemies();
       Player p1 = GameIntro.Start(new Player("", 20));
