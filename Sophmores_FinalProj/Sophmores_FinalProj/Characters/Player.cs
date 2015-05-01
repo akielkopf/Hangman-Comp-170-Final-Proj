@@ -56,6 +56,7 @@ namespace Sophmores_FinalProj
     /// true after player completes tutorial 
     /// </summary>
     public bool TutorialComplete { get; set; }
+    public int Shield { get; set; }    
 
     #endregion Public Properties
 
@@ -80,6 +81,7 @@ namespace Sophmores_FinalProj
       currentDoor = 0;
       currentStage = 0;
       DoorsOpened = new List<int> { };
+      Shield = 0;
     }
 
     /// <summary>
@@ -101,6 +103,7 @@ namespace Sophmores_FinalProj
       currentDoor = 0;
       currentStage = 0;
       DoorsOpened = new List<int> { };
+      Shield = 0;
     }
 
     /// <summary>
@@ -147,11 +150,14 @@ namespace Sophmores_FinalProj
       StringBuilder builder = new StringBuilder(x);
       foreach (KeyValuePair<Item, int> a in inventory.contents)
       {
-        if (a.Key is Weapon)
+          if (a.Key is Weapon && a.Key.type.ToLower().Trim() != "shield")
         {
-          builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type);
-          count++;
-          conList.Add(a.Key);
+            if (a.Key.name != EquippedWeapon.name)
+            {
+                builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type);
+                count++;
+                conList.Add(a.Key);
+            }
         }
       }
       builder.AppendLine(count + ") Keep current weapon Equipped.");

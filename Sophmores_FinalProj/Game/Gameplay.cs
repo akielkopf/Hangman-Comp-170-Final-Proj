@@ -13,7 +13,7 @@ namespace Sophmores_FinalProj
                                   Enemy enemy2, Enemy boss)
     {
       Combat.StartCombat(player, enemy1);
-      GainEnemyItems(player, enemy1);
+  //    GainEnemyItems(player, enemy1);
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -26,14 +26,14 @@ namespace Sophmores_FinalProj
       TextUtil.PressAnyKeyBufferClear();
 
       Combat.StartCombat(player, enemy2);
-      GainEnemyItems(player, enemy2);
+ //     GainEnemyItems(player, enemy2);
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
         return;
       }
       Combat.StartCombat(player, boss);
-      GainEnemyItems(player, boss);
+  //    GainEnemyItems(player, boss);
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -46,6 +46,7 @@ namespace Sophmores_FinalProj
       Console.ResetColor();
       player.Stage = false;
       Stage2.PrintPreDoorMsg();
+      player.Shield = 1;
     }
 
     private static void DoorStage2(Player player, Enemy enemy1,
@@ -76,7 +77,7 @@ namespace Sophmores_FinalProj
       }
 
       Combat.StartCombat(player, enemy1);
-      GainEnemyItems(player, enemy1);
+   //   GainEnemyItems(player, enemy1);
 
       string question2 = "Jump or Climb? \n 1)Jump \n 2)Climb";
       int answer2 = getChoice(2, question2);
@@ -97,56 +98,7 @@ namespace Sophmores_FinalProj
 		player.Stage = false;
     }
 
-    private static void GainEnemyItems(Player player, Enemy enemy)
-    {
-      if (!(enemy.isAlive()))
-      {
-        foreach (KeyValuePair<Item, int> a in enemy.inventory.contents)
-        {
-          player.AddToInventory(a.Key, 1);
-          Console.ForegroundColor = ConsoleColor.Yellow;
-          Console.WriteLine("{0} has been added to your inventory!", a.Key.name);
-          if (a.Key is Weapon)
-          {
-            string question = ("Would you like to equip " + a.Key.name +
-                               "? \n 1)Yes \n 2)No\n");
-            int answer = getChoice(2, question);
-            Console.ForegroundColor = ConsoleColor.Blue;
-            if (answer == 1)
-            {
-              player.Equip(a.Key as Weapon);
-              Console.WriteLine("\nYour new weapon has been equipped!\n");
-            }
-            else if (answer == 2)
-            {
-              Console.WriteLine("\nYou have not equipped your newest weapon.\n");
-            }
-            Console.ResetColor();
-          }
-          else if (a.Key is HealthPotion)
-          {
-            string question = "Would you like to consume " + a.Key.name +
-                              "?, Its desciption is : " + a.Key.description +
-                              " \n 1)Yes \n 2)No";
-            int answer = getChoice(2, question);
-            Console.ForegroundColor = ConsoleColor.Green;
-            if (answer == 1)
-            {
-              player.ConsumeItem(a.Key as HealthPotion);
-              Console.WriteLine("\nYou have consumed the potion, your " +
-                                "current HP is {0}.", player.CurrentHP);
-            }
-            else if (answer == 2)
-            {
-              Console.WriteLine();
-              Console.WriteLine("You have decided not to consume the potion.");
-              Console.WriteLine();
-            }
-            Console.ResetColor();
-          }
-        }
-      }
-    }
+   
 	
 	private static void DoorStage3(Player player, Enemy enemy1,
                                   Enemy enemy2, Enemy boss)
@@ -157,7 +109,7 @@ namespace Sophmores_FinalProj
       player.AddToInventory(note3, 1);
 
       Combat.StartCombat(player, enemy1);
-      GainEnemyItems(player, enemy1);
+    //  GainEnemyItems(player, enemy1);
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -169,14 +121,14 @@ namespace Sophmores_FinalProj
 	  Console.WriteLine("Silver Key has been addred to your inventory!");
 
       Combat.StartCombat(player, enemy2);
-      GainEnemyItems(player, enemy2);
+    //  GainEnemyItems(player, enemy2);
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
         return;
       }
       Combat.StartCombat(player, boss);
-      GainEnemyItems(player, boss);
+   //   GainEnemyItems(player, boss);
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -191,14 +143,15 @@ namespace Sophmores_FinalProj
                                   Enemy boss2)
     {
       Combat.StartCombat(player, boss1);
-      GainEnemyItems(player, boss1);
+  //    GainEnemyItems(player, boss1);
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
         return;
       }
+      player.Shield = 2;
       Combat.StartCombat(player, boss2);
-      GainEnemyItems(player, boss2);
+  //    GainEnemyItems(player, boss2);
       if (!player.isAlive() || Combat.run)
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
@@ -314,8 +267,8 @@ namespace Sophmores_FinalProj
       Goblin.AddToInventory(GoblinBlood, 2);
 
       Enemy Giant = new Enemy("Giant", 35, 3, 10, 13);
-      Weapon Shield = new Weapon("Shield", "shield",
-        "shield that cuts enemy damage in half when equipped in battle", 20, 0);
+      Weapon Shield = new Weapon("Basic Shield", "shield",
+        "Shield that slightly reduces enemy damage in battle. Automatically equipped when using a sword.", 0, 0);
       HealthPotion GiantMagic = new HealthPotion("Giant Magic",
         "magic potion used by the Giant to cure his injuries", true);
       Item key1 = new Item("Key I", "key",
@@ -590,7 +543,7 @@ namespace Sophmores_FinalProj
     private static void Tutorial(Player p1, Enemy[] Enemies)
     {
       Combat.StartCombat(p1, Enemies[0]);
-      GainEnemyItems(p1, Enemies[0]);
+  //    GainEnemyItems(p1, Enemies[0]);
       p1.TutorialComplete = true;
       Console.WriteLine("Congrats on Defeating your first Enemy, {0}!", p1.Name);
 
