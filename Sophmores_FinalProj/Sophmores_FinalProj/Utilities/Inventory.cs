@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Sophmores_FinalProj.Utilities
 {
-  public class Inventory
+  public class Inventory 
   {
     #region Public Properties
 
@@ -78,5 +79,6 @@ namespace Sophmores_FinalProj.Utilities
     }
 
     #endregion Public Methods
+
   }
 }

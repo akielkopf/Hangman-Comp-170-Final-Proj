@@ -57,23 +57,22 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\fio\fio%28depreciated%29.csproj">
-      <Project>{38702508-4bee-4055-b478-1f9fa30c1630}</Project>
-      <Name>fio%28depreciated%29</Name>
+      <Project>{38702508-4BEE-4055-B478-1F9FA30C1630}</Project>
+      <Name>fio(depreciated)</Name>
     </ProjectReference>
     <ProjectReference Include="..\ui\ui.csproj">
-      <Project>{2262ce21-c5ad-4ede-b384-ec2bd91585e6}</Project>
+      <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
       <Name>ui</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat1.txt" />
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat2.txt" />
+    <None Include="Art\EnemyArt\Goblin\Goblin1.txt" />
+    <None Include="Art\EnemyArt\Goblin\Goblin2.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat0.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat1.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat2.txt" />
-    <Content Include="Art\EnemyArt\PossibleAlligator.txt" />
-    <Content Include="Art\EnemyArt\PossibleKraken.txt" />
-    <Content Include="Art\EnemyArt\PossibleKraken2.txt" />
     <Content Include="Art\EnemyArt\Skelton\Skeleton2.txt" />
     <Content Include="Art\EnemyArt\Skelton\Skeleton1.txt" />
     <Content Include="Art\EnemyArt\Skelton\Skeleton0.txt" />
@@ -85,8 +84,42 @@
     <Content Include="Art\PossibleLargeDoor.txt" />
     <Content Include="GameLogos\gamelogo.txt" />
     <Content Include="GameLogos\gamelogo2.txt" />
+    <Content Include="NarrationFiles\Stage 2\ClimbDown_Option_Stage2_16.txt" />
+    <Content Include="NarrationFiles\Stage 2\Jump_Option_Stage2_15.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage 2_1.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage 2_0.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage 2_2.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage 2_3.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_10.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_11.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_13.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_14.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_17.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_18.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_19.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_20.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_21.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_4.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_5.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_6.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_7.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_8.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_9.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_12.txt" />
     <None Include="PlayerNoteTxtFiles\note.txt" />
     <None Include="PlayerNoteTxtFiles\stage2note.txt" />
+    <None Include="PlayerNoteTxtFiles\note 3.txt" />
+    <None Include="Art\EnemyArt\dragon\dragon.txt" />
+    <None Include="Art\EnemyArt\wolf\wolf.txt" />
+    <None Include="Art\EnemyArt\Kraken\kraken.txt" />
+    <None Include="Art\EnemyArt\Orc\orc.txt" />
+    <None Include="Art\EnemyArt\zombie\zombie.txt" />
+    <Content Include="Art\EnemyArt\alligator\alligator.txt" />
+    <None Include="Art\EnemyArt\Goblin\Goblin0.txt" />
+    <None Include="Art\EnemyArt\Ghost\ghost.txt" />
+    <None Include="Art\EnemyArt\Giant\giant.txt" />
+    <None Include="GameLogos\GameOver.txt" />
+    <None Include="PlayerNoteTxtFiles\foreshadownote.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -96,4 +129,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup />
 </Project>
