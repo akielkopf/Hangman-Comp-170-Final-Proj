@@ -250,7 +250,7 @@ namespace Sophmores_FinalProj
 
 
       //STAGE 1 ENEMIES
-      Enemy Skeleton = new Enemy("Skeleton", 10, 1, 5, 6);
+      Enemy Skeleton = new Enemy("Skeleton", 25, 1, 5, 6);
       Weapon IronSword = new Weapon("Iron Sword", "sword",
         "A Sword made of Iron", 10, 0);
       HealthPotion SkeleFluid = new HealthPotion("Skeleton Fluid",
@@ -258,7 +258,7 @@ namespace Sophmores_FinalProj
       Skeleton.AddToInventory(IronSword, 1);
       Skeleton.AddToInventory(SkeleFluid, 2);
 
-      Enemy Goblin = new Enemy("Goblin", 20, 2, 7, 9);
+      Enemy Goblin = new Enemy("Goblin", 50, 2, 7, 9);
       Weapon SteelSword = new Weapon("#blessed Steel Sword", "sword",
         "sword made of steel, with slight magic damage", 15, 10);
       Poison GoblinBlood = new Poison("Goblin Blood",
@@ -266,7 +266,7 @@ namespace Sophmores_FinalProj
       Goblin.AddToInventory(SteelSword, 1);
       Goblin.AddToInventory(GoblinBlood, 2);
 
-      Enemy Giant = new Enemy("Giant", 35, 3, 10, 13);
+      Enemy Giant = new Enemy("Giant", 70, 3, 10, 13);
       Weapon Shield = new Weapon("Basic Shield", "shield",
         "Shield that slightly reduces enemy damage in battle. Automatically equipped when using a sword.", 0, 0);
       HealthPotion GiantMagic = new HealthPotion("Giant Magic",
@@ -278,14 +278,14 @@ namespace Sophmores_FinalProj
       Giant.AddToInventory(GiantMagic, 1);
 
       //STAGE 2 ENEMIES
-      Enemy GiantSpider = new Enemy("Giant Spider", 20, 10, 5, 7);
+      Enemy GiantSpider = new Enemy("Giant Spider", 40, 10, 5, 30);
       Weapon BasicBow = new Weapon("BasicBow", "bow", "basic wooden bow",
         20, 0);
       Poison spidervenom = new Poison("Spider Venom", "poison", false);
       GiantSpider.AddToInventory(BasicBow, 1);
       GiantSpider.AddToInventory(spidervenom, 1);
 
-      Enemy Alligator = new Enemy("Alligator", 20, 10, 5, 7, "bow");
+      Enemy Alligator = new Enemy("Alligator", 50, 10, 10, 30, "bow");
       Poison FireArrows = new Poison("Fire Arrows",
         "this quiver contains a poisonous fire arrow", true);
         HealthPotion aligatoreggs = new HealthPotion("Alligator Eggs",
@@ -294,7 +294,7 @@ namespace Sophmores_FinalProj
       Alligator.AddToInventory(FireArrows, 1);
       Alligator.AddToInventory(aligatoreggs, 1);
 
-      Enemy Kraken = new Enemy("Kraken", 20, 10, 5, 7, "bow");
+      Enemy Kraken = new Enemy("Kraken", 70, 10, 10, 40, "bow");
       Weapon Crossbow = new Weapon("CrossBow", "bow,",
         "Higher damage than basic bow, gains magical powers when combined " + 
         "with fire arrows", 20, 15);
@@ -307,7 +307,7 @@ namespace Sophmores_FinalProj
       Kraken.AddToInventory(key2, 1);
 
       //STAGE 3 ENEMIES
-      Enemy Wolf = new Enemy("Wolf", 20, 10, 5, 7);
+      Enemy Wolf = new Enemy("Wolf", 60, 10, 10, 30);
       Weapon Staff = new Weapon("Magic Staff", "staff", 
                                 "Basic magic staff", 10, 20);
       HealthPotion WolfMilk = new HealthPotion ("Wolf Milk",
@@ -315,7 +315,7 @@ namespace Sophmores_FinalProj
       Wolf.AddToInventory(Staff,1);
       Wolf.AddToInventory(WolfMilk, 1);
 
-      Enemy Zombie = new Enemy("Zombie", 20, 10, 5, 7);
+      Enemy Zombie = new Enemy("Zombie", 80, 10, 10, 40);
       Weapon Lstaff = new Weapon("Lightning Staff", "staff", 
         "Metal staff with stronger magical power", 15, 25);
       Poison zblood = new Poison("Zombie Blood",
@@ -323,7 +323,7 @@ namespace Sophmores_FinalProj
       Zombie.AddToInventory(Lstaff,1);
       Zombie.AddToInventory(zblood,1);
 
-      Enemy Orc = new Enemy("Orc", 20, 10, 5, 7);
+      Enemy Orc = new Enemy("Orc", 80, 10, 10, 50);
       Item Key3 = new Item("Key III", "key",
         "this is the key collected from third stage");
       Weapon OrcStaff = new Weapon("Orc Staff", "staff",
@@ -335,8 +335,8 @@ namespace Sophmores_FinalProj
       Orc.AddToInventory(Key3, 1);
 
       //Final Stage ENEMIES
-      Enemy Dragon = new Enemy ("Dragon", 50, 4, 15,20);
-      Enemy Ghost = new Enemy("Odalf", 55, 5, 20, 25);
+      Enemy Dragon = new Enemy ("Dragon", 90, 4, 20,50, "sword");
+      Enemy Ghost = new Enemy("Odalf", 100, 5, 20, 55);
 
       AllEnemies.Add(Spider);         // 0          // Index in the
       AllEnemies.Add(Skeleton);       // 1          // returned array
