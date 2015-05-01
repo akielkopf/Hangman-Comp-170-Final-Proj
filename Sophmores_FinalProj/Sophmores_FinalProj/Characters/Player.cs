@@ -57,9 +57,35 @@ namespace Sophmores_FinalProj
     #endregion Public Properties
 
     #region Public Constructors
-
+    /// <summary>
+    /// Creates a Custom Character with a defined Health and Level
+    /// </summary>
+    /// <param name="Name"></param>
+    /// <param name="Health"></param>
+    /// <param name="Level"></param>
     public Player(string Name, int Health, int Level)
       : base(Name, Health, Level)
+    {
+      PhysicalDamage = 1;
+      MagicDamage = 1;
+      Equip(DefaultWeapon);
+      BuffMultiplier = 1;
+      int damage = PhysicalDamage + MagicDamage;
+      TotalDamage = (int)Math.Round(damage * BuffMultiplier);
+      TutorialComplete = false;
+      Stage = false;
+      currentDoor = 0;
+      currentStage = 0;
+      DoorsOpened = new List<int> { };
+    }
+
+    /// <summary>
+    /// Creates a Custom Character with a defined Health and Level
+    /// </summary>
+    /// <param name="Name">Player Character Name</param>
+    /// <param name="Health">Player Character Health</param>
+    public Player(string Name, int Health)
+      : base(Name, Health)
     {
       PhysicalDamage = 1;
       MagicDamage = 1;

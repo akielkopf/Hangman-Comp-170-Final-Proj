@@ -46,7 +46,7 @@ namespace Sophmores_FinalProj
 
     public static void StartCombat(Player player, Enemy enemy)
     {
-      DisplayEnemyArt(enemy);
+      DisplayEnemyArt(enemy); // Comment this line out to turn off Enemy Art
       player.RemoveBuff();
       run = false;
       if (!enemy.isAlive())
@@ -159,7 +159,6 @@ namespace Sophmores_FinalProj
       string message = string.Format("\nA Wild {0} has appeared!! It appears " + 
                                     "to have {1}HP.",enemy.Name, enemy.TotalHP);
       TextUtil.PressAnyKeyNOBufferClear(message);
-      //Console.ResetColor();
     }
 
     /// <summary>
