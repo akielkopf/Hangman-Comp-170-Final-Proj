@@ -19,6 +19,12 @@ namespace Sophmores_FinalProj
         if (!player.isAlive()) { player.CurrentHP = 10; }
         return;
       }
+
+	  Console.ForegroundColor = ConsoleColor.DarkYellow;
+      TextUtil.PrintTextFile("foreshadownote.txt");
+      Console.ResetColor();
+      TextUtil.PressAnyKeyBufferClear();
+
       Combat.StartCombat(player, enemy2);
       GainEnemyItems(player, enemy2);
       if (!player.isAlive() || Combat.run)
@@ -86,6 +92,7 @@ namespace Sophmores_FinalProj
           pass2 = true;
         }
       }
+		player.Stage = false;
     }
 
     private static void GainEnemyItems(Player player, Enemy enemy)
@@ -171,10 +178,7 @@ namespace Sophmores_FinalProj
         return;
       }
       Console.ForegroundColor = ConsoleColor.Yellow;
-      Console.WriteLine("\nAfter defeating the {0}, {1} leaves the room. " +
-                        "You hear \n the door lock behind you as you step " +
-                        "into the lobby.", boss.Name, player.Name);
-      Console.ResetColor();
+      player.currentStage = 3;
       player.Stage = false;
     }
 	
@@ -544,7 +548,12 @@ namespace Sophmores_FinalProj
           input = UI.PromptLine("There is no item in your inventory that " +
                                 "matches that input. Try again.");
         }
+
       }
+	  TextUtil.PressAnyKeyBufferClear();
+      Console.ForegroundColor = ConsoleColor.DarkRed;
+	  TextUtil.PrintTextFile("GameOver.txt");
+	  Console.WriteLine("Congradulations on beating the Game!!!");
     }
     /// <summary>
     /// Provides framework for one-time tutorial
@@ -593,7 +602,7 @@ namespace Sophmores_FinalProj
 
     private static bool OpenedDoors(int response, Player player)
     {
-      if (response < 1 || response > 3) { return false; }
+      if (response < 1 || response > 4) { return false; }
       else
       {
         if (player.DoorsOpened.Count == 0)

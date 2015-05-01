@@ -29,7 +29,7 @@ namespace Sophmores_FinalProj
       string message;
       if (currentItem is Poison)
       {
-        message = (" has poisoned the enemy with " + currentItem.name + 
+        message = (" has poisoned the enemy with " + currentItem.name +
                    " for three turns.");
         return message;
       }
@@ -156,13 +156,13 @@ namespace Sophmores_FinalProj
           Console.WriteLine();
         }
       }
-      string message = string.Format("\nA Wild {0} has appeared!! It appears " + 
+      string message = string.Format("\nA Wild {0} has appeared!! It appears " +
                                     "to have {1}HP.",enemy.Name, enemy.TotalHP);
       TextUtil.PressAnyKeyNOBufferClear(message);
     }
 
     /// <summary>
-    /// returns values back to default after fight ends 
+    /// returns values back to default after fight ends
     /// </summary>
     /// <param name="player"></param>
     private static void EndFight(Player player)
@@ -181,7 +181,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// cleaner way to get choices. 
+    /// cleaner way to get choices.
     /// </summary>
     /// <param name="numChoices">
     /// number of choices the user should have.
@@ -199,7 +199,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Displays user-side combat options and retrieves string input answer 
+    /// Displays user-side combat options and retrieves string input answer
     /// </summary>
     /// <returns></returns>
     private static string PlayerInputOptions()
@@ -220,7 +220,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Player side turn logic. 
+    /// Player side turn logic.
     /// </summary>
     /// <param name="player"></param>
     /// <param name="enemy"></param>
@@ -322,7 +322,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Turns string input into number input 
+    /// Turns string input into number input
     /// </summary>
     private static int ProcessPlayerInput(string input)
     {
@@ -382,7 +382,7 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// Prints a line of stars 
+    /// Prints a line of stars
     /// </summary>
     private static void starLine()
     {
