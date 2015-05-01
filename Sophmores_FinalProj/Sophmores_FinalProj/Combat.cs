@@ -46,7 +46,7 @@ namespace Sophmores_FinalProj
 
     public static void StartCombat(Player player, Enemy enemy)
     {
-     // DisplayEnemyArt(enemy); // Comment this line out to turn off Enemy Art
+       // Comment this line out to turn off Enemy Art
       player.RemoveBuff();
       run = false;
       if (!enemy.isAlive())
@@ -58,6 +58,7 @@ namespace Sophmores_FinalProj
       }
       else if (enemy.isAlive())
       {
+        DisplayEnemyArt(enemy);
         turn = 0;
         poisonStart = -4;
         while ((player.isAlive() && enemy.isAlive()) || !run)

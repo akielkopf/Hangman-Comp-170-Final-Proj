@@ -66,12 +66,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Art\EnemyArt\alligator\alligator0.txt" />
+    <Content Include="Art\EnemyArt\alligator\alligator1.txt" />
+    <Content Include="Art\EnemyArt\alligator\alligator2.txt" />
+    <Content Include="Art\EnemyArt\dragon\dragon0.txt" />
+    <Content Include="Art\EnemyArt\dragon\dragon1.txt" />
+    <Content Include="Art\EnemyArt\dragon\dragon2.txt" />
+    <Content Include="Art\EnemyArt\Ghost\ghost0.txt" />
+    <Content Include="Art\EnemyArt\Ghost\ghost1.txt" />
+    <Content Include="Art\EnemyArt\Ghost\ghost2.txt" />
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat1.txt" />
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat2.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin1.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin2.txt" />
     <None Include="Art\EnemyArt\Giant\Giant2.txt" />
     <None Include="Art\EnemyArt\Giant\Giant1.txt" />
+    <Content Include="Art\EnemyArt\Kraken\kraken0.txt" />
+    <Content Include="Art\EnemyArt\Kraken\kraken1.txt" />
+    <Content Include="Art\EnemyArt\Kraken\kraken2.txt" />
+    <Content Include="Art\EnemyArt\Orc\orc0.txt" />
+    <Content Include="Art\EnemyArt\Orc\orc1.txt" />
+    <Content Include="Art\EnemyArt\Orc\orc2.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat0.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat1.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat2.txt" />
@@ -82,6 +97,12 @@
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat0.txt" />
     <Content Include="Art\EnemyArt\Small Spider\Small Spider1.txt" />
     <Content Include="Art\EnemyArt\Small Spider\Small Spider2.txt" />
+    <Content Include="Art\EnemyArt\wolf\wolf0.txt" />
+    <Content Include="Art\EnemyArt\wolf\wolf1.txt" />
+    <Content Include="Art\EnemyArt\wolf\wolf2.txt" />
+    <Content Include="Art\EnemyArt\zombie\zombie0.txt" />
+    <Content Include="Art\EnemyArt\zombie\zombie1.txt" />
+    <Content Include="Art\EnemyArt\zombie\zombie2.txt" />
     <Content Include="Art\Mountains.txt" />
     <Content Include="Art\PossibleLargeDoor.txt" />
     <Content Include="GameLogos\gamelogo.txt" />
@@ -111,14 +132,7 @@
     <None Include="PlayerNoteTxtFiles\note.txt" />
     <None Include="PlayerNoteTxtFiles\stage2note.txt" />
     <None Include="PlayerNoteTxtFiles\note 3.txt" />
-    <None Include="Art\EnemyArt\dragon\dragon.txt" />
-    <None Include="Art\EnemyArt\wolf\wolf.txt" />
-    <None Include="Art\EnemyArt\Kraken\kraken.txt" />
-    <None Include="Art\EnemyArt\Orc\orc.txt" />
-    <None Include="Art\EnemyArt\zombie\zombie.txt" />
-    <Content Include="Art\EnemyArt\alligator\alligator.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin0.txt" />
-    <None Include="Art\EnemyArt\Ghost\ghost.txt" />
     <None Include="Art\EnemyArt\Giant\Giant0.txt" />
     <None Include="GameLogos\GameOver.txt" />
     <None Include="PlayerNoteTxtFiles\foreshadownote.txt" />
