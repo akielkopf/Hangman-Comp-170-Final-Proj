@@ -13,4 +13,3 @@ You sarcastically laugh,
    situation."
 
 --------------------------------------------------------------------------------
-<What door would you like to go into next?>

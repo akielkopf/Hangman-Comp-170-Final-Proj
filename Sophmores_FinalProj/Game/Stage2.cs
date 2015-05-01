@@ -9,11 +9,44 @@ namespace Sophmores_FinalProj
 {
   public static class Stage2
   {
-    public static void PrintMsgs()
-    {
-      string[] stageTexts = GetNarrationFiles();
-    }
+    static string[] stageTexts;
 
+    public static void PreNoteMsgs()
+    {
+      string msg = string.Empty;
+      stageTexts = GetNarrationFiles();
+      for (int i = 1; i < 4; i++)
+      {
+        Console.Clear();
+        TextUtil.PrintTextFile(stageTexts[i]);
+        switch (i)
+        {
+          case 1:
+            msg = "Touching the cavern wall and you feel the wetness on " + 
+                  "your hand...";
+            break;
+          case 2:
+            msg = "You spot something on the ground up ahead but you can't " + 
+              "quite make it out...";
+              break;
+          case 3:
+            msg = "You reach towards the satchel...";
+            break;
+        }
+        TextUtil.PressAnyKeyBufferClear(msg);
+      }
+    }
+    public static void PrintPreDoorMsg()
+    {
+      stageTexts = GetNarrationFiles();
+      Console.Clear();
+      TextUtil.PrintTextFile(stageTexts[0]);
+      TextUtil.PressAnyKeyBufferClear();
+    }
+    /// <summary>
+    /// Gets the individual narrated files from directory
+    /// </summary>
+    /// <returns>Files as strings in array</returns>
     private static string[] GetNarrationFiles()
     {
       List<string> stageTexts = new List<string>();

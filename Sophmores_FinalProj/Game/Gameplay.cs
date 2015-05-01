@@ -45,11 +45,13 @@ namespace Sophmores_FinalProj
                         "into the lobby.", boss.Name, player.Name);
       Console.ResetColor();
       player.Stage = false;
+      Stage2.PrintPreDoorMsg();
     }
 
     private static void DoorStage2(Player player, Enemy enemy1,
                                    Enemy enemy2, Enemy boss)
     {
+      Stage2.PreNoteMsgs();
       string noteDescription = TextUtil.ReturnTextFile("stage2note.txt");
       Item note = new Item("StarNote", "Paper", noteDescription);
       Console.WriteLine(note.description);

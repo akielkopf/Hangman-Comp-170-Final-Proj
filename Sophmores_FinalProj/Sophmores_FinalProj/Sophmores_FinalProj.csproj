@@ -70,6 +70,8 @@
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat2.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin1.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin2.txt" />
+    <None Include="Art\EnemyArt\Giant\Giant2.txt" />
+    <None Include="Art\EnemyArt\Giant\Giant1.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat0.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat1.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat2.txt" />
@@ -86,10 +88,10 @@
     <Content Include="GameLogos\gamelogo2.txt" />
     <Content Include="NarrationFiles\Stage 2\ClimbDown_Option_Stage2_16.txt" />
     <Content Include="NarrationFiles\Stage 2\Jump_Option_Stage2_15.txt" />
-    <Content Include="NarrationFiles\Stage 2\Stage 2_1.txt" />
-    <Content Include="NarrationFiles\Stage 2\Stage 2_0.txt" />
-    <Content Include="NarrationFiles\Stage 2\Stage 2_2.txt" />
-    <Content Include="NarrationFiles\Stage 2\Stage 2_3.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_1.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_0.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_2.txt" />
+    <Content Include="NarrationFiles\Stage 2\Stage2_3.txt" />
     <Content Include="NarrationFiles\Stage 2\Stage2_10.txt" />
     <Content Include="NarrationFiles\Stage 2\Stage2_11.txt" />
     <Content Include="NarrationFiles\Stage 2\Stage2_13.txt" />
@@ -117,7 +119,7 @@
     <Content Include="Art\EnemyArt\alligator\alligator.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin0.txt" />
     <None Include="Art\EnemyArt\Ghost\ghost.txt" />
-    <None Include="Art\EnemyArt\Giant\giant.txt" />
+    <None Include="Art\EnemyArt\Giant\Giant0.txt" />
     <None Include="GameLogos\GameOver.txt" />
     <None Include="PlayerNoteTxtFiles\foreshadownote.txt" />
   </ItemGroup>
