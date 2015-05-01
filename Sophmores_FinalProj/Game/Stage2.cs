@@ -41,6 +41,9 @@ namespace Sophmores_FinalProj
         TextUtil.PressAnyKeyBufferClear(msg);
       }
     }
+    /// <summary>
+    /// Provides plot and player interaction for second scene in stage 2
+    /// </summary>
     public static void JumpOrClimbScene()
     {
       string msg = string.Empty;
@@ -109,6 +112,9 @@ namespace Sophmores_FinalProj
         TextUtil.PressAnyKeyBufferClear(msg);
       }
     }
+    /// <summary>
+    /// Stage 2 Over Plot
+    /// </summary>
     public static void Stage2Beat()
     {
       TextUtil.PrintTextFile(stageTexts[21]);
@@ -117,7 +123,7 @@ namespace Sophmores_FinalProj
       TextUtil.PressAnyKeyBufferClear(msg);
     }
     /// <summary>
-    /// Provides plot and player interaction for 3rd scene in stage 2
+    /// Provides plot and player interaction for first scene in stage 2
     /// </summary>
     public static void BreakWebsScene()
     {

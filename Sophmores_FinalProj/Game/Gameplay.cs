@@ -9,36 +9,48 @@ namespace Sophmores_FinalProj
   {
     #region Private Methods
 
+    private static bool DeadOrRunCheck(Player player, int restoreHealth)
+    {
+      if (!player.isAlive() || Combat.run)
+      {
+        if (!player.isAlive()) 
+        { 
+          player.CurrentHP = restoreHealth;
+        }
+        return true;
+      }
+      return false;
+    }
+    /// <summary>
+    /// First Level of Game
+    /// </summary>
+    /// <param name="player">Main Character</param>
+    /// <param name="enemy1">First Enemy</param>
+    /// <param name="enemy2">Second Enemy</param>
+    /// <param name="boss">Stage Boss</param>
     private static void DoorStage(Player player, Enemy enemy1,
                                   Enemy enemy2, Enemy boss)
     {
-      Combat.StartCombat(player, enemy1);
-  //   
-      if (!player.isAlive() || Combat.run)
-      {
-        if (!player.isAlive()) { player.CurrentHP = 10; }
-        return;
-      }
+        Combat.StartCombat(player, enemy1);
+        if (DeadOrRunCheck(player, 10))
+        {
+          return;
+        }
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        TextUtil.PrintTextFile("foreshadownote.txt");
+        Console.ResetColor();
+        TextUtil.PressAnyKeyBufferClear();
+        Combat.StartCombat(player, enemy2);
+        if (DeadOrRunCheck(player, 10))
+        {
+          return;
+        }
+        Combat.StartCombat(player, boss);
+        if (DeadOrRunCheck(player, 10))
+        {
+          return;
+        }
 
-	  Console.ForegroundColor = ConsoleColor.DarkYellow;
-      TextUtil.PrintTextFile("foreshadownote.txt");
-      Console.ResetColor();
-      TextUtil.PressAnyKeyBufferClear();
-
-      Combat.StartCombat(player, enemy2);
- //     
-      if (!player.isAlive() || Combat.run)
-      {
-        if (!player.isAlive()) { player.CurrentHP = 10; }
-        return;
-      }
-      Combat.StartCombat(player, boss);
-  //    
-      if (!player.isAlive() || Combat.run)
-      {
-        if (!player.isAlive()) { player.CurrentHP = 10; }
-        return;
-      }
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.WriteLine("\nAfter defeating the {0}, {1} leaves the room. " +
                         "You hear \n the door lock behind you as you step " +
@@ -52,96 +64,81 @@ namespace Sophmores_FinalProj
     private static void DoorStage2(Player player, Enemy enemy1,
                                    Enemy enemy2, Enemy boss)
     {
-      Stage2.PreNoteMsgs();
-      Item note = Stage2.PlayerViewsNote();
-      player.AddToInventory(note, 1);
-      Stage2.BreakWebsScene();
-      Combat.StartCombat(player, enemy1);
-      Stage2.JumpOrClimbScene();
-      Combat.StartCombat(player, enemy2);
-      Stage2.BossScene();
-      Combat.StartCombat(player, boss);
+        Stage2.PreNoteMsgs();
+        Item note = Stage2.PlayerViewsNote();
+        player.AddToInventory(note, 1);
+        Stage2.BreakWebsScene();
+        Combat.StartCombat(player, enemy1);
+        if (DeadOrRunCheck(player, 20))
+        {
+          return;
+        }
+        Stage2.JumpOrClimbScene();
+        Combat.StartCombat(player, enemy2);
+        if (DeadOrRunCheck(player, 20))
+        {
+          return;
+        }
+        Stage2.BossScene();
+        Combat.StartCombat(player, boss);
+        if (DeadOrRunCheck(player, 20))
+        {
+          return;
+        }
       Stage2.Stage2Beat();
-		  player.Stage = false;
+      player.Stage = false;
     }
-	
-	private static void DoorStage3(Player player, Enemy enemy1,
-                                  Enemy enemy2, Enemy boss)
+
+    private static void DoorStage3(Player player, Enemy enemy1,
+                                    Enemy enemy2, Enemy boss)
     {
-	  string noteDescription = TextUtil.ReturnTextFile("note 3.txt");
+      string noteDescription = TextUtil.ReturnTextFile("note 3.txt");
       Item note3 = new Item("Note from skeleton", "Paper", noteDescription);
       Console.WriteLine(note3.description);
       player.AddToInventory(note3, 1);
 
       Combat.StartCombat(player, enemy1);
-    //  
-      if (!player.isAlive() || Combat.run)
+      if (DeadOrRunCheck(player, 10))
       {
-        if (!player.isAlive()) 
-        { 
-          player.CurrentHP = 10;
-        }
         return;
       }
-	  
-	  Item silverkey = new Item ("Silver Key", "key", "Silver key connected to " + 
-                                                    "a chain");
-	  Console.WriteLine("Silver Key has been addred to your inventory!");
+      Item silverkey = new Item("Silver Key", "key", "Silver key connected to "+
+                                                      "a chain");
+      Console.WriteLine("Silver Key has been addred to your inventory!");
 
       Combat.StartCombat(player, enemy2);
-    //  
-      if (!player.isAlive() || Combat.run)
+      if (DeadOrRunCheck(player, 10))
       {
-        if (!player.isAlive()) 
-        {
-          player.CurrentHP = 10;
-        }
         return;
       }
       Combat.StartCombat(player, boss);
-   //   
-      if (!player.isAlive() || Combat.run)
+      if (DeadOrRunCheck(player, 10))
       {
-        if (!player.isAlive()) 
-        { 
-          player.CurrentHP = 10;
-        }
         return;
       }
       Console.ForegroundColor = ConsoleColor.Yellow;
       player.currentStage = 3;
       player.Stage = false;
     }
-	
-	private static void DoorStage4(Player player, Enemy boss1,
-                                  Enemy boss2)
+
+    private static void DoorStage4(Player player, Enemy boss1,
+                                    Enemy boss2)
     {
       Combat.StartCombat(player, boss1);
-  //    
-      if (!player.isAlive() || Combat.run)
+      if (DeadOrRunCheck(player, 40))
       {
-        if (!player.isAlive())
-        {
-          player.CurrentHP = 10; 
-        }
         return;
       }
       player.Shield = 2;
       Combat.StartCombat(player, boss2);
-  //    
-      if (!player.isAlive() || Combat.run)
+      if (DeadOrRunCheck(player, 40))
       {
-        if (!player.isAlive())
-        { 
-          player.CurrentHP = 10; 
-        }
         return;
       }
-
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.WriteLine();
-      Console.WriteLine("After defeating the {0} and {1}, {2} has " + 
-                        "Defeated the Game!!", boss1.Name, boss2.Name, 
+      Console.WriteLine("After defeating the {0} and {1}, {2} has " +
+                        "Defeated the Game!!", boss1.Name, boss2.Name,
                         player.Name);
       Console.ResetColor();
       player.Stage = false;
@@ -160,63 +157,67 @@ namespace Sophmores_FinalProj
     /// <returns></returns>
     public static int getChoice(int numberOfChoices, string choices, bool door = false)
     {
-        string[] options = new string[] { "Door 1", "Door 2", "Door 3",
+      string[] options = new string[] { "Door 1", "Door 2", "Door 3",
                                         "Large Door", "Open Inventory" };
-        Console.ForegroundColor = ConsoleColor.Cyan;
+      Console.ForegroundColor = ConsoleColor.Cyan;
+      if (door == false)
+      {
+        Console.WriteLine("\n \n" + choices);
+      }
+      else if (door == true)
+      {
+        Console.WriteLine("\n \nWhich door would you like to enter?\n ");
+        for (int i = 0; i < options.Length; i++)
+        {
+          if (i == 3)
+          {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+          }
+          else if (i == 4)
+          {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+          }
+          Console.WriteLine((i + 1) + ") " + options[i]);
+        }
+      }
+      Console.ResetColor();
+
+      int choice = UI.PromptInt("\nPlease enter a choice number: ");
+      while (choice < 1 || choice > numberOfChoices)
+      {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\n{0} is not a valid choice!", choice);
+        Console.ForegroundColor = ConsoleColor.Blue;
         if (door == false)
         {
-            Console.WriteLine("\n \n" + choices);
+          Console.WriteLine(choices);
         }
         else if (door == true)
         {
-            Console.WriteLine("\n \nWhich door would you like to enter?\n ");
-            for (int i = 0; i < options.Length; i++)
+          Console.WriteLine("\n \nWhich door would you like to enter?\n ");
+          for (int i = 0; i < options.Length; i++)
+          {
+            if (i == 3)
             {
-                if (i == 3)
-                {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                }
-                else if (i == 4)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                }
-                Console.WriteLine((i + 1) + ") " + options[i]);
+              Console.ForegroundColor = ConsoleColor.Magenta;
             }
+            else if (i == 4)
+            {
+              Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            Console.WriteLine((i + 1) + ") " + options[i]);
+          }
         }
         Console.ResetColor();
-
-        int choice = UI.PromptInt("\nPlease enter a choice number: ");
-        while (choice < 1 || choice > numberOfChoices)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n{0} is not a valid choice!", choice);
-            Console.ForegroundColor = ConsoleColor.Blue;
-            if (door == false)
-            {
-                Console.WriteLine(choices);
-            }
-            else if (door == true)
-            {
-                Console.WriteLine("\n \nWhich door would you like to enter?\n ");
-                for (int i = 0; i < options.Length; i++)
-                {
-                    if (i == 3)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                    }
-                    else if (i == 4)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                    }
-                    Console.WriteLine((i + 1) + ") " + options[i]);
-                }
-            }
-            Console.ResetColor();
-            choice = UI.PromptInt("\nPlease enter a valid choice number: ");
-        }
-        return choice;
+        choice = UI.PromptInt("\nPlease enter a valid choice number: ");
+      }
+      return choice;
     }
-
+    /// <summary>
+    /// Creates all enemy objects with Loop drops already added to their
+    /// respective inventories
+    /// </summary>
+    /// <returns>All enemies in an Array</returns>
     private static Enemy[] CreateAllEnemies()
     {
       List<Enemy> AllEnemies = new List<Enemy>();
@@ -248,7 +249,7 @@ namespace Sophmores_FinalProj
 
       Enemy Giant = new Enemy("Giant", 70, 3, 10, 13);
       Weapon Shield = new Weapon("Basic Shield", "shield",
-        "Shield that slightly reduces enemy damage in battle. " + 
+        "Shield that slightly reduces enemy damage in battle. " +
         "Automatically equipped when using a sword.", 0, 0);
       HealthPotion GiantMagic = new HealthPotion("Giant Magic",
         "magic potion used by the Giant to cure his injuries", true);
@@ -269,15 +270,15 @@ namespace Sophmores_FinalProj
       Enemy Alligator = new Enemy("Alligator", 50, 10, 10, 30, "bow");
       Poison FireArrows = new Poison("Fire Arrows",
         "this quiver contains a poisonous fire arrow", true);
-        HealthPotion aligatoreggs = new HealthPotion("Alligator Eggs",
-        "Delicous and nourishing alligator eggs!.", false);
-        aligatoreggs.Potency = 50;
+      HealthPotion aligatoreggs = new HealthPotion("Alligator Eggs",
+      "Delicous and nourishing alligator eggs!.", false);
+      aligatoreggs.Potency = 50;
       Alligator.AddToInventory(FireArrows, 1);
       Alligator.AddToInventory(aligatoreggs, 1);
 
       Enemy Kraken = new Enemy("Kraken", 70, 10, 10, 40, "bow");
       Weapon Crossbow = new Weapon("CrossBow", "bow,",
-        "Higher damage than basic bow, gains magical powers when combined " + 
+        "Higher damage than basic bow, gains magical powers when combined " +
         "with fire arrows", 20, 15);
       Item key2 = new Item("Key II", "key",
         "this is the key collected from second stage");
@@ -289,20 +290,20 @@ namespace Sophmores_FinalProj
 
       //STAGE 3 ENEMIES
       Enemy Wolf = new Enemy("Wolf", 60, 10, 10, 30);
-      Weapon Staff = new Weapon("Magic Staff", "staff", 
+      Weapon Staff = new Weapon("Magic Staff", "staff",
                                 "Basic magic staff", 10, 20);
-      HealthPotion WolfMilk = new HealthPotion ("Wolf Milk",
+      HealthPotion WolfMilk = new HealthPotion("Wolf Milk",
         "Restores partial health", false);
-      Wolf.AddToInventory(Staff,1);
+      Wolf.AddToInventory(Staff, 1);
       Wolf.AddToInventory(WolfMilk, 1);
 
       Enemy Zombie = new Enemy("Zombie", 80, 10, 10, 40);
-      Weapon Lstaff = new Weapon("Lightning Staff", "staff", 
+      Weapon Lstaff = new Weapon("Lightning Staff", "staff",
         "Metal staff with stronger magical power", 15, 25);
       Poison zblood = new Poison("Zombie Blood",
         "Destructive when poured on skin", true);
-      Zombie.AddToInventory(Lstaff,1);
-      Zombie.AddToInventory(zblood,1);
+      Zombie.AddToInventory(Lstaff, 1);
+      Zombie.AddToInventory(zblood, 1);
 
       Enemy Orc = new Enemy("Orc", 80, 10, 10, 50);
       Item Key3 = new Item("Key III", "key",
@@ -311,18 +312,18 @@ namespace Sophmores_FinalProj
         "Super-Powered staff from Orc boss", 20, 30);
       HealthPotion orcpotion = new HealthPotion("Orc Portion",
         "Magic potion that restores all health", true);
-      Orc.AddToInventory(OrcStaff,1);
-      Orc.AddToInventory(orcpotion,1);
+      Orc.AddToInventory(OrcStaff, 1);
+      Orc.AddToInventory(orcpotion, 1);
       Orc.AddToInventory(Key3, 1);
 
       //Final Stage ENEMIES
-      Enemy Dragon = new Enemy ("Dragon", 90, 4, 20,50, "sword");
-      Weapon DragonSheild = new Weapon("Dragon Scale Sheild", "sheild", 
-        "magical sheild that can be used to block magic powers", 0,0);
-      HealthPotion DragonFruit = new HealthPotion("Dragon Fruit", 
+      Enemy Dragon = new Enemy("Dragon", 90, 4, 20, 50, "sword");
+      Weapon DragonSheild = new Weapon("Dragon Scale Sheild", "sheild",
+        "magical sheild that can be used to block magic powers", 0, 0);
+      HealthPotion DragonFruit = new HealthPotion("Dragon Fruit",
         "restoes heatlh fully", true);
-      Dragon.AddToInventory(DragonSheild,1);
-      Dragon.AddToInventory(DragonFruit,1);
+      Dragon.AddToInventory(DragonSheild, 1);
+      Dragon.AddToInventory(DragonFruit, 1);
 
       Enemy Ghost = new Enemy("Odalf", 100, 5, 20, 55);
 
@@ -341,7 +342,10 @@ namespace Sophmores_FinalProj
 
       return AllEnemies.ToArray();
     }
-    private static void Main(string[] args)
+    /// <summary>
+    /// Main Game
+    /// </summary>
+    private static void Main()
     {
       TextUtil.SetStartingDirectory();
       ShowGameTitleScreen();
@@ -427,8 +431,8 @@ namespace Sophmores_FinalProj
             }
             else if (p1.DoorsOpened.Count == 3)
             {
-                DoorAlreadyComplete();
-                continue;
+              DoorAlreadyComplete();
+              continue;
             }
           }
           else if (p1.Stage)            // if player dies/runs, they are returned to the lobby. In this case stage will be true.
@@ -465,33 +469,33 @@ namespace Sophmores_FinalProj
         }
         else if (response == 5)
         {
-            p1.DisplayInventoryContents();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("{0}) Close the inventory", p1.allItems.Count + 1);
+          p1.DisplayInventoryContents();
+          Console.ForegroundColor = ConsoleColor.Green;
+          Console.WriteLine("{0}) Close the inventory", p1.allItems.Count + 1);
+          Console.ResetColor();
+          int choice = getChoice(p1.allItems.Count + 1, "Please type the " +
+                                 "number corresponding to the Item \nyou " +
+                                 "wish to see the description of.");
+          if (choice <= p1.allItems.Count)
+          {
+            p1.Inspect(p1.allItems[choice - 1]);
+            TextUtil.PressAnyKeyBufferClear();
+            continue;
+          }
+          else if (choice == p1.allItems.Count + 1)
+          {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nYou have chosen to close the inventory.");
             Console.ResetColor();
-            int choice = getChoice(p1.allItems.Count + 1, "Please type the " + 
-                                   "number corresponding to the Item \nyou " + 
-                                   "wish to see the description of.");
-            if (choice <= p1.allItems.Count)
-            {
-                p1.Inspect(p1.allItems[choice - 1]);
-                TextUtil.PressAnyKeyBufferClear();
-                continue;
-            }
-            else if (choice == p1.allItems.Count + 1)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\nYou have chosen to close the inventory.");
-                Console.ResetColor();
-                continue;
-            }
+            continue;
+          }
         }
         else if (response == 4)
         {
           if (p1.currentStage != 3)
           {
-            Console.ForegroundColor = ConsoleColor.Magenta;            
-            Console.WriteLine("\nThis door is locked, it smells like plants..."+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\nThis door is locked, it smells like plants..." +
                                "\nThis door also seems to have 3 keyholes... " +
                                "very strange...");
             Console.ResetColor();
@@ -501,7 +505,7 @@ namespace Sophmores_FinalProj
           else if (p1.currentStage == 3)
           {
             Console.ForegroundColor = ConsoleColor.Magenta;
-			      Console.WriteLine("You have found all three keys and the door " + 
+            Console.WriteLine("You have found all three keys and the door " +
                               "now opens! We are going into the final door!");
             Console.ResetColor();
             DoorStage4(p1, Enemies[10], Enemies[11]);
@@ -520,14 +524,12 @@ namespace Sophmores_FinalProj
       Console.ForegroundColor = ConsoleColor.DarkRed;
       TextUtil.PrintTextFile("GameOver.txt");
       Console.WriteLine("Congratulations on beating the Game!!!");
-      Console.WriteLine("You have restored Peace to the Woods!");
+      TextUtil.PressAnyKeyBufferClear("You have restored Peace to the Woods!");
       for (int i = 0; i < 5; i++)
       {
         Console.WriteLine("...");
       }
-        Console.WriteLine("Or have you?");
-      TextUtil.PressAnyKeyBufferClear("...");
-      Console.ForegroundColor = ConsoleColor.DarkRed;
+      TextUtil.PressAnyKeyBufferClear("Or have you...?");
       TextUtil.PrintTextFile("gamelogo2.txt");
     }
     /// <summary>
@@ -539,7 +541,7 @@ namespace Sophmores_FinalProj
       Console.WriteLine("\nYou have already completed this Door " +
                         "and it is now sealed, choose another.");
       Console.ResetColor();
-    }    
+    }
     /// <summary>
     /// Provides framework for one-time tutorial
     /// </summary>
@@ -548,7 +550,7 @@ namespace Sophmores_FinalProj
     private static void Tutorial(Player p1, Enemy[] Enemies)
     {
       Combat.StartCombat(p1, Enemies[0]);
-  // 
+      // 
       p1.TutorialComplete = true;
       Console.WriteLine("Congrats on Defeating your first Enemy, {0}!", p1.Name);
 
@@ -584,10 +586,18 @@ namespace Sophmores_FinalProj
       Console.ResetColor();
     }
 
-
+    /// <summary>
+    /// Checks to see if the selected Door is avalible to be opened
+    /// </summary>
+    /// <param name="response">Player door choice</param>
+    /// <param name="player">Main character</param>
+    /// <returns></returns>
     private static bool OpenedDoors(int response, Player player)
     {
-      if (response < 1 || response > 4) { return false; }
+      if (response < 1 || response > 4)
+      {
+        return false;
+      }
       else
       {
         if (player.DoorsOpened.Count == 0)
