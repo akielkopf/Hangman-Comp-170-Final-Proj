@@ -57,11 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\fio\fio%28depreciated%29.csproj">
-      <Project>{38702508-4bee-4055-b478-1f9fa30c1630}</Project>
-      <Name>fio%28depreciated%29</Name>
+      <Project>{38702508-4BEE-4055-B478-1F9FA30C1630}</Project>
+      <Name>fio(depreciated)</Name>
     </ProjectReference>
     <ProjectReference Include="..\ui\ui.csproj">
-      <Project>{2262ce21-c5ad-4ede-b384-ec2bd91585e6}</Project>
+      <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
       <Name>ui</Name>
     </ProjectReference>
   </ItemGroup>
@@ -87,6 +87,7 @@
     <Content Include="GameLogos\gamelogo2.txt" />
     <None Include="PlayerNoteTxtFiles\note.txt" />
     <None Include="PlayerNoteTxtFiles\stage2note.txt" />
+    <None Include="PlayerNoteTxtFiles\note 3.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
