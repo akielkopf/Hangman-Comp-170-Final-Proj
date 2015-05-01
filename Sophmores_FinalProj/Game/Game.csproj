@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameIntro.cs" />
     <Compile Include="Stage2.cs" />
+    <Compile Include="Stage3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
