@@ -86,6 +86,7 @@ namespace Sophmores_FinalProj
           pass2 = true;
         }
       }
+		player.Stage = false;
     }
 
     private static void GainEnemyItems(Player player, Enemy enemy)
@@ -171,6 +172,7 @@ namespace Sophmores_FinalProj
         return;
       }
       Console.ForegroundColor = ConsoleColor.Yellow;
+      player.currentStage = 3;
       player.Stage = false;
     }
 	
@@ -499,8 +501,10 @@ namespace Sophmores_FinalProj
         }
 
       }
-		PrintTextFile("GameOver.txt")
-		Console.WriteLine("Congradulations on beating the Game!!!");
+	  TextUtil.PressAnyKeyBufferClear();
+      Console.ForegroundColor = ConsoleColor.DarkRed;
+	  TextUtil.PrintTextFile("GameOver.txt");
+	  Console.WriteLine("Congradulations on beating the Game!!!");
     }
 
     private static bool OpenedDoors(int response, Player player)

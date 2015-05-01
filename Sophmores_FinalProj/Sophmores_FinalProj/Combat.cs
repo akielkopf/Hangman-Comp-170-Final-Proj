@@ -46,7 +46,7 @@ namespace Sophmores_FinalProj
 
     public static void StartCombat(Player player, Enemy enemy)
     {
-      DisplayEnemyArt(enemy);
+     // DisplayEnemyArt(enemy);
       player.RemoveBuff();
       run = false;
       if (!enemy.isAlive())
