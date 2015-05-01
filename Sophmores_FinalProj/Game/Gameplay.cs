@@ -136,6 +136,71 @@ namespace Sophmores_FinalProj
         }
       }
     }
+	
+	private static void DoorStage3(Player player, Enemy enemy1,
+                                  Enemy enemy2, Enemy boss)
+    {
+	  string noteDescription = TextUtil.ReturnTextFile("note 3.txt");
+      Item note3 = new Item("Note from skeleton", "Paper", noteDescription);
+      Console.WriteLine(note3.description);
+      player.AddToInventory(note3, 1);
+
+      Combat.StartCombat(player, enemy1);
+      GainEnemyItems(player, enemy1);
+      if (!player.isAlive() || Combat.run)
+      {
+        if (!player.isAlive()) { player.CurrentHP = 10; }
+        return;
+      }
+	  
+	  Item silverkey = new Item ("Silver Key", "key", "silver key connected to chain");
+	  Console.WriteLine("Silver Key has been addred to your inventory!");
+
+      Combat.StartCombat(player, enemy2);
+      GainEnemyItems(player, enemy2);
+      if (!player.isAlive() || Combat.run)
+      {
+        if (!player.isAlive()) { player.CurrentHP = 10; }
+        return;
+      }
+      Combat.StartCombat(player, boss);
+      GainEnemyItems(player, boss);
+      if (!player.isAlive() || Combat.run)
+      {
+        if (!player.isAlive()) { player.CurrentHP = 10; }
+        return;
+      }
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.WriteLine("\nAfter defeating the {0}, {1} leaves the room. " +
+                        "You hear \n the door lock behind you as you step " +
+                        "into the lobby.", boss.Name, player.Name);
+      Console.ResetColor();
+      player.Stage = false;
+    }
+	
+	private static void DoorStage4(Player player, Enemy boss1,
+                                  Enemy boss2)
+    {
+      Combat.StartCombat(player, boss1);
+      GainEnemyItems(player, boss1);
+      if (!player.isAlive() || Combat.run)
+      {
+        if (!player.isAlive()) { player.CurrentHP = 10; }
+        return;
+      }
+      Combat.StartCombat(player, boss2);
+      GainEnemyItems(player, boss2);
+      if (!player.isAlive() || Combat.run)
+      {
+        if (!player.isAlive()) { player.CurrentHP = 10; }
+        return;
+      }
+
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.WriteLine("\nAfter defeating the {0} and {1}, {2} has Defeated the Game!!", boss1.Name, boss2.Name, player.Name);
+      Console.ResetColor();
+      player.Stage = false;
+    }
 
     /// <summary>
     /// Get's choice from user based on number of choices, user must enter a
@@ -265,12 +330,31 @@ namespace Sophmores_FinalProj
 
       //STAGE 3 ENEMIES
       Enemy wolf = new Enemy("Wolf", 20, 10, 5, 7);
+      Weapon staff = new Weapon("Magic Staff", "staff", "basic magic staff", 10, 20);
+      HealthPotion milk = new HealthPotion ("Wolf Milk", "restores partial health", false);
+      wolf.AddToInventory(staff,1);
+      wolf.AddToInventory(milk, 1);
+
       Enemy zombie = new Enemy("Zombie", 20, 10, 5, 7);
+      Weapon Lstaff = new Weapon("Lightning Staff", "staff", "metal staff with stronger magical power", 15, 25);
+      Poison zblood = new Poison("Zombie Blood", "destructive when poured on skin", true);
+      zombie.AddToInventory(Lstaff,1);
+      zombie.AddToInventory(zblood,1);
+
       Enemy orc = new Enemy("Orc", 20, 10, 5, 7);
       Item key3 = new Item("Key III", "key", "this is the key collected from third stage");
+      Weapon OrcStaff = new Weapon("Orc Staff", "staff", "Super-Powered staff from Orc boss", 20, 30);
+      HealthPotion orcpotion = new HealthPotion("Orc Portion", "magic potion that restores all health", true);
+      orc.AddToInventory(OrcStaff,1);
+      orc.AddToInventory(orcpotion,1);
       orc.AddToInventory(key3, 1);
 
-      Console.WriteLine("{0}, good job on your combat training, \n we are now ready to venture" +
+      //Final Stage ENEMIES
+      Enemy dragon = new Enemy ("Dragon", 50, 4, 15,20);
+
+      Enemy ghost = new Enemy("Odalf", 55, 5, 20, 25);
+      
+	  Console.WriteLine("{0}, good job on your combat training, \n we are now ready to venture" +
       " into the tunnel. \nIt will be challening, but after seeing your skills, \nI trust you will bring peace to the woods.", p1.Name);
       int forward = getChoice(2, "Are you ready to journey into the tunnel? \n 1) Yes \n 2) No)\n");
       if (forward == 1)
@@ -324,7 +408,7 @@ namespace Sophmores_FinalProj
               {
                 Console.WriteLine("\nOkay, we are going into door {0}", response);
 
-                DoorStage(p1, GiantSpider, alligator, kraken);
+                DoorStage2(p1, GiantSpider, alligator, kraken);
                 continue;
               }
               else    // response if door has already been opened
@@ -341,7 +425,7 @@ namespace Sophmores_FinalProj
               {
                 Console.WriteLine("\nOkay, we are going into door {0}", response);
 
-                DoorStage(p1, wolf, zombie, orc);
+                DoorStage3(p1, wolf, zombie, orc);
                 continue;
               }
               else               // response if door has been opened before
@@ -365,11 +449,11 @@ namespace Sophmores_FinalProj
                   break;
 
                 case 2:
-                  DoorStage(p1, GiantSpider, alligator, kraken);
+                  DoorStage2(p1, GiantSpider, alligator, kraken);
                   break;
 
                 case 3:
-                  DoorStage(p1, wolf, zombie, orc);
+                  DoorStage3(p1, wolf, zombie, orc);
                   break;
               }
               continue;
@@ -409,7 +493,8 @@ namespace Sophmores_FinalProj
 			else if (p1.currentStage == 3) 
 			{
 				Console.ForegroundColor = ConsoleColor.Magenta;
-				Console.WriteLine ("\n I love bad bitches thats my fuckin problem. \nfinal stage still needs to be coded.");
+				Console.WriteLine("You have found all three keys and the door now opens! We are going into the final door!");
+				DoorStage4(p1, dragon, ghost);
 				Console.ResetColor();
 				responseIsGood = true;
 				break;

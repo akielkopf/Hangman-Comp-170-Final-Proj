@@ -57,11 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\fio\fio%28depreciated%29.csproj">
-      <Project>{38702508-4bee-4055-b478-1f9fa30c1630}</Project>
-      <Name>fio%28depreciated%29</Name>
+      <Project>{38702508-4BEE-4055-B478-1F9FA30C1630}</Project>
+      <Name>fio(depreciated)</Name>
     </ProjectReference>
     <ProjectReference Include="..\ui\ui.csproj">
-      <Project>{2262ce21-c5ad-4ede-b384-ec2bd91585e6}</Project>
+      <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
       <Name>ui</Name>
     </ProjectReference>
   </ItemGroup>
@@ -71,9 +71,6 @@
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat0.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat1.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat2.txt" />
-    <Content Include="Art\EnemyArt\PossibleAlligator.txt" />
-    <Content Include="Art\EnemyArt\PossibleKraken.txt" />
-    <Content Include="Art\EnemyArt\PossibleKraken2.txt" />
     <Content Include="Art\EnemyArt\Skelton\Skeleton2.txt" />
     <Content Include="Art\EnemyArt\Skelton\Skeleton1.txt" />
     <Content Include="Art\EnemyArt\Skelton\Skeleton0.txt" />
@@ -87,6 +84,16 @@
     <Content Include="GameLogos\gamelogo2.txt" />
     <None Include="PlayerNoteTxtFiles\note.txt" />
     <None Include="PlayerNoteTxtFiles\stage2note.txt" />
+    <None Include="PlayerNoteTxtFiles\note 3.txt" />
+    <None Include="Art\EnemyArt\dragon\dragon.txt" />
+    <None Include="Art\EnemyArt\wolf\wolf.txt" />
+    <None Include="Art\EnemyArt\Kraken\kraken.txt" />
+    <None Include="Art\EnemyArt\Orc\orc.txt" />
+    <None Include="Art\EnemyArt\zombie\zombie.txt" />
+    <Content Include="Art\EnemyArt\alligator\alligator.txt" />
+    <None Include="Art\EnemyArt\Goblin\goblin.txt" />
+    <None Include="Art\EnemyArt\Ghost\ghost.txt" />
+    <None Include="Art\EnemyArt\Giant\giant.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -96,4 +103,15 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Art\EnemyArt\wolf\" />
+    <Folder Include="Art\EnemyArt\dragon\" />
+    <Folder Include="Art\EnemyArt\Kraken\" />
+    <Folder Include="Art\EnemyArt\Goblin\" />
+    <Folder Include="Art\EnemyArt\Ghost\" />
+    <Folder Include="Art\EnemyArt\alligator\" />
+    <Folder Include="Art\EnemyArt\zombie\" />
+    <Folder Include="Art\EnemyArt\Giant\" />
+    <Folder Include="Art\EnemyArt\Orc\" />
+  </ItemGroup>
 </Project>
