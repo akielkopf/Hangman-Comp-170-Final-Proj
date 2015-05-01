@@ -68,6 +68,8 @@
   <ItemGroup>
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat1.txt" />
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat2.txt" />
+    <None Include="Art\EnemyArt\Goblin\Goblin1.txt" />
+    <None Include="Art\EnemyArt\Goblin\Goblin2.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat0.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat1.txt" />
     <Content Include="Art\EnemyArt\Plagued Rat\Plagued Rat2.txt" />
@@ -113,7 +115,7 @@
     <None Include="Art\EnemyArt\Orc\orc.txt" />
     <None Include="Art\EnemyArt\zombie\zombie.txt" />
     <Content Include="Art\EnemyArt\alligator\alligator.txt" />
-    <None Include="Art\EnemyArt\Goblin\goblin.txt" />
+    <None Include="Art\EnemyArt\Goblin\Goblin0.txt" />
     <None Include="Art\EnemyArt\Ghost\ghost.txt" />
     <None Include="Art\EnemyArt\Giant\giant.txt" />
     <None Include="GameLogos\GameOver.txt" />
@@ -127,15 +129,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Art\EnemyArt\wolf\" />
-    <Folder Include="Art\EnemyArt\dragon\" />
-    <Folder Include="Art\EnemyArt\Kraken\" />
-    <Folder Include="Art\EnemyArt\Goblin\" />
-    <Folder Include="Art\EnemyArt\Ghost\" />
-    <Folder Include="Art\EnemyArt\alligator\" />
-    <Folder Include="Art\EnemyArt\zombie\" />
-    <Folder Include="Art\EnemyArt\Giant\" />
-    <Folder Include="Art\EnemyArt\Orc\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
