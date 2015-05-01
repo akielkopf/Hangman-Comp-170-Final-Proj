@@ -116,6 +116,8 @@
     <None Include="Art\EnemyArt\Goblin\goblin.txt" />
     <None Include="Art\EnemyArt\Ghost\ghost.txt" />
     <None Include="Art\EnemyArt\Giant\giant.txt" />
+    <None Include="GameLogos\GameOver.txt" />
+    <None Include="PlayerNoteTxtFiles\foreshadownote.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
