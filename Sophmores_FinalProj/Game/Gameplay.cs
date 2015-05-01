@@ -268,7 +268,8 @@ namespace Sophmores_FinalProj
 
       Enemy Giant = new Enemy("Giant", 70, 3, 10, 13);
       Weapon Shield = new Weapon("Basic Shield", "shield",
-        "Shield that slightly reduces enemy damage in battle. Automatically equipped when using a sword.", 0, 0);
+        "Shield that slightly reduces enemy damage in battle. " + 
+        "Automatically equipped when using a sword.", 0, 0);
       HealthPotion GiantMagic = new HealthPotion("Giant Magic",
         "magic potion used by the Giant to cure his injuries", true);
       Item key1 = new Item("Key I", "key",
@@ -336,6 +337,13 @@ namespace Sophmores_FinalProj
 
       //Final Stage ENEMIES
       Enemy Dragon = new Enemy ("Dragon", 90, 4, 20,50, "sword");
+      Weapon dragonsheild = new Weapon("Dragon Scale Sheild", "sheild", 
+        "magical sheild that can be used to block magic powers", 0,0);
+      HealthPotion dragonfruit = new HealthPotion("Dragon Fruit", 
+        "restoes heatlh fully", true);
+      Dragon.AddToInventory(dragonsheild,1);
+      Dragon.AddToInventory(dragonfruit,1);
+
       Enemy Ghost = new Enemy("Odalf", 100, 5, 20, 55);
 
       AllEnemies.Add(Spider);         // 0          // Index in the
@@ -474,7 +482,9 @@ namespace Sophmores_FinalProj
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("{0}) Close the inventory", p1.allItems.Count + 1);
             Console.ResetColor();
-            int choice = getChoice(p1.allItems.Count + 1, "Please type the number corresponding to the Item \nyou wish to see the description of.");
+            int choice = getChoice(p1.allItems.Count + 1, "Please type the " + 
+                                   "number corresponding to the Item \nyou " + 
+                                   "wish to see the description of.");
             if (choice <= p1.allItems.Count)
             {
                 p1.Inspect(p1.allItems[choice - 1]);
