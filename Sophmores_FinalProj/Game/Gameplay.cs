@@ -304,7 +304,7 @@ namespace Sophmores_FinalProj
       goblin.AddToInventory(GoblinBlood, 2);
 
       Enemy giant = new Enemy("Giant", 35, 3, 10, 13);
-      Weapon shield = new Weapon("Shield", "shield", "shield that cuts enemy damage in half when equipped in battle", 20, 0);
+      Weapon shield = new Weapon("Shield", "shield", "shield that cuts enemy damage in half when equipped in battle", 0, 0);
       HealthPotion GiantMagic = new HealthPotion("Giant Magic", "magic potion used by the Giant to cure his injuries", true);
       Item key1 = new Item("Key I", "key", "this is the key colloected from first stage");
       giant.AddToInventory(key1, 1);
@@ -355,7 +355,10 @@ namespace Sophmores_FinalProj
 
       //Final Stage ENEMIES
       Enemy dragon = new Enemy ("Dragon", 50, 4, 15,20);
-
+      Weapon dragonsheild = new Weapon("Dragon Scale Sheild", "sheild", "magical sheild that can be used to block magic powers", 0,0);
+      HealthPotion dragonfruit = new HealthPotion("Dragon Fruit", "restoes heatlh fully", true);
+      dragon.AddToInventory(dragonsheild,1);
+      dragon.AddToInventory(dragonfruit,1);
       Enemy ghost = new Enemy("Odalf", 55, 5, 20, 25);
       
 	  Console.WriteLine("{0}, good job on your combat training, \n we are now ready to venture" +
