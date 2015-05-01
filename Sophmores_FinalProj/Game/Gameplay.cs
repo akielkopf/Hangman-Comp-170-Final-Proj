@@ -250,7 +250,7 @@ namespace Sophmores_FinalProj
 
 
       //STAGE 1 ENEMIES
-      Enemy Skeleton = new Enemy("Skeleton", 25, 1, 5, 6);
+      Enemy Skeleton = new Enemy("Skeleton", 25, 1, 5, 6, "bow");
       Weapon IronSword = new Weapon("Iron Sword", "sword",
         "A Sword made of Iron", 10, 0);
       HealthPotion SkeleFluid = new HealthPotion("Skeleton Fluid",
