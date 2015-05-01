@@ -77,7 +77,10 @@ namespace Sophmores_FinalProj
     //  
       if (!player.isAlive() || Combat.run)
       {
-        if (!player.isAlive()) { player.CurrentHP = 10; }
+        if (!player.isAlive()) 
+        { 
+          player.CurrentHP = 10;
+        }
         return;
       }
 	  
@@ -89,14 +92,20 @@ namespace Sophmores_FinalProj
     //  
       if (!player.isAlive() || Combat.run)
       {
-        if (!player.isAlive()) { player.CurrentHP = 10; }
+        if (!player.isAlive()) 
+        {
+          player.CurrentHP = 10;
+        }
         return;
       }
       Combat.StartCombat(player, boss);
    //   
       if (!player.isAlive() || Combat.run)
       {
-        if (!player.isAlive()) { player.CurrentHP = 10; }
+        if (!player.isAlive()) 
+        { 
+          player.CurrentHP = 10;
+        }
         return;
       }
       Console.ForegroundColor = ConsoleColor.Yellow;
@@ -111,7 +120,10 @@ namespace Sophmores_FinalProj
   //    
       if (!player.isAlive() || Combat.run)
       {
-        if (!player.isAlive()) { player.CurrentHP = 10; }
+        if (!player.isAlive())
+        {
+          player.CurrentHP = 10; 
+        }
         return;
       }
       player.Shield = 2;
@@ -119,7 +131,10 @@ namespace Sophmores_FinalProj
   //    
       if (!player.isAlive() || Combat.run)
       {
-        if (!player.isAlive()) { player.CurrentHP = 10; }
+        if (!player.isAlive())
+        { 
+          player.CurrentHP = 10; 
+        }
         return;
       }
 
@@ -224,7 +239,7 @@ namespace Sophmores_FinalProj
       Skeleton.AddToInventory(SkeleFluid, 2);
 
       Enemy Goblin = new Enemy("Goblin", 50, 2, 7, 9);
-      Weapon SteelSword = new Weapon("#blessed Steel Sword", "sword",
+      Weapon SteelSword = new Weapon("Blessed Steel Sword", "sword",
         "sword made of steel, with slight magic damage", 15, 10);
       Poison GoblinBlood = new Poison("Goblin Blood",
         "blood from the heart of the Goblin, \na known harmful neurotoxin.", false);
@@ -357,6 +372,12 @@ namespace Sophmores_FinalProj
       bool playerWins = false;
       while (!(playerWins))
       {
+        if (Enemies[11].isAlive() == false)
+        {
+          playerWins = true;
+          break;
+
+        }
         response = getChoice(5, "", true);  // gets player input here
         if (1 <= response && response <= 3)     //checks if response is a door number
         {
@@ -479,13 +500,11 @@ namespace Sophmores_FinalProj
           else if (p1.currentStage == 3)
           {
             Console.ForegroundColor = ConsoleColor.Magenta;
-			Console.WriteLine("You have found all three keys and the door " + 
+			      Console.WriteLine("You have found all three keys and the door " + 
                               "now opens! We are going into the final door!");
             Console.ResetColor();
             DoorStage4(p1, Enemies[10], Enemies[11]);
-            playerWins = true;
             break;
-
           }
         }
       }

@@ -92,7 +92,7 @@ namespace Sophmores_FinalProj.Utilities
     /// <param name="textFileToRead"> The text file to be read and printed </param>
     public static void PrintTextFile(string textFileToRead)
     {
-      string txt = ".txt";
+      string txt = "txt";
       if (textFileToRead.EndsWith(txt))
       {
         string Location = FindTextFile(textFileToRead);

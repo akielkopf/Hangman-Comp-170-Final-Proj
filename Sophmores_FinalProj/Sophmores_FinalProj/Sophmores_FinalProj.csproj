@@ -62,12 +62,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Art\EnemyArt\alligator\Alligator0.txt" />
-    <Content Include="Art\EnemyArt\alligator\Alligator1.txt" />
-    <Content Include="Art\EnemyArt\alligator\Alligator2.txt" />
-    <Content Include="Art\EnemyArt\dragon\Dragon0.txt" />
-    <Content Include="Art\EnemyArt\dragon\Dragon1.txt" />
-    <Content Include="Art\EnemyArt\dragon\Dragon2.txt" />
+    <Content Include="Art\EnemyArt\Alligator\Alligator0.txt" />
+    <Content Include="Art\EnemyArt\Alligator\Alligator1.txt" />
+    <Content Include="Art\EnemyArt\Alligator\Alligator2.txt" />
+    <Content Include="Art\EnemyArt\Dragon\Dragon0.txt" />
+    <Content Include="Art\EnemyArt\Dragon\Dragon1.txt" />
+    <Content Include="Art\EnemyArt\Dragon\Dragon2.txt" />
     <Content Include="Art\EnemyArt\Ghost\Odalf0.txt" />
     <Content Include="Art\EnemyArt\Ghost\Odalf1.txt" />
     <Content Include="Art\EnemyArt\Ghost\Odalf2.txt" />
