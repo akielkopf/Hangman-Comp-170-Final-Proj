@@ -171,10 +171,6 @@ namespace Sophmores_FinalProj
         return;
       }
       Console.ForegroundColor = ConsoleColor.Yellow;
-      Console.WriteLine("\nAfter defeating the {0}, {1} leaves the room. " +
-                        "You hear \n the door lock behind you as you step " +
-                        "into the lobby.", boss.Name, player.Name);
-      Console.ResetColor();
       player.Stage = false;
     }
 	
@@ -501,12 +497,15 @@ namespace Sophmores_FinalProj
 
 			}
         }
+
       }
+		PrintTextFile("GameOver.txt")
+		Console.WriteLine("Congradulations on beating the Game!!!");
     }
 
     private static bool OpenedDoors(int response, Player player)
     {
-      if (response < 1 || response > 3) { return false; }
+      if (response < 1 || response > 4) { return false; }
       else
       {
         if (player.DoorsOpened.Count == 0)
