@@ -177,6 +177,30 @@ namespace Sophmores_FinalProj
       Console.ResetColor();
       player.Stage = false;
     }
+	
+	private static void DoorStage4(Player player, Enemy boss1,
+                                  Enemy boss2)
+    {
+      Combat.StartCombat(player, boss1);
+      GainEnemyItems(player, boss1);
+      if (!player.isAlive() || Combat.run)
+      {
+        if (!player.isAlive()) { player.CurrentHP = 10; }
+        return;
+      }
+      Combat.StartCombat(player, boss2);
+      GainEnemyItems(player, boss2);
+      if (!player.isAlive() || Combat.run)
+      {
+        if (!player.isAlive()) { player.CurrentHP = 10; }
+        return;
+      }
+
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      Console.WriteLine("\nAfter defeating the {0} and {1}, {2} has Defeated the Game!!", boss1.Name, boss2.Name, player.Name);
+      Console.ResetColor();
+      player.Stage = false;
+    }
 
     /// <summary>
     /// Get's choice from user based on number of choices, user must enter a
@@ -384,7 +408,7 @@ namespace Sophmores_FinalProj
               {
                 Console.WriteLine("\nOkay, we are going into door {0}", response);
 
-                DoorStage(p1, GiantSpider, alligator, kraken);
+                DoorStage2(p1, GiantSpider, alligator, kraken);
                 continue;
               }
               else    // response if door has already been opened
@@ -401,7 +425,7 @@ namespace Sophmores_FinalProj
               {
                 Console.WriteLine("\nOkay, we are going into door {0}", response);
 
-                DoorStage(p1, wolf, zombie, orc);
+                DoorStage3(p1, wolf, zombie, orc);
                 continue;
               }
               else               // response if door has been opened before
@@ -425,11 +449,11 @@ namespace Sophmores_FinalProj
                   break;
 
                 case 2:
-                  DoorStage(p1, GiantSpider, alligator, kraken);
+                  DoorStage2(p1, GiantSpider, alligator, kraken);
                   break;
 
                 case 3:
-                  DoorStage(p1, wolf, zombie, orc);
+                  DoorStage3(p1, wolf, zombie, orc);
                   break;
               }
               continue;
@@ -469,7 +493,8 @@ namespace Sophmores_FinalProj
 			else if (p1.currentStage == 3) 
 			{
 				Console.ForegroundColor = ConsoleColor.Magenta;
-				Console.WriteLine ("\n I love bad bitches thats my fuckin problem. \nfinal stage still needs to be coded.");
+				Console.WriteLine("You have found all three keys and the door now opens! We are going into the final door!");
+				DoorStage4(p1, dragon, ghost);
 				Console.ResetColor();
 				responseIsGood = true;
 				break;
