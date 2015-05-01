@@ -504,10 +504,10 @@ namespace Sophmores_FinalProj
           else if (p1.currentStage == 3)
           {
             Console.ForegroundColor = ConsoleColor.Magenta;
-				    Console.WriteLine("You have found all three keys and the door " + 
+			Console.WriteLine("You have found all three keys and the door " + 
                               "now opens! We are going into the final door!");
-            DoorStage4(p1, Enemies[11], Enemies[12]);
             Console.ResetColor();
+            DoorStage4(p1, Enemies[11], Enemies[12]);
             playerWins = true;
             break;
 
