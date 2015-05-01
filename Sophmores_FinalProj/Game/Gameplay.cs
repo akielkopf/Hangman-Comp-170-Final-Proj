@@ -136,7 +136,9 @@ namespace Sophmores_FinalProj
             }
             else if (answer == 2)
             {
-              Console.WriteLine("\nYou have decided not to consume the potion.\n");
+              Console.WriteLine();
+              Console.WriteLine("You have decided not to consume the potion.");
+              Console.WriteLine();
             }
             Console.ResetColor();
           }
@@ -160,7 +162,8 @@ namespace Sophmores_FinalProj
         return;
       }
 	  
-	  Item silverkey = new Item ("Silver Key", "key", "silver key connected to chain");
+	  Item silverkey = new Item ("Silver Key", "key", "Silver key connected to " + 
+                                                    "a chain");
 	  Console.WriteLine("Silver Key has been addred to your inventory!");
 
       Combat.StartCombat(player, enemy2);
@@ -201,7 +204,10 @@ namespace Sophmores_FinalProj
       }
 
       Console.ForegroundColor = ConsoleColor.Yellow;
-      Console.WriteLine("\nAfter defeating the {0} and {1}, {2} has Defeated the Game!!", boss1.Name, boss2.Name, player.Name);
+      Console.WriteLine();
+      Console.WriteLine("After defeating the {0} and {1}, {2} has " + 
+                        "Defeated the Game!!", boss1.Name, boss2.Name, 
+                        player.Name);
       Console.ResetColor();
       player.Stage = false;
     }
@@ -284,10 +290,10 @@ namespace Sophmores_FinalProj
       Enemy Skeleton = new Enemy("Skeleton", 10, 1, 5, 6);
       Weapon IronSword = new Weapon("Iron Sword", "sword",
         "A Sword made of Iron", 10, 0);
-      HealthPotion skeleFluid = new HealthPotion("Skeleton Fluid",
+      HealthPotion SkeleFluid = new HealthPotion("Skeleton Fluid",
         "\n Fluid from a skeleton... it looks nutritious", false);
       Skeleton.AddToInventory(IronSword, 1);
-      Skeleton.AddToInventory(skeleFluid, 2);
+      Skeleton.AddToInventory(SkeleFluid, 2);
 
       Enemy Goblin = new Enemy("Goblin", 20, 2, 7, 9);
       Weapon SteelSword = new Weapon("#blessed Steel Sword", "sword",
@@ -411,8 +417,8 @@ namespace Sophmores_FinalProj
       Console.WriteLine("Well lets not take too long, lets start finding " +
                         "keys!\n");
       string doorAccept = "\nOkay, we are going into door ";
-      bool responseIsGood = false;
-      while (!(responseIsGood))
+      bool playerWins = false;
+      while (!(playerWins))
       {
         response = getChoice(5, "", true);  // gets player input here
         if (1 <= response && response <= 3)     //checks if response is a door number
@@ -511,12 +517,32 @@ namespace Sophmores_FinalProj
                               "now opens! We are going into the final door!");
             DoorStage4(p1, Enemies[11], Enemies[12]);
             Console.ResetColor();
-            responseIsGood = true;
+            playerWins = true;
             break;
 
           }
         }
       }
+      PlayerBeatsGame();
+    }
+    /// <summary>
+    /// Code to End the Game
+    /// </summary>
+    private static void PlayerBeatsGame()
+    {
+      TextUtil.PressAnyKeyBufferClear();
+      Console.ForegroundColor = ConsoleColor.DarkRed;
+      TextUtil.PrintTextFile("GameOver.txt");
+      Console.WriteLine("Congratulations on beating the Game!!!");
+      Console.WriteLine("You have restored Peace to the Woods!");
+      for (int i = 0; i < 5; i++)
+      {
+        Console.WriteLine("...");
+      }
+        Console.WriteLine("Or have you?");
+      TextUtil.PressAnyKeyBufferClear("...");
+      Console.ForegroundColor = ConsoleColor.DarkRed;
+      TextUtil.PrintTextFile("gamelogo2.txt");
     }
     /// <summary>
     /// Prompts player that the selected door is complete
@@ -550,10 +576,6 @@ namespace Sophmores_FinalProj
         }
 
       }
-	  TextUtil.PressAnyKeyBufferClear();
-      Console.ForegroundColor = ConsoleColor.DarkRed;
-	  TextUtil.PrintTextFile("GameOver.txt");
-	  Console.WriteLine("Congradulations on beating the Game!!!");
     }
     /// <summary>
     /// Provides framework for one-time tutorial
