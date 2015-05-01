@@ -281,19 +281,20 @@ namespace Sophmores_FinalProj
       Enemy GiantSpider = new Enemy("Giant Spider", 20, 10, 5, 7);
       Weapon BasicBow = new Weapon("BasicBow", "bow", "basic wooden bow",
         20, 0);
-      Poison spidervenom = new Poison("Spider Venom", "poison", true);
+      Poison spidervenom = new Poison("Spider Venom", "poison", false);
       GiantSpider.AddToInventory(BasicBow, 1);
       GiantSpider.AddToInventory(spidervenom, 1);
 
-      Enemy Alligator = new Enemy("Alligator", 20, 10, 5, 7);
-      Quiver FireArrows = new Quiver("Fire Arrows",
-        "this quiver contains 8 fire arrows", 8);
-        Poison aligatoreggs = new Poison("Alligator Eggs",
-        "Highly dangerous and poisonous eggs.", true);
+      Enemy Alligator = new Enemy("Alligator", 20, 10, 5, 7, "bow");
+      Poison FireArrows = new Poison("Fire Arrows",
+        "this quiver contains a poisonous fire arrow", true);
+        HealthPotion aligatoreggs = new HealthPotion("Alligator Eggs",
+        "Delicous and nourishing alligator eggs!.", false);
+        aligatoreggs.Potency = 50;
       Alligator.AddToInventory(FireArrows, 1);
       Alligator.AddToInventory(aligatoreggs, 1);
 
-      Enemy Kraken = new Enemy("Kraken", 20, 10, 5, 7);
+      Enemy Kraken = new Enemy("Kraken", 20, 10, 5, 7, "bow");
       Weapon Crossbow = new Weapon("CrossBow", "bow,",
         "Higher damage than basic bow, gains magical powers when combined " + 
         "with fire arrows", 20, 15);
@@ -429,6 +430,11 @@ namespace Sophmores_FinalProj
                 continue;
               }
             }
+            else if (p1.DoorsOpened.Count == 3)
+            {
+                DoorAlreadyComplete();
+                continue;
+            }
           }
           else if (p1.Stage)            // if player dies/runs, they are returned to the lobby. In this case stage will be true.
           {                            // this code makes it so player is only allowed to return to the door where they died/ran from.
@@ -448,6 +454,10 @@ namespace Sophmores_FinalProj
                 case 3:
                   DoorStage3(p1, Enemies[7], Enemies[8], Enemies[9]);
                   break;
+                case 4:
+                  DoorStage4(p1, Enemies[11], Enemies[12]);
+                  break;
+
               }
               continue;
             }

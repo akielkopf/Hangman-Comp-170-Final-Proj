@@ -146,7 +146,7 @@ namespace Sophmores_FinalProj
     {
       int count = 1;
       List<Item> conList = new List<Item> { };
-      string x = "Weapons: \n";
+      string x = "\nWeapons: \n";
       StringBuilder builder = new StringBuilder(x);
       foreach (KeyValuePair<Item, int> a in inventory.contents)
       {
@@ -185,13 +185,13 @@ namespace Sophmores_FinalProj
     {
       int count = 1;
       List<Item> conList = new List<Item> { };
-      string x = "Consumables: \n";
+      string x = "\nConsumables: \n";
       StringBuilder builder = new StringBuilder(x);
       foreach (KeyValuePair<Item, int> a in inventory.contents)
       {
         if (a.Key.consumable)
         {
-          builder.AppendLine(count + ") " + a.Key.name + ", " + a.Value);
+          builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type + ", Quantity: " + a.Value);
           count++;
           conList.Add(a.Key);
         }

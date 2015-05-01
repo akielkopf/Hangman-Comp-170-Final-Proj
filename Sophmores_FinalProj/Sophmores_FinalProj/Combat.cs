@@ -380,8 +380,11 @@ namespace Sophmores_FinalProj
       string enemyAffinity = enemy.Affinity.ToLower().Trim();
       string playerWeaponType = (enemyAffinity == "n") ? "n" : player.EquippedWeapon.type.ToLower().Trim();
       if (playerWeaponType != enemyAffinity)
-      {
-        Console.WriteLine("The enemy seems to be unaffected by this weapon type!");
+      {        
+        Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
+        Console.WriteLine("{0} attacks for {1} damage!", player.Name, player.TotalDamage/2);
+        enemy.ModifyCurrentHP(-1 * (player.TotalDamage/2));
+        Console.WriteLine("The enemy seems to be strong against this weapon type!");
         Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
         return;
       }
