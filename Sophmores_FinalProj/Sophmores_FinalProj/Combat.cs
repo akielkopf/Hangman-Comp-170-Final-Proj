@@ -46,7 +46,7 @@ namespace Sophmores_FinalProj
 
     public static void StartCombat(Player player, Enemy enemy)
     {
-      DisplayEnemyArt(enemy); // Comment this line out to turn off Enemy Art
+     // DisplayEnemyArt(enemy); // Comment this line out to turn off Enemy Art
       player.RemoveBuff();
       run = false;
       if (!enemy.isAlive())
@@ -69,7 +69,7 @@ namespace Sophmores_FinalProj
             Console.WriteLine("\n" + enemy.Name + " has fallen!");
             Console.ResetColor();
             starLine();
-            player.CurrentHP = player.TotalHP;
+            GainEnemyItems(player, enemy);
             EndFight(player);
             break;
           }
@@ -175,11 +175,81 @@ namespace Sophmores_FinalProj
     private static void EnemyAttack(Player player, Enemy enemy)
     {
       int attack = random.Next(enemy.MinDamage, enemy.MaxDamage);
-      Console.WriteLine("Enemy attacks for {0} damage!", attack);
+      if (player.Shield != 0 && player.EquippedWeapon.type.ToLower().Trim() == "sword") 
+      {
+          int block = 0;
+          string type = "";
+          switch (player.Shield)
+          {               
+              case 1:
+                  block = random.Next(1, 15);
+                  type = "basic";
+                  attack -= block;
+                  break;
+              case 2:
+                  block = random.Next(15, 25);
+                  type = "dragon scale";
+                  attack -= block;
+                  break;
+          }
+          Console.WriteLine("\n{0}'s {1} shield blocked {2} damage from the enemy.", player.Name, type, block);
+      }
+      Console.WriteLine("\nEnemy attacks for {0} damage!", attack);
       player.ModifyCurrentHP(-1 * attack);
       Console.WriteLine("{0} Health: {1} \n", player.Name, player.CurrentHP);
     }
-
+    private static void GainEnemyItems(Player player, Enemy enemy)
+    {
+        if (!(enemy.isAlive()))
+        {
+            foreach (KeyValuePair<Item, int> a in enemy.inventory.contents)
+            {
+                player.AddToInventory(a.Key, 1);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("{0} has been added to your inventory!", a.Key.name);
+                if (a.Key is Weapon && a.Key.type.ToLower().Trim() != "shield")
+                {
+                    string question = ("Would you like to equip " + a.Key.name +
+                                       "? \n 1)Yes \n 2)No\n");
+                    Console.WriteLine(question);
+                    int answer = GetChoice(2);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    if (answer == 1)
+                    {
+                        player.Equip(a.Key as Weapon);
+                        Console.WriteLine("\nYour new weapon has been equipped!\n");
+                    }
+                    else if (answer == 2)
+                    {
+                        Console.WriteLine("\nYou have not equipped your newest weapon.\n");
+                    }
+                    Console.ResetColor();
+                }
+                else if (a.Key is HealthPotion)
+                {
+                    string question = "Would you like to consume " + a.Key.name +
+                                      "?, Its desciption is : " + a.Key.description +
+                                      " \n 1)Yes \n 2)No";
+                    Console.WriteLine(question);
+                    int answer = GetChoice(2);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    if (answer == 1)
+                    {
+                        player.ConsumeItem(a.Key as HealthPotion);
+                        Console.WriteLine("\nYou have consumed the potion, your " +
+                                          "current HP is {0}.", player.CurrentHP);
+                    }
+                    else if (answer == 2)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("You have decided not to consume the potion.");
+                        Console.WriteLine();
+                    }
+                    Console.ResetColor();
+                }
+            }
+        }
+    }
     /// <summary>
     /// cleaner way to get choices.
     /// </summary>
@@ -310,8 +380,11 @@ namespace Sophmores_FinalProj
       string enemyAffinity = enemy.Affinity.ToLower().Trim();
       string playerWeaponType = (enemyAffinity == "n") ? "n" : player.EquippedWeapon.type.ToLower().Trim();
       if (playerWeaponType != enemyAffinity)
-      {
-        Console.WriteLine("The enemy seems to be unaffected by this weapon type!");
+      {        
+        Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
+        Console.WriteLine("{0} attacks for {1} damage!", player.Name, player.TotalDamage/2);
+        enemy.ModifyCurrentHP(-1 * (player.TotalDamage/2));
+        Console.WriteLine("The enemy seems to be strong against this weapon type!");
         Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
         return;
       }
