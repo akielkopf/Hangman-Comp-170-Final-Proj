@@ -261,8 +261,8 @@ namespace Sophmores_FinalProj
       Enemy Goblin = new Enemy("Goblin", 20, 2, 7, 9);
       Weapon SteelSword = new Weapon("#blessed Steel Sword", "sword",
         "sword made of steel, with slight magic damage", 15, 10);
-      HealthPotion GoblinBlood = new HealthPotion("Goblin Blood",
-        "blood from the heart of the Goblin", false);
+      Poison GoblinBlood = new Poison("Goblin Blood",
+        "blood from the heart of the Goblin, \na known harmful neurotoxin.", false);
       Goblin.AddToInventory(SteelSword, 1);
       Goblin.AddToInventory(GoblinBlood, 2);
 
@@ -288,8 +288,8 @@ namespace Sophmores_FinalProj
       Enemy Alligator = new Enemy("Alligator", 20, 10, 5, 7);
       Quiver FireArrows = new Quiver("Fire Arrows",
         "this quiver contains 8 fire arrows", 8);
-      HealthPotion aligatoreggs = new HealthPotion("Alligator Eggs",
-        "Restores health", false);
+        Poison aligatoreggs = new Poison("Alligator Eggs",
+        "Highly dangerous and poisonous eggs.", true);
       Alligator.AddToInventory(FireArrows, 1);
       Alligator.AddToInventory(aligatoreggs, 1);
 
