@@ -15,6 +15,3 @@ As you gather yourself you realize you've backed yourself into a corner and the
 alligator is closing in.
 
 --------------------------------------------------------------------------------
-He blocks access to either ladder...
-<combat>
-

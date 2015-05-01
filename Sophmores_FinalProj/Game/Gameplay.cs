@@ -53,52 +53,17 @@ namespace Sophmores_FinalProj
                                    Enemy enemy2, Enemy boss)
     {
       Stage2.PreNoteMsgs();
-      string noteDescription = TextUtil.ReturnTextFile("stage2note.txt");
-      Item note = new Item("StarNote", "Paper", noteDescription);
-      Console.WriteLine(note.description);
+      Item note = Stage2.PlayerViewsNote();
       player.AddToInventory(note, 1);
-
-      string question = "Sword or Wand? \n 1)Sword \n 2)Wand";
-      int answer = getChoice(2, question);
-      bool pass = false;
-      while (pass != true)
-      {
-        if (answer == 1)
-        {
-          Console.WriteLine("it does not effect");
-          answer = getChoice(2, "maybe try a different weapon. " +
-                                "\n 1)Sword \n 2)Wand");
-        }
-        else if (answer == 2)
-        {
-          Console.WriteLine("The webs have fallen \n");
-          pass = true;
-        }
-      }
-
+      Stage2.BreakWebsScene();
       Combat.StartCombat(player, enemy1);
-   //   
-
-      string question2 = "Jump or Climb? \n 1)Jump \n 2)Climb";
-      int answer2 = getChoice(2, question2);
-      bool pass2 = false;
-      while (pass2 != true)
-      {
-        if (answer == 1)
-        {
-          Console.WriteLine("jump story \n");
-          pass2 = true;
-        }
-        else if (answer == 2)
-        {
-          Console.WriteLine("climb story \n");
-          pass2 = true;
-        }
-      }
-		player.Stage = false;
+      Stage2.JumpOrClimbScene();
+      Combat.StartCombat(player, enemy2);
+      Stage2.BossScene();
+      Combat.StartCombat(player, boss);
+      Stage2.Stage2Beat();
+		  player.Stage = false;
     }
-
-   
 	
 	private static void DoorStage3(Player player, Enemy enemy1,
                                   Enemy enemy2, Enemy boss)
@@ -178,7 +143,7 @@ namespace Sophmores_FinalProj
     /// prompt \n 1)choice1 \n 2)choice2 \n 3)choice3... etc"
     /// </param>
     /// <returns></returns>
-    private static int getChoice(int numberOfChoices, string choices, bool door = false)
+    public static int getChoice(int numberOfChoices, string choices, bool door = false)
     {
         string[] options = new string[] { "Door 1", "Door 2", "Door 3",
                                         "Large Door", "Open Inventory" };
@@ -250,7 +215,7 @@ namespace Sophmores_FinalProj
 
 
       //STAGE 1 ENEMIES
-      Enemy Skeleton = new Enemy("Skeleton", 25, 1, 5, 6, "bow");
+      Enemy Skeleton = new Enemy("Skeleton", 25, 1, 5, 6);
       Weapon IronSword = new Weapon("Iron Sword", "sword",
         "A Sword made of Iron", 10, 0);
       HealthPotion SkeleFluid = new HealthPotion("Skeleton Fluid",
@@ -337,12 +302,12 @@ namespace Sophmores_FinalProj
 
       //Final Stage ENEMIES
       Enemy Dragon = new Enemy ("Dragon", 90, 4, 20,50, "sword");
-      Weapon dragonsheild = new Weapon("Dragon Scale Sheild", "sheild", 
+      Weapon DragonSheild = new Weapon("Dragon Scale Sheild", "sheild", 
         "magical sheild that can be used to block magic powers", 0,0);
-      HealthPotion dragonfruit = new HealthPotion("Dragon Fruit", 
+      HealthPotion DragonFruit = new HealthPotion("Dragon Fruit", 
         "restoes heatlh fully", true);
-      Dragon.AddToInventory(dragonsheild,1);
-      Dragon.AddToInventory(dragonfruit,1);
+      Dragon.AddToInventory(DragonSheild,1);
+      Dragon.AddToInventory(DragonFruit,1);
 
       Enemy Ghost = new Enemy("Odalf", 100, 5, 20, 55);
 
@@ -463,7 +428,7 @@ namespace Sophmores_FinalProj
                   DoorStage3(p1, Enemies[7], Enemies[8], Enemies[9]);
                   break;
                 case 4:
-                  DoorStage4(p1, Enemies[11], Enemies[12]);
+                  DoorStage4(p1, Enemies[10], Enemies[11]);
                   break;
 
               }
@@ -517,7 +482,7 @@ namespace Sophmores_FinalProj
 			Console.WriteLine("You have found all three keys and the door " + 
                               "now opens! We are going into the final door!");
             Console.ResetColor();
-            DoorStage4(p1, Enemies[11], Enemies[12]);
+            DoorStage4(p1, Enemies[10], Enemies[11]);
             playerWins = true;
             break;
 
