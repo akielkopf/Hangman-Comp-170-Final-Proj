@@ -73,6 +73,7 @@
     <Content Include="Art\EnemyArt\Ghost\Odalf2.txt" />
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat1.txt" />
     <Content Include="Art\EnemyArt\GiantRat\Giant Rat2.txt" />
+    <Content Include="NarrationFiles\Stage 1\Stage 1.txt" />
     <Content Include="NarrationFiles\Stage 3\Stage3.txt" />
     <Content Include="NarrationFiles\Stage 4\Stage4.txt" />
     <None Include="Art\EnemyArt\Goblin\Goblin1.txt" />
