@@ -13,8 +13,8 @@ namespace Sophmores_FinalProj
     {
       if (!player.isAlive() || Combat.run)
       {
-        if (!player.isAlive()) 
-        { 
+        if (!player.isAlive())
+        {
           player.CurrentHP = restoreHealth;
         }
         return true;
@@ -31,25 +31,25 @@ namespace Sophmores_FinalProj
     private static void DoorStage(Player player, Enemy enemy1,
                                   Enemy enemy2, Enemy boss)
     {
-        Combat.StartCombat(player, enemy1);
-        if (DeadOrRunCheck(player, 10))
-        {
-          return;
-        }
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
-        TextUtil.PrintTextFile("foreshadownote.txt");
-        Console.ResetColor();
-        TextUtil.PressAnyKeyBufferClear();
-        Combat.StartCombat(player, enemy2);
-        if (DeadOrRunCheck(player, 10))
-        {
-          return;
-        }
-        Combat.StartCombat(player, boss);
-        if (DeadOrRunCheck(player, 10))
-        {
-          return;
-        }
+      Combat.StartCombat(player, enemy1);
+      if (DeadOrRunCheck(player, 10))
+      {
+        return;
+      }
+      Console.ForegroundColor = ConsoleColor.DarkYellow;
+      TextUtil.PrintTextFile("foreshadownote.txt");
+      Console.ResetColor();
+      TextUtil.PressAnyKeyBufferClear();
+      Combat.StartCombat(player, enemy2);
+      if (DeadOrRunCheck(player, 10))
+      {
+        return;
+      }
+      Combat.StartCombat(player, boss);
+      if (DeadOrRunCheck(player, 10))
+      {
+        return;
+      }
 
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.WriteLine("\nAfter defeating the {0}, {1} leaves the room. " +
@@ -64,27 +64,27 @@ namespace Sophmores_FinalProj
     private static void DoorStage2(Player player, Enemy enemy1,
                                    Enemy enemy2, Enemy boss)
     {
-        Stage2.PreNoteMsgs();
-        Item note = Stage2.PlayerViewsNote();
-        player.AddToInventory(note, 1);
-        Stage2.BreakWebsScene();
-        Combat.StartCombat(player, enemy1);
-        if (DeadOrRunCheck(player, 20))
-        {
-          return;
-        }
-        Stage2.JumpOrClimbScene();
-        Combat.StartCombat(player, enemy2);
-        if (DeadOrRunCheck(player, 20))
-        {
-          return;
-        }
-        Stage2.BossScene();
-        Combat.StartCombat(player, boss);
-        if (DeadOrRunCheck(player, 20))
-        {
-          return;
-        }
+      Stage2.PreNoteMsgs();
+      Item note = Stage2.PlayerViewsNote();
+      player.AddToInventory(note, 1);
+      Stage2.BreakWebsScene();
+      Combat.StartCombat(player, enemy1);
+      if (DeadOrRunCheck(player, 20))
+      {
+        return;
+      }
+      Stage2.JumpOrClimbScene();
+      Combat.StartCombat(player, enemy2);
+      if (DeadOrRunCheck(player, 20))
+      {
+        return;
+      }
+      Stage2.BossScene();
+      Combat.StartCombat(player, boss);
+      if (DeadOrRunCheck(player, 20))
+      {
+        return;
+      }
       Stage2.Stage2Beat();
       player.Stage = false;
     }
@@ -102,7 +102,7 @@ namespace Sophmores_FinalProj
       {
         return;
       }
-      Item silverkey = new Item("Silver Key", "key", "Silver key connected to "+
+      Item silverkey = new Item("Silver Key", "key", "Silver key connected to " +
                                                       "a chain");
       Console.WriteLine("Silver Key has been addred to your inventory!");
 
@@ -115,7 +115,7 @@ namespace Sophmores_FinalProj
       if (DeadOrRunCheck(player, 10))
       {
         return;
-      }      
+      }
       player.currentStage = 3;
       player.Stage = false;
     }
@@ -513,7 +513,7 @@ namespace Sophmores_FinalProj
             DoorStage4(p1, Enemies[10], Enemies[11]);
             if (p1.currentStage == 4)
             {
-                break;
+              break;
             }
           }
         }
