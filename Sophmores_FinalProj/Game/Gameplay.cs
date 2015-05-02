@@ -9,6 +9,8 @@ namespace Sophmores_FinalProj
   {
     #region Private Methods
 
+    private static bool playerWins;
+
     private static void DoorStage(Player player, Enemy enemy1,
                                   Enemy enemy2, Enemy boss)
     {
@@ -133,8 +135,7 @@ namespace Sophmores_FinalProj
       {
         if (!player.isAlive()) { player.CurrentHP = 10; }
         return;
-      }
-      Console.ForegroundColor = ConsoleColor.Yellow;
+      }      
       player.currentStage = 3;
       player.Stage = false;
     }
@@ -164,6 +165,7 @@ namespace Sophmores_FinalProj
                         "Defeated the Game!!", boss1.Name, boss2.Name, 
                         player.Name);
       Console.ResetColor();
+      playerWins = true;
       player.Stage = false;
     }
 
@@ -381,7 +383,7 @@ namespace Sophmores_FinalProj
       Console.WriteLine("Well lets not take too long, lets start finding " +
                         "keys!\n");
       string doorAccept = "\nOkay, we are going into door ";
-      bool playerWins = false;
+      playerWins = false;
       while (!(playerWins))
       {
         response = getChoice(5, "", true);  // gets player input here
@@ -508,9 +510,14 @@ namespace Sophmores_FinalProj
                               "now opens! We are going into the final door!");
             Console.ResetColor();
             DoorStage4(p1, Enemies[11], Enemies[12]);
-            playerWins = true;
-            break;
-
+            if (playerWins)
+            {
+                break;
+            }
+            else
+            {
+                continue;
+            }
           }
         }
       }

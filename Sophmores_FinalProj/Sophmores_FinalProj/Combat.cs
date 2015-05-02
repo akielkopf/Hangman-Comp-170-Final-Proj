@@ -208,6 +208,7 @@ namespace Sophmores_FinalProj
                 player.AddToInventory(a.Key, 1);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("{0} has been added to your inventory!", a.Key.name);
+                Console.ResetColor();
                 if (a.Key is Weapon && a.Key.type.ToLower().Trim() != "shield")
                 {
                     string question = ("Would you like to equip " + a.Key.name +
