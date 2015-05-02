@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters\Character.cs" />
-    <Compile Include="Combat.cs">
+    <Compile Include="Utilities\Combat.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Characters\Enemy.cs" />

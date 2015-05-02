@@ -7,9 +7,12 @@ using Sophmores_FinalProj.Utilities;
 
 namespace Sophmores_FinalProj
 {
+  /// <summary>
+  /// Holds all the Logic for Stage 2
+  /// </summary>
   public static class Stage2
   {
-    static string[] stage2Texts;
+    private static string[] stage2Texts;
     /// <summary>
     /// Provides plot text for intro section of stage 2
     /// </summary>

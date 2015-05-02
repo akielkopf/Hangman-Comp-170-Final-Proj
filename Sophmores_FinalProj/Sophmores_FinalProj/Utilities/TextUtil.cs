@@ -6,6 +6,10 @@ namespace Sophmores_FinalProj.Utilities
 {
   /// <summary>
   /// Holds Utility code for manipulating the console window 
+  ///   <remarks>
+  ///   Call SetStartingDirectory() 
+  ///   First to speed up file searches
+  ///   </remarks>
   /// </summary>
   public class TextUtil
   {
@@ -18,6 +22,9 @@ namespace Sophmores_FinalProj.Utilities
     #endregion Private Fields
 
     #region Public Methods
+    /// <summary>
+    /// Call this method first!!
+    /// </summary>
     public static void SetStartingDirectory()
     {
       string setDirectory = Directory.GetCurrentDirectory();

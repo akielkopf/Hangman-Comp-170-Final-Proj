@@ -24,26 +24,11 @@ namespace Sophmores_FinalProj
 
     #region Public Methods
 
-    public static string Message(Item currentItem)
-    {
-      string message;
-      if (currentItem is Poison)
-      {
-        message = (" has poisoned the enemy with " + currentItem.name +
-                   " for three turns.");
-        return message;
-      }
-      else if (currentItem is HealthPotion)
-      {
-        message = (" has used " + currentItem.name + " to recover HP.");
-        return message;
-      }
-      else
-      {
-        return "";
-      }
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="player"></param>
+    /// <param name="enemy"></param>
     public static void StartCombat(Player player, Enemy enemy)
     {
       // Comment this line out to turn off Enemy Art
@@ -145,7 +130,6 @@ namespace Sophmores_FinalProj
       string[] artFiles = enemy.ArtFiles;
       if (artFiles != null)
       {
-        //Console.BackgroundColor = ConsoleColor.DarkBlue;
         TextUtil.SetBufferSize();
         for (int i = 0; i < 50; i++)
         {
@@ -163,20 +147,25 @@ namespace Sophmores_FinalProj
     }
 
     /// <summary>
-    /// returns values back to default after fight ends
+    /// Returns values back to default after fight ends
     /// </summary>
-    /// <param name="player"></param>
+    /// <param name="player">Main Character</param>
     private static void EndFight(Player player)
     {
       turn = 0;
       poisonStart = -4;
       player.RemoveBuff();
     }
-
+    /// <summary>
+    /// Enemy Attack Logic
+    /// </summary>
+    /// <param name="player">Main Character</param>
+    /// <param name="enemy">Attacking Enemy</param>
     private static void EnemyAttack(Player player, Enemy enemy)
     {
+      string playerWeaponType = player.EquippedWeapon.type.ToLower().Trim();
       int attack = random.Next(enemy.MinDamage, enemy.MaxDamage);
-      if (player.Shield != 0 && player.EquippedWeapon.type.ToLower().Trim() == "sword")
+      if ((player.Shield != 0) && (playerWeaponType == "sword"))
       {
         int block = 0;
         string type = "";
@@ -193,12 +182,18 @@ namespace Sophmores_FinalProj
             attack -= block;
             break;
         }
-        Console.WriteLine("\n{0}'s {1} shield blocked {2} damage from the enemy.", player.Name, type, block);
+        Console.WriteLine("\n{0}'s {1} shield blocked {2} damage from the " + 
+                          "enemy.", player.Name, type, block);
       }
       Console.WriteLine("\nEnemy attacks for {0} damage!", attack);
       player.ModifyCurrentHP(-1 * attack);
       Console.WriteLine("{0} Health: {1} \n", player.Name, player.CurrentHP);
     }
+    /// <summary>
+    /// When Enemy dies, Player gains inventory contents of said Enemy
+    /// </summary>
+    /// <param name="player">Main Character</param>
+    /// <param name="enemy">Enemy to Loot</param>
     private static void GainEnemyItems(Player player, Enemy enemy)
     {
       if (!(enemy.isAlive()))
@@ -290,15 +285,23 @@ namespace Sophmores_FinalProj
       string playerInput = UI.PromptLine("\nchoice: ");
       return playerInput.Trim().ToLower();
     }
-
     /// <summary>
-    /// Player side turn logic.
+    /// Player side turn logic
     /// </summary>
-    /// <param name="player"></param>
-    /// <param name="enemy"></param>
-    /// <param name="current turn"></param>
+    /// <param name="player">Main Character</param>
+    /// <param name="enemy">Current Enemy</param>
+    /// <param name="turn">Current turn #</param>
     private static void PlayerAction(Player player, Enemy enemy, int turn)
     {
+      string[] msgs = new string[] 
+      {                                                       // message Index
+        "Player has equipped ",                                           // 0
+        "You can't Equip that!",                                          // 1
+        "You have chosen to keep your current weapon equipped.",          // 2
+        "No item used.",                                                  // 3
+        "You can't run, this is your first fight!",                       // 4
+        "The enemy saw it coming this time, you were not able to escape!" // 5
+      };
       playerTurn = true;
       while (playerTurn == true)
       {
@@ -309,7 +312,7 @@ namespace Sophmores_FinalProj
           playerTurn = false;
           break;
         }
-        if (curInput == 2)
+        else if (curInput == 2)
         {
           List<Item> curWeapons = player.DisplayAllWeaponsReturnList();
 
@@ -319,40 +322,47 @@ namespace Sophmores_FinalProj
             if ((curWeapons[choice - 1]).playerCanEquip)
             {
               player.Equip(curWeapons[choice - 1] as Weapon);
-              Console.WriteLine("Player has equipped " + curWeapons[choice - 1].name + ".");
+              Console.WriteLine(msgs[0] + curWeapons[choice - 1].name + ".");
               playerTurn = false;
               break;
             }
             else
             {
-              Console.WriteLine("You can't Equip that!");
+              Console.WriteLine(msgs[1]);
             }
           }
           else
           {
-            Console.WriteLine("You have chosen to keep your current weapon equipped.");
+            Console.WriteLine(msgs[2]);
           }
         }
-        if (curInput == 3)
+        else if (curInput == 3)
         {
-          List<Item> curCItems = player.DisplayConsumablesReturnList();
+          List<Item> ConsubableItems = player.DisplayConsumablesReturnList();
 
-          int choice = GetChoice(curCItems.Count + 1);
-          if (choice - 1 < curCItems.Count)
+          int choice = GetChoice(ConsubableItems.Count + 1);
+          if (choice - 1 < ConsubableItems.Count)
           {
-            if (curCItems[choice - 1] is Poison) { poisonStart = turn; }
-            player.ConsumeItem(curCItems[choice - 1]);
-            Console.WriteLine(player.Name + Message(curCItems[choice - 1]));
+            if (ConsubableItems[choice - 1] is Poison) 
+            { 
+              poisonStart = turn;
+            }
+            player.ConsumeItem(ConsubableItems[choice - 1]);
+            Console.WriteLine(player.Name +  
+                              ConsumableMessage(ConsubableItems[choice - 1]));
             playerTurn = false;
             break;
           }
-          else { Console.WriteLine("No item used."); }
+          else 
+          {
+            Console.WriteLine(msgs[3]);
+          }
         }
-        if (curInput == 4)
+        else if (curInput == 4)
         {
           if (player.TutorialComplete == false)
           {
-            Console.WriteLine("You can't run, this is your first fight!");
+            Console.WriteLine(msgs[4]);
             playerTurn = false;
             break;
           }
@@ -365,7 +375,7 @@ namespace Sophmores_FinalProj
           }
           else
           {
-            Console.WriteLine("The enemy saw it coming this time, you were not able to escape!");
+            Console.WriteLine(msgs[5]);
             playerTurn = false;
             break;
           }
@@ -384,14 +394,17 @@ namespace Sophmores_FinalProj
       if (playerWeaponType != enemyAffinity)
       {
         Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
-        Console.WriteLine("{0} attacks for {1} damage!", player.Name, player.TotalDamage / 2);
+        Console.WriteLine("{0} attacks for {1} damage!",
+                          player.Name, (player.TotalDamage / 2));
         enemy.ModifyCurrentHP(-1 * (player.TotalDamage / 2));
-        Console.WriteLine("The enemy seems to be strong against this weapon type!");
+        Console.WriteLine("The enemy seems to be strong against this weapon " + 
+                          "type!");
         Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
         return;
       }
       Console.WriteLine("Enemy Health: {0}", enemy.CurrentHP);
-      Console.WriteLine("{0} attacks for {1} damage!", player.Name, player.TotalDamage);
+      Console.WriteLine("{0} attacks for {1} damage!", player.Name,
+                        player.TotalDamage);
       enemy.ModifyCurrentHP(-1 * player.TotalDamage);
       Console.WriteLine("Enemy Health: {0} \n", enemy.CurrentHP);
     }
@@ -411,7 +424,7 @@ namespace Sophmores_FinalProj
 
     /// <summary>
     /// Checks various parameters and locks options that player should not
-    /// have access to.
+    /// Have access to.
     /// </summary>
     private static int preCombatCheck(Player player)
     {
@@ -464,6 +477,30 @@ namespace Sophmores_FinalProj
       Console.WriteLine();
       for (int i = 0; i < 65; i++) { Console.Write("*"); }
       Console.WriteLine("*");
+    }
+    /// <summary>
+    /// Displays Message to player when Consumable Item is used
+    /// </summary>
+    /// <param name="currentItem">Item to use</param>
+    /// <returns>Flavor text dependent on item used</returns>
+    private static string ConsumableMessage(Item currentItem)
+    {
+      string message;
+      if (currentItem is Poison)
+      {
+        message = (" has poisoned the enemy with " + currentItem.name +
+                   " for three turns.");
+        return message;
+      }
+      else if (currentItem is HealthPotion)
+      {
+        message = (" has used " + currentItem.name + " to recover HP.");
+        return message;
+      }
+      else
+      {
+        return "";
+      }
     }
 
     #endregion Private Methods

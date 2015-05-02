@@ -2,19 +2,28 @@
 
 namespace Sophmores_FinalProj
 {
+  /// <summary>
+  /// Basic enemy Class, have Max and Min Damage values For random Hit damage 
+  /// </summary>
   public class Enemy : Character
   {
-    /// <summary>
-    /// Basic enemy Class, have Max and Min Damage values For random Hit damage 
-    /// </summary>
 
     #region Public Properties
-
+    /// <summary>
+    /// Enemies are strong against non-matching affinities
+    /// </summary>
     public string Affinity { get; set; }
-
+    /// <summary>
+    /// Max Damage an Enemy can do
+    /// </summary>
     public int MaxDamage { get; set; }
-
+    /// <summary>
+    /// Minimum Damage an Enemy can do
+    /// </summary>
     public int MinDamage { get; set; }
+    /// <summary>
+    /// Files that will be printed upon entering Combat
+    /// </summary>
     public string[] ArtFiles { get; private set; }
 
     #endregion Public Properties

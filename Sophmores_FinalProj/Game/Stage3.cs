@@ -7,6 +7,9 @@ using Sophmores_FinalProj.Utilities;
 
 namespace Sophmores_FinalProj
 {
+  /// <summary>
+  /// Holds all the Logic for Stage 3
+  /// </summary>
   public static class Stage3
   {
     static string[] stage3Texts;

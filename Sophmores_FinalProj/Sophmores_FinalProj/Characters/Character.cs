@@ -183,7 +183,6 @@ namespace Sophmores_FinalProj
     /// <summary>
     /// Uses the Specified Poison 
     /// </summary>
-
     public void UsePoison(Poison poi)
     {
       ApplyBuffOrDebuff(poi.Potency);

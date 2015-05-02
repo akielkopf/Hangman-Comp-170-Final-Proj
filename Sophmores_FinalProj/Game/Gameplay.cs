@@ -8,7 +8,14 @@ namespace Sophmores_FinalProj
   internal class Program
   {
     #region Private Methods
-
+    /// <summary>
+    /// Checks if the player is Dead or has Run from Combat
+    /// </summary>
+    /// <param name="player">Main Character</param>
+    /// <param name="restoreHealth">
+    /// How much health to restore upon exit of Combat
+    /// </param>
+    /// <returns></returns>
     private static bool DeadOrRunCheck(Player player, int restoreHealth)
     {
       if (!player.isAlive() || Combat.run)
@@ -60,7 +67,13 @@ namespace Sophmores_FinalProj
       Stage2.PrintPreDoorMsg();
       player.Shield = 1;
     }
-
+    /// <summary>
+    /// Provides Logic for Plot and Combat for the second stage
+    /// </summary>
+    /// <param name="player">Main Character</param>
+    /// <param name="enemy1">First Enemy to fight</param>
+    /// <param name="enemy2">Second Enemy to fight</param>
+    /// <param name="boss">Final Boss of Stage</param>
     private static void DoorStage2(Player player, Enemy enemy1,
                                    Enemy enemy2, Enemy boss)
     {
@@ -88,7 +101,13 @@ namespace Sophmores_FinalProj
       Stage2.Stage2Beat();
       player.Stage = false;
     }
-
+    /// <summary>
+    /// Provides Logic for Plot and Combat for the third stage
+    /// </summary>
+    /// <param name="player">Main Character</param>
+    /// <param name="enemy1">First Enemy to fight</param>
+    /// <param name="enemy2">Second Enemy to fight</param>
+    /// <param name="boss">Final Boss of Stage</param>
     private static void DoorStage3(Player player, Enemy enemy1,
                                     Enemy enemy2, Enemy boss)
     {
@@ -119,7 +138,13 @@ namespace Sophmores_FinalProj
       player.currentStage = 3;
       player.Stage = false;
     }
-
+    /// <summary>
+    /// Provides Logic for Plot and Combat for the fourth stage
+    /// </summary>
+    /// <param name="player">Main Character</param>
+    /// <param name="enemy1">First Enemy to fight</param>
+    /// <param name="enemy2">Second Enemy to fight</param>
+    /// <param name="boss">Final Boss of Stage</param>
     private static void DoorStage4(Player player, Enemy boss1,
                                     Enemy boss2)
     {
@@ -151,10 +176,12 @@ namespace Sophmores_FinalProj
     /// </summary>
     /// <param name="numberOfChoices"> The total number of choices. </param>
     /// <param name="choices">
-    /// The prompt of the choices, format of choices must be in "optional
-    /// prompt \n 1)choice1 \n 2)choice2 \n 3)choice3... etc"
+    /// The prompt of the choices, format of choices must be
+    ///   <example>
+    ///   "optional prompt \n 1)choice1 \n 2)choice2 \n 3)choice3... etc"
+    ///   </example>
     /// </param>
-    /// <returns></returns>
+    /// <returns>The player choice selected</returns>
     public static int getChoice(int numberOfChoices, string choices, bool door = false)
     {
       string[] options = new string[] { "Door 1", "Door 2", "Door 3",
@@ -349,7 +376,9 @@ namespace Sophmores_FinalProj
     /// </summary>
     private static void Main()
     {
-      TextUtil.SetStartingDirectory();
+      TextUtil.SetStartingDirectory(); // Snapshots relative directory paths
+                                       // Enhanced search speed and avoids
+                                       // Some errors if started from shortcut
       ShowGameTitleScreen();
       Enemy[] Enemies = CreateAllEnemies();
       Player p1 = GameIntro.Start(new Player("", 20));
