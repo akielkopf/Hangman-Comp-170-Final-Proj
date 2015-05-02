@@ -19,6 +19,3 @@ Also on the alter are what appear to be slots to place the rocks. You look
 around confused. There is nothing else in this room.
 
 --------------------------------------------------------------------------------
-You look down at the altar and place the rocks into the slots.
-
-<if arranged correctly the ground around disappears>

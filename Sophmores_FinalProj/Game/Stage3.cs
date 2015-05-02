@@ -7,20 +7,20 @@ using Sophmores_FinalProj.Utilities;
 
 namespace Sophmores_FinalProj
 {
-  public static class Stage2
+  public static class Stage3
   {
-    static string[] stage2Texts;
+    static string[] stage3Texts;
     /// <summary>
-    /// Provides plot text for intro section of stage 2
+    /// Provides plot text for intro section of stage 3
     /// </summary>
     public static void PreNoteMsgs()
     {
       string msg = string.Empty;
-      stage2Texts = GetNarrationFiles();
+      stage3Texts = GetNarrationFiles();
       for (int i = 1; i < 4; i++)
       {
         Console.Clear();
-        TextUtil.PrintTextFile(stage2Texts[i]);
+        TextUtil.PrintTextFile(stage3Texts[i]);
         switch (i)
         {
           case 1:
@@ -42,16 +42,16 @@ namespace Sophmores_FinalProj
       }
     }
     /// <summary>
-    /// Provides plot and player interaction for second scene in stage 2
+    /// Provides plot and player interaction for second scene in stage 3
     /// </summary>
     public static void JumpOrClimbScene()
     {
       string msg = string.Empty;
-      stage2Texts = GetNarrationFiles();
+      stage3Texts = GetNarrationFiles();
       for (int i = 13; i < 15; i++)
       {
         Console.Clear();
-        TextUtil.PrintTextFile(stage2Texts[i]);
+        TextUtil.PrintTextFile(stage3Texts[i]);
         switch (i)
         {
           case 13:
@@ -72,12 +72,12 @@ namespace Sophmores_FinalProj
       int answer = Program.getChoice(2, question);
       if (answer == 1)
       {
-        TextUtil.PrintTextFile(stage2Texts[15]);
+        TextUtil.PrintTextFile(stage3Texts[15]);
         Console.WriteLine();
       }
       else if (answer == 2)
       {
-        TextUtil.PrintTextFile(stage2Texts[16]);
+        TextUtil.PrintTextFile(stage3Texts[16]);
         msg = "He blocks access to either ladder...";
         TextUtil.PressAnyKeyBufferClear(msg);
       }
@@ -88,15 +88,15 @@ namespace Sophmores_FinalProj
     public static void BossScene()
     {
       string msg = string.Empty;
-      stage2Texts = GetNarrationFiles();
+      stage3Texts = GetNarrationFiles();
       for (int i = 17; i < 21; i++)
       {
         Console.Clear();
-        TextUtil.PrintTextFile(stage2Texts[i]);
+        TextUtil.PrintTextFile(stage3Texts[i]);
         switch (i)
         {
           case 18:
-            msg = "You look down at the altar and place the rocks into " + 
+            msg = "You look down at the altar and place the rocks into " +
                    "the slots.";
             break;
           case 19:
@@ -117,22 +117,22 @@ namespace Sophmores_FinalProj
     /// </summary>
     public static void Stage2Beat()
     {
-      TextUtil.PrintTextFile(stage2Texts[21]);
-      string msg = "The iron gates begin to lift up and you stumble out of " + 
+      TextUtil.PrintTextFile(stage3Texts[21]);
+      string msg = "The iron gates begin to lift up and you stumble out of " +
                    "the chamber, hoping never to return.";
       TextUtil.PressAnyKeyBufferClear(msg);
     }
     /// <summary>
-    /// Provides plot and player interaction for first scene in stage 2
+    /// Provides plot and player interaction for first scene in stage 3
     /// </summary>
     public static void BreakWebsScene()
     {
       string msg = string.Empty;
-      stage2Texts = GetNarrationFiles();
+      stage3Texts = GetNarrationFiles();
       for (int i = 5; i < 11; i++)
       {
         Console.Clear();
-        TextUtil.PrintTextFile(stage2Texts[i]);
+        TextUtil.PrintTextFile(stage3Texts[i]);
         switch (i)
         {
           case 5:
@@ -176,7 +176,7 @@ namespace Sophmores_FinalProj
         }
       }
       msg = "A Giant Spider!!";
-      TextUtil.PrintTextFile(stage2Texts[12]);
+      TextUtil.PrintTextFile(stage3Texts[12]);
       TextUtil.PressAnyKeyBufferClear(msg);
     }
     /// <summary>
@@ -192,13 +192,13 @@ namespace Sophmores_FinalProj
       return note;
     }
     /// <summary>
-    /// Provides Plot text for End of stage1/begining of stage 2
+    /// Provides Plot text for End of stage1/begining of stage 3
     /// </summary>
     public static void PrintPreDoorMsg()
     {
-      stage2Texts = GetNarrationFiles();
+      stage3Texts = GetNarrationFiles();
       Console.Clear();
-      TextUtil.PrintTextFile(stage2Texts[0]);
+      TextUtil.PrintTextFile(stage3Texts[0]);
       TextUtil.PressAnyKeyBufferClear();
     }
     /// <summary>
@@ -207,7 +207,7 @@ namespace Sophmores_FinalProj
     /// <returns>Files as strings in array</returns>
     private static string[] GetNarrationFiles()
     {
-      List<string> stageTexts = new List<string>();
+      List<string> stage3Texts = new List<string>();
       for (int i = 0; i < 22; i++)
       {
         string file = ("Stage2_" + i + ".txt");
@@ -221,9 +221,9 @@ namespace Sophmores_FinalProj
           string climbFile = ("ClimbDown_Option_");
           file = climbFile + file;
         }
-        stageTexts.Add(file);
+        stage3Texts.Add(file);
       }
-      return stageTexts.ToArray();
+      return stage3Texts.ToArray();
     }
   }
 }

@@ -4,7 +4,3 @@
 try parting it with your hands but it won't give.
 
 --------------------------------------------------------------------------------
-What should you do?
-
-<try sword>
-<use wand and the web breaks>
