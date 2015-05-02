@@ -515,10 +515,6 @@ namespace Sophmores_FinalProj
             {
                 break;
             }
-            else
-            {
-                continue;
-            }
           }
         }
       }
