@@ -12,11 +12,17 @@ namespace Sophmores_FinalProj.Utilities
     #region Private Fields
 
     private static string fullFilePath = string.Empty;
+    private static string workingDirectory;
     private static char[] noChar = { };
 
     #endregion Private Fields
 
     #region Public Methods
+    public static void SetStartingDirectory()
+    {
+      string setDirectory = Directory.GetCurrentDirectory();
+      workingDirectory = setDirectory;
+    }
 
     /// Read a long line and return it wrapped into lines. Such data is
     /// easiest generated in a regular word processor that automatically
@@ -92,7 +98,7 @@ namespace Sophmores_FinalProj.Utilities
     /// <param name="textFileToRead"> The text file to be read and printed </param>
     public static void PrintTextFile(string textFileToRead)
     {
-      string txt = ".txt";
+      string txt = "txt";
       if (textFileToRead.EndsWith(txt))
       {
         string Location = FindTextFile(textFileToRead);
@@ -171,6 +177,7 @@ namespace Sophmores_FinalProj.Utilities
     /// null if file not found</returns>
     private static string FindTextFile(string textFile)
     {
+      Directory.SetCurrentDirectory(workingDirectory);
       string[] array = { ".", "..", Path.Combine("..", "..") ,
                                     Path.Combine("..", "..", "..") ,
                                     Path.Combine("..", "..", "..", "..") };

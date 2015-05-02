@@ -1,5 +1,4 @@
-﻿<If climbs down:>
---------------------------------------------------------------------------------
+﻿--------------------------------------------------------------------------------
 
 You climb down the ladder. Seeing the alligator ahead of you, You run full
 speed and are just able to dodge the alligator's attack.
@@ -15,6 +14,3 @@ As you gather yourself you realize you've backed yourself into a corner and the
 alligator is closing in.
 
 --------------------------------------------------------------------------------
-He blocks access to either ladder...
-<combat>
-
