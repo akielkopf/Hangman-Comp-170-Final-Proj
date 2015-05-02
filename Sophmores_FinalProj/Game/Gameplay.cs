@@ -115,8 +115,7 @@ namespace Sophmores_FinalProj
       if (DeadOrRunCheck(player, 10))
       {
         return;
-      }
-      Console.ForegroundColor = ConsoleColor.Yellow;
+      }      
       player.currentStage = 3;
       player.Stage = false;
     }
@@ -142,6 +141,7 @@ namespace Sophmores_FinalProj
                         player.Name);
       Console.ResetColor();
       player.Stage = false;
+      player.currentStage = 4;
     }
 
     /// <summary>
@@ -179,6 +179,7 @@ namespace Sophmores_FinalProj
           }
           Console.WriteLine((i + 1) + ") " + options[i]);
         }
+        Console.ResetColor();
       }
       Console.ResetColor();
 
@@ -207,6 +208,7 @@ namespace Sophmores_FinalProj
             }
             Console.WriteLine((i + 1) + ") " + options[i]);
           }
+          Console.ResetColor();
         }
         Console.ResetColor();
         choice = UI.PromptInt("\nPlease enter a valid choice number: ");
@@ -509,7 +511,14 @@ namespace Sophmores_FinalProj
                               "now opens! We are going into the final door!");
             Console.ResetColor();
             DoorStage4(p1, Enemies[10], Enemies[11]);
-            break;
+            if (p1.currentStage == 4)
+            {
+                break;
+            }
+            else
+            {
+                continue;
+            }
           }
         }
       }
