@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace Sophmores_FinalProj
 {
+  /// <summary>
+  /// Main Game Logic
+  /// </summary>
   internal class Program
   {
     #region Private Methods
@@ -35,7 +38,7 @@ namespace Sophmores_FinalProj
     /// <param name="enemy1">First Enemy</param>
     /// <param name="enemy2">Second Enemy</param>
     /// <param name="boss">Stage Boss</param>
-    private static void DoorStage(Player player, Enemy enemy1,
+    private static void DoorStage1(Player player, Enemy enemy1,
                                   Enemy enemy2, Enemy boss)
     {
       Combat.StartCombat(player, enemy1);
@@ -425,7 +428,7 @@ namespace Sophmores_FinalProj
               {
                 Console.WriteLine(doorAccept + "{0}", response);
 
-                DoorStage(p1, Enemies[1], Enemies[2], Enemies[3]);
+                DoorStage1(p1, Enemies[1], Enemies[2], Enemies[3]);
 
                 continue;               ////Stage 1 ends here
               }
@@ -474,7 +477,7 @@ namespace Sophmores_FinalProj
               switch (stagesCompleted)
               {
                 case 1:
-                  DoorStage(p1, Enemies[1], Enemies[2], Enemies[3]);
+                  DoorStage1(p1, Enemies[1], Enemies[2], Enemies[3]);
                   break;
 
                 case 2:
@@ -608,7 +611,7 @@ namespace Sophmores_FinalProj
     /// <summary>
     /// Shows the Intro Title Screen
     /// </summary>
-    private static void ShowGameTitleScreen()
+    private static void ShowGameTitleScreen() 
     {
       TextUtil.SetBufferSize();
       Console.ForegroundColor = ConsoleColor.DarkGreen;

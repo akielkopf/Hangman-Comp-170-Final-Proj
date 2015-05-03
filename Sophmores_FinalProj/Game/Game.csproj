@@ -75,7 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gameplay.cs">
+    <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Death.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sophmores_FinalProj\Sophmores_FinalProj.csproj">
