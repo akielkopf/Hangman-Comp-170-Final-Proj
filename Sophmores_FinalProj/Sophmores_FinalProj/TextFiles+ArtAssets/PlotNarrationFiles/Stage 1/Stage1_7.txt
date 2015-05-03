@@ -1,7 +1,8 @@
 --------------------------------------------------------------------------------
 
 
-Ahead of you is a skeleton with an iron sword. 
+Ahead of you is a skeleton holding an iron sword. 
+
 It turns quickly at the noise that you have made.
 
 

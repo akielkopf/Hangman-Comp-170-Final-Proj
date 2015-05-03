@@ -142,21 +142,25 @@ namespace Sophmores_FinalProj
       Update();
     }
 
-    public List<Item> DisplayAllWeaponsReturnList()
+    /// <summary>
+    /// Displays Players Weapons in Inventory
+    /// </summary>
+    /// <returns></returns>
+    public List<Weapon> DisplayAllWeaponsReturnList()
     {
       int count = 1;
-      List<Item> conList = new List<Item> { };
+      List<Weapon> conList = new List<Weapon>();
       string x = "\nWeapons: \n";
       StringBuilder builder = new StringBuilder(x);
-      foreach (KeyValuePair<Item, int> a in inventory.contents)
+      foreach (Item item in inventory)
       {
-          if (a.Key is Weapon && a.Key.type.ToLower().Trim() != "shield")
+          if (item is Weapon && item.type.ToLower().Trim() != "shield")
         {
-            if (a.Key.name != EquippedWeapon.name)
+            if (item != EquippedWeapon)
             {
-                builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type);
+                builder.AppendLine(count + ") " + item + ", " + item.type);
                 count++;
-                conList.Add(a.Key);
+                conList.Add(new Item(item) as Weapon);
             }
         }
       }
@@ -164,36 +168,63 @@ namespace Sophmores_FinalProj
       Console.WriteLine("" + builder);
       return conList;
     }
-
+    /// <summary>
+    /// Displays Player's Consumables in Inventory
+    /// </summary>
     public void DisplayConsumables()
     {
       int i = 0;
       string x = "Consumables: ";
       StringBuilder builder = new StringBuilder(x);
-      foreach (KeyValuePair<Item, int> a in inventory.contents)
+      foreach (Item item in inventory)
       {
-        if (a.Key.consumable)
+        if (item.consumable)
         {
-          builder.AppendLine(i + ") " + a.Key.name + ", " + a.Value);
+          int numberofItems = 1;
+          if (inventory.contents.TryGetValue(item, out numberofItems))
+          {
+            if (numberofItems > 1)
+            {
+              builder.AppendLine(i + ") " + item + ", " + numberofItems);
+              i++;
+              continue;
+            }
+          }
+          builder.AppendLine(i + ") " + item);
           i++;
         }
       }
       Console.WriteLine("" + builder);
     }
-
+    /// <summary>
+    /// Displays Player's Consumables in Inventory
+    /// </summary>
+    /// <returns>Consumable Items as a List</returns>
     public List<Item> DisplayConsumablesReturnList()
     {
       int count = 1;
-      List<Item> conList = new List<Item> { };
+      List<Item> conList = new List<Item>();
       string x = "\nConsumables: \n";
       StringBuilder builder = new StringBuilder(x);
-      foreach (KeyValuePair<Item, int> a in inventory.contents)
+      foreach (Item item in inventory)
       {
-        if (a.Key.consumable)
+        if (item.consumable)
         {
-          builder.AppendLine(count + ") " + a.Key.name + ", " + a.Key.type + ", Quantity: " + a.Value);
+          conList.Add(item);
+          int numberofItems = 1;
+          if (inventory.contents.TryGetValue(item, out numberofItems))
+          {
+            if (numberofItems > 1)
+            {
+              builder.AppendLine(count + ") " + item + ", " + item.type + 
+                                 ", Quantity: " + numberofItems);
+              count++;
+              continue;
+            }
+          }
+          builder.AppendLine(count + ") " + item + ", " + item.type + 
+                             ", Quantity: " + 1);
           count++;
-          conList.Add(a.Key);
         }
       }
       builder.AppendLine(count + ") Don't use an item.");
@@ -334,7 +365,8 @@ namespace Sophmores_FinalProj
         Console.WriteLine("\nAll Items:");
         foreach (Item s in itemList)
         {
-            Console.WriteLine(i + ") " + s.name + ", Quantity: " + inventory.contents[s]);
+            Console.WriteLine(i + ") " + s.name + ", Quantity: " + 
+                              inventory.contents[s]);
             i++;
       }
     }

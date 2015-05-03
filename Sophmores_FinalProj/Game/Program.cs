@@ -41,15 +41,13 @@ namespace Sophmores_FinalProj
     private static void DoorStage1(Player player, Enemy enemy1,
                                   Enemy enemy2, Enemy boss)
     {
+      Stage1.Scene1();
       Combat.StartCombat(player, enemy1);
       if (DeadOrRunCheck(player, 10))
       {
         return;
       }
-      Console.ForegroundColor = ConsoleColor.DarkYellow;
-      TextUtil.PrintTextFile("foreshadownote.txt");
-      Console.ResetColor();
-      TextUtil.PressAnyKeyBufferClear();
+      Console.Clear();
       Combat.StartCombat(player, enemy2);
       if (DeadOrRunCheck(player, 10))
       {
@@ -64,7 +62,7 @@ namespace Sophmores_FinalProj
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.WriteLine("\nAfter defeating the {0}, {1} leaves the room. " +
                         "You hear \n the door lock behind you as you step " +
-                        "into the lobby.", boss.Name, player.Name);
+                        "into the lobby.", boss, player);
       Console.ResetColor();
       player.Stage = false;
       Stage2.PrintPreDoorMsg();
@@ -165,8 +163,8 @@ namespace Sophmores_FinalProj
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.WriteLine();
       Console.WriteLine("After defeating the {0} and {1}, {2} has " +
-                        "Defeated the Game!!", boss1.Name, boss2.Name,
-                        player.Name);
+                        "Defeated the Game!!", boss1, boss2,
+                        player);
       Console.ResetColor();
       player.Stage = false;
       player.currentStage = 4;
@@ -263,7 +261,7 @@ namespace Sophmores_FinalProj
 
 
       //STAGE 1 ENEMIES
-      Enemy Skeleton = new Enemy("Skeleton", 25, 1, 5, 6);
+      Enemy Skeleton = new Enemy("Skeleton", 20, 1, 5, 6);
       Weapon IronSword = new Weapon("Iron Sword", "sword",
         "A Sword made of Iron", 10, 0);
       HealthPotion SkeleFluid = new HealthPotion("Skeleton Fluid",
@@ -271,7 +269,7 @@ namespace Sophmores_FinalProj
       Skeleton.AddToInventory(IronSword, 1);
       Skeleton.AddToInventory(SkeleFluid, 2);
 
-      Enemy Goblin = new Enemy("Goblin", 50, 2, 7, 9);
+      Enemy Goblin = new Enemy("Goblin", 30, 2, 7, 9);
       Weapon SteelSword = new Weapon("Blessed Steel Sword", "sword",
         "sword made of steel, with slight magic damage", 15, 10);
       Poison GoblinBlood = new Poison("Goblin Blood",
@@ -279,7 +277,7 @@ namespace Sophmores_FinalProj
       Goblin.AddToInventory(SteelSword, 1);
       Goblin.AddToInventory(GoblinBlood, 2);
 
-      Enemy Giant = new Enemy("Giant", 70, 3, 10, 13);
+      Enemy Giant = new Enemy("Giant", 40, 3, 10, 13);
       Weapon Shield = new Weapon("Basic Shield", "shield",
         "Shield that slightly reduces enemy damage in battle. " +
         "Automatically equipped when using a sword.", 0, 0);
@@ -382,21 +380,20 @@ namespace Sophmores_FinalProj
       TextUtil.SetStartingDirectory(); // Snapshots relative directory paths
                                        // Enhanced search speed and avoids
                                        // Some errors if started from shortcut
+      Console.Title = ("Into the Woods");
       ShowGameTitleScreen();
       Enemy[] Enemies = CreateAllEnemies();
-      Player p1 = GameIntro.Start(new Player("", 20));
+      Player p1 = GameIntro.CharacterCreation(new Player("", 20));
       Tutorial(p1, Enemies);
-      Console.WriteLine("Its seems we have come to a fork. There are 4 doors " +
-                        "ahead of us.\nLook! there's a note on the wall.");
-      string noteDescription = TextUtil.ReturnTextFile("note.txt");
-      Item note = new Item("Note", "Paper", noteDescription);
+      Item note = new Item("Note", "Paper", 
+                           TextUtil.ReturnTextFile("Note_PreDoor.txt"));
       int response = getChoice(2, " Would you like to: \n 1) Take a Look \n " +
                                   "2) Add to Inventory");
       if (response == 1)
       {
         p1.AddToInventory(note, 1);
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine(note.description);
+        TextUtil.PressAnyKeyNOBufferClear(note.description);
         Console.ResetColor();
         Console.WriteLine("\n\n**Hmmmm, kind of odd that the name at the " +
                           "bottom is ripped off**\n\n");
@@ -584,29 +581,16 @@ namespace Sophmores_FinalProj
     /// </summary>
     /// <param name="Enemies">All Enemies array</param>
     /// <param name="p1">Main Character</param>
-    private static void Tutorial(Player p1, Enemy[] Enemies)
+    private static void Tutorial(Player player, Enemy[] Enemies)
     {
-      Combat.StartCombat(p1, Enemies[0]);
-      // 
-      p1.TutorialComplete = true;
-      Console.WriteLine("Congrats on Defeating your first Enemy, {0}!", p1.Name);
-
-
-      Console.WriteLine("{0}, good job on your combat training, \n we are " +
-        "now ready to venture into the tunnel. \nIt will be challening, but " +
-        "after seeing your skills, \nI trust you will bring peace to the woods."
-        , p1.Name);
-      int forward = getChoice(2, "Are you ready to journey into the tunnel?" +
-                                 " \n 1) Yes \n 2) No)\n");
-      if (forward == 1)
-      {
-        Console.WriteLine("Good to hear, we are now entering the cave.");
-      }
-      else
-      {
-        Console.WriteLine("You're coming anyways... were walking into the" +
-                          " tunnel.");
-      }
+      Combat.StartCombat(player, Enemies[0]);
+      player.TutorialComplete = true;
+      GameIntro.PlayerPrompt(player);
+      string playerChoices = string.Format("Are you ready to journey into " + 
+                                           "the tunnel? \n 1) Yes \n 2) No\n");
+      GameIntro.ChoiceResponse(getChoice(2, playerChoices));
+      Console.WriteLine("Its seems we have come to a fork. There are 4 doors " +
+                  "ahead of us.\n\nLook! there's a note on the wall.");
     }
     /// <summary>
     /// Shows the Intro Title Screen

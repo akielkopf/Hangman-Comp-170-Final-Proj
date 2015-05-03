@@ -46,7 +46,7 @@ namespace Sophmores_FinalProj.Utilities
     {
       string message = ("\nPress any key to continue...");
       Console.WriteLine(message);
-      Console.ReadKey();
+      Console.ReadKey(true);
       Console.Clear();
     }
 
@@ -57,7 +57,7 @@ namespace Sophmores_FinalProj.Utilities
     public static void PressAnyKeyBufferClear(string message)
     {
       Console.WriteLine("\n" + message);
-      Console.ReadKey();
+      Console.ReadKey(true);
       Console.Clear();
     }
 
@@ -68,8 +68,7 @@ namespace Sophmores_FinalProj.Utilities
     {
       string message = ("\nPress any key to continue...");
       Console.WriteLine(message);
-      Console.ReadKey();
-      Console.WriteLine();
+      Console.ReadKey(true);
     }
 
     /// <summary>
@@ -79,8 +78,7 @@ namespace Sophmores_FinalProj.Utilities
     public static void PressAnyKeyNOBufferClear(string message)
     {
       Console.WriteLine("\n" + message);
-      Console.ReadKey();
-      Console.WriteLine();
+      Console.ReadKey(true);
     }
 
 
