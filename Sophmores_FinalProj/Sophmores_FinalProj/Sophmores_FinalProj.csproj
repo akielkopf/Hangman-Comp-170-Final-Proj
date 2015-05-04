@@ -62,6 +62,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\aLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\dLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\eLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\hLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\KERDASH.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\kLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\rLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\sLetter.txt" />
     <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_0.txt" />
     <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_1.txt" />
     <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_10.txt" />

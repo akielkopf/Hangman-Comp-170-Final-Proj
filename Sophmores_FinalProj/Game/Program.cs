@@ -42,18 +42,20 @@ namespace Sophmores_FinalProj
                                   Enemy enemy2, Enemy boss)
     {
       Stage1.Scene1();
-      Combat.StartCombat(player, enemy1);
+      Combat.StartCombat(player, enemy1); // Skelton
       if (DeadOrRunCheck(player, 10))
       {
         return;
       }
       Console.Clear();
-      Combat.StartCombat(player, enemy2);
+      Stage1.Scene2();
+      Combat.StartCombat(player, enemy2); // Goblin
       if (DeadOrRunCheck(player, 10))
       {
         return;
       }
-      Combat.StartCombat(player, boss);
+      Stage1.BossScene();
+      Combat.StartCombat(player, boss);   // Giant
       if (DeadOrRunCheck(player, 10))
       {
         return;
@@ -82,19 +84,19 @@ namespace Sophmores_FinalProj
       Item note = Stage2.PlayerViewsNote();
       player.AddToInventory(note, 1);
       Stage2.BreakWebsScene();
-      Combat.StartCombat(player, enemy1);
+      Combat.StartCombat(player, enemy1);   // Giant Spider 
       if (DeadOrRunCheck(player, 20))
       {
         return;
       }
       Stage2.JumpOrClimbScene();
-      Combat.StartCombat(player, enemy2);
+      Combat.StartCombat(player, enemy2);   // Aligator
       if (DeadOrRunCheck(player, 20))
       {
         return;
       }
       Stage2.BossScene();
-      Combat.StartCombat(player, boss);
+      Combat.StartCombat(player, boss);    // Kraken
       if (DeadOrRunCheck(player, 20))
       {
         return;
