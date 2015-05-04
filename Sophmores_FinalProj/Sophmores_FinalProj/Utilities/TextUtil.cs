@@ -133,10 +133,19 @@ namespace Sophmores_FinalProj.Utilities
     /// <param name="textFileToRead"> Text file to read. </param>
     public static string ReturnTextFile(string textFileToRead)
     {
+      return TextFileContentsFromFullPath(ReturnTextFileLocation(textFileToRead));
+    }
+    /// <summary>
+    /// Returns full PATH to text file
+    /// </summary>
+    /// <param name="textFileToRead"> Text file to read. </param>
+    /// <returns>Returns full PATH to text file</returns>
+    public static string ReturnTextFileLocation(string textFileToRead)
+    {
       string location = FindTextFile(textFileToRead);
       if (location != null)
       {
-        return TextFileContentsFromFullPath(location);
+        return location;
       }
       else
       {
@@ -145,7 +154,6 @@ namespace Sophmores_FinalProj.Utilities
         throw new FileNotFoundException(msg);
       }
     }
-
     /// <summary>
     /// Sets Buffer Size (within the console that is in the output) 
     /// </summary>
