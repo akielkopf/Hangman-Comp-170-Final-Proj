@@ -177,7 +177,7 @@ namespace Sophmores_FinalProj
             {
                 builder.AppendLine(count + ") " + item + ", " + item.type);
                 count++;
-                conList.Add(new Item(item) as Weapon);
+                conList.Add(new Weapon(item as Weapon));
             }
         }
       }
