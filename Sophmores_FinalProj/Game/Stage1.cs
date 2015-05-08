@@ -179,6 +179,13 @@ namespace Sophmores_FinalProj
             letterBuilder.Clear();
           }
         }
+        else
+        {
+          ConsoleColor temp = Console.ForegroundColor;
+          Console.ForegroundColor = ConsoleColor.White;
+          Console.WriteLine("Nothing seems to Happen...\n");
+          Console.ForegroundColor = temp;
+        }
         foreach (bool a in letterCheck)  // Loop exit check
         {
           done = true;
