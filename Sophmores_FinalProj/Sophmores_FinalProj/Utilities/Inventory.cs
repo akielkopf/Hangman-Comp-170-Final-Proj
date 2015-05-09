@@ -13,7 +13,17 @@ namespace Sophmores_FinalProj.Utilities
     #region Public Properties
 
     public Dictionary<Item, int> contents { get; private set; }
-
+    /// <summary>
+    /// Returns a new list with a list of items without their quantities
+    /// </summary>
+    public List<Item> itemList 
+    { 
+      get 
+      {
+        return new List<Item>(this.contents.Keys); 
+      }
+    }
+    public int Count { get { return this.contents.Count; } }
     #endregion Public Properties
 
     #region Public Constructors

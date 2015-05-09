@@ -59,10 +59,6 @@ namespace Sophmores_FinalProj
     /// </summary>
     public int TotalDamage { get; private set; }
     /// <summary>
-    /// list containing all current Item's in inventory. 
-    /// </summary>
-    public List<Item> allItems { get; private set; }
-    /// <summary>
     /// true after player completes tutorial 
     /// </summary>
     public bool TutorialComplete { get; set; }
@@ -294,9 +290,8 @@ namespace Sophmores_FinalProj
     /// </summary>
     public void DisplayInventoryContents()
     {
-      var inventoryList = new List<Item>(inventory.contents.Keys);
+      var inventoryList = this.inventory.itemList;
       inventoryList.Sort();
-      allItems = inventoryList;
       DisplayItems(inventoryList);
     }
 

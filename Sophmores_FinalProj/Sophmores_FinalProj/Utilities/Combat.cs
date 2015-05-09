@@ -445,7 +445,7 @@ namespace Sophmores_FinalProj
         }
         else if (curInput == 2 || curInput == 3)
         {
-          if (player.inventory.contents.Count > 0)
+          if (player.inventory.Count > 0)
           {
             validInp = true;
             break;

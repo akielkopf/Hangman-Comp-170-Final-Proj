@@ -504,18 +504,20 @@ namespace Sophmores_FinalProj
         {
           p1.DisplayInventoryContents();
           Console.ForegroundColor = ConsoleColor.Green;
-          Console.WriteLine("{0}) Close the inventory", p1.allItems.Count + 1);
+          Console.WriteLine("{0}) Close the inventory", p1.inventory.Count + 1);
           Console.ResetColor();
-          int choice = getChoice(p1.allItems.Count + 1, "Please type the " +
+          int choice = getChoice(p1.inventory.Count + 1, "Please type the " +
                                  "number corresponding to the Item \nyou " +
                                  "wish to see the description of.");
-          if (choice <= p1.allItems.Count)
+          if (choice <= p1.inventory.Count)
           {
-            p1.Inspect(p1.allItems[choice - 1]);
+            List<Item> temp = p1.inventory.itemList;
+            temp.Sort();
+            p1.Inspect(temp[choice - 1]);
             TextUtil.PressAnyKeyBufferClear();
             continue;
           }
-          else if (choice == p1.allItems.Count + 1)
+          else if (choice == p1.inventory.Count + 1)
           {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\nYou have chosen to close the inventory.");
