@@ -190,6 +190,7 @@ namespace Sophmores_FinalProj
           }
         }
       }
+      Console.Clear();
       TextUtil.PrintTextFile("KERDASH.txt");
       Console.ResetColor();
     }
