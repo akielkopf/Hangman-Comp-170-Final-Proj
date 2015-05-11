@@ -9,7 +9,7 @@ using Sophmores_FinalProj.Utilities;
 namespace Sophmores_FinalProj
 {
   /// <summary>
-  /// Holds all the Logic for Stage 1
+  /// Holds all the Logic for Stage 3
   /// </summary>
   private static class Stage3 //change to public before utilization
   {
