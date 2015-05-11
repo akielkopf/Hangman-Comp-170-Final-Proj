@@ -108,15 +108,9 @@ namespace Sophmores_FinalProj
           case 16:
             PrintLetterPuzzle();
             break;
-          case 18:
-            msg = "You look down at the altar and place the rocks into " +
-                   "the slots.";
-            break;
           case 19:
-            msg = "It went by so fast that you couldn't tell what it was...";
-            break;
-          case 20:
-            msg = "A squid like creature is staring back at you. the Kraken!";
+            string chest = "goldChest.txt";
+            TextUtil.PrintTextFile(chest);
             break;
           default:
             msg = null;
@@ -158,7 +152,7 @@ namespace Sophmores_FinalProj
         {
           StringBuilder letterBuilder = new StringBuilder();
           StreamReader[] fileReaders = new StreamReader[7];
-          for (int j = 0; j < KERDASH.Length; j++) // Opens all seven files for reading
+          for (int j = 0; j < KERDASH.Length; j++)
           {
             fileReaders[j] = new StreamReader(KERDASH[j]);
           }
@@ -298,19 +292,32 @@ namespace Sophmores_FinalProj
       for (int i = 0; i < 26; i++)
       {
         string file = ("Stage1_" + i + ".txt");
-        //if (i == 15)
-        //{
-        //  string jumpFile = ("Jump_Option_");
-        //  file = jumpFile + file;
-        //}
-        //else if (i == 16)
-        //{
-        //  string climbFile = ("ClimbDown_Option_");
-        //  file = climbFile + file;
-        //}
         stage1Texts.Add(file);
       }
       return stage1Texts.ToArray();
+    }
+    /// <summary>
+    /// Provides Plot text for End of Stage 1
+    /// </summary>
+    public static void BossIsDeadScene()
+    {
+      string msg = string.Empty;
+      stage1Texts = GetNarrationFiles();
+      for (int i = 24; i < 26; i++)
+      {
+        Console.Clear();
+        TextUtil.PrintTextFile(stage1Texts[i]);
+        switch (i)
+        {
+          case 25:
+            msg = "So that’s where that lead.";
+            break;
+          default:
+            msg = null;
+            break;
+        }
+        TextUtil.PressAnyKeyBufferClear(msg);
+      }
     }
   }
 }

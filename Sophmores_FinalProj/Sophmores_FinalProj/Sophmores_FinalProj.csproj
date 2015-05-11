@@ -62,6 +62,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\goldChest.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\aLetter.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\dLetter.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\eLetter.txt" />

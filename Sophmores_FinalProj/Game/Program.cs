@@ -60,11 +60,8 @@ namespace Sophmores_FinalProj
       {
         return;
       }
-
+      Stage1.BossIsDeadScene();
       Console.ForegroundColor = ConsoleColor.Yellow;
-      Console.WriteLine("\nAfter defeating the {0}, {1} leaves the room. " +
-                        "You hear \n the door lock behind you as you step " +
-                        "into the lobby.", boss, player);
       Console.ResetColor();
       player.Stage = false;
       Stage2.PrintPreDoorMsg();
