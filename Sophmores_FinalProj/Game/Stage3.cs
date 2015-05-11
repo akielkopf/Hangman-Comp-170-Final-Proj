@@ -65,25 +65,7 @@ namespace Sophmores_FinalProj
         TextUtil.PrintTextFile(stage1Texts[i]);
         switch (i)
         {
-          case 9:
-            TextUtil.PressAnyKeyNOBufferClear("");
-            msg = "Just then your eyes catch something on the wall.";
-            break;
-          case 10:
-            TextUtil.PressAnyKeyNOBufferClear("");
-            msg = "Well Odalf did say I might want to note things.";
-            break;
-          case 12:
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            TextUtil.PressAnyKeyNOBufferClear(TextUtil.ReturnTextFile(note));
-            Console.ResetColor();
-            msg = "You look for more of the paper but there doesn’t seem to " +
-              "be any.";
-            break;
-          case 13:
-            TextUtil.PressAnyKeyNOBufferClear("");
-            msg = ("Gargh abash glar rah tuu!”, yells the creature. " +
-                   "It’s a goblin!");
+          case 8:
             break;
           default:
             msg = null;
@@ -120,7 +102,7 @@ namespace Sophmores_FinalProj
       }
     }
     /// <summary>
-    /// Stage 1 Over Plot
+    /// Stage 3 Over Plot
     /// </summary>
     public static void Stage3Beat()
     {
@@ -128,85 +110,6 @@ namespace Sophmores_FinalProj
       string msg = "The iron gates begin to lift up and you stumble out of " +
                    "the chamber, hoping never to return.";
       TextUtil.PressAnyKeyBufferClear(msg);
-    }
-    /// <summary>
-    /// Provides plot and player interaction for first scene in stage 3
-    /// </summary>
-    public static void BreakWebsScene()
-    {
-      string msg = string.Empty;
-      stage1Texts = GetNarrationFiles();
-      for (int i = 5; i < 11; i++)
-      {
-        Console.Clear();
-        TextUtil.PrintTextFile(stage1Texts[i]);
-        switch (i)
-        {
-          case 5:
-            msg = "\"I think I'll need this as well.\", you think to yourself.";
-            break;
-          case 7:
-            msg = "That's when you notice you are surrounded by insects....";
-            break;
-          case 8:
-            msg = "As you begin to take it all in, you can help but see the " +
-                  "spider webs...";
-            break;
-          case 11:
-            msg = "What should you do?";
-            break;
-          default:
-            msg = null;
-            break;
-        }
-        TextUtil.PressAnyKeyBufferClear(msg);
-      }
-      string question = "Try your Sword? Or your Wand? \n 1)Sword \n 2)Wand";
-      int answer = Program.getChoice(2, question);
-      bool pass = false;
-      while (pass != true)
-      {
-        if (answer == 1)
-        {
-          Console.WriteLine("The Sword gets tangled up in the webs! " +
-                             "It's no use!");
-          Console.WriteLine();
-          answer = Program.getChoice(2, "maybe try a different weapon. " +
-                                "\n 1)Sword \n 2)Wand");
-        }
-        else if (answer == 2)
-        {
-          Console.WriteLine("The spider's web lose's it's eerie glow and " +
-                            "crumbles");
-          Console.WriteLine();
-          pass = true;
-        }
-      }
-      msg = "A Giant Spider!!";
-      TextUtil.PrintTextFile(stage1Texts[12]);
-      TextUtil.PressAnyKeyBufferClear(msg);
-    }
-    /// <summary>
-    /// Prints note plot and creates note item displayed
-    /// </summary>
-    /// <returns>Note Item</returns>
-    public static Item PlayerViewsNote()
-    {
-      string noteDescription = TextUtil.ReturnTextFile("stage2note.txt");
-      Item note = new Item("StarNote", "Paper", noteDescription);
-      Console.WriteLine(note.description);
-      TextUtil.PrintTextFile("Stage2_4.txt");
-      return note;
-    }
-    /// <summary>
-    /// Provides Plot text for End of stage1/begining of stage 3
-    /// </summary>
-    public static void PrintPreDoorMsg()
-    {
-      stage1Texts = GetNarrationFiles();
-      Console.Clear();
-      TextUtil.PrintTextFile(stage1Texts[0]);
-      TextUtil.PressAnyKeyBufferClear();
     }
     /// <summary>
     /// Gets the individual narrated files from directory
