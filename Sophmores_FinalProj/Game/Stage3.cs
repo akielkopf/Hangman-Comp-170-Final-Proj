@@ -65,7 +65,25 @@ namespace Sophmores_FinalProj
         TextUtil.PrintTextFile(stage1Texts[i]);
         switch (i)
         {
-          case 8:
+          case 9:
+            TextUtil.PressAnyKeyNOBufferClear("");
+            msg = "Just then your eyes catch something on the wall.";
+            break;
+          case 10:
+            TextUtil.PressAnyKeyNOBufferClear("");
+            msg = "Well Odalf did say I might want to note things.";
+            break;
+          case 12:
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            TextUtil.PressAnyKeyNOBufferClear(TextUtil.ReturnTextFile(note));
+            Console.ResetColor();
+            msg = "You look for more of the paper but there doesn’t seem to " +
+              "be any.";
+            break;
+          case 13:
+            TextUtil.PressAnyKeyNOBufferClear("");
+            msg = ("Gargh abash glar rah tuu!”, yells the creature. " +
+                   "It’s a goblin!");
             break;
           default:
             msg = null;
