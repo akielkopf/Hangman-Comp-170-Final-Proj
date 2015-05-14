@@ -13,7 +13,10 @@ namespace Sophmores_FinalProj
   /// </summary>
   private static class Stage3 //change to public before utilization
   {
-    static string[] stage1Texts;
+    /// <summary>
+    /// Text files displayed to player as plot
+    /// </summary>
+    static string[] stage3Texts;
     /// <summary>
     /// Provides plot text for intro section of stage 3
     /// </summary>

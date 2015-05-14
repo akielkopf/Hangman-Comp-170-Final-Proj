@@ -42,7 +42,7 @@ namespace Sophmores_FinalProj
                                   Enemy enemy2, Enemy boss)
     {
       Stage1.Scene1();
-      Combat.StartCombat(player, enemy1); // Skelton
+      Combat.StartCombat(player, enemy1); // Skeleton
       if (DeadOrRunCheck(player, 10))
       {
         return;
@@ -117,7 +117,7 @@ namespace Sophmores_FinalProj
       player.AddToInventory(note3, 1);
 
       Combat.StartCombat(player, enemy1);
-      if (DeadOrRunCheck(player, 10))
+      if (DeadOrRunCheck(player, 30))
       {
         return;
       }
@@ -126,12 +126,12 @@ namespace Sophmores_FinalProj
       Console.WriteLine("Silver Key has been addred to your inventory!");
 
       Combat.StartCombat(player, enemy2);
-      if (DeadOrRunCheck(player, 10))
+      if (DeadOrRunCheck(player, 30))
       {
         return;
       }
       Combat.StartCombat(player, boss);
-      if (DeadOrRunCheck(player, 10))
+      if (DeadOrRunCheck(player, 30))
       {
         return;
       }
