@@ -27,14 +27,17 @@ namespace Sophmores_FinalProj
         switch (i)
         {
           case 1:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "Touching the cavern wall and you feel the wetness on " +
                   "your hand...";
             break;
           case 2:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "You spot something on the ground up ahead but you can't " +
               "quite make it out...";
             break;
           case 3:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "You reach towards the satchel...";
             break;
           default:
@@ -58,10 +61,12 @@ namespace Sophmores_FinalProj
         switch (i)
         {
           case 13:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "Something in the water moves and it catches your " +
                   "attention. An Alligator!";
             break;
           case 14:
+            TextUtil.PressAnyKeyBufferClear("");
             msg = "What should you do?";
             break;
           default:
@@ -75,12 +80,12 @@ namespace Sophmores_FinalProj
       int answer = Program.getChoice(2, question);
       if (answer == 1)
       {
-        TextUtil.PrintTextFile(stage2Texts[15]);
+        TextUtil.PressAnyKeyBufferClear(TextUtil.ReturnTextFile(stage2Texts[15]));
         Console.WriteLine();
       }
       else if (answer == 2)
       {
-        TextUtil.PrintTextFile(stage2Texts[16]);
+        TextUtil.PressAnyKeyBufferClear(TextUtil.ReturnTextFile(stage2Texts[16]));
         msg = "He blocks access to either ladder...";
         TextUtil.PressAnyKeyBufferClear(msg);
       }
@@ -99,13 +104,16 @@ namespace Sophmores_FinalProj
         switch (i)
         {
           case 18:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "You look down at the altar and place the rocks into " + 
                    "the slots.";
             break;
           case 19:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "It went by so fast that you couldn't tell what it was...";
             break;
           case 20:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "A squid like creature is staring back at you. the Kraken!";
             break;
           default:
@@ -121,6 +129,7 @@ namespace Sophmores_FinalProj
     public static void Stage2Beat()
     {
       TextUtil.PrintTextFile(stage2Texts[21]);
+      TextUtil.PressAnyKeyNOBufferClear("");
       string msg = "The iron gates begin to lift up and you stumble out of " + 
                    "the chamber, hoping never to return.";
       TextUtil.PressAnyKeyBufferClear(msg);
@@ -139,16 +148,20 @@ namespace Sophmores_FinalProj
         switch (i)
         {
           case 5:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "\"I think I'll need this as well.\", you think to yourself.";
             break;
           case 7:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "That's when you notice you are surrounded by insects....";
             break;
           case 8:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "As you begin to take it all in, you can help but see the " +
                   "spider webs...";
             break;
           case 11:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "What should you do?";
             break;
           default:

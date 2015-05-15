@@ -71,6 +71,7 @@
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\kLetter.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\rLetter.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\sLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\nohelpmsg\nohelpforyou.txt" />
     <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_0.txt" />
     <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_1.txt" />
     <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_10.txt" />
@@ -153,7 +154,7 @@
     <Content Include="TextFiles+ArtAssets\Art\EnemyArt\zombie\Zombie1.txt" />
     <Content Include="TextFiles+ArtAssets\Art\EnemyArt\zombie\Zombie2.txt" />
     <Content Include="TextFiles+ArtAssets\Art\NotUsed\Mountains.txt" />
-    <Content Include="TextFiles+ArtAssets\Art\NotUsed\PossibleLargeDoor.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\NotUsed\LargeDoor.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\gamelogo.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\gamelogo2.txt" />
     <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Intro\Intro_0.txt" />

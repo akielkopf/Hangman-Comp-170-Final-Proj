@@ -110,6 +110,7 @@ namespace Sophmores_FinalProj
             break;
           case 19:
             string chest = "goldChest.txt";
+            TextUtil.PressAnyKeyNOBufferClear("");
             TextUtil.PrintTextFile(chest);
             break;
           default:
@@ -222,6 +223,7 @@ namespace Sophmores_FinalProj
         switch (i)
         {
           case 25:
+            TextUtil.PressAnyKeyNOBufferClear("");
             msg = "So that’s where that lead.";
             break;
           default:

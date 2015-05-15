@@ -111,11 +111,11 @@ namespace Sophmores_FinalProj
     private static void DoorStage3(Player player, Enemy enemy1,
                                     Enemy enemy2, Enemy boss)
     {
+      Stage3.PreDoorMsg();
       string noteDescription = TextUtil.ReturnTextFile("note 3.txt");
       Item note3 = new Item("Note from skeleton", "Paper", noteDescription);
-      Console.WriteLine(note3.description);
       player.AddToInventory(note3, 1);
-
+      Stage3.Scene1();
       Combat.StartCombat(player, enemy1);
       if (DeadOrRunCheck(player, 30))
       {
@@ -124,17 +124,19 @@ namespace Sophmores_FinalProj
       Item silverkey = new Item("Silver Key", "key", "Silver key connected to " +
                                                       "a chain");
       Console.WriteLine("Silver Key has been addred to your inventory!");
-
+      Stage3.Scene2();
       Combat.StartCombat(player, enemy2);
       if (DeadOrRunCheck(player, 30))
       {
         return;
       }
+      Stage3.Scene3();
       Combat.StartCombat(player, boss);
       if (DeadOrRunCheck(player, 30))
       {
         return;
       }
+      Stage3.BossIsDeadScene();
       player.currentStage = 3;
       player.Stage = false;
     }

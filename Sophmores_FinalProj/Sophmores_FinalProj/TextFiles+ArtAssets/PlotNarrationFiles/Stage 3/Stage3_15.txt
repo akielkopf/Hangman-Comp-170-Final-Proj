@@ -1,8 +1,9 @@
 --------------------------------------------------------------------------------
 
 
-You go to the door in front of you. 
-You find it to be locked when you try the handle.
+You head towards the door in front of you. 
+
+The handle is locked.
 
 
 --------------------------------------------------------------------------------

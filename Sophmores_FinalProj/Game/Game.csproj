@@ -82,9 +82,9 @@
     <Compile Include="GameIntro.cs" />
     <Compile Include="Stage2.cs" />
     <Compile Include="Stage1.cs" />
-    <None Include="Stage3.cs">
+    <Compile Include="Stage3.cs">
       <SubType>Code</SubType>
-    </None>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

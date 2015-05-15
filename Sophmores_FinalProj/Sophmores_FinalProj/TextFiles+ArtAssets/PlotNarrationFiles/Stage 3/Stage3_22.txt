@@ -1,8 +1,11 @@
 --------------------------------------------------------------------------------
 
 
-You open the door and find Odalf, who is exceptionally happy to see you. 
-”Congratulations, you’ve made it!” yells Odalf. ”How was it?” he asks.
+Opening the door you find Odalf, who is exceptionally happy to see you.
+
+"Congratulations, you've made it!" he yells.
+
+"How was it?" he asks.
 
 
 --------------------------------------------------------------------------------
