@@ -11,7 +11,7 @@ namespace Sophmores_FinalProj
   /// <summary>
   /// Holds all the Logic for Stage 3
   /// </summary>
-   static class Stage3 //change to public before utilization
+  public static class Stage3
   {
     /// <summary>
     /// Text files displayed to player as plot

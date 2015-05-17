@@ -85,6 +85,7 @@
     <Compile Include="Stage3.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Stage4.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

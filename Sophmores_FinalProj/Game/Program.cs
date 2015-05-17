@@ -150,17 +150,20 @@ namespace Sophmores_FinalProj
     private static void DoorStage4(Player player, Enemy boss1,
                                     Enemy boss2)
     {
+      Stage4.Scene1();
       Combat.StartCombat(player, boss1);
       if (DeadOrRunCheck(player, 40))
       {
         return;
       }
       player.Shield = 2;
+      Stage4.Scene2();
       Combat.StartCombat(player, boss2);
       if (DeadOrRunCheck(player, 40))
       {
         return;
       }
+      Stage4.BossIsDeadScene();
       Console.ForegroundColor = ConsoleColor.Yellow;
       Console.WriteLine();
       Console.WriteLine("After defeating the {0} and {1}, {2} has " +

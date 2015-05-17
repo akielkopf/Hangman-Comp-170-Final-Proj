@@ -52,7 +52,7 @@ namespace Sophmores_FinalProj
       }
     }
     /// <summary>
-    /// Provides plot and player interaction for second scene in stage 1
+    /// Provides plot and player interaction for second scene in stage 2
     /// </summary>
     public static void Scene2()
     {
