@@ -91,9 +91,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sophmores_FinalProj\Sophmores_FinalProj.csproj">
+    <ProjectReference Include="..\Sophmores_FinalProj\GameUtilities.csproj">
       <Project>{E3015AB2-507A-4A55-90B6-4760CF30996F}</Project>
-      <Name>Sophmores_FinalProj</Name>
+      <Name>GameUtilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\ui\ui.csproj">
       <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
