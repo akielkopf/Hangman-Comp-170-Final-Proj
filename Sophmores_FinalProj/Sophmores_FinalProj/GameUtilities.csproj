@@ -153,8 +153,7 @@
     <Content Include="TextFiles+ArtAssets\Art\EnemyArt\zombie\Zombie0.txt" />
     <Content Include="TextFiles+ArtAssets\Art\EnemyArt\zombie\Zombie1.txt" />
     <Content Include="TextFiles+ArtAssets\Art\EnemyArt\zombie\Zombie2.txt" />
-    <Content Include="TextFiles+ArtAssets\Art\NotUsed\Mountains.txt" />
-    <Content Include="TextFiles+ArtAssets\Art\NotUsed\LargeDoor.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\LargeDoor.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\gamelogo.txt" />
     <Content Include="TextFiles+ArtAssets\Art\GameLogos\gamelogo2.txt" />
     <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Intro\Intro_0.txt" />
