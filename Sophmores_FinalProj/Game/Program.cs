@@ -416,7 +416,6 @@ namespace Sophmores_FinalProj
         {
           playerWins = true;
           break;
-
         }
         response = getChoice(5, "", true);  // gets player input here
         if (1 <= response && response <= 3)     //checks if response is a door number
@@ -546,10 +545,6 @@ namespace Sophmores_FinalProj
                               "now opens! We are going into the final door!");
             Console.ResetColor();
             DoorStage4(p1, Enemies[10], Enemies[11]);
-            if (p1.currentStage == 4)
-            {
-              break;
-            }
           }
         }
       }
@@ -563,6 +558,7 @@ namespace Sophmores_FinalProj
       TextUtil.PressAnyKeyBufferClear();
       Console.ForegroundColor = ConsoleColor.DarkRed;
       TextUtil.PrintTextFile("GameOver.txt");
+      Console.ResetColor();
       Console.WriteLine("Congratulations on beating the Game!!!");
       TextUtil.PressAnyKeyBufferClear("You have restored Peace to the Woods!");
       for (int i = 0; i < 5; i++)
@@ -570,7 +566,7 @@ namespace Sophmores_FinalProj
         Console.WriteLine("...");
       }
       TextUtil.PressAnyKeyBufferClear("Or have you...?");
-      TextUtil.PrintTextFile("gamelogo2.txt");
+      TextUtil.PressAnyKeyBufferClear(TextUtil.ReturnTextFile("gamelogo2.txt"));
     }
     /// <summary>
     /// Prompts player that the selected door is complete
