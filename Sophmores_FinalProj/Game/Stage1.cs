@@ -137,6 +137,7 @@ namespace Sophmores_FinalProj
         // Gets all file locations of letters
         KERDASH[j] = TextUtil.ReturnTextFileLocation(letters[j] + "Letter.txt");
       }
+      int wrongKeyPress = 0;
       while (!done)
       {
         bool changed = false;
@@ -176,8 +177,18 @@ namespace Sophmores_FinalProj
         }
         else
         {
+          wrongKeyPress++;
+          Random rand = new Random();
+          string hint = string.Format("Hmm, maybe {0}...\n", 
+                          letters[rand.Next(letters.Length)]);
           ConsoleColor temp = Console.ForegroundColor;
           Console.ForegroundColor = ConsoleColor.White;
+          int[] arr = new int[] { 4, 8, 12, 16 };
+          foreach (int press in arr)
+          {
+            if (wrongKeyPress == press)
+              Console.WriteLine(hint);
+          }
           Console.WriteLine("Nothing seems to Happen...\n");
           Console.ForegroundColor = temp;
         }
