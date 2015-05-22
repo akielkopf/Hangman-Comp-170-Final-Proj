@@ -27,8 +27,8 @@ namespace Sophmores_FinalProj.Utilities
     /// </summary>
     public static void SetStartingDirectory()
     {
-      string setDirectory = Directory.GetCurrentDirectory();
-      workingDirectory = setDirectory;
+      workingDirectory = Path.GetDirectoryName(
+                          AppDomain.CurrentDomain.BaseDirectory);
     }
 
     /// Read a long line and return it wrapped into lines. Such data is

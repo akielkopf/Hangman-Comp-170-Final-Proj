@@ -8,7 +8,7 @@ namespace Sophmores_FinalProj
   /// <summary>
   /// Main Game Logic
   /// </summary>
-  internal class Program
+  public class Program
   {
     #region Private Methods
     /// <summary>
