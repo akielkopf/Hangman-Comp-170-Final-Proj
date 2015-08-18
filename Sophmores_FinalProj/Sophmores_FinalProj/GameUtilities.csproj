@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E3015AB2-507A-4A55-90B6-4760CF30996F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sophmores_FinalProj</RootNamespace>
+    <AssemblyName>Sophmores_FinalProj</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="Utilities\Combat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Characters\Enemy.cs" />
+    <Compile Include="ItemList\Item.cs" />
+    <Compile Include="ItemList\Consumables\HealthPotion.cs" />
+    <Compile Include="ItemList\Key.cs" />
+    <Compile Include="ItemList\Consumables\Poison.cs" />
+    <Compile Include="Characters\Player.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ItemList\Quiver.cs" />
+    <Compile Include="Utilities\Inventory.cs" />
+    <Compile Include="Utilities\TextUtil.cs" />
+    <Compile Include="ItemList\Weapon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ui\ui.csproj">
+      <Project>{2262CE21-C5AD-4EDE-B384-EC2BD91585E6}</Project>
+      <Name>ui</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\goldChest.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\aLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\dLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\eLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\hLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\KERDASH.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\kLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\rLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\KERDASH\sLetter.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\nohelpmsg\nohelpforyou.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_0.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_1.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_10.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_11.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_12.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_13.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_14.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_15.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_16.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_17.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_18.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_19.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_2.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_20.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_21.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_22.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_23.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_24.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_3.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_4.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_5.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_6.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_7.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_8.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 3\Stage3_9.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_0.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_1.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_10.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_11.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_12.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_13.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_14.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_2.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_3.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_4.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_5.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_6.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_7.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_8.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 4\Stage4_9.txt" />
+    <None Include="TextFiles+ArtAssets\Art\GameLogos\Death.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Alligator\Alligator0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Alligator\Alligator1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Alligator\Alligator2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Dragon\Dragon0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Dragon\Dragon1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Dragon\Dragon2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Ghost\Odalf0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Ghost\Odalf1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Ghost\Odalf2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\GiantRat\Giant Rat1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\GiantRat\Giant Rat2.txt" />
+    <None Include="TextFiles+ArtAssets\Art\EnemyArt\Goblin\Goblin1.txt" />
+    <None Include="TextFiles+ArtAssets\Art\EnemyArt\Goblin\Goblin2.txt" />
+    <None Include="TextFiles+ArtAssets\Art\EnemyArt\Giant\Giant2.txt" />
+    <None Include="TextFiles+ArtAssets\Art\EnemyArt\Giant\Giant1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\GiantSpider\Giant Spider1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\GiantSpider\Giant Spider0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\GiantSpider\Giant Spider2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Kraken\Kraken0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Kraken\Kraken1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Kraken\Kraken2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Orc\Orc0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Orc\Orc1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Orc\Orc2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Plagued Rat\Plagued Rat0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Plagued Rat\Plagued Rat1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Plagued Rat\Plagued Rat2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Skelton\Skeleton2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Skelton\Skeleton1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Skelton\Skeleton0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Small Spider\Small Spider0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\GiantRat\Giant Rat0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Small Spider\Small Spider1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\Small Spider\Small Spider2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\wolf\Wolf0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\wolf\Wolf1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\wolf\Wolf2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\zombie\Zombie0.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\zombie\Zombie1.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\EnemyArt\zombie\Zombie2.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\LargeDoor.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\gamelogo.txt" />
+    <Content Include="TextFiles+ArtAssets\Art\GameLogos\gamelogo2.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Intro\Intro_0.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Intro\Intro_1.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_0.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_1.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_10.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_11.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_12.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_13.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_14.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_15.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_16.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_17.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_18.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_19.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_2.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_20.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_21.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_22.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_23.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_24.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_25.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_3.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_4.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_5.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_6.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_7.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_8.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 1\Stage1_9.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\ClimbDown_Option_Stage2_16.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Jump_Option_Stage2_15.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_1.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_0.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_2.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_3.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_10.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_11.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_13.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_14.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_17.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_18.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_19.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_20.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_21.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_4.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_5.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_6.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_7.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_8.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_9.txt" />
+    <Content Include="TextFiles+ArtAssets\PlotNarrationFiles\Stage 2\Stage2_12.txt" />
+    <None Include="TextFiles+ArtAssets\PlayerNoteTxtFiles\Note_PreDoor.txt" />
+    <None Include="TextFiles+ArtAssets\PlayerNoteTxtFiles\stage2note.txt" />
+    <None Include="TextFiles+ArtAssets\PlayerNoteTxtFiles\note 3.txt" />
+    <None Include="TextFiles+ArtAssets\Art\EnemyArt\Goblin\Goblin0.txt" />
+    <None Include="TextFiles+ArtAssets\Art\EnemyArt\Giant\Giant0.txt" />
+    <None Include="TextFiles+ArtAssets\Art\GameLogos\GameOver.txt" />
+    <None Include="TextFiles+ArtAssets\PlayerNoteTxtFiles\Note_Foreshadow.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup />
+</Project>

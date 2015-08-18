@@ -1,25 +1,42 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Sophmores_FinalProj.Utilities
 {
-  public class Inventory
+  /// <summary>
+  /// Inventories for characters, contain simple methods
+  /// For adding and Removing Items
+  /// </summary>
+  public class Inventory : IEnumerable
   {
     #region Public Properties
 
     public Dictionary<Item, int> contents { get; private set; }
-
+    /// <summary>
+    /// Returns a new list with a list of items without their quantities
+    /// </summary>
+    public List<Item> itemList 
+    { 
+      get 
+      {
+        return new List<Item>(this.contents.Keys); 
+      }
+    }
+    public int Count { get { return this.contents.Count; } }
     #endregion Public Properties
 
     #region Public Constructors
-
+    /// <summary>
+    /// Creates a new inventory
+    /// </summary>
     public Inventory()
     {
       contents = new Dictionary<Item, int>();
     }
 
     /// <summary>
-    /// Create new inventory from one that already exists
+    /// Create new inventory from one that already exists 
     /// </summary>
     /// <param name="OldInventory"> Inventory to be copied from </param>
     public Inventory(Inventory OldInventory)
@@ -39,7 +56,7 @@ namespace Sophmores_FinalProj.Utilities
     #region Public Methods
 
     /// <summary>
-    /// Add Item to inventory
+    /// Add Item to inventory 
     /// </summary>
     /// <param name="item"> item </param>
     /// <param name="itemCount"> Number of the SAME item to add </param>
@@ -56,7 +73,7 @@ namespace Sophmores_FinalProj.Utilities
     }
 
     /// <summary>
-    /// Removes specified amount of Items
+    /// Removes specified amount of Items 
     /// </summary>
     /// <param name="item"> Item </param>
     /// <param name="ItemCount"> Number of items to Remove </param>
@@ -78,5 +95,11 @@ namespace Sophmores_FinalProj.Utilities
     }
 
     #endregion Public Methods
+
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+      return contents.Keys.GetEnumerator();
+    }
   }
 }

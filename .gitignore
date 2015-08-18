@@ -265,3 +265,5 @@ FakesAssemblies/
 *.pidb
 *.resources
 test-results/
+*.isl
+*.isproj
